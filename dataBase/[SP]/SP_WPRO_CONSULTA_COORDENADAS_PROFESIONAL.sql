@@ -1,0 +1,20 @@
+
+-- CALL SP_WPRO_CONSULTA_COORDENADAS_PROFESIONAL('TARAPACA',@codErr);
+-- SELECT @codErr;
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_WPRO_CONSULTA_COORDENADAS_PROFESIONAL;
+CREATE PROCEDURE bodyflex.`SP_WPRO_CONSULTA_COORDENADAS_PROFESIONAL`(
+                                                    IN rutPro VARCHAR(20)
+                                                    ,  OUT codErr INTEGER
+                                                  )
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+SET codErr=0;
+
+  SELECT COOLAT, COOLON FROM COORDENADAS WHERE DCOD IN (SELECT DCOD FROM PROFESIONAL_DIRECCION WHERE PRUT = rutPro) ORDER BY COOID DESC LIMIT 1;
+   
+END
+
+
+-- select * from coordenadas
+

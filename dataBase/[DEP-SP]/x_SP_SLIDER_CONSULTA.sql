@@ -1,0 +1,21 @@
+DROP PROCEDURE IF EXISTS bodyflex.SP_SLIDER_CONSULTA;
+CREATE PROCEDURE bodyflex.`SP_SLIDER_CONSULTA`(IN rut VARCHAR(20))
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SELECT '99';
+
+    SET @CANT=(SELECT COUNT(*) FROM SLIDER WHERE PRUT=rut);
+    IF @CANT>0 THEN
+      SELECT SID
+      , STIT1
+      , STIT2
+      , SDES
+      , SPOS
+      , SDFL 
+      , @CANT AS 'CANT'
+      FROM slider 
+      WHERE prut=rut;
+    ELSE
+      SELECT 98;
+    END IF;
+      
+END;

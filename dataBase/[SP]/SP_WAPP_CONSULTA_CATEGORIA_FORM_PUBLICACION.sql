@@ -1,0 +1,26 @@
+-- CALL SP_CONSULTA_CATEGORIA_FORM_PUBLICACION('');
+-- CALL SP_CONSULTA_CATEGORIA_FORM_PUBLICACION('1');
+
+DROP PROCEDURE IF EXISTS delta.SP_WAPP_CONSULTA_CATEGORIA_FORM_PUBLICACION;
+CREATE PROCEDURE delta.`SP_WAPP_CONSULTA_CATEGORIA_FORM_PUBLICACION`(
+                                                                          IN keyWord VARCHAR(500)
+                                                                          , OUT codErr INTEGER
+                                                                        )
+BEGIN
+
+  DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+  SET codErr=0;
+  IF EXISTS(SELECT DISTINCT CATETINOM FROM PUBLICACION_ETIQUETA PE WHERE CATETINOM LIKE CONCAT('%',keyWord,'%')) THEN 
+      SELECT DISTINCT CATETINOM 
+      FROM PUBLICACION_ETIQUETA PE
+      WHERE CATETINOM LIKE CONCAT('%',keyWord,'%')
+      ORDER BY PE.CATETINOM ASC;
+  ELSE
+    -- SELECT 98, keyWord;
+    SET codErr=98;
+  END IF;
+
+END;
+
+
+-- SELECT * FROM PUBLICACION_ETIQUETA

@@ -1,0 +1,37 @@
+-- CALL SP_WPRO_PERFIL_PROFESIONAL_GET_DATA_PUBLICACION(3, @codErr);
+-- SELECT @codErr;
+
+-- SELECT * FROM PROFESIONAL;
+-- SELECT * FROM PROFESIONAL_SERVICIO;
+-- SELECT * FROM PUBLICACION;
+-- SELECT * FROM PUBLICACION_PROFESIONAL;
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_WPRO_PERFIL_PROFESIONAL_GET_DATA_PUBLICACION;
+CREATE PROCEDURE bodyflex.`SP_WPRO_PERFIL_PROFESIONAL_GET_DATA_PUBLICACION`(
+                                                                    IN id VARCHAR(20)
+                                                                    , OUT codErr INTEGER
+                                                                  )
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+SET codErr=0;
+    SET @URL = (SELECT PARVAL FROM PARAMETROS WHERE PARNOM='DRIVE');
+    IF EXISTS(SELECT * FROM PUBLICACION WHERE PUID=id) THEN    
+      SELECT P.PUID
+      , DATE_FORMAT(P.PUFEPUB,'%m-%d-%Y') AS PUFEPUB
+      , P.PUTITULO
+      , P.PUBAJ
+      , P.PUIMG
+      , @URL AS URL
+      FROM PUBLICACION P
+      WHERE P.PUID = id;
+    ELSE
+      SET codErr=98;
+    END IF;
+    
+END
+
+
+
+
+
+

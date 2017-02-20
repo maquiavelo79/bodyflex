@@ -1,0 +1,23 @@
+
+-- CALL SP_WPRO_SEGUIR_PROFESIONAL('13661574','fjcalderon@uc.cl');
+-- SELECT * FROM PROFESIONAL_SEGUIDOR
+
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_WPRO_SEGUIR_PROFESIONAL;
+CREATE PROCEDURE bodyflex.`SP_WPRO_SEGUIR_PROFESIONAL`(
+                                                    IN rut VARCHAR(20),
+                                                    IN ma VARCHAR(100),
+                                                    OUT codErr INTEGER
+                                                   )
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+SET codErr=0;
+  IF (EXISTS(SELECT * FROM PROFESIONAL_SEGUIDOR WHERE PRUT=rut AND SEGEM=ma)) THEN
+    DELETE FROM PROFESIONAL_SEGUIDOR WHERE PRUT=rut AND SEGEM=ma;
+    SELECT 2; -- SEGUIDOR ELIMINADO
+  ELSE
+    INSERT INTO PROFESIONAL_SEGUIDOR(PRUT, SEGFEC, SEGEM)VALUES(rut, NOW(), ma);
+    SELECT 1; -- SIGUIENDO PROFESIONAL
+  END IF;
+  
+END;

@@ -1,0 +1,23 @@
+
+-- CALL SP_CP_PRO_CONSULTA_PRESENTACION('13661574');
+-- SELECT * FROM PROFESIONAL WHERE PRUT='13661574';
+-- SELECT PTXTOPRE FROM PROFESIONAL WHERE PRUT='13661574';
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_CP_PRO_CONSULTA_PRESENTACION;
+CREATE PROCEDURE bodyflex.`SP_CP_PRO_CONSULTA_PRESENTACION`(
+                                                  IN rut VARCHAR(20)
+                                                  , OUT codErr INTEGER
+                                                )
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+SET codErr=0;
+  SET @texto=(SELECT PTXTOPRE FROM PROFESIONAL WHERE PRUT=rut);
+  SET @texto=TRIM(IFNULL(@texto,'0'));
+
+  IF @texto<>'0' and @texto<>'' THEN
+    SELECT PFOTOPRE, PTXTOPRE FROM PROFESIONAL WHERE PRUT=rut;
+  ELSE
+    SET codErr=98;
+  END IF;
+ 
+END;

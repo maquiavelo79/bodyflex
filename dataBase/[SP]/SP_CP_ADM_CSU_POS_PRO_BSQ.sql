@@ -1,0 +1,45 @@
+-- SELECT * FROM REGION;
+-- SELECT * FROM PROVINCIA;
+-- SELECT * FROM COMUNA;
+-- SELECT * FROM DIRECCION;
+-- SELECT * FROM PROFESIONAL_DIRECCION;
+-- SELECT * FROM PROFESIONAL;
+-- SELECT * FROM POSTULACION;
+/*
+CALL SP_CP_ADM_CSU_POS_PRO_BSQ('jav',@codErr);
+SELECT @codErr;
+
+CALL SP_CP_ADM_CSU_POS_PRO_BSQ(12,@codErr);
+SELECT @codErr;
+*/
+DROP PROCEDURE IF EXISTS bodyflex.SP_CP_ADM_CSU_POS_PRO_BSQ;
+CREATE PROCEDURE bodyflex.`SP_CP_ADM_CSU_POS_PRO_BSQ`(
+                                                        IN bsq VARCHAR(80)
+                                                        , OUT codErr INTEGER
+                                                      ) 
+BEGIN
+  
+  DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+  SET codErr=0;
+  
+  SET @BSQ=CONCAT('%',bsq,'%');
+  
+  IF EXISTS(SELECT * FROM POSTULACION WHERE POSNOM LIKE @BSQ OR POSAPE LIKE @BSQ OR POSEMA LIKE @BSQ) THEN
+    SELECT POSID
+    , POSEST
+    , POSNOM
+    , POSAPE
+    , POSEMA
+    , POSFEC
+    FROM POSTULACION 
+    WHERE POSNOM LIKE @BSQ OR POSAPE LIKE @BSQ OR POSEMA LIKE @BSQ
+    ORDER BY POSID, POSNOM, POSAPE ASC;
+  ELSE
+    SET codErr=98;
+  END IF;
+        
+END
+
+
+
+

@@ -1,0 +1,19 @@
+-- Drop table DET_Revision_IN
+DROP TABLE IF EXISTS `DET_Revision_IN`;
+
+CREATE TABLE `DET_Revision_IN` (
+  `DetRevIn_ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `RevIn_ID` bigint(20) NOT NULL DEFAULT '0',
+  `Chk_ID` bigint(20) NOT NULL DEFAULT '0',
+  `DetRevIn_ITE` int(11) COMMENT 'Iteración',
+  PRIMARY KEY(`DetRevIn_ID`),
+  CONSTRAINT `Ref_62` FOREIGN KEY (`RevIn_ID`)
+    REFERENCES `Revision_IN`(`RevIn_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Ref_63` FOREIGN KEY (`Chk_ID`)
+    REFERENCES `CheckList`(`Chk_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+)
+ENGINE=INNODB;

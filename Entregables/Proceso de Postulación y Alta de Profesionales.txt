@@ -1,0 +1,21 @@
+
+Proceso de Postulación y Alta de Profesionales
+
++ Un requerimiento es un aspecto cualitativo de un producto o servicio
+	Nacen a reaiz de:
+		Lo que el cliente espera obtener....
+		Lo que la empresa desea brindar.....
+		Lo que el entorno requiere..........
+	
++ Una métrica es un aspecto cuantitativo y periodico de evaluar el cumplimiento de un requerimiento
+
++ Una meta es una declaración de mejoramiento de una métrica
+	+ Proposición + métrica + benchmark + objetivo + plazo
+	+ Incrementar el Índice de Pedidos Perfectos de 63% a 95% para todos los meses del cuarto trimestre de 2014.
+	
++ ¿Cómo se relacionan los requerimientos, las métricas y las metas?
+	+ Cada requerimiento debe tener una forma cuantitativa de medirse, una métrica, la que a su vez debe tener una meta asociada.
+	
++ Satisfacción del cliente
+	+ Requerimientos del prodiucto o servicios asociados a caracteristicas de diseño
+	+ Requerimientos del prodiucto o servicios asociados a caracteristicas del proceso	

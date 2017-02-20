@@ -1,0 +1,21 @@
+-- CALL SP_PROFESIONAL_PRODUCTO_PUBLICAR('25');
+-- SELECT * FROM PROFESIONAL_PRODUCTO;
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_PROFESIONAL_PRODUCTO_PUBLICAR;
+CREATE PROCEDURE bodyflex.`SP_PROFESIONAL_PRODUCTO_PUBLICAR`(
+                                                              IN id VARCHAR(20)
+                                                              , IN opc INTEGER
+                                                              )
+BEGIN
+
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SELECT '99';
+
+  IF opc=1 THEN  
+    UPDATE PROFESIONAL_PRODUCTO SET PROPEST='PUBLICADO', PROPFECPUB=NOW() WHERE proPID=id;    
+    SELECT 1;
+  ELSE
+    UPDATE PROFESIONAL_PRODUCTO SET PROPEST='INGRESADO', PROPFECPUB='' WHERE proPID=id;    
+    SELECT 2;
+  END IF;
+
+END;

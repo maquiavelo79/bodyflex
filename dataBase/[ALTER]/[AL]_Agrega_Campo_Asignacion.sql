@@ -1,0 +1,1 @@
+alter table asignacion add aSig_Act varchar(200);

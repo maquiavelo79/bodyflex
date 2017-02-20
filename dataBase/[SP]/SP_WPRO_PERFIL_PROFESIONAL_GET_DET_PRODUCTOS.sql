@@ -1,0 +1,71 @@
+
+-- CALL SP_WPRO_PERFIL_PROFESIONAL_GET_DET_PRODUCTOS(77,13661574, @codErr);
+-- SELECT @codErr;
+
+-- SELECT * FROM PRODUCTO
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_WPRO_PERFIL_PROFESIONAL_GET_DET_PRODUCTOS;
+CREATE PROCEDURE bodyflex.`SP_WPRO_PERFIL_PROFESIONAL_GET_DET_PRODUCTOS`(
+                                                                  IN id VARCHAR(20)
+                                                                  , IN rut VARCHAR(20)
+                                                                  , OUT codErr INTEGER
+                                                                )
+BEGIN
+-- DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+SET codErr=0;
+  IF EXISTS(SELECT * FROM producto WHERE PROID=id) THEN
+    IF EXISTS(SELECT * FROM PRODUCTO_PROFESIONAL WHERE PROID=id) THEN
+    
+      SET @PROFESIONAL_FOTO = (SELECT PFOTOPRE FROM PROFESIONAL WHERE PRUT=rut);
+      SET @PROFESIONAL_NOMBRE = (SELECT CONCAT(PNOM, ' ', PAPE) FROM PROFESIONAL WHERE PRUT=rut);
+      SET @PROFESIONAL_TIPO2 = (SELECT PTIPO2 FROM PROFESIONAL WHERE PRUT=rut);
+      
+      SELECT P.proNo AS NOMPRO
+      , case P.marId when 0 then 'SIN MARCA' else (SELECT MARNOM FROM MARCAS WHERE MARID=P.marId) end as PROMA
+      , P.proId AS CODPRO
+      , P.proCo AS CONPRO
+      , CONCAT('$',REPLACE(FORMAT(P.proPv,0),',','.')) AS PRENET
+      , IFNULL(CONCAT('$',REPLACE(FORMAT(P.proPr,0),',','.')),0) AS PREREF
+      , P.proEs AS PRODES
+      , (SELECT PCO_DRI FROM PRODUCTO_CONTENIDO PPC WHERE PPC.PROID=P.proID AND PPC.PCO_PRI=1 LIMIT 1) AS IMGPRI
+      , (SELECT PARVAL FROM PARAMETROS WHERE PARNOM='DRIVE') AS URL
+      , (SELECT pcp1_nom FROM PRODUCTO_CATEGORIA1 ppc1 WHERE ppc1.PCP1_ID=P.PCP1_ID) AS CATPRO
+      , @PROFESIONAL_FOTO
+      , @PROFESIONAL_NOMBRE
+      , @PROFESIONAL_TIPO2
+      , codErr
+      , P.proUn
+      FROM PRODUCTO P, PRODUCTO_PROFESIONAL PP
+      WHERE P.PROID=PP.PROID 
+      AND PP.PROID=id 
+      AND PP.PRUT=rut; 
+    
+    ELSE
+      
+      SET codErr=1; -- INDICA QUE EL RUT PROPORCIONADO NO POSEE ASOCIADO EL PRODUCTO
+      SELECT proNo AS NOMPRO
+      , case PP.marId when 0 then 'SIN MARCA' else (SELECT MARNOM FROM MARCAS WHERE MARID=PP.marId) end as PROMA
+      , proId AS CODPRO
+      , proCo AS CONPRO
+      , CONCAT('$',REPLACE(FORMAT(proPv,0),',','.')) AS PRENET
+      , IFNULL(CONCAT('$',REPLACE(FORMAT(proPr,0),',','.')),0) AS PREREF
+      , proEs AS PRODES
+      , (SELECT pco_dri FROM PRODUCTO_CONTENIDO PPC WHERE PPC.PROID=PP.proID AND PCO_PRI=1) AS IMGPRI
+      , (SELECT PARVAL FROM PARAMETROS WHERE PARNOM='DRIVE') AS URL
+      , (SELECT pcp1_nom FROM PRODUCTO_CATEGORIA1 ppc1 WHERE ppc1.PCP1_ID=PP.PCP1_ID) AS CATPRO
+      , codErr
+      , proUn
+      FROM PRODUCTO PP     
+      WHERE PP.proID=id; 
+    
+    END IF;
+    
+  ELSE
+    SET codErr=98;   
+  END IF;
+
+END
+
+
+
+

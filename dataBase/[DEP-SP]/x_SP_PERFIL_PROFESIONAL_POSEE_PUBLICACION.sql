@@ -1,0 +1,22 @@
+
+-- CALL SP_PERFIL_PROFESIONAL_POSEE_PUBLICACION('tqghogcvkhl7b70riagdq3ne14');
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_PERFIL_PROFESIONAL_POSEE_PUBLICACION;
+CREATE PROCEDURE bodyflex.`SP_PERFIL_PROFESIONAL_POSEE_PUBLICACION`(
+                                                                IN rut VARCHAR(20)
+                                                              )
+BEGIN
+
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SELECT '99';
+  
+  IF EXISTS(
+    SELECT * FROM PUBLICACION_PROFESIONAL WHERE PRUT=rut
+  ) THEN
+    SELECT 1;  
+  ELSE
+    SELECT 98;
+  END IF;
+      
+END
+
+

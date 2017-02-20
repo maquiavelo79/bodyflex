@@ -1,0 +1,26 @@
+
+-- [PRIMERA LLAMADA]
+-- CALL SP_MENSAJE_SET_COMO_LEIDO(10,'usr@bo.cl'); 
+-- SELECT * FROM PROFESIONAL_MENSAJE;
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_MENSAJE_SET_COMO_LEIDO;
+CREATE PROCEDURE bodyflex.`SP_MENSAJE_SET_COMO_LEIDO`(
+                                                    IN id VARCHAR(20)
+                                                    , IN emlDes VARCHAR(50)
+                                                  )
+BEGIN
+
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION SELECT '99';
+    
+    IF(SELECT COUNT(*) FROM PROFESIONAL_MENSAJE PM WHERE PM.MID=id AND MLEI=0)>0 THEN
+      UPDATE PROFESIONAL_MENSAJE PM SET PM.MLEI=1 WHERE PM.MID=id; 
+      SET @NOLEI = (SELECT COUNT(*) FROM PROFESIONAL_MENSAJE WHERE MMAILDES=emlDes AND MLEI=0);
+      SELECT 1, @NOLEI;
+    ELSE
+      SELECT 98;
+    END IF;
+END
+
+
+
+

@@ -1,0 +1,50 @@
+
+CALL SP_RU_VERIFICA_MAIL('pro@bo.cl', @codErr);
+SELECT @codErr;
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_RU_VERIFICA_MAIL;
+CREATE PROCEDURE bodyflex.`SP_RU_VERIFICA_MAIL`( 
+                                                IN mail VARCHAR(100) 
+                                                , OUT codErr INTEGER
+                                                )
+BEGIN
+
+  DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+  SET codErr=0;
+  SET @EXISTE=0;
+  
+  IF @EXISTE=0 THEN
+    IF EXISTS(SELECT UMAIL FROM USUARIO WHERE UMAIL=upper(mail)) THEN
+      SET @EXISTE=1;-- ENCONTRADO
+    ELSE
+      SET @EXISTE=0;-- NO ENCONTRADO
+    END IF;  
+  END IF;  
+  
+  IF @EXISTE=0 THEN
+    IF EXISTS(SELECT PMAIL FROM PROFESIONAL WHERE PMAIL=upper(mail)) THEN
+      SET @EXISTE=1;-- ENCONTRADO
+    ELSE
+      SET @EXISTE=0;-- NO ENCONTRADO
+    END IF;    
+  END IF;
+  
+  IF @EXISTE=0 THEN
+    IF EXISTS(SELECT RMAIL FROM INTERNO WHERE RMAIL=upper(mail)) THEN
+      SET @EXISTE=1;-- ENCONTRADO
+    ELSE
+      SET @EXISTE=0;-- NO ENCONTRADO
+    END IF;    
+  END IF;
+  
+  IF @EXISTE=0 THEN
+    IF EXISTS(SELECT COMPMAIL FROM COMPLEMENTADOR WHERE COMPMAIL=upper(mail)) THEN
+      SET @EXISTE=1;-- ENCONTRADO
+    ELSE
+      SET @EXISTE=0;-- NO ENCONTRADO
+    END IF;    
+  END IF;
+  
+  SELECT @EXISTE;
+  
+END;

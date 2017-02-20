@@ -1,0 +1,26 @@
+
+-- CALL SP_PERFIL_PROFESIONAL_DEL_PRO_CART('89',1,0);
+
+-- select * from CARRO_DETALLE
+-- select * from CARRO
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_PERFIL_PROFESIONAL_DEL_PRO_CART;
+CREATE PROCEDURE bodyflex.`SP_PERFIL_PROFESIONAL_DEL_PRO_CART`( 
+                                                  IN vId VARCHAR(20)
+                                                )
+BEGIN
+
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SELECT '99';
+  
+  IF EXISTS(SELECT * FROM CARRO_DETALLE WHERE CAD_ID=vId) THEN
+    
+    DELETE FROM CARRO_DETALLE WHERE CAD_ID =vId;
+    SELECT 1;
+    
+  ELSE
+  
+    SELECT 98;
+    
+  END IF;
+      
+END;

@@ -1,0 +1,32 @@
+-- CALL SP_ESTUDIOS_CONSULTA('9386703');
+-- SELECT * FROM ESTUDIOS
+-- SELECT * FROM PROFESIONAL
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_ESTUDIOS_CONSULTA;
+CREATE PROCEDURE bodyflex.`SP_ESTUDIOS_CONSULTA`(
+                                                    IN rut VARCHAR(10)
+                                                 )
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SELECT '99';
+
+  IF EXISTS(SELECT * FROM ESTUDIOS WHERE PRUT=rut) THEN
+    SELECT ESID
+    , ESNOM
+    , ESTIPO
+    , ESINST
+    , ESNOMCON
+    , ESFECHA
+    , ESPOS
+    , ESANOSEST
+    , ESDES
+    FROM ESTUDIOS
+    WHERE PRUT=rut;
+  ELSE
+    SELECT 98;
+  END IF;
+  
+END
+
+
+
+

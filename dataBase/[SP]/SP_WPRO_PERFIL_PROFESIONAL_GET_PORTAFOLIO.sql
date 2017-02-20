@@ -1,0 +1,31 @@
+-- CALL SP_WPRO_PERFIL_PROFESIONAL_GET_PORTAFOLIO(9386703);
+-- SELECT * FROM PROFESIONAL;
+-- SELECT * FROM PROFESIONAL_SERVICIO;
+-- SELECT * FROM PORTAFOLIO;
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_WPRO_PERFIL_PROFESIONAL_GET_PORTAFOLIO;
+CREATE PROCEDURE bodyflex.`SP_WPRO_PERFIL_PROFESIONAL_GET_PORTAFOLIO`(
+                                                                    IN rut VARCHAR(20)
+                                                                    , OUT codErr INTEGER
+                                                                  )
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+SET codErr=0;
+    SET @URL = (SELECT PARVAL FROM PARAMETROS WHERE PARNOM='DRIVE');
+    IF EXISTS(SELECT * FROM PORTAFOLIO WHERE PRUT=rut) THEN    
+      SELECT PONOMCAP
+      , POIDFLI
+      , @URL AS URL
+      FROM PORTAFOLIO
+      WHERE PRUT=rut
+      ORDER BY POID ASC;
+    ELSE
+      SET codErr=98;
+    END IF;
+END
+
+
+
+
+
+

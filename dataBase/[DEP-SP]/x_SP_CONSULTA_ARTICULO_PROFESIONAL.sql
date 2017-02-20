@@ -1,0 +1,83 @@
+-- CALL SP_CONSULTA_ARTICULO_PROFESIONAL(9,0);
+-- CALL SP_CONSULTA_ARTICULO_PROFESIONAL(9,1);
+-- SELECT * FROM PROFESIONAL;
+-- SELECT * FROM PUBLICACION;
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_CONSULTA_ARTICULO_PROFESIONAL;
+CREATE PROCEDURE bodyflex.`SP_CONSULTA_ARTICULO_PROFESIONAL`(
+                                                              IN id VARCHAR(50)
+                                                              , IN sw VARCHAR(50)
+                                                            )
+BEGIN 
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SELECT '99';  
+  
+  SET @DRIVE = (SELECT PARVAL FROM PARAMETROS WHERE PARNOM='DRIVE');
+  SET @RUTPRO = (SELECT PRUT FROM PUBLICACION_PROFESIONAL WHERE PUID=id);
+  
+  IF (SW=0) THEN -- PRUEBA
+      SELECT CONCAT(PR.PNOM1, ' ', PR.PAPE1) AS NOMBRE 
+      , PR.pTipo2
+      , PU.PUEST
+      , PU.PUTITULO
+      , PU.PUPUBLICACION
+      , PU.PUIMG
+      , CASE MONTH(PU.PUFEMOD)
+            WHEN 1 THEN 'ENE'
+            WHEN 2 THEN 'FEB'
+            WHEN 3 THEN 'MAR'
+            WHEN 4 THEN 'ABR'
+            WHEN 5 THEN 'MAY'
+            WHEN 6 THEN 'JUN'
+            WHEN 7 THEN 'JUL'
+            WHEN 8 THEN 'AGO'
+            WHEN 9 THEN 'SEP'
+            WHEN 10 THEN 'OCT'
+            WHEN 11 THEN 'NOV'
+            WHEN 12 THEN 'DIC'
+        END AS 'MESMOD'
+      , DAY(PU.PUFEMOD) AS 'DIAMOD'
+      , CONCAT(YEAR(PU.PUFEMOD), '-', MONTH(PU.PUFEMOD), '-', DAY(PU.PUFEMOD)) AS 'FEFOR'
+      , PU.PUNOMIMG
+      , @DRIVE AS 'DRIVE'
+      , @RUTPRO AS 'RUTPRO'
+      FROM PROFESIONAL PR, PUBLICACION_PROFESIONAL PP, PUBLICACION PU
+      WHERE PR.PRUT=PP.PRUT AND PU.PUID=PP.PUID AND PU.PUID=id;
+      
+
+  ELSE
+  
+    SELECT CONCAT(PR.PNOM1, ' ', PR.PAPE1) AS NOMBRE 
+    , PR.pTipo2
+    , PU.PUEST
+    , PU.PUTITULO
+    , PU.PUPUBLICACION
+    , PU.PUIMG
+    , CASE MONTH(PU.PUFEPUB)
+          WHEN 1 THEN 'ENE'
+          WHEN 2 THEN 'FEB'
+          WHEN 3 THEN 'MAR'
+          WHEN 4 THEN 'ABR'
+          WHEN 5 THEN 'MAY'
+          WHEN 6 THEN 'JUN'
+          WHEN 7 THEN 'JUL'
+          WHEN 8 THEN 'AGO'
+          WHEN 9 THEN 'SEP'
+          WHEN 10 THEN 'OCT'
+          WHEN 11 THEN 'NOV'
+          WHEN 12 THEN 'DIC'
+      END AS 'MESPUB'
+    , DAY(PU.PUFEPUB) AS 'DIAPUB'
+    , CONCAT(YEAR(PU.PUFEPUB), '-', MONTH(PU.PUFEPUB), '-', DAY(PU.PUFEPUB)) AS 'FEFOR'
+    , PU.PUNOMIMG
+    , @DRIVE AS 'DRIVE'
+    , @RUTPRO AS 'RUTPRO'
+    FROM PROFESIONAL PR, PUBLICACION_PROFESIONAL PP, PUBLICACION PU
+    WHERE PR.PRUT=PP.PRUT AND PU.PUID=PP.PUID AND PU.PUID=id;
+  
+  END IF;
+  
+END;
+
+
+
+

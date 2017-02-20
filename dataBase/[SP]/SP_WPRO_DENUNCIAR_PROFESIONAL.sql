@@ -1,0 +1,23 @@
+
+-- CALL SP_WPRO_DENUNCIAR_PROFESIONAL('13661574','fjcalderon@uc.cl');
+-- SELECT * FROM PROFESIONAL_DENUNCIA
+
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_WPRO_DENUNCIAR_PROFESIONAL;
+CREATE PROCEDURE bodyflex.`SP_WPRO_DENUNCIAR_PROFESIONAL`(
+                                                    IN rut VARCHAR(20),
+                                                    IN se VARCHAR(100),
+                                                    OUT codErr INTEGER
+                                                   )
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+SET codErr=0;
+  IF (EXISTS(SELECT * FROM PROFESIONAL_DENUNCIA WHERE PRUT=rut AND PDESE=se)) THEN
+    DELETE FROM PROFESIONAL_DENUNCIA WHERE PRUT=rut AND PDESE=se;
+    SELECT 2; -- DENUNCIA ELIMINADA
+  ELSE
+    INSERT INTO PROFESIONAL_DENUNCIA(PRUT, PDEFE, PDESE)VALUES(rut, NOW(), se);
+    SELECT 1; -- DENUNCIA INGRESADA
+  END IF;
+  
+END;

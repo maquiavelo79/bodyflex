@@ -1,0 +1,67 @@
+
+-- CALL SP_WPRO_AGREGA_VOTACION_SERVICIO('49', 'etjtivk24auuq8t58t1ru1tnv6', 1, 0);
+-- CALL SP_WPRO_AGREGA_VOTACION_SERVICIO('49', 'etjtivk24auuq8t58t1ru1tnv6', 0, 1);
+-- CALL SP_WPRO_AGREGA_VOTACION_SERVICIO('49', 'etjtivk24auuq8t58t1ru1tnv6', 0, 0);
+-- CALL SP_WPRO_AGREGA_VOTACION_SERVICIO('49', 'etjtivk24auuq8t58t1ru1tnv6', 1, 1);
+-- SELECT * FROM SERVICIO_VOTACION
+-- SELECT * FROM SERVICIO
+
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_WPRO_AGREGA_VOTACION_SERVICIO;
+CREATE PROCEDURE bodyflex.`SP_WPRO_AGREGA_VOTACION_SERVICIO`( 
+                                                    IN id VARCHAR(30)
+                                                  , IN se VARCHAR(30)
+                                                  , IN li INTEGER -- LO QUE APRETÓ EL USUARIO, NO PUEDEN SER AMBOS
+                                                  , IN ul INTEGER -- LO QUE APRETÓ EL USUARIO, NO PUEDEN SER AMBOS
+                                                  , OUT codErr INTEGER
+                                                )
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr =99;
+SET codErr =0;
+
+  IF NOT EXISTS(SELECT * FROM SERVICIO_VOTACION WHERE SEID=id AND SVSE=se) THEN
+    IF (li=1) THEN
+      INSERT INTO SERVICIO_VOTACION(SEID, SVSE, SVFE, SVOK, SVNO) VALUES (id, se, now(), 1, 0);
+      SET @SW=2;
+    ELSE
+      INSERT INTO SERVICIO_VOTACION(SEID, SVSE, SVFE, SVOK, SVNO) VALUES (id, se, now(), 0, 1);
+      SET @SW=4;
+    END IF;
+    
+  ELSE
+    
+    SET @LI=(SELECT SVOK FROM SERVICIO_VOTACION WHERE SEID=id AND SVSE=se);
+    SET @UL=(SELECT SVNO FROM SERVICIO_VOTACION WHERE SEID=id AND SVSE=se);
+    SET @SW=0;
+    
+    IF(li=1 AND @LI=1)THEN -- VLI = SE SETEA EN CERO
+      DELETE FROM SERVICIO_VOTACION WHERE SEID=id AND SVSE=se;
+      INSERT INTO SERVICIO_VOTACION(SEID, SVSE, SVFE, SVOK, SVNO) VALUES (id, se, now(), 0, 0);
+      SET @SW=1;
+    ELSE
+      IF(li=1 AND @LI=0)THEN
+        DELETE FROM SERVICIO_VOTACION WHERE SEID=id AND SVSE=se;
+        INSERT INTO SERVICIO_VOTACION(SEID, SVSE, SVFE, SVOK, SVNO) VALUES (id, se, now(), 1, 0);
+        SET @SW=2;
+      END IF;
+      IF(@SW=0)THEN
+        IF(ul=1 AND @UL=1)THEN
+          DELETE FROM SERVICIO_VOTACION WHERE SEID=id AND SVSE=se;
+          INSERT INTO SERVICIO_VOTACION(SEID, SVSE, SVFE, SVOK, SVNO) VALUES (id, se, now(), 0, 0);
+          SET @SW=3;
+        END IF;
+      END IF;
+      IF(@SW=0)THEN
+        IF(ul=1 AND @UL=0)THEN
+          DELETE FROM SERVICIO_VOTACION WHERE SEID=id AND SVSE=se;
+          INSERT INTO SERVICIO_VOTACION(SEID, SVSE, SVFE, SVOK, SVNO) VALUES (id, se, now(), 0, 1);
+          SET @SW=4;
+        END IF;
+      END IF;
+    END IF;
+  END IF;
+  -- ELIMINAMOS TODOS LOS REGISTROS QUE NO POSEAN VOTACION (LIKE=0 && UNLIKE=0)
+  DELETE FROM SERVICIO_VOTACION WHERE SVOK=0 AND SVNO=0;
+  SELECT @SW;
+
+END;

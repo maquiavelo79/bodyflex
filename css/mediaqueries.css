@@ -1,0 +1,65 @@
+/* -----------------------------------------
+   Theme Specific Media Queries
+----------------------------------------- */
+@media only screen and ( min-width: 1200px ) {
+	.entry time { width: 70px; padding: 10px 0;}
+	.entry-wrap { padding-left: 25px; }
+}
+
+/* Large */
+@media only screen and (max-width: 1200px) {
+	.opening-hours td,
+	.opening-hours th {	font-size: 13px;	padding: 3px 7px;	}
+	.widget.promo h3 { font-size: 27px; }
+	#pagination { padding: 0; }
+
+	.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.row {
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+}
+
+/* Medium */
+@media only screen and (max-width: 992px) {
+	#navigation > li > a, #navigation > li > a:visited { font-size: 13px; padding-top: 41px; }
+	#slideshow .slides > li {	min-height: 450px; }
+	.sld-info { margin-top: 110px;	}
+	#main { padding: 15px 15px 0; }
+	.sld-info h3 { font-size: 36px; }
+	.item { margin-bottom: 30px; }
+	.sidebar .item { margin-bottom: 0; }
+	.opening-hours th,
+	.opening-hours td { display: block; font-size: 12px; text-align: center !important; box-shadow: none; }
+	.widget.promo h3 { font-size: 22px; float: none; margin: 0 0 15px 0; }
+	.promo .button { position: static; }
+	.flickr_badge_image img { max-width: 65px; }
+}
+
+/* Small -- */
+@media only screen and (max-width: 768px) {
+	#nav { display: none; }
+	#mobile-bar { display: block; }
+	#mobilemenu { visibility: visible; }
+	#page { padding-top: 50px; }
+
+	#logo, #page-title h2 { margin: 0; }
+	#slideshow .slides > li { position: relative; min-height: 340px; }
+	.sld-info { position: absolute; width: 100%; top: 0; margin: 0 -15px; }
+	.sld-info h3 { font-size: 2em; }
+	.flex-direction-nav a { top: auto; bottom: 40px; margin: 0; }
+	.opening-hours td { font-size: 14px; }
+	.opening-hours th { font-size: 16px; }
+	.promo { padding: 15px; }
+	.promo-inner { padding: 15px; }
+	.credits, .text-right { text-align: center;}
+}
+
+/* Extra Small */
+@media only screen and (max-width: 480px) {
+
+}

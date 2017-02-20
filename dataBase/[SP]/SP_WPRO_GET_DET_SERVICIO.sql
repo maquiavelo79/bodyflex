@@ -1,0 +1,35 @@
+-- CALL SP_WPRO_GET_DET_SERVICIO(9386703,53);
+-- SELECT * FROM PROFESIONAL;
+-- SELECT * FROM PROFESIONAL_SERVICIO;
+-- SELECT * FROM SERVICIO;
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_WPRO_GET_DET_SERVICIO;
+CREATE PROCEDURE bodyflex.`SP_WPRO_GET_DET_SERVICIO`(
+                                                        IN rut VARCHAR(20)
+                                                        , IN id VARCHAR(20)
+                                                        , OUT codErr INTEGER
+                                                      )
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+SET codErr=0;
+SET @URL = (SELECT PARVAL FROM PARAMETROS WHERE PARNOM='DRIVE');
+SET @IMGPRO = (SELECT PFOTOPRE FROM PROFESIONAL WHERE PRUT=rut);
+SET @NOMPRO = (SELECT CONCAT(PNOM,' ',PAPE) FROM PROFESIONAL WHERE PRUT=rut);
+SET @TIPPRO = (SELECT PTIPO2 FROM PROFESIONAL WHERE PRUT=rut);
+        
+    SELECT SEID
+    , SENOM
+    , SEDESLAR
+    , SEIDFLI
+    , @URL AS URL
+    , @IMGPRO AS IMGPRO
+    , @NOMPRO AS NOMPRO
+    , @TIPPRO AS TIPO
+    FROM SERVICIO
+    WHERE SEID=id;
+  
+END
+
+
+
+

@@ -1,0 +1,28 @@
+CREATE TABLE `dependencia` (
+  `dEp_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `fun_id` bigint(20) NOT NULL DEFAULT '0',
+  `dEp_fEc_IN` datetime DEFAULT NULL COMMENT 'Fecha Ingreso',
+  `dEp_hRs_IN` datetime DEFAULT NULL COMMENT 'Hora Ingreso',
+  `dEp_eSt_oRi` varchar(50) DEFAULT NULL COMMENT 'Estado Origen',
+  `dEp_eMail_IN` longblob COMMENT 'Correo IBM Entrada',
+  `dEP_eMail_IN_nOm` varchar(500) DEFAULT NULL COMMENT 'Nombre Correo',
+  `dEp_mOt` varchar(5000) DEFAULT NULL COMMENT 'Motivo Dependencia',
+  `dEp_fEc_OUT` datetime DEFAULT NULL COMMENT 'Fecha Salida',
+  `dEp_hRs_OUT` datetime DEFAULT NULL,
+  `dEp_eMail_OUT` longblob COMMENT 'Correo BECH Salida',
+  `dEP_eMail_OUT_nOm` varchar(500) DEFAULT NULL COMMENT 'Nombre Correo Salida',
+  `dEp_eStado` varchar(50) DEFAULT NULL COMMENT 'Dependencia = [ABIERTA | CERRADA]',
+  `dEp_r` int(11) DEFAULT NULL COMMENT 'R*',
+  `dEp_aRc1` blob COMMENT 'BLOB ADJUNTO',
+  `dEp_aNa` varchar(100) DEFAULT NULL COMMENT 'Analista',
+  `dEp_mOt_CIE` varchar(100) DEFAULT NULL COMMENT 'Motivo del Cierre',
+  `dEp_aUx2` varchar(100) DEFAULT NULL COMMENT 'AUX2',
+  `dEp_pOr` int(11) NOT NULL COMMENT 'Porcentaje avance en DEPENDENCIA',
+  `dEp_hRs_aCt` datetime DEFAULT NULL,
+  `dEp_fEc_aCt` datetime DEFAULT NULL,
+  `dEp_cli` varchar(200) DEFAULT NULL COMMENT 'Cliente Copiado',
+  PRIMARY KEY (`dEp_id`),
+  KEY `Ref_55` (`fun_id`),
+  CONSTRAINT `Ref_55` FOREIGN KEY (`fun_id`) REFERENCES `funcionalidad` (`fun_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+

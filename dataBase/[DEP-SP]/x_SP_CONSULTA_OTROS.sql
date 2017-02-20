@@ -1,0 +1,30 @@
+-- CALL SP_CONSULTA_OTROS('13661574');
+-- SELECT * FROM OTRO;
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_CONSULTA_OTROS;
+CREATE PROCEDURE bodyflex.`SP_CONSULTA_OTROS`(IN rut VARCHAR(20))
+BEGIN
+
+  IF EXISTS(SELECT * FROM OTRO WHERE PRUT = rut) THEN
+  
+      SELECT OTID
+      , OTNOM
+      , OTTIPO
+      , OTDES
+      , DATE_FORMAT(OTFECHA,'%d-%m-%Y') as OTFECHA
+      , OTPOS
+      FROM OTRO
+      WHERE PRUT=rut
+      ORDER BY OTID DESC;
+      
+  ELSE
+    -- SIN OTROS
+    SELECT 'X';    
+    
+  END IF;
+  
+END
+
+
+
+

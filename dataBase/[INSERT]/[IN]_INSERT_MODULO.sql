@@ -1,0 +1,31 @@
+-- select * from modulo
+
+INSERT INTO modulo (m_cOd, m_nOm) values ('01',  'AHORRO');
+INSERT INTO modulo (m_cOd, m_nOm) values ('02',  'CHEQUERA ELECTRONICA');
+INSERT INTO modulo (m_cOd, m_nOm) values ('03',  'CHEQUES EN CONSULTA');
+INSERT INTO modulo (m_cOd, m_nOm) values ('04',  'Cred.Univ.Gtia.Estatal');
+INSERT INTO modulo (m_cOd, m_nOm) values ('05',  'CREDITO DE CONSUMO');
+INSERT INTO modulo (m_cOd, m_nOm) values ('06',  'CRÉDITO EDUCACIÓN');
+INSERT INTO modulo (m_cOd, m_nOm) values ('07',  'CREDITOS MN');
+INSERT INTO modulo (m_cOd, m_nOm) values ('08',  'CRM');
+INSERT INTO modulo (m_cOd, m_nOm) values ('09',  'CUENTA CORRIENTE');
+INSERT INTO modulo (m_cOd, m_nOm) values ('10',  'CUENTA DE AHORRO');
+INSERT INTO modulo (m_cOd, m_nOm) values ('11',  'CUENTA GASTOS');
+INSERT INTO modulo (m_cOd, m_nOm) values ('12',  'Cuenta RUT ');
+INSERT INTO modulo (m_cOd, m_nOm) values ('13',  'CuentaRUT');
+INSERT INTO modulo (m_cOd, m_nOm) values ('14',  'DOCUMENTOS VALORADOS');
+INSERT INTO modulo (m_cOd, m_nOm) values ('15',  'GESTIÓN DE IMÁGENES');
+INSERT INTO modulo (m_cOd, m_nOm) values ('16',  'HIPOTECARIO');
+INSERT INTO modulo (m_cOd, m_nOm) values ('17',  'LINEA DE CREDITO');
+INSERT INTO modulo (m_cOd, m_nOm) values ('18',  'MICROEMPRESAS');
+INSERT INTO modulo (m_cOd, m_nOm) values ('19',  'MYPE');
+INSERT INTO modulo (m_cOd, m_nOm) values ('20',  'PCN');
+INSERT INTO modulo (m_cOd, m_nOm) values ('21',  'PLATAFORMA COMERCIAL EMPRESA');
+INSERT INTO modulo (m_cOd, m_nOm) values ('22',  'PLATAFORMA EMPRESAS');
+INSERT INTO modulo (m_cOd, m_nOm) values ('23',  'PRESENTACION DE CREDITO');
+INSERT INTO modulo (m_cOd, m_nOm) values ('24',  'SEGUROS');
+INSERT INTO modulo (m_cOd, m_nOm) values ('25',  'SERVICIOS 24 HORAS');
+INSERT INTO modulo (m_cOd, m_nOm) values ('26',  'TARJETA DE CREDITO');
+INSERT INTO modulo (m_cOd, m_nOm) values ('27',  'TARJETA DE DEBITO');
+INSERT INTO modulo (m_cOd, m_nOm) values ('28',  'VENTA PRODUCTO');
+INSERT INTO modulo (m_cOd, m_nOm) values ('29',  'VISACIÓN EN LA PUNTA');

@@ -1,0 +1,55 @@
+
+-- SELECT * FROM POSTULACION
+-- SELECT * FROM PROFESIONAL
+
+CALL SP_CP_PRO_CSU_PRO_POS(1,@codErr);
+SELECT @codErr AS corErr;
+
+SELECT * FROM POSTULACION POS, PROFESIONAL PRO
+WHERE POS.POSID=PRO.pId 
+AND POS.POSID=1 
+AND POS.POSEST=12;
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_CP_PRO_CSU_PRO_POS;
+CREATE PROCEDURE bodyflex.`SP_CP_PRO_CSU_PRO_POS`( 
+                                                    IN idPos VARCHAR(20) 
+                                                    , OUT codErr INTEGER
+                                                  ) 
+BEGIN
+
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+
+    SET codErr=0;
+    SET @RUT=(SELECT PRUT FROM PROFESIONAL WHERE pId=idPos);
+    
+    IF EXISTS(SELECT * FROM POSTULACION POS, PROFESIONAL PRO
+    WHERE POS.POSID=PRO.pId 
+    AND POS.POSID=idPos 
+    AND POS.POSEST=12) THEN
+    
+      SELECT POS.POSID AS ID
+      , 'ALTA' AS ESTADO
+      , CONCAT(PRO.PRUT, '-', PRO.PDV) AS RUT
+      , POS.POSNOM AS NOM
+      , POS.POSAPE AS APE
+      , PRO.pFecNac AS FNA
+      , PRO.PMAIL AS EMA
+      , PRO.PFONO AS FON
+      , PRO.PCELULAR AS CEL
+      , PRO.PTIPO2 AS PRF
+      , (SELECT PERESP FROM PROFESIONAL_PERFIL WHERE PRUT=@RUT) AS ESP
+      , IFNULL(PRO.PIDFOTO,'') AS FPRINCIPAL
+      FROM POSTULACION POS, PROFESIONAL PRO
+      WHERE POS.POSID=PRO.pId 
+      AND POS.POSID=idPos 
+      AND POS.POSEST=12;
+    
+    ELSE
+      SET codErr=8;
+    END IF;
+        
+END
+
+
+
+

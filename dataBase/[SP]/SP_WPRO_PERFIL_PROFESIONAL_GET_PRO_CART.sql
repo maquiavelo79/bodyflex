@@ -1,0 +1,71 @@
+
+-- CALL SP_WPRO_PERFIL_PROFESIONAL_GET_PRO_CART('tqghogcvkhl7b70riagdq3ne14',@codErr);
+-- SELECT @codErr;
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_WPRO_PERFIL_PROFESIONAL_GET_PRO_CART;
+CREATE PROCEDURE bodyflex.`SP_WPRO_PERFIL_PROFESIONAL_GET_PRO_CART`(
+                                                                IN se VARCHAR(50)
+                                                                , OUT codErr INTEGER
+                                                              )
+BEGIN
+
+DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+SET codErr=0;
+  
+  IF EXISTS(
+    SELECT * FROM CARRO WHERE CASESION=se
+  ) THEN
+  
+    DROP TABLE IF EXISTS TMP_Pag1;
+  
+    CREATE TEMPORARY TABLE TMP_Pag1 
+    SELECT CD.CAD_ID
+    , ( SELECT PPC.PCO_DRI
+        FROM PROFESIONAL_PRODUCTO PP, PROFESIONAL_PRODUCTO_CONTENIDO PPC 
+        WHERE PP.PROPID=PPC.PROPID AND 
+          PPC.PCO_PRI=1 AND 
+          PP.PROPID=CD.CAD_COD
+      ) AS DRI 
+    , ( SELECT PROPMAR
+        FROM PROFESIONAL_PRODUCTO 
+        WHERE PROPID=CD.CAD_COD  
+      ) AS MARCA 
+    , ( SELECT PROPNOM
+        FROM PROFESIONAL_PRODUCTO 
+        WHERE PROPID=CD.CAD_COD  
+      ) AS NOMBRE   
+    , ( SELECT PROPID
+        FROM PROFESIONAL_PRODUCTO 
+        WHERE PROPID=CD.CAD_COD  
+      ) AS CODPRO 
+    , ( SELECT PROPPREBRU
+        FROM PROFESIONAL_PRODUCTO 
+        WHERE PROPID=CD.CAD_COD  
+      ) AS PRECIO       
+    , CD.CAD_CAN AS CANT
+    , CD.CAD_TBR AS SUBTOT
+    , (SELECT PARVAL FROM PARAMETROS WHERE PARNOM='DRIVE') AS URL
+    , C.CAMTOBRU AS VTATOT
+    FROM CARRO C, CARRO_DETALLE CD 
+    WHERE C.CAID=CD.CAID AND C.CASESION=se;
+  
+    SELECT CAD_ID
+    , DRI
+    , MARCA
+    , NOMBRE
+    , CODPRO
+    , CONCAT('$',REPLACE(FORMAT(PRECIO,0),',','.')) AS PRECIO  
+    , CANT
+    , CONCAT('$',REPLACE(FORMAT(SUBTOT,0),',','.')) AS SUBTOT 
+    , URL
+    , CONCAT('$',REPLACE(FORMAT(VTATOT,0),',','.')) AS VTATOT
+    FROM TMP_Pag1;
+      
+  ELSE
+    SET codErr=98;
+  END IF;
+      
+END
+
+
+

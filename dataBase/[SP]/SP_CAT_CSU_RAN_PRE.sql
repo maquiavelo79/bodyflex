@@ -1,0 +1,63 @@
+CALL SP_CAT_CSU_RAN_PRE(3, 0, 0, 0, @codErr);
+SELECT @codErr;
+
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_CAT_CSU_RAN_PRE;
+CREATE PROCEDURE bodyflex.`SP_CAT_CSU_RAN_PRE`(
+                                                IN COLECCION VARCHAR(10)
+                                                , IN CATEGORIA1 VARCHAR(10)
+                                                , IN CATEGORIA2 VARCHAR(10)
+                                                , IN CATEGORIA3 VARCHAR(10)
+                                                , OUT codErr INTEGER
+                                              )
+BEGIN
+  
+  -- DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+  SET codErr=0;
+
+  SET @MAX=(SELECT PROPVP 
+  FROM PRODUCTO P, COLECCION_PRODUCTO CP 
+  WHERE P.PROID = CP.PROID AND
+  CP.COID=COLECCION AND 
+  (P.PCP1_ID=CATEGORIA1 OR CATEGORIA1=0) AND
+  (P.PCP2_ID=CATEGORIA2 OR CATEGORIA2=0) AND
+  (P.PCP3_ID=CATEGORIA3 OR CATEGORIA3=0) 
+  ORDER BY PROPVP DESC
+  LIMIT 1);
+  
+  SET @MIN=(SELECT PROPVP 
+  FROM PRODUCTO P, COLECCION_PRODUCTO CP 
+  WHERE P.PROID = CP.PROID AND
+  CP.COID=COLECCION AND 
+  (P.PCP1_ID=CATEGORIA1 OR CATEGORIA1=0) AND
+  (P.PCP2_ID=CATEGORIA2 OR CATEGORIA2=0) AND
+  (P.PCP3_ID=CATEGORIA3 OR CATEGORIA3=0) 
+  ORDER BY PROPVP ASC
+  LIMIT 1);
+ 
+  -- SET @MAX=@MAX+10000;
+ 
+  IF EXISTS(
+    SELECT * FROM catalogo_rango_precio CRP 
+    WHERE RAN_INF>=@MIN AND RAN_SUP<=@MAX
+  )THEN
+    SELECT CRP.RAN_ID
+    , CONCAT('$',REPLACE(FORMAT(CRP.RAN_INF,0),',','.')) AS RAN_INF
+    , CONCAT('$',REPLACE(FORMAT(CRP.RAN_SUP,0),',','.')) AS RAN_SUP
+    , @MAX
+    FROM catalogo_rango_precio CRP 
+    WHERE CRP.RAN_INF>=@MIN AND CRP.RAN_SUP<=@MAX;
+  ELSE
+    SELECT CRP.RAN_ID
+    , CONCAT('$',REPLACE(FORMAT(CRP.RAN_INF,0),',','.')) AS RAN_INF
+    , CONCAT('$',REPLACE(FORMAT(CRP.RAN_SUP,0),',','.')) AS RAN_SUP
+    , @MAX
+    FROM catalogo_rango_precio CRP 
+    WHERE CRP.RAN_SUP<=@MAX;
+  END IF;
+ 
+END
+
+
+
+

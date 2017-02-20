@@ -1,0 +1,51 @@
+/* Green */
+
+a, a:visited, a:focus {
+	color: #76ed3a;
+}
+
+.flex-direction-nav .flex-prev,
+.flex-direction-nav .flex-next,
+.entry time,
+#pagination a:hover,
+#pagination a.current,
+a.button,
+a.button:visited,
+input[type=submit],
+button,
+a.comment-reply-link {
+	background-color: #76ed3a;
+}
+
+a.button:hover,
+input[type=submit]:hover,
+button:hover,
+a.comment-reply-link:hover {
+	background-color: #000;
+}
+
+.item > a:hover .item-desc {
+	background: rgba(118, 237, 58, 0.80);
+}
+
+#navigation > li.current_page_item > a,
+#navigation > li.current_page_item > a:visited,
+#navigation > li.current-menu-item > a,
+#navigation > li.current-menu-item > a:visited,
+#navigation > li.current-menu-ancestor > a,
+#navigation > li.current-menu-ancestor > a:visited,
+#navigation > li.current > a,
+#navigation > li.current > a:visited,
+#footer .s-title,
+#footer .widget h3,
+#footer .widget-title,
+.item > a:hover:after {
+	border-color: #76ed3a;
+}
+
+#navigation > li.current_page_item > a:before,
+#navigation > li.current-menu-item > a:before,
+#navigation > li.current-menu-ancestor > a:before,
+#navigation > li.current > a:before {
+	border-top-color: #76ed3a !important;
+}

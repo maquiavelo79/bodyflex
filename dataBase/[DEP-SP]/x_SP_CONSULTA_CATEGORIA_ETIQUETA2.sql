@@ -1,0 +1,23 @@
+
+-- CALL SP_CONSULTA_CATEGORIA_ETIQUETA2('f');
+-- CALL SP_CONSULTA_CATEGORIA_ETIQUETA2('FI');
+-- SELECT * FROM PROFESIONAL;
+-- SELECT * FROM CATEGORIA_ETIQUETA;
+
+
+DROP PROCEDURE IF EXISTS bodyflex.SP_CONSULTA_CATEGORIA_ETIQUETA2;
+CREATE PROCEDURE bodyflex.`SP_CONSULTA_CATEGORIA_ETIQUETA2`(
+                                                              IN query VARCHAR(50)
+                                                            )
+BEGIN
+
+    SELECT CATETINOM
+    FROM CATEGORIA_ETIQUETA
+    WHERE CATETINOM LIKE CONCAT('%', query ,'%') 
+    ORDER BY CATETINOM ASC;
+    
+END
+
+
+
+

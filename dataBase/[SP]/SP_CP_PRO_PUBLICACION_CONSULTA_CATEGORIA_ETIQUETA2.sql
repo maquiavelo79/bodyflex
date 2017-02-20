@@ -1,0 +1,15 @@
+
+
+
+DROP PROCEDURE IF EXISTS delta.SP_CP_PRO_PUBLICACION_CONSULTA_CATEGORIA_ETIQUETA2;
+CREATE PROCEDURE delta.`SP_CP_PRO_PUBLICACION_CONSULTA_CATEGORIA_ETIQUETA2`(
+                                                              IN query VARCHAR(50)
+                                                            )
+BEGIN
+
+  SELECT CATETINOM
+  FROM CATEGORIA_ETIQUETA
+  WHERE CATETINOM LIKE CONCAT('%', query ,'%') 
+  ORDER BY CATETINOM ASC;
+    
+END
