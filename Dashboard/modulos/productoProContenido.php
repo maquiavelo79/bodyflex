@@ -42,6 +42,33 @@
     
 }
 
+#cmbTipConPro{
+    box-shadow: 0 0 2px black; 
+    margin: 0px 0px 0px 0px; 
+    height: 26px; 
+    text-align: center; 
+    color: black; 
+    font-weight: bold; 
+    background-color: whitesmoke; 
+    font-size: 14px; 
+    text-align: center; 
+    width: 200px; 
+    text-align: center; 
+    color: black;
+}
+
+#txtIdDrivePro{
+    box-shadow: 0 0 2px black; 
+    height: 18px; 
+    text-align: center; 
+    color: black; 
+    font-weight: bold; 
+    background-color: whitesmoke; 
+    font-size: 15px; 
+    color: black; 
+    width: 540px;
+}
+
 </style>
 <div id="divConPro" class="row-fluid sortable"> <!-- style="border-style: solid; border-color: green;"  -->
     <div class="box span12">
@@ -53,32 +80,32 @@
         </div>
         <br>
         <div id="container" class="box-content">
-            <div id="left" class="control-group">
-                <div class="controls">
-                    <form class="form-horizontal">
+            <div id="left" class="control-group"> <!-- style="border-style: solid; border-color: red;" -->
+                <div class="controls"> <!-- style="border-style: solid; border-color: blue;" -->
+<!--                    <form class="form-horizontal">-->
                         <fieldset>
                             <input type="hidden" id="txtIdConPro" value="0"><br><br>
-                            <div id="divTipConPro" class="control-group">
-                                <label id="lblConPro"  class="control-label" for="appendedInput"><b>Tipo Contenido</b></label>
+                            <div id="divTipConPro" style="float: left; margin-left: 30px;" class="control-group">
+<!--                                <label id="lblConPro"  class="control-label" for="appendedInput"><b>Tipo</b></label>-->
                                 <div class="controls">
-                                    <select disabled="disabled" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 26px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 14px; text-align: center; width: 360px; text-align: center; color: black;" id="cmbTipConPro">
+                                    <select disabled="disabled" id="cmbTipConPro">
                                         <option value="">(SELECCIONE)</option>
                                         <option value="IMAGEN">IMAGEN</option>
                                         <option value="VIDEO">VIDEO</option>
                                     </select> 
                                 </div>
                             </div>    
-                            <div id="divImgDrivePro" class="control-group">
-                                <label id="lblImgDrivePro"  class="control-label" for="appendedInput"><b>ID google drive</b></label>
+                            <div id="divImgDrivePro" style="float: left; margin-left: 30px;" class="control-group">
+<!--                                <label id="lblImgDrivePro"  class="control-label" for="appendedInput"><b>URL</b></label>-->
                                 <div class="controls">
                                     <div class="input-append">
-                                        <input disabled="disabled" placeholder="ej: 0BwscgrEmxbyLYmpOQWhQTDlUMWc" id="txtIdDrivePro" size="16" type="text" maxlength="50" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 14px; text-align: center; color: black; width: 350px;">
+                                        <input placeholder="URL de Imagen: http://www.headoverheelsfitness.org/fitness-nail.jpg" id="txtIdDrivePro" size="100" type="text" maxlength="500" >
                                     </div>
                                 </div>
                             </div>
                         </fieldset>    
-                    </form>    
-                    <div id="botoneraCon">
+<!--                    </form>    -->
+                    <div id="botoneraCon" style="margin-top: 20px;">
                         <button id="btnGuardarConPro" class="btn btn-info btn-setting" style="margin-bottom: 20px; border-color: silver; background-color: #FFCC00; color: black; font-weight: bold;" type="button" disabled="">
                             <i class="fa fa-plus-circle"></i>&nbsp;
                             Agregar

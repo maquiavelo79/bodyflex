@@ -82,10 +82,18 @@ var URLprotocol = window.location.protocol;
             $(this).css('background','white');
             $(this).css('color','black');
         });    
+        
+        var strDiv='<div class="controls">';
+            strDiv+='<div class="input-append">';
+                strDiv+='<input placeholder="URL de Imagen: http://www.headoverheelsfitness.org/fitness-nail.jpg" id="txtIdDrivePro" size="16" type="text" maxlength="500" >';
+            strDiv+='</div>';
+        strDiv+='</div>';
 
         $('#txtIdConPro').val('0');
         $('#cmbTipConPro').val('');
-        $('#txtIdDrivePro').val(' ');
+        $('#divImgDrivePro').html(strDiv);
+        $('#divImgDrivePro').prop('disabled',false);
+        $('#divImgDrivePro').trigger('liszt:updated');
 
         var conTip='';
         var cmb = document.getElementById("cmbTipConPro"); 

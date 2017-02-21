@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     23-10-2016 11:49:43                          */
+/* Created on:     21-02-2017 0:33:00                           */
 /*==============================================================*/
 
 
@@ -50,7 +50,11 @@ drop table if exists INTERNO;
 
 drop table if exists INTERNO_DIRECCION;
 
-drop table if exists LOGIN;
+drop table if exists LOGIN_COM;
+
+drop table if exists LOGIN_INT;
+
+drop table if exists LOGIN_PRO;
 
 drop table if exists LOGIN_USUARIO;
 
@@ -113,6 +117,8 @@ drop table if exists PROFESIONAL_DIRECCION;
 drop table if exists PROFESIONAL_MENSAJE;
 
 drop table if exists PROFESIONAL_PERFIL;
+
+drop table if exists PROFESIONAL_PUBLICACION_PERFIL;
 
 drop table if exists PROFESIONAL_REDES_SOCIAL;
 
@@ -228,7 +234,8 @@ create table CATALOGO_RANGO_PRECIO
    primary key (RAN_ID)
 );
 
-alter table CATALOGO_RANGO_PRECIO comment 'Rango de precios en catalogo';
+alter table CATALOGO_RANGO_PRECIO comment 'Rango de precios en catalogo.
+Rangos de venta tanto pa';
 
 /*==============================================================*/
 /* Table: CATALOGO_SLIDER1                                      */
@@ -291,6 +298,10 @@ create table CATALOGO_SLIDER4
    CS4URL2              varchar(200),
    CS4URL3              varchar(200),
    CS4URL4              varchar(200),
+   CS4PO1               bigint,
+   CS4PO2               bigint,
+   CS4PO3               bigint,
+   CS4PO4               bigint,
    primary key (CS4ID)
 );
 
@@ -519,7 +530,7 @@ alter table EXPERIENCIA comment 'experiencia ingresada por el profesional';
 /*==============================================================*/
 create table INTERNO
 (
-   RRUT                 varchar(10) not null,
+   RRUT                 int not null,
    CPAID                bigint not null,
    RMAIL                varchar(50),
    RNOM1                varchar(50),
@@ -545,31 +556,45 @@ alter table INTERNO comment 'ROL INTERNO A LA ORGANIZACIÓN COMO EL ADMINISTRADOR
 create table INTERNO_DIRECCION
 (
    DIRINTID             bigint not null auto_increment,
-   RRUT                 varchar(10),
+   RRUT                 INT,
    DCOD                 bigint not null,
    primary key (DIRINTID)
 );
 
 /*==============================================================*/
-/* Table: LOGIN                                                 */
+/* Table: LOGIN_COM                                             */
 /*==============================================================*/
-create table LOGIN
+create table LOGIN_COM
 (
-   LID                  bigint not null auto_increment,
-   COMPRUT              varchar(10),
-   RRUT                 varchar(10),
-   PRUT                 varchar(10),
-   LFEC                 datetime comment 'fecha y hora en la que se logueo',
-   LTIP                 int comment 'tipo de rol logeado.
-            lTip=[ 1 | 2 | 3 | 4 ]
-            1= PROFESIONAL
-            2=USUARIO
-            3=INTERNO
-            4=COMPLEMENTADOR',
-   primary key (LID)
+   COMLOGID             bigint not null auto_increment,
+   COMPRUT              varchar(10) not null,
+   COMLOGFE             datetime,
+   primary key (COMLOGID)
 );
 
-alter table LOGIN comment 'REGISTRO DE ACCESOS PARA CUALQUIER USUARIO';
+/*==============================================================*/
+/* Table: LOGIN_INT                                             */
+/*==============================================================*/
+create table LOGIN_INT
+(
+   INLOGID              bigint not null auto_increment,
+   RRUT                 INT not null,
+   INLOGFE              datetime comment 'fecha y hora en la que se logueo',
+   primary key (INLOGID)
+);
+
+alter table LOGIN_INT comment 'REGISTRO DE ACCESOS PARA CUALQUIER USUARIO';
+
+/*==============================================================*/
+/* Table: LOGIN_PRO                                             */
+/*==============================================================*/
+create table LOGIN_PRO
+(
+   PROLOGID             bigint not null auto_increment,
+   PRUT                 varchar(10) not null,
+   PROLOGFE             datetime,
+   primary key (PROLOGID)
+);
 
 /*==============================================================*/
 /* Table: LOGIN_USUARIO                                         */
@@ -577,7 +602,7 @@ alter table LOGIN comment 'REGISTRO DE ACCESOS PARA CUALQUIER USUARIO';
 create table LOGIN_USUARIO
 (
    LUID                 bigint not null auto_increment,
-   UMAIL                varchar(50),
+   UMAIL                INT,
    LUFE                 datetime,
    primary key (LUID)
 );
@@ -600,7 +625,7 @@ create table MEDIDA
 (
    MEDID                bigint not null auto_increment,
    MEDTI                varchar(10) comment 'representa el tipo de medida, si se trata de letras o numeros
-            medTi2 = [ LETRAS | NUMEROS ]',
+            medTi2 = [ LETRS | NUMERO ]',
    MEDVA                varchar(10) comment 'medVa = [ XS | S | M | XL| L | 38 | 40 | ETC ].',
    primary key (MEDID)
 );
@@ -636,6 +661,8 @@ create table PARAMETROS
    primary key (PARID)
 );
 
+alter table PARAMETROS comment '1 -> DRIVE -> https://drive.google.com/uc?export=view&id=FIL';
+
 /*==============================================================*/
 /* Table: PORTAFOLIO                                            */
 /*==============================================================*/
@@ -667,7 +694,12 @@ create table POSTULACION
             4=APROBANDO
             5=RECHAZANDO
             6=APROBADA
-            7=RECHAZADA',
+            7=RECHAZADA
+            8=REGISTRADA
+            9=DIRECCIONES
+            10=CUENTAS
+            11=PERFILADO
+            12=ALTA',
    primary key (POSID)
 );
 
@@ -704,10 +736,10 @@ create table PRODUCTO
    PROID                bigint not null auto_increment,
    PCP2_ID              bigint,
    PETID                bigint,
-   MARID                bigint not null,
+   MARID                bigint,
    PCP3_ID              bigint,
-   RAN_ID               bigint not null,
-   CAT_RAN_ID           bigint not null,
+   RAN_ID               bigint,
+   CAT_RAN_ID           bigint,
    PCP1_ID              bigint not null,
    PRONO                varchar(50) comment 'nombre producto',
    PRODE                varchar(100) comment 'descripción corta del producto',
@@ -887,7 +919,7 @@ create table PRODUCTO_MEDIDA
 (
    PMID                 bigint not null auto_increment,
    MEDID                bigint not null,
-   PROID                bigint not null,
+   PROID                bigint,
    primary key (PMID)
 );
 
@@ -972,7 +1004,7 @@ create table PROFESIONAL
 (
    PRUT                 varchar(10) not null,
    CPAID                bigint,
-   PID                  bigint comment 'ID del profesional',
+   PID                  bigint comment 'ID de postulación, asignado por el sistema cuando el profesional es registrado por el administrador',
    PDV                  varchar(1),
    PNOM                 varchar(100),
    PAPE                 varchar(100),
@@ -1003,12 +1035,16 @@ create table PROFESIONAL
    PALIAS               varchar(30) comment 'aleas del usuario',
    PEST                 int comment 'Estado del profesional en la lataforma
             
-            1. REGISTRADO
+            1->REGISTRADO
+            2->ALTA
             ',
    PFECING              datetime comment 'fecha de ingreso',
    PFECNAC              date,
-   PCLAREC              varchar(50),
-   PESTCLAREC           int,
+   PCLAREC              varchar(50) comment 'CLAVE PARA RESTABLECER CONTRASEÑA, ES GENERADA AL DAR DE ALTA A UN PROFESIONAL O CUANDO ESTE LA SOLICITA PARA CAMBIAR CONTRASEÑA.',
+   PESTCLAREC           int comment 'estado de la clave de recuperación:
+            
+            0->Clave Aleatoria Vigente para Restablecer Contraseña
+            1->Clave Aleatoria NO Vigente, ya fue utilizada para Restablecer Contraseña',
    primary key (PRUT)
 );
 
@@ -1143,7 +1179,86 @@ create table PROFESIONAL_PERFIL
    primary key (PERID)
 );
 
-alter table PROFESIONAL_PERFIL comment 'http://www.cned.cl/public/secciones/SeccionEducacionSuperior';
+alter table PROFESIONAL_PERFIL comment 'Resultado de perfilación por parte del administrador.
+';
+
+/*==============================================================*/
+/* Table: PROFESIONAL_PUBLICACION_PERFIL                        */
+/*==============================================================*/
+create table PROFESIONAL_PUBLICACION_PERFIL
+(
+   PPW_ID               bigint not null auto_increment,
+   PRUT                 varchar(10),
+   PPW_DIR              int comment 'direcciones
+            ppw_dir = [ 0 | 1 ]
+            0 = NO INGRESADAS
+            1 = INGRESADAS
+            ',
+   PPW_DAT_PRO          int comment 'Datos->Profesion
+            ppw_dat_pro= [ 0 | 1 ]
+            0 = NO COMPLETADOS
+            1 = COMPLETADOS
+            ',
+   PPW_DAT_ESP          int comment 'Datos->Especialidad
+            ppw_dat_esp = [ 0 | 1 ]
+            0 = no ingresada
+            1  = ingresada',
+   PPW_DAT_DRI          int comment 'Datos->ID Google Drive 
+            ppw_dat_dri = [ 0 | 1 ]
+            0 = no ingresada
+            1  = ingresada',
+   PPW_DAT_CEL          int comment 'Datos->Celular del profesional
+            ppw_dat_cel= [ 0 | 1 ]
+            0 = no ingresado
+            1  = ingresado',
+   PPW_CTA              int comment 'cuentas bancarias
+            ppw_cta = [ 0 | 1 ]
+            0 = NO INGRESADAS
+            1 = INGRESADAS
+            ',
+   PPW_DES              int comment 'deslizador
+            ppw_des=[ 0 | 1 ]
+            0 = no ingresado
+            1 = ingresado',
+   PPW_PRE              int comment 'presentacion
+            ppw_pre=[ 0 | 1 ]
+            0 = no ingresada
+            1 = ingresada',
+   PPW_SER              int comment 'servicios
+            ppw_ser=[ 0 | 1 ]
+            0 = no agregados
+            1 = agregados',
+   PPW_POR              int comment 'portafolio
+            ppw_por=[ 0 | 1 ]
+            0 = no ingresado
+            1 = ingresado',
+   PPW_EST              int comment 'estudios
+            ppw_est=[ 0 | 1 ]
+            0 = no ingresado
+            1 = ingresado',
+   PPW_EXP              int comment 'experiencia
+            ppw_exp=[ 0 | 1 ]
+            0 = no ingresado
+            1 = ingresado',
+   PPW_OTR              int comment 'otros
+            ppw_otr=[ 0 | 1 ]
+            0 = no ingresado
+            1 = ingresado',
+   PPW_PUB              int comment 'publicaciones
+            ppw_pub=[ 0 | 1 ]
+            0 = sin publicacion
+            1 = con publicacion
+            
+            ',
+   PPW_CAT              int comment 'catalogo
+            ppw_cat = [ 0 | 1 ]
+            0 = Sin producto
+            1 = Con producto',
+   primary key (PPW_ID)
+);
+
+alter table PROFESIONAL_PUBLICACION_PERFIL comment '
+1. Consta de los datos que el profesonal debe ingresa';
 
 /*==============================================================*/
 /* Table: PROFESIONAL_REDES_SOCIAL                              */
@@ -1240,14 +1355,14 @@ create table PROVINCIA
 /*==============================================================*/
 create table PUBLICACION
 (
-   PUID                 bigint not null,
+   PUID                 bigint not null auto_increment,
    PUEST                varchar(50),
    PUTITULO             varchar(100),
    PUPUBLICACION        varchar(3000) comment 'contenido de la publicación',
    PUFEPUB              datetime comment 'Fecha de publicación',
    PUFEMOD              datetime comment 'Fecha de modificación',
    PUFECRE              datetime comment 'fecha de creación',
-   PUIMG                varchar(28) comment 'ID google drive imagen cabecera publicación',
+   PUIMG                varchar(500) comment 'ID google drive imagen cabecera publicación',
    PUBAJ                varchar(500) comment 'bajada de publicación',
    PUTIP                varchar(100) comment 'LA PUBLICACIÓN PUEDE SER DEL TIPO:
             
@@ -1283,7 +1398,7 @@ alter table PUBLICACION_BUSQUEDA comment 'representa el texto o concepto de búsq
 /*==============================================================*/
 create table PUBLICACION_CATEGORIA_ETIQUETA
 (
-   CATETINOM            varchar(50) not null,
+   CATETINOM            int not null auto_increment,
    CATRUT               varchar(10) comment 'rut del profesional que crea categoria
             ',
    primary key (CATETINOM)
@@ -1352,7 +1467,7 @@ create table PUBLICACION_ETIQUETA
 (
    PEID                 bigint not null auto_increment,
    PUID                 bigint not null,
-   ETNOM                varchar(50) not null,
+   ETNOM                varchar(100) not null,
    primary key (PEID)
 );
 
@@ -1362,7 +1477,7 @@ create table PUBLICACION_ETIQUETA
 create table PUBLICACION_INTERNO
 (
    IPID                 bigint not null auto_increment,
-   RRUT                 varchar(10),
+   RRUT                 INT,
    PUID                 bigint,
    primary key (IPID)
 );
@@ -1372,8 +1487,8 @@ create table PUBLICACION_INTERNO
 /*==============================================================*/
 create table PUBLICACION_LIST_ETIQUETAS
 (
-   ETNOM                varchar(50) not null,
-   CATETINOM            varchar(50) not null,
+   ETNOM                varchar(100) not null,
+   CATETINOM            INT not null,
    ETRUT                varchar(10) comment 'rut del profesional que crea la etiqueta',
    primary key (ETNOM)
 );
@@ -1383,8 +1498,8 @@ create table PUBLICACION_LIST_ETIQUETAS
 /*==============================================================*/
 create table PUBLICACION_LIST_REFERENCIA
 (
-   RETIPO               int not null comment 'reTipo = [ WEB | LIBRO | PAPER | OTRO]',
-   REID                 bigint not null,
+   RETIPO               varchar(30) comment 'reTipo = [ WEB | LIBRO | PAPER | OTRO]',
+   REID                 bigint not null auto_increment,
    primary key (REID)
 );
 
@@ -1476,7 +1591,7 @@ alter table SECCION1 comment 'sección 1: representa slider principal';
 create table SERVICIO
 (
    SEID                 int not null auto_increment,
-   RRUT                 varchar(10) not null,
+   RRUT                 INT not null,
    SENOM                varchar(100),
    SECAT                varchar(100) comment 'CATEGORIA DEL SERVICIO
             seCat = [ PRODUCCION | ENTRENAMIENTO | GIMNASIOS]',
@@ -1560,7 +1675,7 @@ alter table SLIDER comment 'titulo profesional';
 /*==============================================================*/
 create table USUARIO
 (
-   UMAIL                varchar(50) not null,
+   UMAIL                int not null auto_increment,
    CPAID                bigint not null,
    URUT                 varchar(10),
    UDV                  varchar(1),
@@ -1585,7 +1700,7 @@ create table USUARIO_DIRECCION
 (
    DIRUSRID             bigint not null auto_increment,
    DCOD                 bigint not null,
-   UMAIL                varchar(50),
+   UMAIL                INT,
    primary key (DIRUSRID)
 );
 
@@ -1637,13 +1752,13 @@ alter table INTERNO_DIRECCION add constraint FK_RELATIONSHIP_63 foreign key (RRU
 alter table INTERNO_DIRECCION add constraint FK_RELATIONSHIP_66 foreign key (DCOD)
       references DIRECCION (DCOD) on delete restrict on update restrict;
 
-alter table LOGIN add constraint FK_ACCEDE_COMPLEMENTADOR foreign key (COMPRUT)
+alter table LOGIN_COM add constraint FK_COM_ACCEDE foreign key (COMPRUT)
       references COMPLEMENTADOR (COMPRUT) on delete restrict on update restrict;
 
-alter table LOGIN add constraint FK_ACCEDE_INTERNO foreign key (RRUT)
+alter table LOGIN_INT add constraint FK_INTERNO_ACCEDE foreign key (RRUT)
       references INTERNO (RRUT) on delete restrict on update restrict;
 
-alter table LOGIN add constraint FK_ACCEDE_PROFESIONAL foreign key (PRUT)
+alter table LOGIN_PRO add constraint FK_PROFESIONAL_ACCEDE foreign key (PRUT)
       references PROFESIONAL (PRUT) on delete restrict on update restrict;
 
 alter table LOGIN_USUARIO add constraint FK_USR_POSEE_MUCHOS_ACCESOS foreign key (UMAIL)
@@ -1752,6 +1867,9 @@ alter table PROFESIONAL_DIRECCION add constraint FK_RELATIONSHIP_67 foreign key 
       references DIRECCION (DCOD) on delete restrict on update restrict;
 
 alter table PROFESIONAL_PERFIL add constraint FK_POSEE_MUCHOS_PERFILES foreign key (PRUT)
+      references PROFESIONAL (PRUT) on delete restrict on update restrict;
+
+alter table PROFESIONAL_PUBLICACION_PERFIL add constraint FK_DATOS_PUBLICACION foreign key (PRUT)
       references PROFESIONAL (PRUT) on delete restrict on update restrict;
 
 alter table PROFESIONAL_REDES_SOCIAL add constraint FK_EXISTE_EN_RED_SOCIAL foreign key (PRUT)
