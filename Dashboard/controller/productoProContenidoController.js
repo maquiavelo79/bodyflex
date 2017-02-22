@@ -160,13 +160,37 @@ var URLprotocol = window.location.protocol;
     
     $(document).on("click", "#btnAgrCon", function(event){
 
-        //alert('btnAgrCon ');
-
         var proId = $('#txtProId').val(); 
         var tipCon = $('#cmbTipConPro').val(); 
         var IdDri = $('#txtIdDrivePro').val(); 
         var idCon = $('#txtIdConPro').val(); // ID de contenido ingresada si existe //
+        
+        if(tipCon=="IMAGEN"){
+            if(!checkURL(IdDri)){
+                $('#myModal').modal('hide');
+                var msgVtaPre="<p style='color: black; font-size: 18px; font-family: sans-serif;'>Debes ingresar URL válida que contiene la imagen del producto que vas a promocionar bajo tu perfil. <br><br>";
 
+                msgVtaPre+="<br>";
+                msgVtaPre+="<b>";
+                    msgVtaPre+="<a target='_blank' style='font-size: 20px; color: blue; text-decoration: underline; font-weight: bold;'"; 
+                    msgVtaPre+="href='http://drive.google.com/uc?export=view&id=0B82UUH1gaEMAa3poVUVQMk1OS00'>";
+                    msgVtaPre+='<img style="width: 210px; height: 140px;" src="../../images/url.jpg"><br>Ejemplo';
+                    msgVtaPre+="</a>";
+                msgVtaPre+="</b>";
+
+                swal({   
+                    title: 'URL Imagen',   
+                    html: msgVtaPre,   
+                    type: "info", 
+                    allowOutsideClick: true,
+                    animation: true,
+                    confirmButtonColor: '#FFCC00',
+                    confirmButtonText: '<span style="color: black; font-weight: bold;">Aceptar</span>'
+                });
+                return false;
+            }
+        }
+        
         //Div de Carga
         var strLoad='<div id="espera" class="modal-body"></div>';
         
@@ -562,6 +586,43 @@ var URLprotocol = window.location.protocol;
   
     });
    
+    $("#cmbTipConPro").change(function(){
+        
+        $('#a-table-con tr').each(function(){
+            $(this).css('background','white');
+            $(this).css('color','black');
+        });    
+        
+        var strDiv='<div class="controls">';
+            strDiv+='<div class="input-append">';
+                strDiv+='<input placeholder="URL de Imagen: http://www.headoverheelsfitness.org/fitness-nail.jpg" id="txtIdDrivePro" size="16" type="text" maxlength="500" >';
+            strDiv+='</div>';
+        strDiv+='</div>';
+
+        $('#txtIdConPro').val('0');
+        $('#cmbTipConPro').val('');
+        $('#divImgDrivePro').html(strDiv);
+        $('#divImgDrivePro').prop('disabled',false);
+        $('#divImgDrivePro').trigger('liszt:updated');
+
+        var conTip='';
+        var cmb = document.getElementById("cmbTipConPro"); 
+        for (var i = 0; i < cmb.length; i++) {
+            //  Aca haces referencia al "option" actual
+            var opt = cmb[i];
+
+            // Haces lo que te de la gana aca
+            if(conTip == opt.value){
+               $("#cmbTipConPro").prop('selectedIndex',i);
+               $('#cmbTipConPro').trigger('liszt:updated');
+               break;
+            }
+        }
+
+        var botones ='<i style="margin-top: 100px;" class="fa fa-picture-o fa-4x"></i>';  
+        $('#right').html(botones);
+        
+    });  
     
 });
 
@@ -621,4 +682,8 @@ function limpiarContenido(){
     var botones ='<i style="margin-top: 100px;" class="fa fa-picture-o fa-4x"></i>';  
     $('#right').html(botones);
     
+}
+
+function checkURL(url) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }

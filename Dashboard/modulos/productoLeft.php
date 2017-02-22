@@ -1,3 +1,8 @@
+<!--
+<p style="text-align: center; font-size: 16px; font-family: sans-serif; color: #1b2426;">
+    Bodyflex permite que sus profesionales promocionen sus propios productos por medio de su perfil web
+</p>
+-->
 
 <div style="width: 50%; height: 720px;" class="span7"><!--border-style: solid; border-color: blue;-->
     <style>
@@ -10,21 +15,6 @@
             margin-left: 20px;
         }
     </style>
-    <script>
-        function misProductos(){
-            var msgImpPer='<p style="text-align: center; font-size: 16px; font-family: Verdana; color: #1b2426;"><b style="font-size: 16px; color: blue; font-family: Impact, Charcoal, sans-serif;">Bodyflex</b> permite que sus profesionales promocionen sus propios productos por medio de su <b style="font-size: 16px; color: blue; font-family: Impact, Charcoal, sans-serif;">perfil web</b>.</p>';
-            swal({   
-                title: 'Mis Productos',
-                text: msgImpPer,
-                imageUrl: '../../images/misProductos.jpg',
-                imageWidth: 300,
-                imageHeight: 300,
-                animation: false,
-                confirmButtonColor: '#FFCC00',
-                confirmButtonText: '<span style="color: black; font-weight: bold;">Aceptar</span>'
-            });
-        }
-    </script>
     <div class="row-fluid sortable"> <!-- style="border-style: solid; border-color: red;" -->
         <div class="box span12">
             <div class="box-header" data-original-title>

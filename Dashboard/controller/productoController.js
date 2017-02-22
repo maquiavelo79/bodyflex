@@ -130,6 +130,9 @@ jQuery(document).ready(function() {
                         $("#botonera").show();
                         var datos = xmlDoc.getElementsByTagName('DATOS')[0].childNodes[0].nodeValue;
                         var paginacion = xmlDoc.getElementsByTagName('PAGINACION')[0].childNodes[0].nodeValue;
+                        
+                        //alert(datos);
+                        
                         $('#tbody').html(datos);
                         $('#idPag').html(paginacion);
                         break;
@@ -773,6 +776,8 @@ $('#btnEditar').live('click', function() {
 });   
  
 $('#tblProducto').on('click', 'tbody tr', function(event){
+
+    //alert('tbody');
 
     var proCat1=0;
     var proCat2=0;

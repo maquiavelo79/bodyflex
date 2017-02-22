@@ -57,24 +57,23 @@ $tIpo='';
 
                     $sTr = '<tr style="cursor:pointer;">';
 
-                        $sTr.='<td class="center">' . $proId  . '</td>';
-                        $sTr.='<td class="center">' . $proNom . '</td>';
+                        $sTr.='<td class="id" style="width: 10%">' . $proId  . '</td>';
+                        $sTr.='<td class="nombre" style="width: 30%">' . $proNom . '</td>';
                         if($proEst!='PUBLICADO'){
-                            $sTr.='<td style="font-weight: bold; color: green;" class="center">' . $proEst . '</td>';
+                            $sTr.='<td style="width: 10%; font-weight: bold; color: green;">' . $proEst . '</td>';
                         }else{    
-                            $sTr.='<td style="font-weight: bold; color: blue;" class="center">' . $proEst . '</td>';
+                            $sTr.='<td style="width: 10%; font-weight: bold; color: blue;">' . $proEst . '</td>';
                         }         
-                        $sTr.='<td class="center">' . $proCon  . '</td>';
-                        $sTr.='<td class="center">' . $proNet  . '</td>';
-                        $sTr.='<td class="ajustar">' . $proDes  . '</td>';
+                        $sTr.='<td class="condicion" style="text-align: center; width: 10%;">' . $proCon  . '</td>';
+                        $sTr.='<td class="precio" style="text-align: center;">' . $proNet  . '</td>';
+                        $sTr.='<td style="width: 30%;">' . $proDes  . '</td>';
 
-                        $sTr.='<td style="display:none;">' . $proCat1  . '</td>';
-                        $sTr.='<td style="display:none;">' . $proCat2  . '</td>';
-                        $sTr.='<td style="display:none;">' . $proCat3  . '</td>';
-                        $sTr.='<td style="display:none;">' . $proDeLa  . '</td>';
-
-                        $sTr.='<td style="display:none;">' . $proPMar  . '</td>';
-                        $sTr.='<td style="display:none;">' . $proPreRef . '</td>';
+                        $sTr.='<td style="display:none; width: 0%">' . $proCat1  . '</td>';
+                        $sTr.='<td style="display:none; width: 0%">' . $proCat2  . '</td>';
+                        $sTr.='<td style="display:none; width: 0%">' . $proCat3  . '</td>';
+                        $sTr.='<td style="display:none; width: 0%">' . $proDeLa  . '</td>';
+                        $sTr.='<td style="display:none; width: 0%">' . $proPMar  . '</td>';
+                        $sTr.='<td style="display:none; width: 0%">' . $proPreRef . '</td>';
 
                     $sTr.='</tr>';
 

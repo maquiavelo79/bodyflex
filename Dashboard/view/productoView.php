@@ -71,11 +71,31 @@ session_start();
                     white-space: -hp-pre-wrap; /* HP */
                     word-wrap: break-word; /* IE 5+ */
                 }
+                .precio{
+                    font-weight: bold;
+                    color: blue;
+                    font-size: 18px;
+                }
+                .condicion{
+                    font-weight: bold;
+                    color: black;
+                    text-align: center;
+                }
+                .id{
+                    font-weight: bold;
+                    color: black;
+                    text-align: center;
+                }
+                .nombre{
+                    font-weight: bold;
+                    color: black;
+                    text-align: center;
+                }
             </style>
             <script>
                 $( document ).ready(function(){
                     document.querySelector('button#modalInfoContent').onclick = function(){
-                        var msg1='<p style="color: #1b2426;">La primera imagen que ingreses se establecerá como imagen <b style="font-size: 18px; font-weight: bold;">principal</b> del producto.</p>';                  
+                        var msg1='<p style="color: #1b2426; font-family: sans-serif, font-size:18px;">La primera imagen que ingreses se establecerá como imagen <b style="font-size: 18px; font-weight: bold;">principal</b> del producto.</p>';                  
                         swal({   
                             title: 'Imagen Principal',   
                             text: msg1,   
@@ -88,14 +108,18 @@ session_start();
                     };
 
                     document.querySelector('button#modalVerImagen').onclick = function(){
+                    
+                        //alert('modalVerImagen');
+                    
                         var URLdomain   = window.location.host;
                         var URLprotocol = window.location.protocol;
         
                         var url='';
-                        var msg2='<p style="color: #1b2426;">La imagen <b style="font-size: 18px; font-weight: bold;">carga</b> en segundos dependiendo de la velocidad de internet.</p>';  
+                        var msg2='<p style="color: #1b2426; font-family: sans-serif, font-size:18px;">La imagen <b style="font-size: 18px; font-weight: bold;">carga</b> en segundos dependiendo de la velocidad de internet.</p>';  
                                                 
                         //alert($("#idDrive").val());
-                        url='http://drive.google.com/uc?export=view&id='+$("#idDrive").val();
+                        //url='http://drive.google.com/uc?export=view&id='+$("#idDrive").val();
+                        url=$("#idDrive").val();
                         
                         var parametros = {"url" : url};      
                         
@@ -104,13 +128,12 @@ session_start();
                             url: URLprotocol+"//"+URLdomain+"/bodyflex/Dashboard/view/enlaces.php",
                             type:  'post',
                             datetype: 'xml',
-                            async: true,
+                            async: false,
                             beforeSend: function(){
                                 $("#espera").show();
                             },
                             success:  function (xml){     
 
-                                //alert('enlaces ' + xml);
                                 $("#espera").hide();
                                 var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
                                 var dato = xmlDoc.getElementsByTagName('DATOS')[0].childNodes[0].nodeValue;
@@ -120,7 +143,7 @@ session_start();
                                 switch(dato){
                                     case '0':
 
-                                        var msg1='<p style="color: #1b2426;">Problemas al cargar imagen, <b style="font-size: 16px; font-weight: bold;">verifique la existencia y/o permisos</b> en Google Drive.</p>';                  
+                                        var msg1='<p style="font-family: sans-serif, font-size:18px; color: #1b2426;">Problemas al cargar imagen, <b style="font-size: 18px; font-weight: bold;">verifique la existencia y/o permisos</b> en Google Drive.</p>';                  
                                         swal({   
                                             title: 'Error al visualizar',   
                                             text: msg1,   
@@ -137,13 +160,12 @@ session_start();
                                             title: 'Imagen!',
                                             text: msg2,
                                             imageUrl: url,
-                                            imageWidth: 400,
+                                            imageWidth: 200,
                                             imageHeight: 200,
                                             animation: false,
                                             confirmButtonColor: '#FFCC00',
                                             confirmButtonText: '<span style="color: black; font-weight: bold;">Aceptar</span>'
                                         });
-                            
                                         break;
 
                                 }              
@@ -256,19 +278,34 @@ session_start();
                                     <span class="break"></span>Productos ingresados
                                 </h2>
                             </div>
-                            <div class="box-content" id="conTabla"><!--contenedor de tabla -->
-                                <table id="tblProducto" class="table table-striped table-bordered bootstrap-datatable"> <!-- -->
+                            <div id="conTabla" class="box-content"><!--contenedor de tabla  -->
+                                <table id="tblProducto" class="table table-striped table-bordered bootstrap-datatable"> <!--  -->
                                     <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Nombre</th>
-                                            <th>Estado</th>
-                                            <th>Condici&oacute;n</th>
-                                            <th>Precio</th> 
-                                            <th>Descripci&oacute;n</th>
+                                        <tr style="width: 100%;">
+                                            <th style="width: 10%">Id</th>
+                                            <th style="width: 30%">Nombre</th>
+                                            <th style="width: 10%; text-align: center;"">Estado</th>
+                                            <th style="width: 10%; text-align: center;"">Condici&oacute;n</th>
+                                            <th style="width: 10%; text-align: center;">Precio</th> 
+                                            <th style="width: 30%">Descripci&oacute;n</th>
                                         </tr>
                                     </thead>   
-                                    <tbody id="tbody"></tbody>
+                                    <tbody id="tbody"><!--  -->
+<!--                                        <tr style="width: 100%; cursor:pointer;">
+                                            <td style="width: 10%">4</td>
+                                            <td style="width: 30%">nombre2</td>
+                                            <td style="width: 10%; font-weight: bold; color: green;">INGRESADO</td>
+                                            <td style="width: 10%;">NUEVO</td>
+                                            <td style="width: 10%;">$2.000</td>
+                                            <td style="width: 30%;">Descripcion2</td>
+                                            <td style="display:none; width: 0%">1</td>
+                                            <td style="display:none; width: 0%"></td>
+                                            <td style="display:none; width: 0%"></td>
+                                            <td style="display:none; width: 0%">detalle2</td>
+                                            <td style="display:none; width: 0%">MARCA2</td>
+                                            <td style="display:none; width: 0%">$6.000</td>
+                                        </tr>-->
+                                    </tbody>
                                 </table> 
                                 <div id='idPag' class="pagination pagination-centered"></div>
                             </div>

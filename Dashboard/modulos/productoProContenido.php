@@ -37,6 +37,7 @@
 #divConPro{
     
     float:left;
+    display: none;
 /*    border-style: solid; 
     border-color: red; */
     
@@ -69,13 +70,70 @@
     width: 540px;
 }
 
+#link{
+    font-size: 20px; 
+    text-decoration: underline; 
+    font-weight: bold;
+}
+
+a:link,a:visited {
+text-decoration: none;
+color: blue;
+}
+a:hover {
+text-decoration: none;
+color: red;
+}
+
+.precio{
+    width: 10%; 
+    
+}
+
 </style>
+<script>
+    function misProductos(){
+        var msgImpPer='<p style="text-align: center; font-size: 18px; font-family: sans-serif; color: #1b2426;">Los profesionales pueden promocionar sus propios productos por medio de su <b style="font-size: 18px; color: blue; font-family: Impact;">perfil web</b>.</p>';
+        swal({   
+            title: 'Mis Productos',
+            text: msgImpPer,
+            imageUrl: '../../images/misProductos.jpg',
+            imageWidth: 300,
+            imageHeight: 300,
+            animation: false,
+            confirmButtonColor: '#FFCC00',
+            confirmButtonText: '<span style="color: black; font-weight: bold;">Aceptar</span>'
+        });
+    }
+    function proImgVideos(){
+    
+        var msgVtaPre="<p style='font-size: 18px; font-family: sans-serif; color: #1b2426;'>Agrega imágenes y videos asociados al producto que deseas promocionar</p><br>";                  
+            msgVtaPre+="<a id='link'"; 
+            msgVtaPre+="href=''>";
+            msgVtaPre+='<i class="fa fa-file-image-o fa-3x"></i><i style="margin-left: 20px;" class="fa fa-youtube-play fa-3x"></i>';
+            msgVtaPre+="</a>";
+        msgVtaPre+="</b>";
+
+        swal({   
+            title: 'Imágenes y Videos',   
+            html: msgVtaPre,   
+            type: "info", 
+            allowOutsideClick: true,
+            animation: true,
+            confirmButtonColor: '#FFCC00',
+            confirmButtonText: '<span style="color: black; font-weight: bold;">Aceptar</span>'
+        });
+    }
+</script>
 <div id="divConPro" class="row-fluid sortable"> <!-- style="border-style: solid; border-color: green;"  -->
     <div class="box span12">
         <div class="box-header" data-original-title>
             <h2 style="font-size: 14px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; font-weight: bold; color: black;">
                 <i class="halflings-icon edit"></i>
                 <span class="break"></span>Im&aacute;genes & Videos
+                <span id="misProductos" onclick="proImgVideos();">
+                    <u>¿IMÁGENES Y VIDEOS PARA MIS PRODUCTOS?</u>
+                </span>
             </h2>
         </div>
         <br>
@@ -129,7 +187,7 @@
                             <tr>
                                 <th style="height: 8px; width: 15%; text-align: center; font-size: smaller;">ID</th>
                                 <th style="height: 8px; width: 15%; text-align: center; font-size: smaller;">Tipo</th>
-                                <th style="height: 8px; width: 70%; text-align: center; font-size: smaller;">ID google drive</th>
+                                <th style="height: 8px; width: 70%; text-align: center; font-size: smaller;">URL Imagen</th>
                             </tr>
                         </thead>   
                         <tbody id="listConPro"></tbody>
