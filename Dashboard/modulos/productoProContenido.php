@@ -148,8 +148,9 @@ color: red;
                                 <div class="controls">
                                     <select disabled="disabled" id="cmbTipConPro">
                                         <option value="">(SELECCIONE)</option>
-                                        <option value="IMAGEN">IMAGEN</option>
-                                        <option value="VIDEO">VIDEO</option>
+                                        <option value="URL_IMAGEN">URL IMAGEN</option>
+                                        <option value="YOUTUBE">YOUTUBE</option>
+                                        <option value="ID_GOOGLE_DRIVE">ID GOOGLE DRIVE</option>
                                     </select> 
                                 </div>
                             </div>    
@@ -157,7 +158,8 @@ color: red;
 <!--                                <label id="lblImgDrivePro"  class="control-label" for="appendedInput"><b>URL</b></label>-->
                                 <div class="controls">
                                     <div class="input-append">
-                                        <input placeholder="URL de Imagen: http://www.headoverheelsfitness.org/fitness-nail.jpg" id="txtIdDrivePro" size="100" type="text" maxlength="500" >
+<!--                                        <input style="background-color: silver;" id="txtIdDrivePro" size="100" type="text" maxlength="500" >-->
+                                        <input id="txtIdDrivePro" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; text-align: center; color: black;" placeholder="[Seleccione el tipo de contenido a agregar]" size="100" type="text" maxlength="500" >
                                     </div>
                                 </div>
                             </div>

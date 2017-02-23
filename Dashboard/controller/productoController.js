@@ -1003,9 +1003,10 @@ $('#tblProducto').on('click', 'tbody tr', function(event){
             $('#btnEditar').trigger("liszt:updated");
                                     
         }
-        
+
+        //MUESTRA CONTENIDO
+        $('#txtIdDrivePro').prop("disabled", true);
         $('#divConPro').show();
-        //$('#divPublicar').trigger("liszt:updated");
 
         //Pintamos Fila    
         $(this).addClass('highlight').siblings().removeClass('highlight');

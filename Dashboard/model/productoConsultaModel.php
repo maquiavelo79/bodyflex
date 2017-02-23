@@ -60,9 +60,9 @@ $tIpo='';
                         $sTr.='<td class="id" style="width: 10%">' . $proId  . '</td>';
                         $sTr.='<td class="nombre" style="width: 30%">' . $proNom . '</td>';
                         if($proEst!='PUBLICADO'){
-                            $sTr.='<td style="width: 10%; font-weight: bold; color: green;">' . $proEst . '</td>';
+                            $sTr.='<td style="text-align: center; width: 10%; font-weight: bold; color: green;">' . $proEst . '</td>';
                         }else{    
-                            $sTr.='<td style="width: 10%; font-weight: bold; color: blue;">' . $proEst . '</td>';
+                            $sTr.='<td style="text-align: center; width: 10%; font-weight: bold; color: blue;">' . $proEst . '</td>';
                         }         
                         $sTr.='<td class="condicion" style="text-align: center; width: 10%;">' . $proCon  . '</td>';
                         $sTr.='<td class="precio" style="text-align: center;">' . $proNet  . '</td>';

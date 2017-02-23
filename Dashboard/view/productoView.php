@@ -116,10 +116,13 @@ session_start();
         
                         var url='';
                         var msg2='<p style="color: #1b2426; font-family: sans-serif, font-size:18px;">La imagen <b style="font-size: 18px; font-weight: bold;">carga</b> en segundos dependiendo de la velocidad de internet.</p>';  
-                                                
-                        //alert($("#idDrive").val());
-                        //url='http://drive.google.com/uc?export=view&id='+$("#idDrive").val();
-                        url=$("#idDrive").val();
+                        var tipCon = $('#cmbTipConPro').val();                         
+                        
+                        if(tipCon=="URL_IMAGEN"){
+                            url=$("#idDrive").val();
+                        }else{    
+                            url='http://drive.google.com/uc?export=view&id='+$("#idDrive").val();
+                        }
                         
                         var parametros = {"url" : url};      
                         
@@ -290,22 +293,7 @@ session_start();
                                             <th style="width: 30%">Descripci&oacute;n</th>
                                         </tr>
                                     </thead>   
-                                    <tbody id="tbody"><!--  -->
-<!--                                        <tr style="width: 100%; cursor:pointer;">
-                                            <td style="width: 10%">4</td>
-                                            <td style="width: 30%">nombre2</td>
-                                            <td style="width: 10%; font-weight: bold; color: green;">INGRESADO</td>
-                                            <td style="width: 10%;">NUEVO</td>
-                                            <td style="width: 10%;">$2.000</td>
-                                            <td style="width: 30%;">Descripcion2</td>
-                                            <td style="display:none; width: 0%">1</td>
-                                            <td style="display:none; width: 0%"></td>
-                                            <td style="display:none; width: 0%"></td>
-                                            <td style="display:none; width: 0%">detalle2</td>
-                                            <td style="display:none; width: 0%">MARCA2</td>
-                                            <td style="display:none; width: 0%">$6.000</td>
-                                        </tr>-->
-                                    </tbody>
+                                    <tbody id="tbody"></tbody>
                                 </table> 
                                 <div id='idPag' class="pagination pagination-centered"></div>
                             </div>

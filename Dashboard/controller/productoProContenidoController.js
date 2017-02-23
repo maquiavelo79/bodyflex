@@ -13,8 +13,6 @@ var URLprotocol = window.location.protocol;
       
     $('#a-table-con').on('click', 'tbody tr', function(event){
 
-        //alert('a-table-con');
-
         var conID, conTip, conURL;
 
         if($('#txtProEst').val()=='INGRESADO'){
@@ -68,8 +66,22 @@ var URLprotocol = window.location.protocol;
             }
         }
 
-        var botones="<i data-toggle='tooltip' title='ver imagen!' onclick='getImagen("  +'"'+ conURL + '"' + ");' style='color: green; margin-top: 100px; cursor: pointer;' class='fa fa-picture-o fa-4x'></i>";        
-        botones+='<i class="fa fa-info-circle fa-4x" style="margin-top: 40px; color: green; cursor: pointer;" onclick="getInformacion();"></i>';
+        //alert('conTip ' + conTip);
+
+        switch(conTip){
+            case "URL_IMAGEN":
+                var botones="<i data-toggle='tooltip' title='ver imagen!' onclick='getImagen("  +'"'+ conURL + '"' + ");' style='color: green; margin-top: 100px; cursor: pointer;' class='fa fa-picture-o fa-4x'></i>";        
+                botones+='<i class="fa fa-info-circle fa-4x" style="margin-top: 40px; color: green; cursor: pointer;" onclick="getInformacion();"></i>';
+                break;
+            case "YOUTUBE":    
+                var botones='<i style="margin-top: 100px;" class="fa fa-picture-o fa-4x"></i>';        
+                botones+='<i class="fa fa-info-circle fa-4x" style="margin-top: 40px; color: green; cursor: pointer;" onclick="getInformacion();"></i>';
+                break;
+            case "ID_GOOGLE_DRIVE":
+                var botones="<i data-toggle='tooltip' title='ver imagen!' onclick='getImagen("  +'"'+ conURL + '"' + ");' style='color: green; margin-top: 100px; cursor: pointer;' class='fa fa-picture-o fa-4x'></i>";        
+                botones+='<i class="fa fa-info-circle fa-4x" style="margin-top: 40px; color: green; cursor: pointer;" onclick="getInformacion();"></i>';
+                break;    
+        }
         $('#right').html(botones);
         
     });
@@ -85,7 +97,7 @@ var URLprotocol = window.location.protocol;
         
         var strDiv='<div class="controls">';
             strDiv+='<div class="input-append">';
-                strDiv+='<input placeholder="URL de Imagen: http://www.headoverheelsfitness.org/fitness-nail.jpg" id="txtIdDrivePro" size="16" type="text" maxlength="500" >';
+                strDiv+='<input placeholder="[Seleccione el tipo de contenido a agregar]" id="txtIdDrivePro" size="16" type="text" maxlength="500" >';
             strDiv+='</div>';
         strDiv+='</div>';
 
@@ -165,30 +177,60 @@ var URLprotocol = window.location.protocol;
         var IdDri = $('#txtIdDrivePro').val(); 
         var idCon = $('#txtIdConPro').val(); // ID de contenido ingresada si existe //
         
-        if(tipCon=="IMAGEN"){
-            if(!checkURL(IdDri)){
-                $('#myModal').modal('hide');
-                var msgVtaPre="<p style='color: black; font-size: 18px; font-family: sans-serif;'>Debes ingresar URL válida que contiene la imagen del producto que vas a promocionar bajo tu perfil. <br><br>";
+        //alert('tipCon ' + tipCon);
+        
+        switch(tipCon){
+            case "URL_IMAGEN": 
+                if(!checkURL(IdDri)){
+                    $('#myModal').modal('hide');
+                    var msgVtaPre="<p style='color: black; font-size: 18px; font-family: sans-serif;'>Debes ingresar URL válida que contiene la imagen del producto que vas a promocionar bajo tu perfil. <br><br>";
 
-                msgVtaPre+="<br>";
-                msgVtaPre+="<b>";
-                    msgVtaPre+="<a target='_blank' style='font-size: 20px; color: blue; text-decoration: underline; font-weight: bold;'"; 
-                    msgVtaPre+="href='http://drive.google.com/uc?export=view&id=0B82UUH1gaEMAa3poVUVQMk1OS00'>";
-                    msgVtaPre+='<img style="width: 210px; height: 140px;" src="../../images/url.jpg"><br>Ejemplo';
-                    msgVtaPre+="</a>";
-                msgVtaPre+="</b>";
+                    msgVtaPre+="<br>";
+                    msgVtaPre+="<b>";
+                        msgVtaPre+="<a target='_blank' style='font-size: 20px; color: blue; text-decoration: underline; font-weight: bold;'"; 
+                        msgVtaPre+="href='http://drive.google.com/uc?export=view&id=0B82UUH1gaEMAa3poVUVQMk1OS00'>";
+                        msgVtaPre+='<img style="width: 210px; height: 140px;" src="../../images/url.jpg"><br>Ejemplo';
+                        msgVtaPre+="</a>";
+                    msgVtaPre+="</b>";
 
-                swal({   
-                    title: 'URL Imagen',   
-                    html: msgVtaPre,   
-                    type: "info", 
-                    allowOutsideClick: true,
-                    animation: true,
-                    confirmButtonColor: '#FFCC00',
-                    confirmButtonText: '<span style="color: black; font-weight: bold;">Aceptar</span>'
-                });
-                return false;
-            }
+                    swal({   
+                        title: 'URL Imagen',   
+                        html: msgVtaPre,   
+                        type: "info", 
+                        allowOutsideClick: true,
+                        animation: true,
+                        confirmButtonColor: '#FFCC00',
+                        confirmButtonText: '<span style="color: black; font-weight: bold;">Aceptar</span>'
+                    });
+                    return false;
+                }
+                break;
+            case "YOUTUBE":
+                if(!validateYouTubeUrl(IdDri)){
+                    $('#myModal').modal('hide');
+                    var msgVtaPre="<p style='color: black; font-size: 18px; font-family: sans-serif;'>Debes ingresar URL de youtube válida que contiene el video del producto que vas a promocionar bajo tu perfil. <br>";
+                    
+                    msgVtaPre+="<b>";
+                        msgVtaPre+="<a target='_blank' style='font-size: 20px; color: blue; text-decoration: underline; font-weight: bold;'"; 
+                        msgVtaPre+="href='http://drive.google.com/uc?export=view&id=0B82UUH1gaEMAa3poVUVQMk1OS00'>";
+                        msgVtaPre+='<img style="width: 210px; height: 140px;" src="../../images/youtube.png"><br>Ejemplo';
+                        msgVtaPre+="</a>";
+                    msgVtaPre+="</b>";
+
+                    swal({   
+                        title: 'Youtube',   
+                        html: msgVtaPre,   
+                        type: "info", 
+                        allowOutsideClick: true,
+                        animation: true,
+                        confirmButtonColor: '#FFCC00',
+                        confirmButtonText: '<span style="color: black; font-weight: bold;">Aceptar</span>'
+                    });
+                    return false;
+                }
+                break;
+            case "ID_GOOGLE_DRIVE":
+                break;    
         }
         
         //Div de Carga
@@ -563,6 +605,7 @@ var URLprotocol = window.location.protocol;
                                         var msg2='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
                                         $('#warningConAso').html(msg);
                                         $("#modalBody").html(msg2);
+                                        $('#listConPro').html('');
                                         break;
 
                                     default:
@@ -593,31 +636,42 @@ var URLprotocol = window.location.protocol;
             $(this).css('color','black');
         });    
         
+        //alert($("#cmbTipConPro").val());
+        
         var strDiv='<div class="controls">';
             strDiv+='<div class="input-append">';
-                strDiv+='<input placeholder="URL de Imagen: http://www.headoverheelsfitness.org/fitness-nail.jpg" id="txtIdDrivePro" size="16" type="text" maxlength="500" >';
+            switch($("#cmbTipConPro").val()){
+                case "URL_IMAGEN":
+                    strDiv+='<input placeholder="http://www.headoverheelsfitness.org/fitness-nail.jpg" id="txtIdDrivePro" size="16" type="text" maxlength="500" >';
+                    break;
+                case "YOUTUBE":
+                    strDiv+='<input placeholder="https://www.youtube.com/watch?v=ZcQK62PokVU" id="txtIdDrivePro" size="16" type="text" maxlength="500" >';
+                    break;
+                case "ID_GOOGLE_DRIVE":
+                        strDiv+='<input placeholder="0B82UUH1gaEMAZDBMSmk0YWwxMU0" id="txtIdDrivePro" size="16" type="text" maxlength="500" >';
+                    break;    
+            }
             strDiv+='</div>';
         strDiv+='</div>';
 
         $('#txtIdConPro').val('0');
-        $('#cmbTipConPro').val('');
         $('#divImgDrivePro').html(strDiv);
         $('#divImgDrivePro').prop('disabled',false);
         $('#divImgDrivePro').trigger('liszt:updated');
 
-        var conTip='';
-        var cmb = document.getElementById("cmbTipConPro"); 
-        for (var i = 0; i < cmb.length; i++) {
-            //  Aca haces referencia al "option" actual
-            var opt = cmb[i];
-
-            // Haces lo que te de la gana aca
-            if(conTip == opt.value){
-               $("#cmbTipConPro").prop('selectedIndex',i);
-               $('#cmbTipConPro').trigger('liszt:updated');
-               break;
-            }
-        }
+//        var conTip='';
+//        var cmb = document.getElementById("cmbTipConPro"); 
+//        for (var i = 0; i < cmb.length; i++) {
+//            //  Aca haces referencia al "option" actual
+//            var opt = cmb[i];
+//
+//            // Haces lo que te de la gana aca
+//            if(conTip == opt.value){
+//               $("#cmbTipConPro").prop('selectedIndex',i);
+//               $('#cmbTipConPro').trigger('liszt:updated');
+//               break;
+//            }
+//        }
 
         var botones ='<i style="margin-top: 100px;" class="fa fa-picture-o fa-4x"></i>';  
         $('#right').html(botones);
@@ -657,33 +711,48 @@ function habilita_contenido(){
 function limpiarContenido(){
         
     $('#a-table-con tr').each(function(){
-        $(this).css('background','white');
-        $(this).css('color','black');
-    });    
+            $(this).css('background','white');
+            $(this).css('color','black');
+        });    
+        
+        var strDiv='<div class="controls">';
+            strDiv+='<div class="input-append">';
+                strDiv+='<input placeholder="[Seleccione el tipo de contenido a agregar]" id="txtIdDrivePro" size="16" type="text" maxlength="500" >';
+            strDiv+='</div>';
+        strDiv+='</div>';
 
-    $('#txtIdConPro').val('0');
-    $('#cmbTipConPro').val('');
-    $('#txtIdDrivePro').val(' ');
+        $('#txtIdConPro').val('0');
+        $('#cmbTipConPro').val('');
+        $('#divImgDrivePro').html(strDiv);
+        $('#divImgDrivePro').prop('disabled',false);
+        $('#divImgDrivePro').trigger('liszt:updated');
 
-    var conTip='';
-    var cmb = document.getElementById("cmbTipConPro"); 
-    for (var i = 0; i < cmb.length; i++) {
-        //  Aca haces referencia al "option" actual
-        var opt = cmb[i];
+        var conTip='';
+        var cmb = document.getElementById("cmbTipConPro"); 
+        for (var i = 0; i < cmb.length; i++) {
+            //  Aca haces referencia al "option" actual
+            var opt = cmb[i];
 
-        // Haces lo que te de la gana aca
-        if(conTip == opt.value){
-           $("#cmbTipConPro").prop('selectedIndex',i);
-           $('#cmbTipConPro').trigger('liszt:updated');
-           break;
+            // Haces lo que te de la gana aca
+            if(conTip == opt.value){
+               $("#cmbTipConPro").prop('selectedIndex',i);
+               $('#cmbTipConPro').trigger('liszt:updated');
+               break;
+            }
         }
-    }
 
-    var botones ='<i style="margin-top: 100px;" class="fa fa-picture-o fa-4x"></i>';  
-    $('#right').html(botones);
+        var botones ='<i style="margin-top: 100px;" class="fa fa-picture-o fa-4x"></i>';  
+        $('#right').html(botones);
     
 }
 
+//VALIDA URL DE IMAGEN
 function checkURL(url) {
     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+}
+
+//VALIDA URL YOUTUBE
+function validateYouTubeUrl(url){
+    var p = /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/;
+    return (url.match(p)) ? true : false;
 }

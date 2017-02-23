@@ -26,8 +26,8 @@ include("../model/conection.php");
 
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':proId', $proId, PDO::PARAM_STR,10);
-            $stmt->bindParam(':tipCon', $tipCon, PDO::PARAM_STR,10);
-            $stmt->bindParam(':IdDri', $IdDri, PDO::PARAM_STR,50);
+            $stmt->bindParam(':tipCon', $tipCon, PDO::PARAM_STR,100);
+            $stmt->bindParam(':IdDri', $IdDri, PDO::PARAM_STR,500);
             $stmt->bindParam(':idCon', $idCon, PDO::PARAM_STR,10);
             $stmt->execute();
             $num= $stmt->rowCount();     
