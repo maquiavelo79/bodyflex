@@ -44,6 +44,7 @@ var URLprotocol = window.location.protocol;
             url: URLprotocol+"//"+URLdomain+"/bodyflex/model/loginModel.php",
             type:  'post',
             datetype: 'xml',
+            async: true,
             beforeSend: function(){
                 $('#espera').show();
                 $('#help').hide();

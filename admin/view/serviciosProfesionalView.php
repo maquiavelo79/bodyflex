@@ -134,30 +134,32 @@ session_start();
                 });   
             </script>
             <style>
+                
                 .ajustarDesCor{
-                    width: 200px;
+                    width: 20%;
                     float: left;
-                    white-space: pre; /* CSS 2.0 */
-                    white-space: pre-wrap; /* CSS 2.1 */
-                    white-space: pre-line; /* CSS 3.0 */
-                    white-space: -pre-wrap; /* Opera 4-6 */
-                    white-space: -o-pre-wrap; /* Opera 7 */
-                    white-space: -moz-pre-wrap; /* Mozilla */
-                    white-space: -hp-pre-wrap; /* HP */
-                    word-wrap: break-word; /* IE 5+ */
+                    white-space: pre; 
+                    white-space: pre-wrap; 
+                    white-space: pre-line; 
+                    white-space: -pre-wrap;
+                    white-space: -o-pre-wrap; 
+                    white-space: -moz-pre-wrap; 
+                    white-space: -hp-pre-wrap; 
+                    word-wrap: break-word; 
                 }
                 .ajustarDesLar{
-                    width: 500px;
+                    width: 20%;
                     float: left;
-                    white-space: pre; /* CSS 2.0 */
-                    white-space: pre-wrap; /* CSS 2.1 */
-                    white-space: pre-line; /* CSS 3.0 */
-                    white-space: -pre-wrap; /* Opera 4-6 */
-                    white-space: -o-pre-wrap; /* Opera 7 */
-                    white-space: -moz-pre-wrap; /* Mozilla */
-                    white-space: -hp-pre-wrap; /* HP */
-                    word-wrap: break-word; /* IE 5+ */
+                    white-space: pre;
+                    white-space: pre-wrap; 
+                    white-space: pre-line; 
+                    white-space: -pre-wrap; 
+                    white-space: -o-pre-wrap; 
+                    white-space: -moz-pre-wrap;
+                    white-space: -hp-pre-wrap; 
+                    word-wrap: break-word; 
                 }
+                
                 thead, tbody { display: block; }
                 tbody {
                     height: 300px;       /* Just for the demo          */
@@ -212,63 +214,59 @@ session_start();
                                 <br>
                                 <div class="box-content">
                                     <form class="form-horizontal" id="formSlider">
-                                        <fieldset>
-                                            
+                                        <fieldset> 
                                             <div id="conHeadId" class="control-group">
-                                                <label id="lblHeadId" class="control-label" for="appendedInput"><b>Identificador</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <input style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 200px; text-align: center; color: black;" id="txtSerId" size="30" type="text" maxlength="10" disabled  value="">
+                                                <div id="divId">
+                                                    <label id="lblHeadId" class="control-label" for="appendedInput"><b>Identificador</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <input style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 200px; text-align: center; color: black;" id="txtSerId" size="30" type="text" maxlength="10" disabled  value="">
+                                                        </div>
+                                                        <span class="help-inline"></span>
                                                     </div>
-                                                    <span class="help-inline"></span>
+                                                </div>
+                                                <div id="divNomSer" style="margin-top: 5px;">
+                                                    <label id="lbltit1" class="control-label" for="appendedInput"><b>Nombre Servicio</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                              <input style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 490px; text-align: center; color: black;" id="txtNomSer" size="30" type="text" maxlength="100">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="divClase" style="margin-top: 5px;">
+                                                    <label id="lbltit1" class="control-label" for="appendedInput"><b>Clase &Iacute;cono</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <input style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 200px; text-align: center; color: black;" id="txtClaIco" size="30" type="text" maxlength="30">
+                                                        </div>
+                                                        <span class="help-inline">https://fortawesome.github.io/Font-Awesome/icons/ (Ejemplo: fa fa-futbol-o)</span>
+                                                    </div>
+                                                </div>
+                                                <div id="divGD" style="margin-top: 5px;">
+                                                    <label id="lblfli"  class="control-label" for="appendedInput"><b>ID google drive</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <input style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 490px; text-align: center; color: black;" id="txtIdFli" size="16" type="text" maxlength="100">
+                                                        </div>
+                                                        <span class="help-inline">Id imagen Google Drive asociada al servicio</span>
+                                                    </div>
+                                                </div>
+                                                <div id="divDesCor" style="margin-top: 5px;">
+                                                    <label id="lbltxt" class="control-label" for="textarea2"><b>Descripci&oacute;n corta</b></label>
+                                                    <div class="controls">
+                                                        <textarea class="cleditor" id="txtDesCor" name="txtDesCor" rows="5"></textarea>
+                                                        <span class="help-inline">Máximo 100 caracteres!</span>
+                                                    </div>
+                                                </div>
+                                                <div id="divDesDet" style="margin-top: 5px;">
+                                                    <label id="lbltxt" class="control-label" for="textarea2"><b>Descripci&oacute;n detallada</b></label>
+                                                    <div class="controls">
+                                                        <textarea class="cleditor" id="txtDesDet" name="txtDesDet" rows="5"></textarea>
+                                                        <span class="help-inline">Máximo 1000 caracteres!</span>
+                                                    </div>
                                                 </div>
                                             </div> 
-                                            
-                                            <div id="conTit1" class="control-group">
-                                                <label id="lbltit1" class="control-label" for="appendedInput"><b>Nombre Servicio</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                          <input style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 490px; text-align: center; color: black;" id="txtNomSer" size="30" type="text" maxlength="100">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div id="conTit1" class="control-group">
-                                                <label id="lbltit1" class="control-label" for="appendedInput"><b>Clase &Iacute;cono</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <input style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 200px; text-align: center; color: black;" id="txtClaIco" size="30" type="text" maxlength="30">
-                                                    </div>
-                                                    <span class="help-inline">https://fortawesome.github.io/Font-Awesome/icons/ (Ejemplo: fa fa-futbol-o)</span>
-                                                </div>
-                                            </div>
-                                            
-                                            <div id="conFlick" class="control-group">
-                                                <label id="lblfli"  class="control-label" for="appendedInput"><b>ID google drive</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <input style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 490px; text-align: center; color: black;" id="txtIdFli" size="16" type="text" maxlength="100">
-                                                    </div>
-                                                <span class="help-inline">Id imagen Google Drive asociada al servicio</span>
-                                                </div>
-                                            </div>
-                                            
-                                            <div id="divPublicacion" class="control-group">
-                                                <label id="lbltxt" class="control-label" for="textarea2"><b>Descripci&oacute;n corta</b></label>
-                                                <div class="controls">
-                                                    <textarea class="cleditor" id="txtDesCor" name="txtDesCor" rows="5"></textarea>
-                                                    <span class="help-inline">Máximo 100 caracteres!</span>
-                                                </div>
-                                            </div>
-                                            
-                                            <div id="divPublicacion" class="control-group">
-                                                <label id="lbltxt" class="control-label" for="textarea2"><b>Descripci&oacute;n detallada</b></label>
-                                                <div class="controls">
-                                                    <textarea class="cleditor" id="txtDesDet" name="txtDesDet" rows="5"></textarea>
-                                                    <span class="help-inline">Máximo 1000 caracteres!</span>
-                                                </div>
-                                            </div>
-                                             
+
                                             <!-- GIF LOAD-->
                                                 <div id="espera" class="form-actions" style="display:none;">
                                                     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -304,12 +302,12 @@ session_start();
                                 <table id="tblSlider" class="table table-striped table-bordered bootstrap-datatable">
                                     <thead>
                                         <tr>
-                                            <th class="ajustar">Id</th>
-                                            <th class="ajustar">Nombre</th>
-                                            <th class="ajustar">Clase</th>
-                                            <th class="ajustar">ID google</th>
-                                            <th class="ajustar">Desc. Corta</th>
-                                            <th class="ajustar">Desc. Detallada</th>
+                                            <th style="width: 15%;">Id</th>
+                                            <th style="width: 15%;">Nombre</th>
+                                            <th style="width: 15%;">Clase</th>
+                                            <th style="width: 15%;">ID google</th>
+                                            <th style="width: 20%;">Desc. Corta</th>
+                                            <th style="width: 20%;">Desc. Detallada</th>
                                         </tr>
                                     </thead>   
                                     <tbody id="tbody">

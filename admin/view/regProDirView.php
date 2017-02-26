@@ -62,13 +62,80 @@ session_start();
                     white-space: pre; /* CSS 2.0 */
                     white-space: pre-wrap; /* CSS 2.1 */
                     white-space: pre-line; /* CSS 3.0 */
-                    white-space: -pre-wrap; /* Opera 4-6 */
+                    
                     white-space: -o-pre-wrap; /* Opera 7 */
                     white-space: -moz-pre-wrap; /* Mozilla */
-                    white-space: -hp-pre-wrap; /* HP */
+                    
                     word-wrap: break-word; /* IE 5+ */
                 }
-                                                
+                #txtLatitud, #txtLongitud{
+                   box-shadow: 0 0 2px black; 
+                   margin: 0px 0px 0px 0px; 
+                   height: 15px; 
+                   text-align: center; 
+                   color: black; 
+                   font-weight: bold; 
+                   background-color: whitesmoke; 
+                   font-size: 14px; 
+                   text-align: center; 
+                   color: blue; 
+                   width: 150px;
+                   font-family: sans-serif;
+                } 
+                
+                #txtIdDir, #cmbProvincia, #cmbComuna, #cmbTipo, #cmbPublica, #txtVp{
+                    box-shadow: 0 0 2px black; 
+                    margin: 0px 0px 0px 0px; 
+                    height: 15px; 
+                    text-align: center; 
+                    color: black; 
+                    font-weight: bold; 
+                    background-color: whitesmoke; 
+                    font-size: 12px; 
+                    text-align: center; 
+                    color: black; 
+                    width: 150px;
+                }
+                #cmbRegion{
+                    box-shadow: 0 0 2px black; 
+                    margin: 0px 0px 0px 0px; 
+                    height: 15px; 
+                    text-align: center; 
+                    color: black; 
+                    font-weight: bold; 
+                    background-color: whitesmoke; 
+                    font-size: 12px; 
+                    text-align: center; 
+                    color: black; 
+                    width: 300px;
+                }
+                #txtCal{
+                    box-shadow: 0 0 2px black; 
+                    margin: 0px 0px 0px 0px; 
+                    height: 15px; 
+                    text-align: center; 
+                    color: black; 
+                    font-weight: bold; 
+                    background-color: whitesmoke; 
+                    font-size: 12px; 
+                    text-align: center; 
+                    color: black; 
+                    width: 230px;
+                }
+                #txtNum{
+                    box-shadow: 0 0 2px black; 
+                    margin: 0px 0px 0px 0px; 
+                    height: 15px; 
+                    text-align: center; 
+                    color: black; 
+                    font-weight: bold; 
+                    background-color: whitesmoke; 
+                    font-size: 12px; 
+                    text-align: center; 
+                    color: black; 
+                    width: 50px;
+                }
+                
             </style>
             
 	<!-- end: CSS -->
@@ -164,73 +231,78 @@ session_start();
                                     <fieldset>
                                         
                                         <div id="direccion">
-                                            
-                                            
-                                            <div class="control-group">
-                                                <label class="control-label" for="selectError"><b>Identificador</b></label>
-                                                <div class="controls">
-                                                    <input id="txtIdDir" type="text" disabled style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 150px;">
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="control-group">
-                                                <label class="control-label" for="selectError"><b>Regi&oacute;n</b></label>
-                                                <div class="controls">
-                                                    <select id="cmbRegion" data-rel="chosen"></select>
-                                                </div>
-                                            </div>
-
-                                            <div class="control-group">
-                                                <label class="control-label" for="selectError"><b>Provincia</b></label>
-                                                <div class="controls">
-                                                    <select id="cmbProvincia" data-rel="chosen"></select>
-                                                </div>
-                                            </div>
-
-                                            <div class="control-group">
-                                                <label class="control-label" for="selectError"><b>Comuna</b></label>
-                                                <div class="controls">
-                                                    <select id="cmbComuna" data-rel="chosen"></select>
-                                                </div>
-                                            </div>
-
-                                            <div class="control-group">
-                                                <label class="control-label" for="selectError"><b>Tipo</b></label>
-                                                <div class="controls">
-                                                    <select id="cmbTipo" data-rel="chosen" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black;"></select>
-                                                </div>
-                                            </div>
-
-                                            <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>¿Mostrar en perfil web?</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <select id="cmbPublica" data-rel="chosen" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 120px;"></select>
-                                                    </div>
-                                                </div>
-                                            </div>
                                                                                         
                                             <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>Villa/Poblaci&oacute;n</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <input id="txtVp" maxlength="40" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 320px;" type="text" maxlength="100">
+                                                <div id="divId">
+                                                    <label class="control-label" for="selectError"><b>Identificador</b></label>
+                                                    <div class="controls">
+                                                        <input id="txtIdDir" type="text" disabled>
+                                                    </div>
+                                                </div>    
+                                                <div id="divRegion" style="margin-top: 5px;">
+                                                    <label class="control-label" for="selectError"><b>Regi&oacute;n</b></label>
+                                                    <div class="controls">
+                                                        <select id="cmbRegion" style="width: 300px;" data-rel="chosen"></select>
+                                                    </div>
+                                                </div>    
+                                                <div id="divProvincia" style="margin-top: 5px;">
+                                                    <label class="control-label" for="selectError"><b>Provincia</b></label>
+                                                    <div class="controls">
+                                                        <select id="cmbProvincia" data-rel="chosen"></select>
+                                                    </div>
+                                                </div>
+                                                <div id="divComuna" style="margin-top: 5px;">
+                                                    <label class="control-label" for="selectError"><b>Comuna</b></label>
+                                                    <div class="controls">
+                                                        <select id="cmbComuna" data-rel="chosen"></select>
+                                                    </div>
+                                                </div>
+                                                <div id="divTipo" style="margin-top: 5px;">
+                                                    <label class="control-label" for="selectError"><b>Tipo</b></label>
+                                                    <div class="controls">
+                                                        <select id="cmbTipo" data-rel="chosen"></select>
+                                                    </div>
+                                                </div>
+                                                <div id="divPublica" style="margin-top: 5px;">
+                                                    <label class="control-label" for="appendedInput"><b>¿Mostrar?</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <select id="cmbPublica" data-rel="chosen"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="divVp" style="margin-top: 3px;">
+                                                    <label class="control-label" for="appendedInput"><b>Villa/Poblaci&oacute;n</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <input id="txtVp" maxlength="40" type="text" maxlength="100">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="divCalle" style="margin-top: 5px;">
+                                                    <label class="control-label" for="appendedInput"><b>Calle / N°</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <input id="txtCal" maxlength="40" type="text" maxlength="100">
+                                                        </div> &nbsp;
+                                                        <div class="input-append">
+                                                            <input id="txtNum" maxlength="10" class="solo-numero" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 70px;" type="text" maxlength="100">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="divCoordenadas" style="margin-top: 5px;">
+                                                    <label class="control-label" for="appendedInput"><b>Latitud/Longitud</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <input id="txtLatitud" disabled maxlength="20" type="text">
+                                                        </div> &nbsp;
+                                                        <div class="input-append">
+                                                            <input id="txtLongitud" disabled maxlength="20" type="text">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>Calle / N°</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <input id="txtCal" maxlength="40" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 320px;" type="text" maxlength="100">
-                                                    </div> &nbsp;
-                                                    <div class="input-append">
-                                                        <input id="txtNum" maxlength="10" class="solo-numero" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 70px;" type="text" maxlength="100">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
+                                                    
                                         </div>
                                         
                                         <!-- GIF LOAD-->
@@ -273,7 +345,9 @@ session_start();
                                     <th>Calle</th>  
                                     <th>Villa/Pob.</th>  
                                     <th>N&uacute;mero</th> 
-                                    <th>Publica</th> 
+                                    <th>Publica</th>
+                                    <th>Latitud</th>
+                                    <th>Longitud</th>
                                 </tr>
                             </thead>   
                             <tbody id="tbody"></tbody>

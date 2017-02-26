@@ -90,6 +90,14 @@ color: red;
     
 }
 
+#imagenesVideos, #urlImagen, #idGD, #youTube{
+    cursor: pointer; 
+    color: blue; 
+    font-size: 14px; 
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+    font-weight: bold;
+    margin-left: 20px;
+}    
 </style>
 <script>
     function misProductos(){
@@ -119,11 +127,83 @@ color: red;
             html: msgVtaPre,   
             type: "info", 
             allowOutsideClick: true,
-            animation: true,
+            animation: false,
             confirmButtonColor: '#FFCC00',
             confirmButtonText: '<span style="color: black; font-weight: bold;">Aceptar</span>'
         });
     }
+    function msgUrlImg(){
+    
+        var msgImpPer='<p style="text-align: center; font-size: 18px; font-family: sans-serif; color: #1b2426;">Puedes agregar URL de imágenes asociadas al producto promocionado.</p>';
+        
+        msgImpPer+="<b>";
+            msgImpPer+="<a style='font-size: 20px; color: blue; text-decoration: underline; font-weight: bold;'"; 
+            msgImpPer+="href=''>";
+            msgImpPer+='Ejemplo';
+            msgImpPer+="</a>";
+        msgImpPer+="</b>";
+        
+        swal({   
+            title: 'URL de Imagen',
+            text: msgImpPer,
+            imageUrl: '../../images/url.jpg',
+            imageWidth: 300,
+            imageHeight: 300,
+            animation: false,
+            confirmButtonColor: '#FFCC00',
+            confirmButtonText: '<span style="color: black; font-weight: bold;">Aceptar</span>'
+        });
+        
+    }  
+    
+    function msgYouTube(){
+    
+        var msgImpPer='<p style="text-align: center; font-size: 18px; font-family: sans-serif; color: #1b2426;">Puedes agregar la URL de un video en youtube para asociarlo al producto.</p>';
+        
+        msgImpPer+="<b>";
+            msgImpPer+="<a style='font-size: 20px; color: blue; text-decoration: underline; font-weight: bold;'"; 
+            msgImpPer+="href=''>";
+            msgImpPer+='Ejemplo';
+            msgImpPer+="</a>";
+        msgImpPer+="</b>";
+        
+        swal({   
+            title: 'YouTube',
+            text: msgImpPer,
+            imageUrl: '../../images/youtube.png',
+            imageWidth: 300,
+            imageHeight: 300,
+            animation: false,
+            confirmButtonColor: '#FFCC00',
+            confirmButtonText: '<span style="color: black; font-weight: bold;">Aceptar</span>'
+        });
+        
+    }  
+    
+    function msgGoogleDrive(){
+    
+        var msgImpPer='<p style="text-align: center; font-size: 18px; font-family: sans-serif; color: #1b2426;">Puedes agregar el ID de una imagen que tengas guardada en Google Drive para asociarla al producto.</p>';
+        
+        msgImpPer+="<b>";
+            msgImpPer+="<a style='font-size: 20px; color: blue; text-decoration: underline; font-weight: bold;'"; 
+            msgImpPer+="href=''>";
+            msgImpPer+='Ejemplo';
+            msgImpPer+="</a>";
+        msgImpPer+="</b>";
+        
+        swal({   
+            title: 'Google Drive',
+            text: msgImpPer,
+            imageUrl: '../../images/googleDrive.png',
+            imageWidth: 200,
+            imageHeight: 200,
+            animation: false,
+            confirmButtonColor: '#FFCC00',
+            confirmButtonText: '<span style="color: black; font-weight: bold;">Aceptar</span>'
+        });
+        
+    }  
+    
 </script>
 <div id="divConPro" class="row-fluid sortable"> <!-- style="border-style: solid; border-color: green;"  -->
     <div class="box span12">
@@ -131,8 +211,17 @@ color: red;
             <h2 style="font-size: 14px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; font-weight: bold; color: black;">
                 <i class="halflings-icon edit"></i>
                 <span class="break"></span>Im&aacute;genes & Videos
-                <span id="misProductos" onclick="proImgVideos();">
+                <span id="imagenesVideos" onclick="proImgVideos();">
                     <u>¿IMÁGENES Y VIDEOS PARA MIS PRODUCTOS?</u>
+                </span>
+                <span id="urlImagen" onclick="msgUrlImg();">
+                    <u>¿URL IMAGEN?</u>
+                </span>
+                <span id="idGD" onclick="msgGoogleDrive();">
+                    <u>¿ID Google Drive?</u>
+                </span>
+                <span id="youTube" onclick="msgYouTube();">
+                    <u>¿YouTube?</u>
                 </span>
             </h2>
         </div>

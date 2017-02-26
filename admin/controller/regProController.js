@@ -154,9 +154,9 @@ jQuery(document).ready(function() {
             $('#proApe').val(aprApe);
             $('#proEml').val(aprEml);
             
-            //alert('aprID ' + aprID);
+            //alert('aprEst ' + aprEst);
             
-            if(aprEst=='REGISTRADA' || aprEst=='ALTA'){
+            //if(aprEst=='REGISTRADA' || aprEst=='ALTA'){
                 //AJAX
                 var parametros = { 
                     "id" : aprID 
@@ -261,7 +261,7 @@ jQuery(document).ready(function() {
                         }
                     }
                 });
-            }
+            //}
             
             //Mostramos formulario
             $('#registro').show();

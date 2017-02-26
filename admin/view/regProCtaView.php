@@ -68,7 +68,19 @@ session_start();
                     white-space: -hp-pre-wrap; /* HP */
                     word-wrap: break-word; /* IE 5+ */
                 }
-                                                
+                #txtId{
+                    box-shadow: 0 0 2px black; 
+                    margin: 0px 0px 0px 0px; 
+                    height: 15px; 
+                    text-align: center; 
+                    color: black; 
+                    font-weight: bold; 
+                    background-color: whitesmoke; 
+                    font-size: 12px; 
+                    text-align: center; 
+                    color: black; 
+                    width: 260px;
+                }                                
             </style>
             
 	<!-- end: CSS -->
@@ -162,40 +174,35 @@ session_start();
                             <div class="box-content">
                                 <form class="form-horizontal">
                                     <fieldset>
-                                        
                                         <div id="direccion">
-                                            
-                                            
                                             <div class="control-group">
-                                                <label class="control-label" for="selectError"><b>Identificador</b></label>
-                                                <div class="controls">
-                                                    <input id="txtId" type="text" disabled style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 260px;">
+                                                <div id="divId">
+                                                    <label class="control-label" for="selectError"><b>Identificador</b></label>
+                                                    <div class="controls">
+                                                        <input id="txtId" type="text" disabled>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            
-                                            <div class="control-group">
-                                                <label class="control-label" for="selectError"><b>Banco</b></label>
-                                                <div class="controls">
-                                                    <select id="cmbBanco" style="width: 270px;" data-rel="chosen"></select>
+                                                <div id="divBanco" style="margin-top: 5px;">
+                                                    <label class="control-label" for="selectError"><b>Banco</b></label>
+                                                    <div class="controls">
+                                                        <select id="cmbBanco" style="width: 270px;" data-rel="chosen"></select>
+                                                    </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="control-group">
-                                                <label class="control-label" for="selectError"><b>Tipo</b></label>
-                                                <div class="controls">
-                                                    <select id="cmbTip" style="width: 270px;" data-rel="chosen"></select>
+                                                <div id="divTipo" style="margin-top: 3px;">
+                                                    <label class="control-label" for="selectError"><b>Tipo</b></label>
+                                                    <div class="controls">
+                                                        <select id="cmbTip" style="width: 270px;" data-rel="chosen"></select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                                                                                                                    
-                                            <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>N&uacute;mero</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <input id="txtNum" class="solo-numero" maxlength="40" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 260px;" type="text" maxlength="100">
+                                                <div id="divNum" style="margin-top: 3px;">
+                                                    <label class="control-label" for="appendedInput"><b>N&uacute;mero</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <input id="txtNum" class="solo-numero" maxlength="40" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 260px;" type="text" maxlength="100">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
                                         </div>
                                         
                                         <!-- GIF LOAD-->

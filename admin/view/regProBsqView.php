@@ -153,10 +153,13 @@ session_start();
                             </thead>   
                             <tbody id="tbody"></tbody>
                          </table>  
+                        
                          <div id="regWarning2" style="display:block;" class="box-content alerts"></div>
+                         
                          <div id="espera" class="form-actions" style="display:none;">
                             <h4 class="alert-heading">&nbsp;</h4>
                          </div>
+                         
                          <div id="idPag" class="pagination pagination-centered"></div>     
                     </div>
 

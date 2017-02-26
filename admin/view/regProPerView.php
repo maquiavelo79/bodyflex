@@ -162,145 +162,135 @@ session_start();
                             <div class="box-content">
                                 <form class="form-horizontal">
                                     <fieldset>
-                                        
                                         <div id="perfilacion">
-                                                                                        
                                             <div class="control-group">
-                                                <label class="control-label" for="selectError"><b>Identificador</b></label>
-                                                <div class="controls">
-                                                    <input id="txtId" type="text" disabled style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 150px;">
+                                                <div id="divId">
+                                                    <label class="control-label" for="selectError"><b>Identificador</b></label>
+                                                    <div class="controls">
+                                                        <input id="txtId" type="text" disabled style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 150px;">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            
-                                            <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>Estudios</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <select id="cmbTec" style="width: 130px;" data-rel="chosen"></select>
-                                                    </div> &nbsp;
-                                                    <div class="input-append">
-                                                        <select id="cmbPro" style="width: 130px;" data-rel="chosen"></select>
-                                                    </div> &nbsp;
-                                                    <div class="input-append">
-                                                        <select id="cmbLic" style="width: 130px;" data-rel="chosen"></select>
-                                                    </div> &nbsp;
-                                                    <div class="input-append">
-                                                        <select id="cmbMas" style="width: 130px;" data-rel="chosen"></select>
-                                                    </div> &nbsp;
-                                                    <div class="input-append">
-                                                        <select id="cmbMba" style="width: 130px;" data-rel="chosen"></select>
-                                                    </div> &nbsp;
-                                                    <div class="input-append">
-                                                        <select id="cmbDoc" style="width: 130px;" data-rel="chosen"></select>
-                                                    </div> &nbsp;
+                                                <div id="divEstudios" style="margin-top: 5px;">
+                                                    <label class="control-label" for="appendedInput"><b>Estudios</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <select id="cmbTec" style="width: 130px;" data-rel="chosen"></select>
+                                                        </div> &nbsp;
+                                                        <div class="input-append">
+                                                            <select id="cmbPro" style="width: 130px;" data-rel="chosen"></select>
+                                                        </div> &nbsp;
+                                                        <div class="input-append">
+                                                            <select id="cmbLic" style="width: 130px;" data-rel="chosen"></select>
+                                                        </div> &nbsp;
+                                                        <div class="input-append">
+                                                            <select id="cmbMas" style="width: 130px;" data-rel="chosen"></select>
+                                                        </div> &nbsp;
+                                                        <div class="input-append">
+                                                            <select id="cmbMba" style="width: 130px;" data-rel="chosen"></select>
+                                                        </div> &nbsp;
+                                                        <div class="input-append">
+                                                            <select id="cmbDoc" style="width: 130px;" data-rel="chosen"></select>
+                                                        </div> &nbsp;
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            
-                                            <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>Certificaci&oacute;n</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <select id="cmbCer" style="width: 130px;" data-rel="chosen"></select>
-                                                    </div> &nbsp;
+                                                <div id="divCertificacion">
+                                                    <label class="control-label" for="appendedInput"><b>Certificaci&oacute;n</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <select id="cmbCer" style="width: 130px;" data-rel="chosen"></select>
+                                                        </div> &nbsp;
+                                                    </div>
                                                 </div>
-                                            </div>
-                                                                                        
-                                            <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>Diplomado</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <select id="cmbDip" style="width: 130px;" data-rel="chosen"></select>
-                                                    </div> &nbsp;
+                                                <div id="divDiplomado">
+                                                    <label class="control-label" for="appendedInput"><b>Diplomado</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <select id="cmbDip" style="width: 130px;" data-rel="chosen"></select>
+                                                        </div> &nbsp;
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            
-                                            <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>Torneos Deportivos</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <select id="cmbTor" style="width: 130px;" data-rel="chosen"></select>
-                                                    </div> &nbsp;
+                                                <div id="divCompetencias">
+                                                    <label class="control-label" for="appendedInput"><b>Torneos Deportivos</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <select id="cmbTor" style="width: 130px;" data-rel="chosen"></select>
+                                                        </div> &nbsp;
+                                                    </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>Regi&oacute;n</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <select id="cmbReg" style="width: 370px;" data-rel="chosen">
-                                                            <option value=0>(SELECCIONE)</option>
-                                                            <option value=16>INTER REGION</option>
-                                                            <option value=1>I - ARICA Y PARINACOTA</option>
-                                                            <option value=2>II - TARAPACA</option>
-                                                            <option value=3>III - ANTOFAGASTA</option>
-                                                            <option value=4>IV - ATACAMA</option>
-                                                            <option value=5>V - COQUIMBO</option>
-                                                            <option value=6>VI - VALPARAISO</option>
-                                                            <option value=7>VII - DEL LIBERTADOR GRAL. BERNARDO O'HIGGINS</option>
-                                                            <option value=8>VIII - DEL MAULE</option>
-                                                            <option value=9>IX - DEL BIOBIO</option>
-                                                            <option value=10>X - DE LA ARAUCANIA</option>
-                                                            <option value=11>XI - DE LOS RIOS</option>
-                                                            <option value=12>XII - DE LOS LAGOS</option>
-                                                            <option value=13>XIII - AISÉN DEL GRAL. CARLOS IBÁÑEZ DEL CAMPO</option>
-                                                            <option value=14>XIV - MAGALLANES Y DE LA ANTÁRTICA CHILENA</option>
-                                                            <option value=15>XV - METROPOLITANA DE SANTIAGO</option>
-                                                        </select>
-                                                    </div> 
+                                                <div id="divRegion">
+                                                    <label class="control-label" for="appendedInput"><b>Regi&oacute;n</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <select id="cmbReg" style="width: 370px;" data-rel="chosen">
+                                                                <option value=0>(SELECCIONE)</option>
+                                                                <option value=16>INTER REGION</option>
+                                                                <option value=1>I - ARICA Y PARINACOTA</option>
+                                                                <option value=2>II - TARAPACA</option>
+                                                                <option value=3>III - ANTOFAGASTA</option>
+                                                                <option value=4>IV - ATACAMA</option>
+                                                                <option value=5>V - COQUIMBO</option>
+                                                                <option value=6>VI - VALPARAISO</option>
+                                                                <option value=7>VII - DEL LIBERTADOR GRAL. BERNARDO O'HIGGINS</option>
+                                                                <option value=8>VIII - DEL MAULE</option>
+                                                                <option value=9>IX - DEL BIOBIO</option>
+                                                                <option value=10>X - DE LA ARAUCANIA</option>
+                                                                <option value=11>XI - DE LOS RIOS</option>
+                                                                <option value=12>XII - DE LOS LAGOS</option>
+                                                                <option value=13>XIII - AISÉN DEL GRAL. CARLOS IBÁÑEZ DEL CAMPO</option>
+                                                                <option value=14>XIV - MAGALLANES Y DE LA ANTÁRTICA CHILENA</option>
+                                                                <option value=15>XV - METROPOLITANA DE SANTIAGO</option>
+                                                            </select>
+                                                        </div> 
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            
-                                            <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>Sexo</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <select id="cmbSex" style="width: 130px;" data-rel="chosen">
-                                                            <option value=0>(SELECCIONE)</option>
-                                                            <option value=1>MASCULINO</option>
-                                                            <option value=2>FEMENINO</option>
-                                                        </select>
-                                                    </div> 
+                                                <div id="divSexo">
+                                                    <label class="control-label" for="appendedInput"><b>Sexo</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <select id="cmbSex" style="width: 130px;" data-rel="chosen">
+                                                                <option value=0>(SELECCIONE)</option>
+                                                                <option value=1>MASCULINO</option>
+                                                                <option value=2>FEMENINO</option>
+                                                            </select>
+                                                        </div> 
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            
-                                            <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>Experiencia</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <select id="cmbExp" style="width: 130px;" data-rel="chosen">
-                                                            <option value=0>(SELECCIONE)</option>
-                                                            <option value=1>S-EXP</option>
-                                                            <option value=2>[1 - 3[</option>
-                                                            <option value=3>[3 - 6[</option>
-                                                            <option value=4>más de 6</option>
-                                                        </select>
-                                                    </div> 
+                                                <div id="divExperiencia">
+                                                    <label class="control-label" for="appendedInput"><b>Experiencia</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <select id="cmbExp" style="width: 130px;" data-rel="chosen">
+                                                                <option value=0>(SELECCIONE)</option>
+                                                                <option value=1>S-EXP</option>
+                                                                <option value=2>[1 - 3[</option>
+                                                                <option value=3>[3 - 6[</option>
+                                                                <option value=4>más de 6</option>
+                                                            </select>
+                                                        </div> 
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            
-                                            <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>Edad</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <select id="cmbEda" style="width: 130px;" data-rel="chosen">
-                                                            <option value=0>(SELECCIONE)</option>
-                                                            <option value=1>[20 - 30[</option>
-                                                            <option value=2>[30 - 40[</option>
-                                                            <option value=3>[desde 40]</option>
-                                                        </select>
-                                                    </div> 
+                                                <div id="divEdad">
+                                                    <label class="control-label" for="appendedInput"><b>Edad</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <select id="cmbEda" style="width: 130px;" data-rel="chosen">
+                                                                <option value=0>(SELECCIONE)</option>
+                                                                <option value=1>[20 - 30[</option>
+                                                                <option value=2>[30 - 40[</option>
+                                                                <option value=3>[desde 40]</option>
+                                                            </select>
+                                                        </div> 
+                                                    </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="control-group">
-                                                <label class="control-label" for="appendedInput"><b>Especialidad</b></label>
-                                                <div class="controls">
-                                                    <div class="input-append">
-                                                        <input id="txtEsp" maxlength="40" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 320px;" type="text" maxlength="100">
+                                                <div id="divEspecialidad">
+                                                    <label class="control-label" for="appendedInput"><b>Especialidad</b></label>
+                                                    <div class="controls">
+                                                        <div class="input-append">
+                                                            <input id="txtEsp" maxlength="40" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 320px;" type="text" maxlength="100">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
                                         </div>
                                         
                                         <!-- GIF LOAD-->

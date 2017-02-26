@@ -234,11 +234,15 @@ session_start();
                                         </div>
 
                                         <!-- GIF LOAD-->
-                                        <div id="espera" class="form-actions" style="display:none;">
+<!--                                        <div id="espera" class="form-actions">  style="display:none;" 
                                             <button type="button" class="close" data-dismiss="alert">×</button>
                                             <h4 class="alert-heading">&nbsp;</h4>
-                                        </div>
+                                        </div>-->
 
+<!--                                        <div id="espera" class="form-actions" >  style="display:none;" 
+                                            <h4 class="alert-heading">&nbsp; AAAAAAAAAAAAAAAAAAA</h4>
+                                        </div>-->
+                                        
                                         <!-- alerts -->
                                         <div id="regWarning" class="box-content alerts"></div>
 
@@ -268,7 +272,7 @@ session_start();
                             <tbody id="tbody"></tbody>
                          </table>  
                          <div id="regWarning2" style="display:none;" class="box-content alerts"></div>
-                         <div id="espera" class="form-actions" style="display:none;">
+                         <div id="espera" style="display:none;" class="form-actions"> <!--  -->
                             <h4 class="alert-heading">&nbsp;</h4>
                          </div>
                          <div id="idPag" class="pagination pagination-centered"></div>     

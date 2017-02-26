@@ -21,6 +21,7 @@ jQuery(document).ready(function() {
             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/regProDirCsuRegModel.php",
             type:  'post',
             datetype: 'xml',
+            async: true,
             success:  function (xml){
             
             //alert('regProDirCsuRegModel ' + xml);
@@ -139,6 +140,7 @@ jQuery(document).ready(function() {
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/regProDirCsuModel.php",
                 type:  'post',
                 datetype: 'xml',
+                async: true,
             beforeSend: function(){
                 $("#espera").show();
                 $("#botonera").hide();
@@ -283,6 +285,7 @@ jQuery(document).ready(function() {
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/regProDirCsuProvModel.php",
                 type:  'post',
                 datetype: 'xml',
+                async: true,
                 success:  function (xml){
 
                 //alert('regProDirCsuProvModel ' + xml);
@@ -395,6 +398,7 @@ jQuery(document).ready(function() {
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/regProDirCsuComModel.php",
                 type:  'post',
                 datetype: 'xml',
+                async: true,
                 success:  function (xml){
 
                 //alert('regProDirCsuComModel ' + xml);
@@ -529,17 +533,20 @@ jQuery(document).ready(function() {
                             break; 
                     case 8:
                             dirPub= $(this).text(); 
-                            break;         
-                        
+                            break;  
+                    case 9:
+                            dirLat= $(this).text(); 
+                            break;      
+                    case 10:
+                            dirLon= $(this).text(); 
+                            break;    
                 }
             });
 
         //Asignamos valores
             $('#txtIdDir').val(dirId);
             $('#txtVp').val(dirVp);   
-                        
-            //$('#cmbPublica').val(dirPub);            
-        
+
             $('#txtCal').val(dirCal);
             $('#txtNum').val(dirNum);
 
@@ -575,6 +582,12 @@ jQuery(document).ready(function() {
                     $('#cmbPublica').trigger('liszt:updated');
                 }
             });
+
+            //alert('dirLat ' + dirLat);
+            //alert('dirLon ' + dirLon);
+
+            $("#txtLatitud").val(dirLat);
+            $("#txtLongitud").val(dirLon);
 
             $(this).addClass('highlight').siblings().removeClass('highlight');
 
@@ -699,6 +712,7 @@ jQuery(document).ready(function() {
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/regProDirIngModModel.php",
                 type:  'post',
                 datetype: 'xml',
+                async: true,
             beforeSend: function(){
                 $("#espera").show();
                 $("#botonera").hide();
@@ -964,6 +978,9 @@ jQuery(document).ready(function() {
         $('#txtVp').val('');
         $('#txtCal').val('');
         $('#txtNum').val('');
+        
+        $('#txtLatitud').val('');
+        $('#txtLongitud').val('');
         
         $('#dirWarning1').html('');
         $('#dirWarning2').html('');
@@ -1465,7 +1482,9 @@ function asociarCoordenadas(idDir){
     var region = document.getElementById("cmbRegion").value;
     var calle = document.getElementById("txtCal").value;
     var numero = document.getElementById("txtNum").value;
-    var address = calle +' '+ numero +' ,'+ comuna +' ,'+ provincia+' ,'+region;
+    var address = calle +' '+ numero +' '+ comuna +' '+ provincia+' '+region;
+        
+    alert('address '+address);    
         
     var rsp=0;
     
@@ -1516,7 +1535,11 @@ function asociarCoordenadas(idDir){
 
                     case '100':
                         rsp=100;
-                        break;     
+                        break;  
+                        
+                    case '101': //IMPOSIBLE OBTENER COORDENADAS
+                        rsp=100;
+                        break;  
 
                     default:
                         rsp = xmlDoc.getElementsByTagName('DATOS')[0].childNodes[0].nodeValue;

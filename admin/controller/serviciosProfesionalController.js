@@ -88,6 +88,7 @@ jQuery(document).ready(function() {
                         $("#espera").hide();
 		
                         var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
                         msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
                         msg+='</div>';
 
@@ -102,8 +103,8 @@ jQuery(document).ready(function() {
                         var contador = xmlDoc.getElementsByTagName('CONTADOR')[0].childNodes[0].nodeValue;
                                                
                         $("#espera").hide();
-                        $('#tbody').html(datos);
-                        $('#cantSlider').val(contador);
+                        //$('#tbody').html(datos);
+                        //$('#cantSlider').val(contador);
                         break;
                 }
             }

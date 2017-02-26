@@ -59,6 +59,9 @@ include("../model/conection.php");
                     
                     $dirFechaIng=$r[13];
                                         
+                    $dirLatitud=$r[14];
+                    $dirLongitud=$r[15];
+                    
                     $sTr = '<tr style="cursor:pointer;">';
                     
                         $sTr.='<td>' . $dirId  . '</td>';
@@ -70,6 +73,8 @@ include("../model/conection.php");
                         $sTr.='<td>' . $dirNomVil . '</td>';
                         $sTr.='<td>' . $dirNumero . '</td>';
                         $sTr.='<td>' . $publica . '</td>';
+                        $sTr.='<td>' . $dirLatitud . '</td>';
+                        $sTr.='<td>' . $dirLongitud . '</td>';
                         
                         $sTr.='<td style="display: none;">' . $codRegion . '</td>';
                         $sTr.='<td style="display: none;">' . $codProvincia . '</td>';
