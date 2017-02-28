@@ -136,7 +136,7 @@ session_start();
             <style>
                 
                 .ajustarDesCor{
-                    width: 20%;
+                    width: 250px;
                     float: left;
                     white-space: pre; 
                     white-space: pre-wrap; 
@@ -148,7 +148,7 @@ session_start();
                     word-wrap: break-word; 
                 }
                 .ajustarDesLar{
-                    width: 20%;
+                    width: 400px;
                     float: left;
                     white-space: pre;
                     white-space: pre-wrap; 
@@ -166,6 +166,7 @@ session_start();
                     overflow-y: auto;    /* Trigger vertical scroll    */
                     overflow-x: hidden;  /* Hide the horizontal scroll */
                 }
+                
             </style>
             
 	<!-- end: CSS -->
@@ -225,7 +226,7 @@ session_start();
                                                         <span class="help-inline"></span>
                                                     </div>
                                                 </div>
-                                                <div id="divNomSer" style="margin-top: 5px;">
+                                                <div id="divNomSer" style="margin-top: 10px;">
                                                     <label id="lbltit1" class="control-label" for="appendedInput"><b>Nombre Servicio</b></label>
                                                     <div class="controls">
                                                         <div class="input-append">
@@ -233,7 +234,7 @@ session_start();
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="divClase" style="margin-top: 5px;">
+                                                <div id="divClase" style="margin-top: 10px;">
                                                     <label id="lbltit1" class="control-label" for="appendedInput"><b>Clase &Iacute;cono</b></label>
                                                     <div class="controls">
                                                         <div class="input-append">
@@ -242,7 +243,7 @@ session_start();
                                                         <span class="help-inline">https://fortawesome.github.io/Font-Awesome/icons/ (Ejemplo: fa fa-futbol-o)</span>
                                                     </div>
                                                 </div>
-                                                <div id="divGD" style="margin-top: 5px;">
+                                                <div id="divGD" style="margin-top: 10px;">
                                                     <label id="lblfli"  class="control-label" for="appendedInput"><b>ID google drive</b></label>
                                                     <div class="controls">
                                                         <div class="input-append">
@@ -251,14 +252,14 @@ session_start();
                                                         <span class="help-inline">Id imagen Google Drive asociada al servicio</span>
                                                     </div>
                                                 </div>
-                                                <div id="divDesCor" style="margin-top: 5px;">
+                                                <div id="divDesCor" style="margin-top: 10px;">
                                                     <label id="lbltxt" class="control-label" for="textarea2"><b>Descripci&oacute;n corta</b></label>
                                                     <div class="controls">
                                                         <textarea class="cleditor" id="txtDesCor" name="txtDesCor" rows="5"></textarea>
                                                         <span class="help-inline">Máximo 100 caracteres!</span>
                                                     </div>
                                                 </div>
-                                                <div id="divDesDet" style="margin-top: 5px;">
+                                                <div id="divDesDet" style="margin-top: 10px;">
                                                     <label id="lbltxt" class="control-label" for="textarea2"><b>Descripci&oacute;n detallada</b></label>
                                                     <div class="controls">
                                                         <textarea class="cleditor" id="txtDesDet" name="txtDesDet" rows="5"></textarea>
@@ -302,12 +303,12 @@ session_start();
                                 <table id="tblSlider" class="table table-striped table-bordered bootstrap-datatable">
                                     <thead>
                                         <tr>
-                                            <th style="width: 15%;">Id</th>
-                                            <th style="width: 15%;">Nombre</th>
-                                            <th style="width: 15%;">Clase</th>
-                                            <th style="width: 15%;">ID google</th>
-                                            <th style="width: 20%;">Desc. Corta</th>
-                                            <th style="width: 20%;">Desc. Detallada</th>
+                                            <th style="width: 30px;">Id</th>
+                                            <th style="width: 200px;">Nombre</th>
+                                            <th style="width: 80px;">Clase</th>
+                                            <th style="width: 250px;">ID google</th>
+                                            <th style="width: 250px;">Desc. Corta</th>
+                                            <th style="width: 400px;">Desc. Detallada</th>
                                         </tr>
                                     </thead>   
                                     <tbody id="tbody">

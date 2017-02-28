@@ -36,10 +36,10 @@ include("../model/conection.php");
                     $spCan=$r[7];
 
                     $sTr = '<tr style="cursor:pointer;">';
-                       $sTr.='<td>' . $spId   . '</td>';
-                       $sTr.='<td>' . $spNom . '</td>';
-                       $sTr.='<td>' . $spCls . '</td>';
-                       $sTr.='<td>' . $spFli  . '</td>';
+                       $sTr.='<td style="width: 30px;">' . $spId   . '</td>';
+                       $sTr.='<td style="width: 200px;">' . $spNom . '</td>';
+                       $sTr.='<td style="width: 80px;">' . $spCls . '</td>';
+                       $sTr.='<td style="width: 250px;">' . $spFli  . '</td>';
                        $sTr.='<td class="ajustarDesCor">' . $spDesCor  . '</td>';
                        $sTr.='<td class="ajustarDesLar">' . $spDesLar  . '</td>';
                     $sTr.='</tr>';

@@ -103,9 +103,10 @@ jQuery(document).ready(function() {
                         var contador = xmlDoc.getElementsByTagName('CONTADOR')[0].childNodes[0].nodeValue;
                                                
                         $("#espera").hide();
-                        //$('#tbody').html(datos);
-                        //$('#cantSlider').val(contador);
+                        $('#tbody').html(datos);
+                        $('#cantSlider').val(contador);
                         break;
+                        
                 }
             }
         });
@@ -278,6 +279,7 @@ jQuery(document).ready(function() {
                         consultaServicio();
                         
                         var msg='<div class="alert alert-success">';
+                        msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
                         msg+='<b><span style="color: #000;">Operación exitosa!.</span></b>';
                         msg+='</div>';
 
