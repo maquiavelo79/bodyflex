@@ -231,7 +231,7 @@ session_start();
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <b><span style="color: #000;">Registro exitoso!.</span></b>
                         </div>
-                    </div>   
+                    </div>
                     
                     <div id="direcciones" class="box-content" style="display: none;">
                         <table id="tblCuentas" class="table table-bordered table-striped table-condensed">
@@ -246,6 +246,7 @@ session_start();
                             <tbody id="tbody"></tbody>
                          </table>  
                          <div id="regWarning2" style="display:block;" class="box-content alerts"></div>
+                         
                          <div id="espera" class="form-actions" style="display:none;">
                             <h4 class="alert-heading">&nbsp;</h4>
                          </div>

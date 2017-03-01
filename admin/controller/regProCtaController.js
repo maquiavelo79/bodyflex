@@ -72,6 +72,7 @@ jQuery(document).ready(function() {
                         msg+='</div>';
 
                         $("#bcoWarning1").html(msg);
+                        //$("#bcoWarning2").html(msg);
                         break;     
                     
                     default:
@@ -170,9 +171,12 @@ jQuery(document).ready(function() {
                         msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
                         msg+='</div>';
 
-                        $('#direccion').hide();
-                        $('#bcoWarning1').hide();
-                        $('#bcoWarning1').hide();
+                        //$('#direccion').hide();
+                        //$('#bcoWarning1').hide();
+                        //$('#bcoWarning1').hide();
+                        
+                        $('#bcoWarning1').html(msg);
+                        $('#bcoWarning1').show();
                         
                         $('#bcoWarning2').html(msg);
                         $('#bcoWarning2').show();
@@ -201,6 +205,8 @@ jQuery(document).ready(function() {
                         $('#direccion').show();
                         $('#bcoWarning1').html(msg);
                         $('#bcoWarning1').show();
+                        $('#bcoWarning2').html(msg);
+                        $('#bcoWarning2').show();
                         $('#botonera').show();
 
                         break;         

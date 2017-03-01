@@ -239,7 +239,7 @@ session_start();
                                                         <input id="txtIdDir" type="text" disabled>
                                                     </div>
                                                 </div>    
-                                                <div id="divRegion" style="margin-top: 5px;">
+                                                <div id="divRegion" style="margin-top: 10px;">
                                                     <label class="control-label" for="selectError"><b>Regi&oacute;n</b></label>
                                                     <div class="controls">
                                                         <select id="cmbRegion" style="width: 300px;" data-rel="chosen"></select>
@@ -279,7 +279,7 @@ session_start();
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="divCalle" style="margin-top: 5px;">
+                                                <div id="divCalle" style="margin-top: 10px;">
                                                     <label class="control-label" for="appendedInput"><b>Calle / N°</b></label>
                                                     <div class="controls">
                                                         <div class="input-append">
@@ -290,7 +290,7 @@ session_start();
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="divCoordenadas" style="margin-top: 5px;">
+                                                <div id="divCoordenadas" style="margin-top: 10px;">
                                                     <label class="control-label" for="appendedInput"><b>Latitud/Longitud</b></label>
                                                     <div class="controls">
                                                         <div class="input-append">

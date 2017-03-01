@@ -170,7 +170,7 @@ session_start();
                                                         <input id="txtId" type="text" disabled style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 12px; text-align: center; color: black; width: 150px;">
                                                     </div>
                                                 </div>
-                                                <div id="divEstudios" style="margin-top: 5px;">
+                                                <div id="divEstudios" style="margin-top: 10px;">
                                                     <label class="control-label" for="appendedInput"><b>Estudios</b></label>
                                                     <div class="controls">
                                                         <div class="input-append">
