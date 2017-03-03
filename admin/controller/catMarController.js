@@ -155,7 +155,7 @@ jQuery(document).ready(function() {
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/catMarAgregaModel.php",
                 type:  'post',
                 datetype: 'xml',
-                async: false,
+                async: true,
                 beforeSend: function(){
                     $("#espera").show();
             },
@@ -312,7 +312,7 @@ $(document).on("click", "#btnEliCol", function(event){
         url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/catMarEliminaModel.php",
         type:  'post',
         datetype: 'xml',
-        async: false,
+        async: true,
         beforeSend: function(){
             $("#modalBody").html(strLoad);
         },
@@ -479,7 +479,7 @@ var URLprotocol = window.location.protocol;
             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/catMarCsuModel.php",
             type:  'post',
             datetype: 'xml',
-            async: false,
+            async: true,
         beforeSend: function(){
             $("#espera").show();
         },

@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     21-02-2017 0:33:00                           */
+/* Created on:     02-03-2017 13:10:29                          */
 /*==============================================================*/
 
 
@@ -185,7 +185,7 @@ drop table if exists USUARIO_DIRECCION;
 /*==============================================================*/
 create table BANCOS
 (
-   BCOID                bigint not null auto_increment,
+   BCOID                bigint not null,
    BCONOM               varchar(50),
    primary key (BCOID)
 );
@@ -195,7 +195,7 @@ create table BANCOS
 /*==============================================================*/
 create table CARRO
 (
-   CAID                 bigint not null auto_increment,
+   CAID                 bigint not null,
    CAFECR               datetime comment 'fecha creación',
    CAFECO               datetime comment 'fecha de compra',
    CARUTPRO             varchar(20) comment 'rut del profesional asociado (si aplica)',
@@ -213,7 +213,7 @@ create table CARRO
 /*==============================================================*/
 create table CARRO_DETALLE
 (
-   CAD_ID               bigint not null auto_increment,
+   CAD_ID               bigint not null,
    CAID                 bigint,
    CAD_COD              varchar(20) comment 'código del producto',
    CAD_CAN              bigint comment 'cantidad de productos',
@@ -228,7 +228,7 @@ create table CARRO_DETALLE
 /*==============================================================*/
 create table CATALOGO_RANGO_PRECIO
 (
-   RAN_ID               bigint not null auto_increment,
+   RAN_ID               bigint not null,
    RAN_INF              varchar(10),
    RAN_SUP              varchar(10),
    primary key (RAN_ID)
@@ -242,7 +242,7 @@ Rangos de venta tanto pa';
 /*==============================================================*/
 create table CATALOGO_SLIDER1
 (
-   CS1ID                bigint not null auto_increment,
+   CS1ID                bigint not null,
    CS1TI                varchar(30) comment 'titulo',
    CS1DE                varchar(150),
    CS1GD                varchar(50),
@@ -258,7 +258,7 @@ alter table CATALOGO_SLIDER1 comment 'CATALOGO DE COLECCIÓN
 /*==============================================================*/
 create table CATALOGO_SLIDER2
 (
-   CS2ID                int not null auto_increment,
+   CS2ID                int not null,
    CS2TI                varchar(30),
    CS2DE                varchar(150),
    CS2GD1               varchar(50),
@@ -275,7 +275,7 @@ create table CATALOGO_SLIDER2
 /*==============================================================*/
 create table CATALOGO_SLIDER3
 (
-   CS3ID                int not null auto_increment,
+   CS3ID                int not null,
    CS3TI                varchar(30),
    CS3GD                varchar(50),
    CS3URL               varchar(200),
@@ -287,7 +287,7 @@ create table CATALOGO_SLIDER3
 /*==============================================================*/
 create table CATALOGO_SLIDER4
 (
-   CS4ID                int not null auto_increment,
+   CS4ID                int not null,
    CS4GD1               varchar(50),
    CS4GD2               varchar(50),
    CS4GD3               varchar(50),
@@ -310,7 +310,7 @@ create table CATALOGO_SLIDER4
 /*==============================================================*/
 create table CATALOGO_SLIDER5
 (
-   CS5ID                int not null auto_increment,
+   CS5ID                int not null,
    CS5TI                varchar(30),
    CS5B1                varchar(20),
    CS5DE                varchar(150),
@@ -324,7 +324,7 @@ create table CATALOGO_SLIDER5
 /*==============================================================*/
 create table CATALOGO_SLIDER6
 (
-   CS6ID                int not null auto_increment,
+   CS6ID                int not null,
    CS6GD1               varchar(50),
    CS6GD2               varchar(50),
    CS6GD3               varchar(50),
@@ -348,7 +348,7 @@ create table CATALOGO_SLIDER6
 /*==============================================================*/
 create table CATALOGO_SLIDER7
 (
-   CS7ID                int not null auto_increment,
+   CS7ID                int not null,
    CS7TI                varchar(30),
    CS7B1                varchar(20),
    CS7DE                varchar(150),
@@ -362,7 +362,7 @@ create table CATALOGO_SLIDER7
 /*==============================================================*/
 create table COLECCION
 (
-   COID                 bigint not null auto_increment,
+   COID                 bigint not null,
    CONO                 varchar(50),
    CODE                 varchar(200) comment 'DESCRIPCIÓN CORTA',
    COGD                 varchar(50) comment 'IMAGEN PRINCIPAL DE LA COLECCIÓN, REPRESENTA A LA COLECCIÓN EN SU CONJUNTO, 850X300',
@@ -378,7 +378,7 @@ create table COLECCION
 /*==============================================================*/
 create table COLECCION_PRODUCTO
 (
-   CPRID                bigint not null auto_increment,
+   CPRID                bigint not null,
    COID                 bigint,
    PROID                bigint,
    primary key (CPRID)
@@ -416,7 +416,7 @@ create table COMPLEMENTADOR
 /*==============================================================*/
 create table COMPLEMENTADOR_DIRECCION
 (
-   DIRCOMID             bigint not null auto_increment,
+   DIRCOMID             bigint not null,
    DCOD                 bigint not null,
    COMPRUT              varchar(10),
    primary key (DIRCOMID)
@@ -427,7 +427,7 @@ create table COMPLEMENTADOR_DIRECCION
 /*==============================================================*/
 create table COMUNA
 (
-   CCOD                 int not null auto_increment,
+   CCOD                 int not null,
    PROVCOD              bigint not null,
    CNOM                 varchar(100),
    primary key (CCOD)
@@ -438,7 +438,7 @@ create table COMUNA
 /*==============================================================*/
 create table COORDENADAS
 (
-   COOID                bigint not null auto_increment,
+   COOID                bigint not null,
    DCOD                 bigint not null,
    COOLAT               varchar(50),
    COOLON               varchar(50),
@@ -450,7 +450,7 @@ create table COORDENADAS
 /*==============================================================*/
 create table CPANEL
 (
-   CPAID                bigint not null auto_increment,
+   CPAID                bigint not null,
    CPARU                varchar(500) comment 'RUTA para acceder a CPANEL',
    CPARO                varchar(50) comment 'ROL que accede al CPANEL',
    primary key (CPAID)
@@ -464,7 +464,7 @@ alter table CPANEL comment 'ESTABLECE URL POR TIPO DE USUARIO PARA ACCESO DEL CP
 /*==============================================================*/
 create table DIRECCION
 (
-   DCOD                 bigint not null auto_increment,
+   DCOD                 bigint not null,
    RCOD                 int,
    CCOD                 int not null,
    PROVCOD              bigint not null,
@@ -485,7 +485,7 @@ create table DIRECCION
 /*==============================================================*/
 create table ESTUDIOS
 (
-   ESID                 bigint not null auto_increment,
+   ESID                 bigint not null,
    PRUT                 varchar(10) not null,
    ESNOM                varchar(100) comment 'Nombre del titulo profesional, tecnico o certificación',
    ESTIPO               varchar(50) comment 'Tecnico, Profesional, Grado Académico, Certificación',
@@ -509,7 +509,7 @@ alter table ESTUDIOS comment 'Tecnico, Profesional, Grado académico o certificac
 /*==============================================================*/
 create table EXPERIENCIA
 (
-   EXID                 bigint not null auto_increment,
+   EXID                 bigint not null,
    PRUT                 varchar(10) not null,
    EXCARGO              varchar(100) comment 'cargo desempeñado',
    EXINS                varchar(100) comment 'instiutución / empresa',
@@ -530,7 +530,7 @@ alter table EXPERIENCIA comment 'experiencia ingresada por el profesional';
 /*==============================================================*/
 create table INTERNO
 (
-   RRUT                 int not null,
+   RRUT                 varchar(10) not null,
    CPAID                bigint not null,
    RMAIL                varchar(50),
    RNOM1                varchar(50),
@@ -555,8 +555,8 @@ alter table INTERNO comment 'ROL INTERNO A LA ORGANIZACIÓN COMO EL ADMINISTRADOR
 /*==============================================================*/
 create table INTERNO_DIRECCION
 (
-   DIRINTID             bigint not null auto_increment,
-   RRUT                 INT,
+   DIRINTID             bigint not null,
+   RRUT                 varchar(10),
    DCOD                 bigint not null,
    primary key (DIRINTID)
 );
@@ -566,7 +566,7 @@ create table INTERNO_DIRECCION
 /*==============================================================*/
 create table LOGIN_COM
 (
-   COMLOGID             bigint not null auto_increment,
+   COMLOGID             bigint not null,
    COMPRUT              varchar(10) not null,
    COMLOGFE             datetime,
    primary key (COMLOGID)
@@ -577,8 +577,8 @@ create table LOGIN_COM
 /*==============================================================*/
 create table LOGIN_INT
 (
-   INLOGID              bigint not null auto_increment,
-   RRUT                 INT not null,
+   INLOGID              bigint not null,
+   RRUT                 varchar(10) not null,
    INLOGFE              datetime comment 'fecha y hora en la que se logueo',
    primary key (INLOGID)
 );
@@ -590,7 +590,7 @@ alter table LOGIN_INT comment 'REGISTRO DE ACCESOS PARA CUALQUIER USUARIO';
 /*==============================================================*/
 create table LOGIN_PRO
 (
-   PROLOGID             bigint not null auto_increment,
+   PROLOGID             bigint not null,
    PRUT                 varchar(10) not null,
    PROLOGFE             datetime,
    primary key (PROLOGID)
@@ -601,8 +601,8 @@ create table LOGIN_PRO
 /*==============================================================*/
 create table LOGIN_USUARIO
 (
-   LUID                 bigint not null auto_increment,
-   UMAIL                INT,
+   LUID                 bigint not null,
+   UMAIL                varchar(50),
    LUFE                 datetime,
    primary key (LUID)
 );
@@ -612,7 +612,7 @@ create table LOGIN_USUARIO
 /*==============================================================*/
 create table MARCAS
 (
-   MARID                bigint not null auto_increment,
+   MARID                bigint not null,
    MARNOM               varchar(50),
    MARGD                varchar(50),
    primary key (MARID)
@@ -623,7 +623,7 @@ create table MARCAS
 /*==============================================================*/
 create table MEDIDA
 (
-   MEDID                bigint not null auto_increment,
+   MEDID                bigint not null,
    MEDTI                varchar(10) comment 'representa el tipo de medida, si se trata de letras o numeros
             medTi2 = [ LETRS | NUMERO ]',
    MEDVA                varchar(10) comment 'medVa = [ XS | S | M | XL| L | 38 | 40 | ETC ].',
@@ -635,7 +635,7 @@ create table MEDIDA
 /*==============================================================*/
 create table OTROS
 (
-   OTID                 bigint not null auto_increment,
+   OTID                 bigint not null,
    PRUT                 varchar(10),
    OTNOM                varchar(100) comment 'Nombre Congreso, Torneo, etc.',
    OTTIPO               varchar(50) comment '1=CURSO
@@ -655,7 +655,7 @@ alter table OTROS comment 'seminario, torneo, congreso, etc.';
 /*==============================================================*/
 create table PARAMETROS
 (
-   PARID                bigint not null auto_increment,
+   PARID                bigint not null,
    PARNOM               varchar(50),
    PARVAL               varchar(100),
    primary key (PARID)
@@ -668,7 +668,7 @@ alter table PARAMETROS comment '1 -> DRIVE -> https://drive.google.com/uc?export
 /*==============================================================*/
 create table PORTAFOLIO
 (
-   POID                 int not null auto_increment,
+   POID                 int not null,
    PRUT                 varchar(10) not null,
    PONOMCAP             varchar(50) comment 'Nombre de la imagen que se visualizará en el sitio del profesional, la cadena debe ser corta y presisa!',
    PONOMIMG             varchar(100) comment 'nombre de la imagen que se subirá',
@@ -683,7 +683,7 @@ alter table PORTAFOLIO comment 'imagenes ingresadas por el porfesional al portaf
 /*==============================================================*/
 create table POSTULACION
 (
-   POSID                bigint not null auto_increment,
+   POSID                bigint not null,
    POSNOM               varchar(100),
    POSAPE               varchar(100),
    POSEMA               varchar(100) comment 'email del postulante',
@@ -708,7 +708,7 @@ create table POSTULACION
 /*==============================================================*/
 create table POSTULACION_RESPALDO
 (
-   PRESID               bigint not null auto_increment,
+   PRESID               bigint not null,
    POSID                bigint not null,
    PRESIDDRI            varchar(100),
    primary key (PRESID)
@@ -719,7 +719,7 @@ create table POSTULACION_RESPALDO
 /*==============================================================*/
 create table POSTULACION_TRANSICION
 (
-   PTID                 bigint not null auto_increment,
+   PTID                 bigint not null,
    POSID                bigint not null,
    PTESTORI             varchar(50),
    PTESTDES             varchar(50),
@@ -733,7 +733,7 @@ create table POSTULACION_TRANSICION
 /*==============================================================*/
 create table PRODUCTO
 (
-   PROID                bigint not null auto_increment,
+   PROID                bigint not null,
    PCP2_ID              bigint,
    PETID                bigint,
    MARID                bigint,
@@ -800,18 +800,22 @@ create table PRODUCTO
 /*==============================================================*/
 create table PRODUCTO_CATEGORIA1
 (
-   PCP1_ID              bigint not null auto_increment,
+   PCP1_ID              bigint not null,
    PCP1_NOM             varchar(50),
    PCP1_GD              varchar(50) comment 'IMAGEN REPRESENTATIVA DE LA CATEGORÍA 850x300',
    primary key (PCP1_ID)
 );
+
+alter table PRODUCTO_CATEGORIA1 comment 'Corresponde sexo al que va dirigido el producto.
+
+                                        -&#';
 
 /*==============================================================*/
 /* Table: PRODUCTO_CATEGORIA2                                   */
 /*==============================================================*/
 create table PRODUCTO_CATEGORIA2
 (
-   PCP2_ID              bigint not null auto_increment,
+   PCP2_ID              bigint not null,
    PCP1_ID              bigint,
    PCP2_NOM             varchar(50),
    PCP2_GD              varchar(50) comment 'IMAGEN REPRESENTATIVA DE LA CATEGORÍA',
@@ -819,12 +823,17 @@ create table PRODUCTO_CATEGORIA2
    primary key (PCP2_ID)
 );
 
+alter table PRODUCTO_CATEGORIA2 comment 'Corresponde al tipo de prenda.
+
+1. Polera
+';
+
 /*==============================================================*/
 /* Table: PRODUCTO_CATEGORIA3                                   */
 /*==============================================================*/
 create table PRODUCTO_CATEGORIA3
 (
-   PCP3_ID              bigint not null auto_increment,
+   PCP3_ID              bigint not null,
    PCP2_ID              bigint,
    PCP3_NOM             varchar(50),
    PCP3_GD              varchar(50) comment 'IMAGEN REPRESENTATIVA DE LA CATEGORÍA',
@@ -832,12 +841,14 @@ create table PRODUCTO_CATEGORIA3
    primary key (PCP3_ID)
 );
 
+alter table PRODUCTO_CATEGORIA3 comment 'Corresponde a la disciplina o deporte al que va dirigido el ';
+
 /*==============================================================*/
 /* Table: PRODUCTO_COLOR                                        */
 /*==============================================================*/
 create table PRODUCTO_COLOR
 (
-   PCOID                bigint not null auto_increment,
+   PCOID                bigint not null,
    PROID                bigint,
    PCON                 varchar(20) comment 'nombre del color',
    PCOB                 varchar(20) comment 'background-color CSS',
@@ -851,7 +862,7 @@ alter table PRODUCTO_COLOR comment 'COLORES DE LOS PRODUCTOS';
 /*==============================================================*/
 create table PRODUCTO_COMENTARIO_PROFESIONAL
 (
-   PCOPID               bigint not null auto_increment,
+   PCOPID               bigint not null,
    PROID                bigint,
    PRUT                 varchar(10),
    PCOPTI               varchar(100) comment 'titulo del comentario',
@@ -866,10 +877,10 @@ create table PRODUCTO_COMENTARIO_PROFESIONAL
 /*==============================================================*/
 create table PRODUCTO_CONTENIDO
 (
-   PCO_ID               bigint not null auto_increment,
+   PCO_ID               bigint not null,
    PROID                bigint not null,
    PCO_TIP              varchar(10) comment 'pcoTip = [ IMAGEN | VIDEO ]',
-   PCO_DRI              varchar(100) comment 'ID google drive o URL',
+   PCO_DRI              varchar(500) comment 'ID google drive o URL',
    PCO_PRI              int comment 'indicador imagen principal, la primera imagen ingresada sera la principal del producto.
             
             pco_pri = [ 0 | 1 ]
@@ -886,7 +897,7 @@ alter table PRODUCTO_CONTENIDO comment 'CONTENIDO COMO IMAGENES Y VIDEOS';
 /*==============================================================*/
 create table PRODUCTO_DENUNCIA
 (
-   PPD_ID               bigint not null auto_increment,
+   PPD_ID               bigint not null,
    PROID                bigint not null,
    PPD_FEC              datetime,
    PPD_SES              varchar(50) comment 'SAESION USUARIO',
@@ -901,7 +912,7 @@ alter table PRODUCTO_DENUNCIA comment 'PRODUCTO DENUNCIADO POR CLIENTE EXTERNO, 
 /*==============================================================*/
 create table PRODUCTO_ETIQUETA
 (
-   PETID                bigint not null auto_increment,
+   PETID                bigint not null,
    PETNOM               varchar(50) comment 'Nombre de la etiqueta',
    PETCON               varchar(100) comment 'porcentaje de descuento para el profesional',
    primary key (PETID)
@@ -917,7 +928,7 @@ alter table PRODUCTO_ETIQUETA comment '1. NUEVO
 /*==============================================================*/
 create table PRODUCTO_MEDIDA
 (
-   PMID                 bigint not null auto_increment,
+   PMID                 bigint not null,
    MEDID                bigint not null,
    PROID                bigint,
    primary key (PMID)
@@ -932,7 +943,7 @@ X-Small 	Small 	Medium 	La';
 /*==============================================================*/
 create table PRODUCTO_PROFESIONAL
 (
-   PPROID               bigint not null auto_increment,
+   PPROID               bigint not null,
    PROID                bigint not null,
    PRUT                 varchar(10) not null,
    primary key (PPROID)
@@ -943,7 +954,7 @@ create table PRODUCTO_PROFESIONAL
 /*==============================================================*/
 create table PRODUCTO_PUNTUACION
 (
-   PPP_ID               bigint not null auto_increment,
+   PPP_ID               bigint not null,
    PROID                bigint not null,
    PPP_PT               int comment 'puntos votación.
             ppp_pt = [ 1 | 2 | 3 | 4 | 5 ]',
@@ -958,7 +969,7 @@ alter table PRODUCTO_PUNTUACION comment 'Esta puntuación se realiza sólo despues
 /*==============================================================*/
 create table PRODUCTO_VISITAS
 (
-   PPV_ID               bigint not null auto_increment,
+   PPV_ID               bigint not null,
    PROID                bigint not null,
    PPV_FEC              datetime,
    PPV_SES              varchar(30) comment 'sesion pagina',
@@ -973,7 +984,7 @@ alter table PRODUCTO_VISITAS comment 'VISITAS DE LOS PRODUCTOS';
 /*==============================================================*/
 create table PRODUCTO_VOTACION
 (
-   PVO_ID               bigint not null auto_increment,
+   PVO_ID               bigint not null,
    PROID                bigint not null,
    PVO_LI               int,
    PVO_UL               int,
@@ -990,7 +1001,7 @@ alter table PRODUCTO_VOTACION comment 'Votación del tipo me gusta o no me gusta,
 /*==============================================================*/
 create table PRODUCTO_WISHLIST_PROFESIONAL
 (
-   PWPID                bigint not null auto_increment,
+   PWPID                bigint not null,
    PROID                bigint not null,
    PRUT                 varchar(10) not null,
    PWPFE                datetime,
@@ -1053,7 +1064,7 @@ create table PROFESIONAL
 /*==============================================================*/
 create table PROFESIONAL_CONTACTO
 (
-   PCTID                bigint not null auto_increment,
+   PCTID                bigint not null,
    PRUT                 varchar(10) not null,
    PCTFE                datetime,
    PCTUR                varchar(10) comment 'RUT usuario que contacta al profesional (SOLO CONTACTAN USUARIOS REGISTRADOS)',
@@ -1067,7 +1078,7 @@ alter table PROFESIONAL_CONTACTO comment 'contactos recibidos por el profesonal 
 /*==============================================================*/
 create table PROFESIONAL_CUENTAS
 (
-   PROCTAID             bigint not null auto_increment,
+   PROCTAID             bigint not null,
    PRUT                 varchar(10) not null,
    BCOID                bigint not null,
    PROCTANUM            varchar(50),
@@ -1082,7 +1093,7 @@ alter table PROFESIONAL_CUENTAS comment 'http://www.sbif.cl/sbifweb/servlet/Cono
 /*==============================================================*/
 create table PROFESIONAL_DENUNCIA
 (
-   PDEID                bigint not null auto_increment,
+   PDEID                bigint not null,
    PRUT                 varchar(10),
    PDEFE                datetime comment 'fecha de denuncia perfil profesional',
    PDESE                varchar(50) comment 'sesion de quien denuncia',
@@ -1096,7 +1107,7 @@ alter table PROFESIONAL_DENUNCIA comment 'denuncia del perfil web del profesiona
 /*==============================================================*/
 create table PROFESIONAL_DIRECCION
 (
-   DIRPROID             int not null auto_increment,
+   DIRPROID             int not null,
    DCOD                 bigint not null,
    PRUT                 varchar(10),
    primary key (DIRPROID)
@@ -1107,7 +1118,7 @@ create table PROFESIONAL_DIRECCION
 /*==============================================================*/
 create table PROFESIONAL_MENSAJE
 (
-   MID                  bigint not null auto_increment,
+   MID                  bigint not null,
    MRORI                varchar(10) comment 'rut origen, corresponde al rut de quien contacta a un profesional',
    MRDES                varchar(10) comment 'rut destino, corresponde al profesional que es contactado',
    MFEC                 datetime comment 'fecha en que se origina el mensaje',
@@ -1135,7 +1146,7 @@ create table PROFESIONAL_MENSAJE
 /*==============================================================*/
 create table PROFESIONAL_PERFIL
 (
-   PERID                bigint not null auto_increment,
+   PERID                bigint not null,
    PRUT                 varchar(10) not null,
    PEREST1              int comment 'Tecnico',
    PEREST2              int comment 'Profesional
@@ -1187,7 +1198,7 @@ alter table PROFESIONAL_PERFIL comment 'Resultado de perfilación por parte del a
 /*==============================================================*/
 create table PROFESIONAL_PUBLICACION_PERFIL
 (
-   PPW_ID               bigint not null auto_increment,
+   PPW_ID               bigint not null,
    PRUT                 varchar(10),
    PPW_DIR              int comment 'direcciones
             ppw_dir = [ 0 | 1 ]
@@ -1265,7 +1276,7 @@ alter table PROFESIONAL_PUBLICACION_PERFIL comment '
 /*==============================================================*/
 create table PROFESIONAL_REDES_SOCIAL
 (
-   REDID                bigint not null auto_increment comment 'identificador',
+   REDID                bigint not null comment 'identificador',
    PRUT                 varchar(10) not null,
    REDNOM               varchar(100),
    REDDIR               varchar(1000) comment 'dirección en la red social',
@@ -1279,7 +1290,7 @@ alter table PROFESIONAL_REDES_SOCIAL comment 'REDES SOCIALES';
 /*==============================================================*/
 create table PROFESIONAL_SEGUIDOR
 (
-   SEGID                bigint not null auto_increment,
+   SEGID                bigint not null,
    PRUT                 varchar(10) not null,
    SEGFEC               datetime,
    SEGEM                varchar(100) comment 'email del seguidor (SOLO PARA USUARIOS REGISTRADOS)',
@@ -1293,7 +1304,7 @@ alter table PROFESIONAL_SEGUIDOR comment 'seguidores del profesional';
 /*==============================================================*/
 create table PROFESIONAL_SERVICIO
 (
-   PSID                 bigint not null auto_increment,
+   PSID                 bigint not null,
    PRUT                 varchar(10) not null,
    SEID                 int not null,
    primary key (PSID)
@@ -1304,7 +1315,7 @@ create table PROFESIONAL_SERVICIO
 /*==============================================================*/
 create table PROFESIONAL_VISITA_CURRICULUM
 (
-   PVCID                bigint not null auto_increment,
+   PVCID                bigint not null,
    PRUT                 varchar(10) not null,
    PVCFE                datetime,
    primary key (PVCID)
@@ -1317,7 +1328,7 @@ alter table PROFESIONAL_VISITA_CURRICULUM comment 'visitas al currículum (especi
 /*==============================================================*/
 create table PROFESIONAL_VISITA_PERFIL
 (
-   VPWID                bigint not null auto_increment,
+   VPWID                bigint not null,
    PRUT                 varchar(10) not null,
    VPWFE                datetime,
    primary key (VPWID)
@@ -1330,7 +1341,7 @@ alter table PROFESIONAL_VISITA_PERFIL comment 'registra las vsitas realizadas al
 /*==============================================================*/
 create table PROFESIONAL_VOTACION
 (
-   PVOID                bigint not null auto_increment,
+   PVOID                bigint not null,
    PRUT                 varchar(10) not null,
    PVOLI                int,
    PVOUN                int,
@@ -1344,7 +1355,7 @@ create table PROFESIONAL_VOTACION
 /*==============================================================*/
 create table PROVINCIA
 (
-   PROVCOD              bigint not null auto_increment,
+   PROVCOD              bigint not null,
    RCOD                 int not null,
    PROVNOM              varchar(100),
    primary key (PROVCOD)
@@ -1355,7 +1366,7 @@ create table PROVINCIA
 /*==============================================================*/
 create table PUBLICACION
 (
-   PUID                 bigint not null auto_increment,
+   PUID                 bigint not null,
    PUEST                varchar(50),
    PUTITULO             varchar(100),
    PUPUBLICACION        varchar(3000) comment 'contenido de la publicación',
@@ -1384,7 +1395,7 @@ create table PUBLICACION
 /*==============================================================*/
 create table PUBLICACION_BUSQUEDA
 (
-   BSQID                bigint not null auto_increment,
+   BSQID                bigint not null,
    BSQFE                datetime,
    BSQTI                varchar(20) comment 'tipo de dato: categoria, etiqueta, etc.',
    BSQDA                varchar(100) comment 'dato buscado segun tipo',
@@ -1398,7 +1409,7 @@ alter table PUBLICACION_BUSQUEDA comment 'representa el texto o concepto de búsq
 /*==============================================================*/
 create table PUBLICACION_CATEGORIA_ETIQUETA
 (
-   CATETINOM            int not null auto_increment,
+   CATETINOM            varchar(50) not null,
    CATRUT               varchar(10) comment 'rut del profesional que crea categoria
             ',
    primary key (CATETINOM)
@@ -1409,7 +1420,7 @@ create table PUBLICACION_CATEGORIA_ETIQUETA
 /*==============================================================*/
 create table PUBLICACION_COMENTARIO
 (
-   CPID                 bigint not null auto_increment comment 'identificador del comentario',
+   CPID                 bigint not null comment 'identificador del comentario',
    PUID                 bigint not null,
    CPFEC                datetime comment 'fecha y hora del comentario',
    CPDET                varchar(300) comment 'Mensaje del comentario',
@@ -1425,7 +1436,7 @@ create table PUBLICACION_COMENTARIO
 /*==============================================================*/
 create table PUBLICACION_COMPLEMENTADOR
 (
-   COPID                bigint not null auto_increment,
+   COPID                bigint not null,
    COMPRUT              varchar(10),
    PUID                 bigint,
    primary key (COPID)
@@ -1436,7 +1447,7 @@ create table PUBLICACION_COMPLEMENTADOR
 /*==============================================================*/
 create table PUBLICACION_CONTENIDO
 (
-   IDCONT               bigint not null auto_increment,
+   IDCONT               bigint not null,
    PUID                 bigint,
    URLCONT              varchar(300),
    PRICONT              int comment 'Imagen principal?
@@ -1453,7 +1464,7 @@ alter table PUBLICACION_CONTENIDO comment 'Alamacena contenido como URL de image
 /*==============================================================*/
 create table PUBLICACION_DENUNCIA
 (
-   DEID                 bigint not null auto_increment comment 'identificador de denuncia',
+   DEID                 bigint not null comment 'identificador de denuncia',
    PUID                 bigint not null,
    DEFE                 datetime comment 'fecha denuncia',
    DESE                 varchar(100) comment 'identificador de la sesion',
@@ -1465,7 +1476,7 @@ create table PUBLICACION_DENUNCIA
 /*==============================================================*/
 create table PUBLICACION_ETIQUETA
 (
-   PEID                 bigint not null auto_increment,
+   PEID                 bigint not null,
    PUID                 bigint not null,
    ETNOM                varchar(100) not null,
    primary key (PEID)
@@ -1476,8 +1487,8 @@ create table PUBLICACION_ETIQUETA
 /*==============================================================*/
 create table PUBLICACION_INTERNO
 (
-   IPID                 bigint not null auto_increment,
-   RRUT                 INT,
+   IPID                 bigint not null,
+   RRUT                 varchar(10),
    PUID                 bigint,
    primary key (IPID)
 );
@@ -1488,7 +1499,7 @@ create table PUBLICACION_INTERNO
 create table PUBLICACION_LIST_ETIQUETAS
 (
    ETNOM                varchar(100) not null,
-   CATETINOM            INT not null,
+   CATETINOM            varchar(50) not null,
    ETRUT                varchar(10) comment 'rut del profesional que crea la etiqueta',
    primary key (ETNOM)
 );
@@ -1499,7 +1510,7 @@ create table PUBLICACION_LIST_ETIQUETAS
 create table PUBLICACION_LIST_REFERENCIA
 (
    RETIPO               varchar(30) comment 'reTipo = [ WEB | LIBRO | PAPER | OTRO]',
-   REID                 bigint not null auto_increment,
+   REID                 bigint not null,
    primary key (REID)
 );
 
@@ -1508,7 +1519,7 @@ create table PUBLICACION_LIST_REFERENCIA
 /*==============================================================*/
 create table PUBLICACION_PROFESIONAL
 (
-   PPID                 bigint not null auto_increment,
+   PPID                 bigint not null,
    PUID                 bigint,
    PRUT                 varchar(10),
    primary key (PPID)
@@ -1519,7 +1530,7 @@ create table PUBLICACION_PROFESIONAL
 /*==============================================================*/
 create table PUBLICACION_REFERENCIA
 (
-   PRID                 bigint not null auto_increment,
+   PRID                 bigint not null,
    PUID                 bigint not null,
    REID                 bigint not null,
    PRDES                varchar(300) comment 'descripción de la referencia, de donde se obtuvo',
@@ -1534,7 +1545,7 @@ alter table PUBLICACION_REFERENCIA comment 'referencias a libros, paginas web, a
 /*==============================================================*/
 create table PUBLICACION_VISITAS
 (
-   VISID                bigint not null auto_increment,
+   VISID                bigint not null,
    PUID                 bigint not null,
    VISFEC               datetime,
    VISSES               varchar(30) comment 'id sesion',
@@ -1548,7 +1559,7 @@ alter table PUBLICACION_VISITAS comment 'contiene las visiatas realizadas a la p
 /*==============================================================*/
 create table PUBLICACION_VOTACION
 (
-   VID                  bigint not null auto_increment,
+   VID                  bigint not null,
    PUID                 bigint not null,
    VLI                  int,
    VUL                  int,
@@ -1562,7 +1573,7 @@ create table PUBLICACION_VOTACION
 /*==============================================================*/
 create table REGION
 (
-   RCOD                 int not null auto_increment,
+   RCOD                 int not null,
    RNOM                 varchar(100),
    primary key (RCOD)
 );
@@ -1572,7 +1583,7 @@ create table REGION
 /*==============================================================*/
 create table SECCION1
 (
-   IDS1                 bigint not null auto_increment,
+   IDS1                 bigint not null,
    TITS1                varchar(500),
    URLS1                varchar(1000),
    ESTS1                int comment 'estS1 = [ 1 | 0 ]
@@ -1590,8 +1601,8 @@ alter table SECCION1 comment 'sección 1: representa slider principal';
 /*==============================================================*/
 create table SERVICIO
 (
-   SEID                 int not null auto_increment,
-   RRUT                 INT not null,
+   SEID                 int not null,
+   RRUT                 varchar(10) not null,
    SENOM                varchar(100),
    SECAT                varchar(100) comment 'CATEGORIA DEL SERVICIO
             seCat = [ PRODUCCION | ENTRENAMIENTO | GIMNASIOS]',
@@ -1617,7 +1628,7 @@ alter table SERVICIO comment 'SERVICIOS ASOCIADOS AL ENTRENAMIENTO PERSONAL';
 /*==============================================================*/
 create table SERVICIO_VISITA
 (
-   SEVIID               bigint not null auto_increment,
+   SEVIID               bigint not null,
    SEID                 int,
    SEVIFE               datetime,
    SEVISE               varchar(30) comment 'variable de sesion, utilizada para que una sesion no vote dos veces el mismo servicio.',
@@ -1633,7 +1644,7 @@ alter table SERVICIO_VISITA comment 'METRICA: VISITAS REALIZADAS A SERVICIOS';
 /*==============================================================*/
 create table SERVICIO_VOTACION
 (
-   SVID                 bigint not null auto_increment,
+   SVID                 bigint not null,
    SEID                 int not null,
    SVSE                 varchar(50),
    SVFE                 datetime,
@@ -1649,7 +1660,7 @@ alter table SERVICIO_VOTACION comment 'votaciones al servicio';
 /*==============================================================*/
 create table SLIDER
 (
-   SID                  bigint not null auto_increment,
+   SID                  bigint not null,
    PRUT                 varchar(10),
    STIT1                varchar(30) comment 'titulo 1',
    STIT2                varchar(40) comment 'titulo 2',
@@ -1675,7 +1686,7 @@ alter table SLIDER comment 'titulo profesional';
 /*==============================================================*/
 create table USUARIO
 (
-   UMAIL                int not null auto_increment,
+   UMAIL                varchar(50) not null,
    CPAID                bigint not null,
    URUT                 varchar(10),
    UDV                  varchar(1),
@@ -1698,9 +1709,9 @@ create table USUARIO
 /*==============================================================*/
 create table USUARIO_DIRECCION
 (
-   DIRUSRID             bigint not null auto_increment,
+   DIRUSRID             bigint not null,
    DCOD                 bigint not null,
-   UMAIL                INT,
+   UMAIL                varchar(50),
    primary key (DIRUSRID)
 );
 

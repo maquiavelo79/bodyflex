@@ -24,7 +24,7 @@ jQuery(document).ready(function() {
         },
         success:  function (xml){
 
-           //alert('categoria2CsuCat1CmbModel ' + xml);
+           //alert('categoria3CsuCat1CmbModel ' + xml);
 
             var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
             var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
@@ -86,6 +86,7 @@ jQuery(document).ready(function() {
                     $("#espera").hide();
 
                     var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
                     msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
                     msg+='</div>';
 
@@ -195,6 +196,7 @@ jQuery(document).ready(function() {
                     $("#espera").hide();
 
                     var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
                     msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
                     msg+='</div>';
 
@@ -801,6 +803,7 @@ var URLprotocol = window.location.protocol;
                     $("#espera").hide();
 
                     var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
                     msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
                     msg+='</div>';
 

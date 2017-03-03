@@ -82,6 +82,8 @@ session_start();
                             },
                             success:  function (xml){     
 
+                                //alert('enlaces ' + xml);
+
                                 $("#espera").hide();
                                 var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
                                 var dato = xmlDoc.getElementsByTagName('DATOS')[0].childNodes[0].nodeValue;
@@ -190,7 +192,14 @@ session_start();
                     <div class="row-fluid sortable">
                         <div class="box span12">
                                 <div class="box-header" data-original-title>
-                                    <h2><i class="halflings-icon edit"></i><span class="break"></span>Producto: Primera Categor&iacute;a</h2>
+                                    <h2 style="font-size: 15px; font-family: sans-serif; font-weight: bold; color: black;">
+                                        <i class="halflings-icon edit"></i>
+                                        <span class="break"></span>
+                                        [1] Categoría Producto 
+                                        <span style="font-family: sans-serif; font-weight: bold; font-size: 15px; color: blue;">
+                                            [Genero]
+                                        </span>
+                                    </h2>
                                     <div class="box-icon">
                                         <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
                                     </div>
@@ -252,7 +261,11 @@ session_start();
                     <div class="row-fluid sortable">		
                         <div class="box span12">
                             <div class="box-header" data-original-title>
-                                <h2><i class="halflings-icon edit"></i><span class="break"></span>Categor&iacute;as Ingresadas</h2>
+                                <h2 style="font-family: sans-serif; color: #333; font-weight: bold;">
+                                    <i class="halflings-icon edit"></i>
+                                    <span class="break"></span>
+                                    Categor&iacute;as Ingresadas
+                                </h2>
                                 <div class="box-icon">
                                     <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
                                     <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>

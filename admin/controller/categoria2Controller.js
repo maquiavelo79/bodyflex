@@ -19,7 +19,7 @@ jQuery(document).ready(function() {
             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/categoria2CsuCat1CmbModel.php",
             type:  'post',
             datetype: 'xml',
-            async: false,
+            async: true,
         beforeSend: function(){
             $("#espera").show();
         },
@@ -125,7 +125,7 @@ jQuery(document).ready(function() {
             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/categoria2ConsultaModel.php",
             type:  'post',
             datetype: 'xml',
-            async: false,
+            async: true,
         beforeSend: function(){
             $("#espera").show();
         },
@@ -295,7 +295,7 @@ jQuery(document).ready(function() {
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/categoria2AgregaModel.php",
                 type:  'post',
                 datetype: 'xml',
-                async: false,
+                async: true,
                 beforeSend: function(){
                     $("#espera").show();
             },
@@ -475,7 +475,7 @@ $(document).on("click", "#btnEliCat", function(event){
         url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/categoria2EliminaModel.php",
         type:  'post',
         datetype: 'xml',
-        async: false,
+        async: true,
         beforeSend: function(){
             $("#modalBody").html(strLoad);
         },
@@ -686,7 +686,7 @@ var URLprotocol = window.location.protocol;
             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/categoria2ConsultaModel.php",
             type:  'post',
             datetype: 'xml',
-            async: false,
+            async: true,
         beforeSend: function(){
             $("#espera").show();
         },
