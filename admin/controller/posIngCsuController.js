@@ -129,7 +129,7 @@ jQuery(document).ready(function() {
                 },
                 success:  function (xml){
 
-                    //alert('posIngModModel ' + xml);                
+                    alert('posIngModModel ' + xml);                
 
                     $("#espera").hide();
                     var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
@@ -204,7 +204,8 @@ jQuery(document).ready(function() {
                                 msg+='</div>';
 
                                 $('#posWarning').html(msg);
-                                $('#posWarning').show();                                
+                                $('#posWarning').show();    
+                                location.reload(); //PARA QUE ACTUALICE MENU ALERT
 
                             }else{
 

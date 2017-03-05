@@ -80,14 +80,6 @@ include("../model/conection.php");
                 $apellidos = $output['@apellidos'];
                 $email = $output['@email'];
                 
-                switch($estado){
-                    case 1: $strEst = 'REGISTRADO';
-                        break;
-                    case 2: $strEst = 'ALTA';
-                        break;
-                }
-                
-                
             }else{
                 
                 $stmt->closeCursor();
@@ -99,13 +91,6 @@ include("../model/conection.php");
                 $apellidos = $output['@apellidos'];
                 $email = $output['@email'];
 
-                switch($estado){
-                    case 1: $strEst = 'REGISTRADO';
-                        break;
-                    case 2: $strEst = 'ALTA';
-                        break;
-                }
-                
                 switch($codErr){
                     case 0:
                         if($num==0){
@@ -145,7 +130,7 @@ include("../model/conection.php");
         $strXml.='</ERROR>';    
         $strXml.='<DATOS>';
             $strXml.='<ESTADO>';
-                $strXml.=$strEst;
+                $strXml.=$estado;
             $strXml.='</ESTADO>';
             $strXml.='<RUT>';
                 $strXml.=$rut;

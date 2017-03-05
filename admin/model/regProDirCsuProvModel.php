@@ -19,9 +19,6 @@ include("../model/conection.php");
         if($conn){  
 
             $sql="CALL SP_CP_ADM_DIR_CSU_PROV(:region, @codErr);";
-
-            
-            $sql="CALL SP_CP_ADM_DIR_CSU_PROV(:region, @codErr);";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':region', $region, PDO::PARAM_STR, 50);
             $stmt->execute();

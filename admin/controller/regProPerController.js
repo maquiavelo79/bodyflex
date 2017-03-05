@@ -568,6 +568,7 @@ jQuery(document).ready(function() {
                         $('#dirWarning2').html(msg);
                         $('#dirWarning2').show();
                         $('#btnAlta').show();
+                        location.reload();
                         
                         break;
                 }

@@ -20,6 +20,7 @@ jQuery(document).ready(function() {
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/posRecCsuModel.php",
                 type:  'post',
                 datetype: 'xml',
+                async: true,
             beforeSend: function(){
                 $("#espera").show();
             },
@@ -120,7 +121,7 @@ jQuery(document).ready(function() {
                     url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/posRecEvaModel.php",
                     type:  'post',
                     datetype: 'xml',
-                    async:  false,
+                    async:  true,
                 beforeSend: function(){
                     $("#espera").show();
                 },
@@ -201,7 +202,8 @@ jQuery(document).ready(function() {
                                 msg+='</div>';
 
                                 $('#posWarning').html(msg);
-                                $('#posWarning').show();                                
+                                $('#posWarning').show();   
+                                location.reload();
 
                             }else{
 
@@ -242,7 +244,7 @@ jQuery(document).ready(function() {
                     url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/posRecRecModel.php",
                     type:  'post',
                     datetype: 'xml',
-                    async:  false,
+                    async:  true,
                 beforeSend: function(){
                     $("#espera").show();
                 },
@@ -323,7 +325,8 @@ jQuery(document).ready(function() {
                                 msg+='</div>';
 
                                 $('#posWarning').html(msg);
-                                $('#posWarning').show();                                
+                                $('#posWarning').show();  
+                                location.reload();
 
                             }else{
 
@@ -362,7 +365,7 @@ jQuery(document).ready(function() {
                     url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/posEvaRecModel.php",
                     type:  'post',
                     datetype: 'xml',
-                    async:  false,
+                    async:  true,
                 beforeSend: function(){
                     $("#espera").show();
                 },
@@ -443,7 +446,8 @@ jQuery(document).ready(function() {
                                 msg+='</div>';
 
                                 $('#posWarning').html(msg);
-                                $('#posWarning').show();                                
+                                $('#posWarning').show(); 
+                                location.reload();
 
                             }else{
 

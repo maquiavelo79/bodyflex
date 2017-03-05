@@ -826,6 +826,7 @@ jQuery(document).ready(function() {
                         $('#dirWarning1').show();
                         $('#dirWarning2').html(msg);
                         $('#dirWarning2').show();
+                        location.reload();
                         break;
                 }
             }
@@ -1484,7 +1485,7 @@ function asociarCoordenadas(idDir){
     var numero = document.getElementById("txtNum").value;
     var address = calle +' '+ numero +' '+ comuna +' '+ provincia+' '+region;
         
-    alert('address '+address);    
+    //alert('address '+address);    
         
     var rsp=0;
     

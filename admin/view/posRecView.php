@@ -112,7 +112,7 @@ session_start();
         <div class="row-fluid">
 
             <!-- start: Main Menu -->
-            <?php include("../modulos/menu.php"); ?>
+            <?php include("../../menu/menuAdm.php"); ?>
             <!-- end: Main Menu -->
             
             <!-- start: Content -->
@@ -129,7 +129,7 @@ session_start();
                     <div class="row-fluid sortable">
                         <div class="box span12">
                                 <div class="box-header" data-original-title>
-                                    <h2><i class="halflings-icon edit"></i><span class="break"></span>Evaluaci&oacute;n de postulaciones</h2>
+                                    <h2><i class="halflings-icon edit"></i><span class="break"></span>Postulaciones a rechazar</h2>
                                     <div class="box-icon">
                                         <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
                                     </div>

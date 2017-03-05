@@ -68,6 +68,20 @@ session_start();
                     white-space: -hp-pre-wrap; /* HP */
                     word-wrap: break-word; /* IE 5+ */
                 }
+                
+                #idBsq{
+                    box-shadow: 0 0 2px black; 
+                    margin: 0px 0px 0px 0px; 
+                    height: 18px; 
+                    text-align: center; 
+                    color: black; 
+                    font-weight: bold; 
+                    background-color: whitesmoke; 
+                    font-size: 14px; 
+                    text-align: center; 
+                    color: black; 
+                    width: 320px;
+                }
                                                 
             </style>
             
@@ -92,7 +106,7 @@ session_start();
         <div class="row-fluid">
 
             <!-- start: Main Menu -->
-            <?php include("../modulos/menu.php"); ?>
+            <?php include("../../menu/menuAdm.php"); ?>
             <!-- end: Main Menu -->
             
             <!-- start: Content -->
@@ -115,18 +129,18 @@ session_start();
                                 </div>
                             </div>
                             <div class="box-content">
-                                <div class="controls" style="margin-left: 350px;">
+                                <div class="controls" style="margin-left: 300px;">
                                     <div class="input-append">
                                         <label class="control-label" for="appendedInput">Cadena de B&uacute;squeda</label>
                                     </div> &nbsp;
                                     <div class="input-append">
-                                        <input id="idBsq" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 18px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 14px; text-align: center; color: black; width: 320px;" type="text" maxlength="80" value="">
+                                        <input id="idBsq" type="text" maxlength="80" value="">
                                     </div> &nbsp;
                                     <div class="icon-2x">
                                         <i id="btnBsq" style="cursor: pointer;" class="fa fa-search-plus"></i>
                                     </div> &nbsp;
                                     <div class="icon-2x">
-                                        <i id="btnDel" style="cursor: pointer;" class="fa fa-eraser"></i>
+                                        <i id="btnDel" style="cursor: pointer;" class="fa fa-remove"></i>
                                     </div>
                                 </div>
                             </div>

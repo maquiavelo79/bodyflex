@@ -111,7 +111,7 @@ session_start();
         <div class="row-fluid">
 
             <!-- start: Main Menu -->
-            <?php include("../modulos/menu.php"); ?>
+            <?php include("../../menu/menuAdm.php"); ?>
             <!-- end: Main Menu -->
             
             <!-- start: Content -->
@@ -166,18 +166,7 @@ session_start();
                          <div id="espera" class="form-actions" style="display:none;">
                             <h4 class="alert-heading">&nbsp;</h4>
                          </div>
-                         <div id="idPag" class="pagination pagination-centered">
-<!--                            <ul>
-                                <li><a href="#">Prev</a></li>
-                                <li class="active">
-                                    <a href="#">1</a>
-                                </li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">Next</a></li>
-                            </ul>-->
-                        </div>     
+                         <div id="idPag" class="pagination pagination-centered"></div>     
                     </div>
 
                 </div><!--/.fluid-container-->

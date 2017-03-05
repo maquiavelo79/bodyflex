@@ -68,7 +68,7 @@ $itemMenu=6;
 	<!-- start: Header -->
         <div class="container-fluid-full">
             <div class="row-fluid">
-                <?php include("../admin/modulos/menu.php"); ?>
+                <?php include("../menu/menuAdm.php"); ?>
                 <!-- start: Content -->
                 <div id="content" class="span10">	
                     <?php include("../admin/modulos/navegacion.php"); ?>

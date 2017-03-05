@@ -92,7 +92,7 @@ session_start();
         <div class="row-fluid">
 
             <!-- start: Main Menu -->
-            <?php include("../modulos/menu.php"); ?>
+            <?php include("../../menu/menuAdm.php"); ?>
             <!-- end: Main Menu -->
             
             <!-- start: Content -->
@@ -115,7 +115,7 @@ session_start();
                                 </div>
                             </div>
                             <div class="box-content">
-                                <div class="controls" style="margin-left: 350px;">
+                                <div class="controls" style="margin-left: 300px;">
                                     <div class="input-append">
                                         <label class="control-label" for="appendedInput">Cadena de B&uacute;squeda</label>
                                     </div> &nbsp;
@@ -126,7 +126,7 @@ session_start();
                                         <i id="btnBsq" style="cursor: pointer;" class="fa fa-search-plus"></i>
                                     </div> &nbsp;
                                     <div class="icon-2x">
-                                        <i id="btnDel" style="cursor: pointer;" class="fa fa-eraser"></i>
+                                        <i id="btnDel" style="cursor: pointer;" class="fa fa-remove"></i>
                                     </div>
                                 </div>
                             </div>

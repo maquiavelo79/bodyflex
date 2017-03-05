@@ -35,31 +35,12 @@ include("../model/conection.php");
                     $bsqApe=$r[3];
                     $bsqMai=$r[4];
                     $bsqFec=$r[5];
-                    
-                    switch($bsqEst){
-                        case 1: $strEst = 'INGRESADA';
-                            break;
-                        case 2: $strEst = 'EVALUANDO';
-                            break;
-                        case 3: $strEst = 'DETENIDA';
-                            break;
-                        case 4: $strEst = 'APROBANDO';
-                            break;
-                        case 5: $strEst = 'RECHAZANDO';
-                            break;
-                        case 6: $strEst = 'APROBADA';
-                            break;
-                        case 7: $strEst = 'RECHAZADA';
-                            break;
-                        case 8: $strEst = 'REGISTRADO';
-                            break;
-                    }
-                    
+                                        
                     
                     $sTr = '<tr style="cursor:pointer;">';
                     
                         $sTr.='<td>' . $bsqId  . '</td>';
-                        $sTr.='<td>' . $strEst  . '</td>';
+                        $sTr.='<td>' . $bsqEst  . '</td>';
                         $sTr.='<td>' . $bsqNom . '</td>';
                         $sTr.='<td>' . $bsqApe . '</td>';
                         $sTr.='<td>' . $bsqMai . '</td>';

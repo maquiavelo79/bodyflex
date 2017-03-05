@@ -9,17 +9,17 @@ jQuery(document).ready(function() {
         //OBTENEMOS VALORES
         $('#dirWarning1').html('');
         
-        if($('#idBsq').val()==''){
-            var msg='<div style="text-align:center;" class="alert alert-error">';
-            msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
-            msg+='<b><span style="color: #000;">Favor ingrese cadena de búsqueda</span></b>';
-            msg+='</div>'; 
-            $('#dirWarning1').html(msg);
-            $('#dirWarning1').show();
-            return false;
-        }else{
-            $('#dirWarning1').html('');
-        } 
+//        if($('#idBsq').val()==''){
+//            var msg='<div style="text-align:center;" class="alert alert-error">';
+//            msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+//            msg+='<b><span style="color: #000;">Favor ingrese cadena de búsqueda</span></b>';
+//            msg+='</div>'; 
+//            $('#dirWarning1').html(msg);
+//            $('#dirWarning1').show();
+//            return false;
+//        }else{
+//            $('#dirWarning1').html('');
+//        } 
 
         var parametros = { 
             "id" : $('#idBsq').val()
@@ -30,6 +30,7 @@ jQuery(document).ready(function() {
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/posBsqCsuModel.php",
                 type:  'post',
                 datetype: 'xml',
+                async: true,
             beforeSend: function(){
                 $("#espera").show();
                 $("#botonera").hide();

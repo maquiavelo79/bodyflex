@@ -464,6 +464,7 @@ jQuery(document).ready(function() {
                         $('#bcoWarning1').show();
                         $('#bcoWarning2').html(msg);
                         $('#bcoWarning2').show();
+                        location.reload();
                         break;
                 }
             }

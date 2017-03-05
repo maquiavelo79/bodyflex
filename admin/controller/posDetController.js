@@ -201,7 +201,8 @@ jQuery(document).ready(function() {
                                 msg+='</div>';
 
                                 $('#posWarning').html(msg);
-                                $('#posWarning').show();                                
+                                $('#posWarning').show();  
+                                location.reload();
 
                             }else{
 

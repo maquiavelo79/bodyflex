@@ -241,7 +241,7 @@ session_start();
         <div class="row-fluid">
 
             <!-- start: Main Menu -->
-            <?php include("../modulos/menu.php"); ?>
+            <?php include("../../menu/menuAdm.php"); ?>
             <!-- end: Main Menu -->
 
             <!-- start: Content -->

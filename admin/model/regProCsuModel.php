@@ -45,16 +45,7 @@ include("../model/conection.php");
                         $pag=$r[5];
                         $paginaciones=$r[6]; 
 
-                    $codEst=$r[7];     
-                    switch ($codEst){
-                        case 1: $estado='REGISTRADA';
-                            break;
-                        case 2: $estado='ALTA';
-                            break;
-                        case 6: $estado='APROBADA';
-                            break;
-                    }
-                    
+                    $estado=$r[7];     
                     $sTr = '<tr style="cursor:pointer;">';
                         $sTr.='<td>' . $regId  . '</td>';
                         $sTr.='<td style="text-align: center; color: black; font-weight: bold; font-size: 14px; text-align: left;">' . $estado  . '</td>';

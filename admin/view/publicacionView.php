@@ -121,7 +121,7 @@ session_start();
 	
     <div class="container-fluid-full">
         <div class="row-fluid">
-            <?php include("../modulos/menu.php"); ?>
+            <?php include("../../menu/menuAdm.php"); ?>
             <div id="content" class="span10">
                 <?php include("../modulos/navegacion.php"); ?>
                 <?php include("../modulos/headerUser.php"); ?>
