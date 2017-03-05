@@ -8,6 +8,7 @@ jQuery(document).ready(function() {
             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/productoRangoPrecioModel.php",
             type:  'post',
             datetype: 'xml',
+            async: true,
         beforeSend: function(){
             $("#espera").show();
             $("#botonera").hide();

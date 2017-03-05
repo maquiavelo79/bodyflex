@@ -272,9 +272,15 @@
                 <a class="dropmenu" href="#">
                     <i class="fa fa-product-hunt"></i>
                     <span style="color: #FFCC00;" class="hidden-tablet">Productos</span>
-                    <span style="color: #FFCC00;" class="label label-important">3</span>
+                    <span style="color: #FFCC00;" class="label label-important">5</span>
                 </a>
                 <ul>
+                    <li>
+                        <a style="margin-left: 5px;" class="submenu" href="../../../bodyflex/admin/view/catMarView.php">
+                            <i class="fa fa-star"></i>
+                            <span style="color: #FFCC00;" class="hidden-tablet">&nbsp;Marcas</span>
+                        </a>
+                    </li>
                     <li>
                         <a style="margin-left: 5px;" href="../../../bodyflex/admin/view/productoView.php">
                             <i class="fa fa-product-hunt"></i>
@@ -359,12 +365,6 @@
                         <a style="margin-left: 5px;" class="submenu" href="../../../bodyflex/admin/view/proVitView.php">
                             <i class="fa fa-television"></i>
                             <span style="color: #FFCC00;" class="hidden-tablet">&nbsp;Vitrina</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a style="margin-left: 5px;" class="submenu" href="../../../bodyflex/admin/view/catMarView.php">
-                            <i class="fa fa-star"></i>
-                            <span style="color: #FFCC00;" class="hidden-tablet">&nbsp;Marcas</span>
                         </a>
                     </li>
                 </ul>	

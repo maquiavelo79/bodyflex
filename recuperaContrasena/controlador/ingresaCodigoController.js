@@ -68,6 +68,7 @@ var URLprotocol = window.location.protocol;
             url: URLprotocol+"//"+URLdomain+"/bodyflex/recuperaContrasena/modelo/verificaCodigoModel.php",
             type:  'post',
             datetype: 'xml',
+            async: false,
             beforeSend: function(){
                 $('#espera').show();
                 $('#button').attr("disabled", true);

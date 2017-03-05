@@ -338,7 +338,24 @@ jQuery(document).ready(function() {
                         break; 
                     
                     case '98':
-                                              
+                        
+                        //var msgVtaPre='<p style="text-align: center; font-size: 16px; font-family: sans-serif; color: #1b2426;">Los tipos de publicaciones se categorizan en:</p>';                  
+                        //msgVtaPre+="<br>";
+                        
+                        var msgVtaPre='<ul style="text-align: left; font-size: 16px; font-family: sans-serif; color: #1b2426;">';
+                            msgVtaPre+='<li><b style="font-weight: bold; font-size: 16px; color: blue; font-family: sans-serif;">IVA</b>: Verifique la existencia del % de impuesto.</li>';
+                            msgVtaPre+='<li><b style="font-weight: bold; font-size: 16px; color: blue; font-family: sans-serif;">TRANSBANK</b>: Verifique la existencia del % de comisión.</li>';
+                        msgVtaPre+='</ul>';
+                        
+                        swal({
+                            title: '<span>Parámetros</span>',
+                            type: 'warning',
+                            html: msgVtaPre,
+                            confirmButtonColor: '#FFCC00',
+                            confirmButtonText: 
+                                '<span style="color: black; font-weight: bold;">&nbsp;Aceptar</span>'
+                        })       
+                            
                         var msg='<div style="text-align:center;" class="alert alert-block">';
                         msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
                         msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
@@ -440,7 +457,17 @@ jQuery(document).ready(function() {
                         break; 
                     
                     case '98':
-                                              
+                           
+                        var msg="<p style='color: black; font-size: 16px; font-family: sans-serif;'>Antes de ingresar productos debes ingresar las marcas.</p>";  
+                        swal({
+                            title: '<span>Marcas</span>',
+                            type: 'warning',
+                            html: msg,
+                            confirmButtonColor: '#FFCC00',
+                            confirmButtonText: 
+                                '<span style="color: black; font-weight: bold;">&nbsp;Aceptar</span>'
+                        });      
+
                         var msg='<div style="text-align:center;" class="alert alert-block">';
                         msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
                         msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';

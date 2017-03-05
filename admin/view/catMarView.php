@@ -75,7 +75,7 @@ session_start();
                             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/view/enlaces.php",
                             type:  'post',
                             datetype: 'xml',
-                            async: false,
+                            async: true,
                              beforeSend: function(){
                                 $("#espera").show();
                             },
@@ -142,12 +142,6 @@ session_start();
                     white-space: -hp-pre-wrap; /* HP */
                     word-wrap: break-word; /* IE 5+ */
                 }
-/*                thead, tbody { display: block; }
-                tbody {
-                    height: 300px;        Just for the demo          
-                    overflow-y: auto;     Trigger vertical scroll    
-                    overflow-x: hidden;   Hide the horizontal scroll 
-                }*/
             </style>
             
 	<!-- end: CSS -->
@@ -188,7 +182,7 @@ session_start();
                     <div class="row-fluid sortable">
                         <div class="box span12">
                                 <div class="box-header" data-original-title>
-                                    <h2><i class="halflings-icon edit"></i><span class="break"></span>MARCAS</h2>
+                                    <h2><i class="halflings-icon edit"></i><span class="break"></span>Marcas</h2>
                                     <div class="box-icon">
                                         <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
                                     </div>
