@@ -819,6 +819,17 @@ $('#btnGuardar').click(function(){
                         ul=id;
                     }
                     
+                    //Validamos Paginacion
+                    if(pa==null){
+                        pa=1;
+                    }
+                    if(pa==""){
+                        pa=1;
+                    }
+                    if(str.length==0){
+                        pa=1;
+                    }
+                    
                     consultaProductos(0, ul, pa);
                     
                     var msg='<div style="text-align: center;" class="alert alert-success">';
@@ -918,7 +929,11 @@ $('#btnEditar').live('click', function() {
                 default:
                     
                     var rut = $('#rut').val();
+                    
                     var pa = $('#txtPa').val();
+                    
+                    //alert("pa " + pa);
+                    
                     var ul = $('#txtUlt').val();
                     $('#txtProEst').val('INGRESADO');
                     

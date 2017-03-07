@@ -9057,9 +9057,9 @@ Shadow=0</a:DisplayPreferences>
 <c:Symbols>
 <o:RelationshipSymbol Id="o348">
 <a:CreationDate>1454589782</a:CreationDate>
-<a:ModificationDate>1455644431</a:ModificationDate>
-<a:Rect>((-6600,5500), (9750,7596))</a:Rect>
-<a:ListOfPoints>((-6600,6300),(9750,6300))</a:ListOfPoints>
+<a:ModificationDate>1488642126</a:ModificationDate>
+<a:Rect>((-6825,4931), (9750,7010))</a:Rect>
+<a:ListOfPoints>((-6825,6086),(9750,6300))</a:ListOfPoints>
 <a:ArrowStyle>4627</a:ArrowStyle>
 <a:LineColor>11184640</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -9077,9 +9077,9 @@ NAMA 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:RelationshipSymbol Id="o352">
 <a:CreationDate>1454709998</a:CreationDate>
-<a:ModificationDate>1455644431</a:ModificationDate>
-<a:Rect>((-17500,6825), (-9926,18900))</a:Rect>
-<a:ListOfPoints>((-13800,6825),(-13650,18900))</a:ListOfPoints>
+<a:ModificationDate>1488642126</a:ModificationDate>
+<a:Rect>((-17603,6564), (-10029,18900))</a:Rect>
+<a:ListOfPoints>((-14025,6564),(-13650,18900))</a:ListOfPoints>
 <a:ArrowStyle>4627</a:ArrowStyle>
 <a:LineColor>11184640</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -9097,9 +9097,9 @@ NAMA 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:RelationshipSymbol Id="o355">
 <a:CreationDate>1488641619</a:CreationDate>
-<a:ModificationDate>1488641622</a:ModificationDate>
-<a:Rect>((-16880,-7650), (-11330,5475))</a:Rect>
-<a:ListOfPoints>((-14212,-7650),(-13987,5475))</a:ListOfPoints>
+<a:ModificationDate>1488642126</a:ModificationDate>
+<a:Rect>((-16987,-7650), (-11437,5336))</a:Rect>
+<a:ListOfPoints>((-14212,-7650),(-14212,5336))</a:ListOfPoints>
 <a:ArrowStyle>4371</a:ArrowStyle>
 <a:LineColor>11184640</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -9117,8 +9117,8 @@ NAMA 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:EntitySymbol Id="o349">
 <a:CreationDate>1454539334</a:CreationDate>
-<a:ModificationDate>1455644431</a:ModificationDate>
-<a:Rect>((-22049,1425), (-4575,10561))</a:Rect>
+<a:ModificationDate>1488642126</a:ModificationDate>
+<a:Rect>((-22274,1653), (-4800,9961))</a:Rect>
 <a:AutoAdjustToText>0</a:AutoAdjustToText>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
@@ -15843,8 +15843,9 @@ bien desde el catálogo del profesional o desde la tiemda bodyflex.</a:Comment>
 <a:Code>POSTULACION</a:Code>
 <a:CreationDate>1454539334</a:CreationDate>
 <a:Creator>fcaldero</a:Creator>
-<a:ModificationDate>1488641717</a:ModificationDate>
+<a:ModificationDate>1488642122</a:ModificationDate>
 <a:Modifier>fcalde90</a:Modifier>
+<a:Comment>postulacion del profesional</a:Comment>
 <c:Identifiers>
 <o:Identifier Id="o1089">
 <a:ObjectID>3CDAB3EA-A3A8-488D-A298-4C93EA4934C7</a:ObjectID>
@@ -16001,8 +16002,9 @@ bien desde el catálogo del profesional o desde la tiemda bodyflex.</a:Comment>
 <a:Code>POSTULACION_RESPALDO</a:Code>
 <a:CreationDate>1454709902</a:CreationDate>
 <a:Creator>fcaldero</a:Creator>
-<a:ModificationDate>1454710424</a:ModificationDate>
-<a:Modifier>fcaldero</a:Modifier>
+<a:ModificationDate>1488642104</a:ModificationDate>
+<a:Modifier>fcalde90</a:Modifier>
+<a:Comment>Rrespaldo de la informacion asociada a la ostulacion como antecedentes del rofesional, imagen de título profesional, etc.</a:Comment>
 <c:Identifiers>
 <o:Identifier Id="o1111">
 <a:ObjectID>0700B7AF-5E93-4ABE-8645-09A08D303ED3</a:ObjectID>
@@ -18362,8 +18364,9 @@ Rangos de venta tanto para clientes como para profesionales.</a:Comment>
 <a:Code>POSTULACION_ESTADO</a:Code>
 <a:CreationDate>1488641422</a:CreationDate>
 <a:Creator>fcalde90</a:Creator>
-<a:ModificationDate>1488641654</a:ModificationDate>
+<a:ModificationDate>1488642114</a:ModificationDate>
 <a:Modifier>fcalde90</a:Modifier>
+<a:Comment>Estado de la postulacion</a:Comment>
 <c:Identifiers>
 <o:Identifier Id="o1430">
 <a:ObjectID>016B7A06-52C5-4AD5-90E1-BED31440A4B3</a:ObjectID>

@@ -32,11 +32,13 @@ include("../model/conection.php");
                     $maId=$r[0];
                     $maNo=$r[1];
                     $maGD=$r[2];
+                    $maNv=$r[6];
            
                     $sTr = '<tr style="cursor:pointer;">';
-                       $sTr.='<td style="width: 33%;" class="center">' . $maId . '</td>';
-                       $sTr.='<td style="width: 33%;" class="center">' . $maNo . '</td>';
-                       $sTr.='<td style="width: 33%;" class="center">' . $maGD . '</td>';
+                       $sTr.='<td style="width: 25%;" class="center">' . $maId . '</td>';
+                       $sTr.='<td style="width: 25%;" class="center">' . $maNo . '</td>';
+                       $sTr.='<td style="width: 25%;" class="center">' . $maGD . '</td>';
+                       $sTr.='<td style="width: 25%;" class="center">' . $maNv . '</td>';
                     $sTr.='</tr>';
 
                     $sTrR.=$sTr;

@@ -123,7 +123,7 @@ session_start();
                             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/view/enlaces.php",
                             type:  'post',
                             datetype: 'xml',
-                            async: true,
+                            async: false,
                              beforeSend: function(){
                                 $("#espera").show();
                             },
@@ -180,6 +180,7 @@ session_start();
                                             imageUrl: url,
                                             animation: false
                                         });
+                                        url="";
                                         break;
                                      
                                 }              
@@ -353,9 +354,7 @@ session_start();
     
     <input type="hidden" id="iva" value="">
     <input type="hidden" id="tra" value="">
-    
-    
-    
+
     mtoPreVta<input type="text" id="mtoPreVta" value=""><br>
     mtoProIva<input type="text" id="mtoProIva" value=""><br>
     mtoPreNet<input type="text" id="mtoPreNet" value=""><br>

@@ -128,6 +128,8 @@ session_start();
                     $("#modalVerImagen").click();    
                 }
                 
+                
+                
             </script>
             <style>
                 .ajustar{
@@ -211,6 +213,15 @@ session_start();
                                             </div>
                                             
                                             <div class="control-group">
+                                                <label class="control-label" for="appendedInput"><b>Nivel</b></label>
+                                                <div class="controls">
+                                                    <div class="input-append">
+                                                        <input id="txtMarNiv" class="solo-numero" placeholder="Ingrese Nivel" style="font-family: sans-serif; background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 490px; text-align: center; color: blue; font-size: 16px;"  size="30" type="text" maxlength="1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="control-group">
                                                 <label class="control-label" for="appendedInput"><b>Id Google Drive</b></label>
                                                 <div class="controls">
                                                     <input id="txtCol1GD" placeholder="ID Imagen 200 x 112" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
@@ -258,6 +269,7 @@ session_start();
                                             <th class="center">ID</th>
                                             <th class="center">Marca</th>
                                             <th class="center">ID Google Drive (200X112)</th>
+                                            <th class="center">Nivel</th>
                                         </tr>
                                     </thead>   
                                     <tbody id="tbody">

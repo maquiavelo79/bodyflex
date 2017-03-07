@@ -3,6 +3,10 @@ jQuery(document).ready(function() {
     var URLdomain   = window.location.host;
     var URLprotocol = window.location.protocol;
        
+    $('.solo-numero').keyup(function (){
+        this.value = (this.value + '').replace(/[^0-9]/g, '');
+    });   
+       
     $('#btnEliminar').prop('disabled',true);       
 
     var parametros = { 
@@ -263,6 +267,9 @@ jQuery(document).ready(function() {
                 case 2:
                         gd1Td = $(this).text();
                         break;
+                case 3:
+                        nivTd = $(this).text();
+                        break;        
             }
         });
          
@@ -270,6 +277,7 @@ jQuery(document).ready(function() {
         $('#txtColId').val(idTd);
         $('#txtColNom').val(nomTd);
         $('#txtCol1GD').val(gd1Td);
+        $('#txtMarNiv').val(nivTd);
         $('#sVerImg').html('<i style="color: green; cursor: pointer;" onclick="verImagen();" class="fa fa-picture-o fa-2x"></i>');
         
 });
@@ -365,6 +373,7 @@ $(document).on("click", "#btnEliCol", function(event){
         $('#txtColId').val('');        
         $('#txtColNom').val('');
         $('#txtCol1GD').val('');
+        $('#txtMarNiv').val('');
   
         $('#sVerImg').html('<i class="fa fa-picture-o fa-2x"></i>');
   
@@ -419,6 +428,7 @@ function pintaRegistro(){
     $('#txtColId').val('');        
     $('#txtColNom').val('');
     $('#txtCol1GD').val('');
+    $('#txtMarNiv').val('');
     
     $('#sVerImg').html('<i class="fa fa-picture-o fa-2x"></i>');
     
