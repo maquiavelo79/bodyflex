@@ -7444,7 +7444,7 @@ NAMA 0 Arial,8,N</a:FontList>
 <a:CreationDate>1449672421</a:CreationDate>
 <a:ModificationDate>1464627737</a:ModificationDate>
 <a:CenterTextOffset>(1425, 375)</a:CenterTextOffset>
-<a:Rect>((-42636,-44593), (-18887,-35978))</a:Rect>
+<a:Rect>((-42637,-44593), (-18887,-36029))</a:Rect>
 <a:ListOfPoints>((-18887,-37763),(-39375,-37650),(-39004,-44593))</a:ListOfPoints>
 <a:ArrowStyle>4627</a:ArrowStyle>
 <a:LineColor>64</a:LineColor>
@@ -7507,7 +7507,7 @@ NAMA 0 Arial,8,N</a:FontList>
 <o:RelationshipSymbol Id="o272">
 <a:CreationDate>1449672512</a:CreationDate>
 <a:ModificationDate>1464627734</a:ModificationDate>
-<a:Rect>((-3007,-46398), (15417,-36274))</a:Rect>
+<a:Rect>((-3007,-46398), (20287,-35078))</a:Rect>
 <a:ListOfPoints>((-3007,-36274),(15375,-36375),(15417,-46398))</a:ListOfPoints>
 <a:ArrowStyle>4627</a:ArrowStyle>
 <a:LineColor>64</a:LineColor>
@@ -24708,10 +24708,10 @@ Venta de bodyflex a un suscriptor.</a:Comment>
 <a:Code>MEDTI</a:Code>
 <a:CreationDate>1461868676</a:CreationDate>
 <a:Creator>fcaldero</a:Creator>
-<a:ModificationDate>1479097552</a:ModificationDate>
+<a:ModificationDate>1488993719</a:ModificationDate>
 <a:Modifier>fcalde90</a:Modifier>
-<a:Comment>representa el tipo de medida, si se trata de letras o numeros
-medTi2 = [ LETRS | NUMERO ]</a:Comment>
+<a:Comment>representa el Tipo de medida, si se trata de letras o numeros
+medTi2 = [ LETRA | NUMERO ]</a:Comment>
 <a:DataType>VA10</a:DataType>
 <a:Length>10</a:Length>
 </o:DataItem>

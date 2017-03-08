@@ -216,7 +216,7 @@ session_start();
                                                 <label class="control-label" for="appendedInput"><b>Nivel</b></label>
                                                 <div class="controls">
                                                     <div class="input-append">
-                                                        <input id="txtMarNiv" class="solo-numero" placeholder="Ingrese Nivel" style="font-family: sans-serif; background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 490px; text-align: center; color: blue; font-size: 16px;"  size="30" type="text" maxlength="1">
+                                                        <input id="txtMarNiv" class="solo-numero" placeholder="Ingrese Nivel" style="font-family: sans-serif; background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 490px; text-align: center; color: blue; font-size: 16px;"  size="30" type="text" maxlength="10">
                                                     </div>
                                                 </div>
                                             </div>

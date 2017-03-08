@@ -122,8 +122,6 @@ jQuery(document).ready(function() {
         var gd1 = $('#txtCol1GD').val();
         var niv = $('#txtMarNiv').val();
         
-        alert('niv ' + niv);
-        
         if(nom == '') {
             
             var msg='<div style="text-align:center;" class="alert alert-block">';

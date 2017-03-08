@@ -185,7 +185,7 @@ session_start();
                     <!-- BOTONES-->
                     <div STYLE="margin-bottom: 10px; display: none;" class="form-actions" id="botonera">
                         <button style="background-color: silver; color: black; font-weight: bold; width: 100px;" type="button" class="btn" id="btnLimpiar">Limpiar</button>
-                        <button style="background-color: #FFCC00; color: black; font-weight: bold; width: 100px;" type="button" class="btn" id="btnGuardar">Guardar</button>
+                        <button style="background-color: #FFCC00; color: black; font-weight: bold; width: 100px;" type="button" class="btn" id="btnGuardar">Agregar</button>
                         <button style="background-color: silver; color: black; font-weight: bold; width: 100px;" type="button" class="btn" id="btnEliminar">Eliminar</button>
                     </div>
                     

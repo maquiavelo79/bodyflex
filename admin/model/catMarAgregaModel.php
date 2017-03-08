@@ -24,7 +24,7 @@ include("../model/conection.php");
             $stmt->bindParam(':id', $id, PDO::PARAM_STR,10);
             $stmt->bindParam(':nom', $nom, PDO::PARAM_STR,50);
             $stmt->bindParam(':gd1', $gd1, PDO::PARAM_STR,50);
-            $stmt->bindParam(':niv', $niv, PDO::PARAM_STR,2);
+            $stmt->bindParam(':niv', $niv, PDO::PARAM_STR,10);
             $stmt->execute();
             $num= $stmt->rowCount();
             
