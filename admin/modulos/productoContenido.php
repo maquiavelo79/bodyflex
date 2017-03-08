@@ -62,7 +62,7 @@
                             <div id="divImgDrivePro" class="control-group">
                                 <label id="lblImgDrivePro"  class="control-label" for="appendedInput"><b>ID google drive</b></label>
                                 <div class="controls">
-                                    <div class="input-append">
+                                    <div id="divTxtGD" class="input-append">
                                         <input placeholder="ej: 0BwscgrEmxbyLYmpOQWhQTDlUMWc" id="txtIdDrivePro" size="16" type="text" maxlength="50" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 14px; text-align: center; color: black; width: 350px;">
                                     </div>
                                 </div>

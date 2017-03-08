@@ -83,29 +83,33 @@ var URLprotocol = window.location.protocol;
         });    
 
         $('#txtIdConPro').val('0');
-        $('#cmbTipConPro').val('');
-        $('#txtIdDrivePro').val(' ');
+        //$('#cmbTipConPro').val('');
+        $("#cmbTipConPro").prop('selectedIndex',0);
+        $('#txtIdDrivePro').val('');
 
+        /*
         var conTip='';
         var cmb = document.getElementById("cmbTipConPro"); 
         for (var i = 0; i < cmb.length; i++) {
             //  Aca haces referencia al "option" actual
             var opt = cmb[i];
-
-            // Haces lo que te de la gana aca
             if(conTip == opt.value){
                $("#cmbTipConPro").prop('selectedIndex',i);
                $('#cmbTipConPro').trigger('liszt:updated');
                break;
             }
         }
+        */
 
+        $('#divTxtGD').html('<input placeholder="ej: 0BwscgrEmxbyLYmpOQWhQTDlUMWc" id="txtIdDrivePro" size="16" type="text" maxlength="50" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 14px; text-align: center; color: black; width: 350px;">');                            
         var botones ='<i style="margin-top: 100px;" class="fa fa-picture-o fa-4x"></i>';        
         $('#right').html(botones);
 
     });
 
     $('#btnGuardarConPro').click(function(){
+            
+        //alert("btnGuardarConPro");    
             
         var strModal='';
         var cmb = $('#cmbTipConPro').val();
@@ -179,6 +183,7 @@ var URLprotocol = window.location.protocol;
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/productoAgregaContenidoModel.php",
                 type:  'post',
                 datetype: 'xml',
+                async: false,
                 beforeSend: function(){
                     $("#modalBody").html(strLoad);
                 },
@@ -239,95 +244,18 @@ var URLprotocol = window.location.protocol;
                     
                     default:
                         
+                        consultaProductosEnContenido(); 
+                        limpiarContenido();
+                        
                         //limpiamos inpuT, menos ID de Publicación
-                        $('#cmbTipConPro option[value=""]').prop('selected', true);
-                        $('#cmbTipConPro').trigger('liszt:updated');
-                        $('#txtIdDrivePro').val('');
-                        $('#txtIdConPro').val('0'); 
+                        //$('#cmbTipConPro option[value=""]').prop('selected', true);
+                        //$('#cmbTipConPro').trigger('liszt:updated');
+                        //$('#txtIdDrivePro').val('');
+                        //$('#txtIdConPro').val('0'); 
    
                         //Limpiamos warning
                         $('#warningConAso').html('');
 
-                        $.ajax({
-                            data:  parametros,
-                            url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/productoConsultaContenidoModel.php",
-                            type:  'post',
-                            datetype: 'xml',
-                            success:  function (xml){     
-                            
-                                //alert(xml);
-                            
-                                var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
-                                var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
-                                var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;
-                            
-                                switch(codErr){
-                                    case '9':
-                                        
-                                        var msg='<div style="text-align:center;" class="alert alert-block">';
-                                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
-                                        msg+='</div>';
-                            
-                                        $('#warningConAso').html(msg);
-                                        $("#modalBody").html(msg);
-                                        setTimeout(function() {$('#modalBody').modal('hide');}, 1000); 
-                                        break;
-                                        
-                                    case '8':
-                                        
-                                        var msg='<div style="text-align:center;" class="alert alert-block">';
-                                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
-                                        msg+='</div>';
-                                        
-                                        $('#warningConAso').html(msg);
-                                        $("#modalBody").html(msg);
-                                        setTimeout(function() {$('#modalBody').modal('hide');}, 1000); 
-                                        break;
-                                    
-                                    case '99':
-                                        
-                                        var msg='<div style="text-align:center;" style="text-align:center;" class="alert alert-block">';
-                                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
-                                        msg+='</div>';
-                                        
-                                        $('#warningConAso').html(msg);
-                                        $("#modalBody").html(msg);
-                                        setTimeout(function() {$('#modalBody').modal('hide');}, 1000); 
-                                        break;
-                                        
-                                    case '100':
-                                        
-                                        var msg='<div style="text-align:center;" style="text-align:center;" class="alert alert-block">';
-                                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
-                                        msg+='</div>';
-                                        
-                                        $('#warningConAso').html(msg);
-                                        $("#modalBody").html(msg);
-                                        setTimeout(function() {$('#modalBody').modal('hide');}, 1000); 
-                                        break;    
-                                    
-                                    case '98':
-                            
-                                        var msg='<div style="text-align:center;" class="alert alert-block">';
-                                        msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
-                                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
-                                        msg+='</div>';
-
-                                        $('#warningConAso').html(msg);
-                                        $("#modalBody").html(msg);
-                                        setTimeout(function() {$('#modalBody').modal('hide');}, 1000); 
-                                        break;
-                        
-                                    default:
-                                        //alert(response);
-                                        
-                                        var datos = xmlDoc.getElementsByTagName('DATOS')[0].childNodes[0].nodeValue;
-                                        $('#listConPro').html(datos);
-                                            
-                                }              
-                            }
-                        });   
-                          
                         var msg='<b><span style="color: #000;">Operación exitosa!.</span></b>';
                         $("#modalBody").html(msg);
                         setTimeout(function() {$('#myModal').modal('hide');}, 1000);    
@@ -336,7 +264,9 @@ var URLprotocol = window.location.protocol;
                 }              
             }
         });
-                
+         
+        //retun
+        
     });
     
     
@@ -596,7 +526,7 @@ function limpiarContenido(){
 
     $('#txtIdConPro').val('0');
     $('#cmbTipConPro').val('');
-    $('#txtIdDrivePro').val(' ');
+    $('#txtIdDrivePro').val('');
 
     var conTip='';
     var cmb = document.getElementById("cmbTipConPro"); 
@@ -612,7 +542,117 @@ function limpiarContenido(){
         }
     }
 
+    $('#divTxtGD').html('<input placeholder="ej: 0BwscgrEmxbyLYmpOQWhQTDlUMWc" id="txtIdDrivePro" size="16" type="text" maxlength="50" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 14px; text-align: center; color: black; width: 350px;">');
+
     var botones ='<i style="margin-top: 100px;" class="fa fa-picture-o fa-4x"></i>';        
     $('#right').html(botones);
     
+}
+
+function reIniciarContenido(){
+        
+    $('#a-table-con tr').each(function(){
+        $(this).css('background','white');
+        $(this).css('color','black');
+    });    
+
+    $('#txtIdConPro').val('0');
+    $('#cmbTipConPro').val('');
+    $('#txtIdDrivePro').val('');
+    $('#listConPro').html("");
+    $('#divTxtGD').html('<input placeholder="ej: 0BwscgrEmxbyLYmpOQWhQTDlUMWc" id="txtIdDrivePro" size="16" type="text" maxlength="50" style="box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; height: 15px; text-align: center; color: black; font-weight: bold; background-color: whitesmoke; font-size: 14px; text-align: center; color: black; width: 350px;">');
+
+    var botones ='<i style="margin-top: 100px;" class="fa fa-picture-o fa-4x"></i>';        
+    $('#right').html(botones);
+    
+}
+
+function consultaProductosEnContenido(){
+    
+    var URLdomain   = window.location.host;
+    var URLprotocol = window.location.protocol;
+    
+    var proId2 = $('#txtProId').val().trim(); 
+    var parametros2 = { "proId" : proId2 }; 
+
+    $.ajax({
+        data:  parametros2,
+        url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/productoConsultaContenidoModel.php",
+        type:  'post',
+        datetype: 'xml',
+        async: false,
+        success:  function (xml){     
+
+            //alert(xml);
+
+            var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
+            var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
+            var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;
+
+            switch(codErr){
+                case '9':
+
+                    var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warningConAso').html(msg);
+                    $("#modalBody").html(msg);
+                    setTimeout(function() {$('#modalBody').modal('hide');}, 1000); 
+                    break;
+
+                case '8':
+
+                    var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warningConAso').html(msg);
+                    $("#modalBody").html(msg);
+                    setTimeout(function() {$('#modalBody').modal('hide');}, 1000); 
+                    break;
+
+                case '99':
+
+                    var msg='<div style="text-align:center;" style="text-align:center;" class="alert alert-block">';
+                    msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warningConAso').html(msg);
+                    $("#modalBody").html(msg);
+                    setTimeout(function() {$('#modalBody').modal('hide');}, 1000); 
+                    break;
+
+                case '100':
+
+                    var msg='<div style="text-align:center;" style="text-align:center;" class="alert alert-block">';
+                    msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warningConAso').html(msg);
+                    $("#modalBody").html(msg);
+                    setTimeout(function() {$('#modalBody').modal('hide');}, 1000); 
+                    break;    
+
+                case '98':
+
+                    var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                    msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warningConAso').html(msg);
+                    $("#modalBody").html(msg);
+                    setTimeout(function() {$('#modalBody').modal('hide');}, 1000); 
+                    break;
+
+                default:
+                    //alert(response);
+
+                    var datos = xmlDoc.getElementsByTagName('DATOS')[0].childNodes[0].nodeValue;
+                    $('#listConPro').html(datos);
+
+            }              
+        }
+    });  
 }

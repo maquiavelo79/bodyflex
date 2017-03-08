@@ -826,7 +826,7 @@ $('#btnGuardar').click(function(){
                     if(pa==""){
                         pa=1;
                     }
-                    if(str.length==0){
+                    if(pa.length==0){
                         pa=1;
                     }
                     
@@ -844,6 +844,10 @@ $('#btnGuardar').click(function(){
                     pintaRegistroProducto();
                     habilitar();
                     habilitarContenido();
+                    
+                    //[[::Reiniciamos contenido::]]
+                        reIniciarContenido();
+                    //[[::Reiniciamos contenido::]]
 
                     $("#botonera").show();    
                     $('#divConPro').show();      
