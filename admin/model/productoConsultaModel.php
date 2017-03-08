@@ -168,9 +168,8 @@ $tIpo='';
                         }
                     }
                 $paginacion.='</ul>';
-                $paginacion.='txtPa<input type="text" id="txtPa" value="' . $pa . '">';
-                $paginacion.='txtUlt<input type="text" id="txtUlt" value="' . $ultimo . '">'; 
-
+                $paginacion.='<input type="hidden" id="txtPa" value="' . $pa . '">';
+                $paginacion.='<input type="hidden" id="txtUlt" value="' . $ultimo . '">'; 
 
             }else{
                 

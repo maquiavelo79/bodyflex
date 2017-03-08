@@ -5,6 +5,7 @@ include("../model/conection.php");
     $id=$_REQUEST['id'];
     $nom=$_REQUEST['nom'];
     $gd1=$_REQUEST['gd1'];
+    $niv=$_REQUEST['niv'];
     
     $sTrR='';
     $strXml='';
@@ -17,12 +18,13 @@ include("../model/conection.php");
 
         if($conn){  
 
-            $sql="CALL SP_CP_ADM_ING_MAR(:id, :nom, :gd1, @codErr);";
+            $sql="CALL SP_CP_ADM_ING_MAR(:id, :nom, :gd1, :niv, @codErr);";
 
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_STR,10);
             $stmt->bindParam(':nom', $nom, PDO::PARAM_STR,50);
             $stmt->bindParam(':gd1', $gd1, PDO::PARAM_STR,50);
+            $stmt->bindParam(':niv', $niv, PDO::PARAM_STR,2);
             $stmt->execute();
             $num= $stmt->rowCount();
             

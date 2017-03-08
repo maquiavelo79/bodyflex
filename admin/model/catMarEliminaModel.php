@@ -14,7 +14,7 @@ include("../model/conection.php");
         $conn=PDO_conectar();     
         if($conn){ 
            
-            $sql="CALL SP_CP_ADM_ELI_COL(:id, @codErr);";
+            $sql="CALL SP_CP_ADM_ELI_MAR(:id, @codErr);";
             
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_STR,10);

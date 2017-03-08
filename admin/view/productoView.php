@@ -169,13 +169,13 @@ session_start();
                                         
                                         var msg2='<p style="color: #1b2426;">La imagen corresponde al registro seleccionado.<br>';  
                                         msg2+='La imagen <b style="font-size: 18px; font-weight: bold;">carga</b> en segundos dependiendo de la velocidad de internet.</p>';  
-
+                                                    
                                         swal({   
                                             title: "Imagen en google drive",   
                                             text: msg2,   
                                             confirmButtonColor: "#DD6B55;",
-                                            imageWidth: 400,
-                                            imageHeight: 400,
+                                            imageWidth: 200,
+                                            imageHeight: 200,
                                             allowOutsideClick: true,
                                             imageUrl: url,
                                             animation: false

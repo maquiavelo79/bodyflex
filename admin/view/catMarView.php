@@ -110,8 +110,8 @@ session_start();
                                             confirmButtonText: '<p style="color:black; font-weight: bold; height: 10px;">OK</p>',
                                             allowOutsideClick: true,
                                             imageUrl: url,
-                                            imageWidth: 400,
-                                            imageHeight: 400,
+                                            imageWidth: 200,
+                                            imageHeight: 200,
                                             animation: false
                                         });
                                         break;

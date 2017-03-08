@@ -120,6 +120,9 @@ jQuery(document).ready(function() {
         var id = $('#txtColId').val();  
         var nom = $('#txtColNom').val();
         var gd1 = $('#txtCol1GD').val();
+        var niv = $('#txtMarNiv').val();
+        
+        alert('niv ' + niv);
         
         if(nom == '') {
             
@@ -145,6 +148,18 @@ jQuery(document).ready(function() {
             
         }
         
+        if(niv=='' || niv=='0') {
+            
+            var msg='<div style="text-align:center;" class="alert alert-block">';
+            msg+='<b><span style="color: #000;">Favor agregue nivel de la imagen.</span></b>';
+            msg+='</div>';
+            
+            $('#warning').html(msg);
+            $('#warning').show();
+            return false;
+            
+        }
+        
         $('#warning').hide();
      
         //AJAX
@@ -152,6 +167,7 @@ jQuery(document).ready(function() {
                 "id" : (id!=''?id:0)
                 , "nom" : nom
                 , "gd1" : gd1 
+                , "niv" : niv 
             };            
        
             $.ajax({
