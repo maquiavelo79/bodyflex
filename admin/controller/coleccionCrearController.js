@@ -323,7 +323,7 @@ jQuery(document).ready(function() {
         $('#txtColDes').val(desTd);
         $('#txtCol1GD').val(gd1Td);
         $('#txtCol2GD').val(gd2Td);
-        $('#txtCol3GD').val(gd2Td);
+        $('#txtCol3GD').val(gd3Td);
         $('#sVerImg').html('<i style="color: green; cursor: pointer;" onclick="verImagen();" class="fa fa-picture-o fa-2x"></i>');
         $('#sVerImg2').html('<i style="color: green; cursor: pointer;" onclick="verImagen2();" class="fa fa-picture-o fa-2x"></i>');
         $('#sVerImg3').html('<i style="color: green; cursor: pointer;" onclick="verImagen3();" class="fa fa-picture-o fa-2x"></i>');

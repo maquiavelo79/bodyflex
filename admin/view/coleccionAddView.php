@@ -111,7 +111,8 @@ session_start();
                                             confirmButtonColor: "#DD6B55",
                                             text: 'Imagen asociada a la <b>categoría</b> y alojada en <b>Google Drive</b>',  
                                             imageUrl: url,
-                                            imageSize: "200x300",
+                                            imageWidth: 200,
+                                            imageHeight: 200,
                                             animation: false
                                         });
                                         break;
