@@ -4,10 +4,7 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{5E4F7867-4120-4A01-9387-D24259AE7E5C}" Name="Bodyflex" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="Bodyflex.cdm"/>
-		<Model ID="{5E4F7867-4120-4A01-9387-D24259AE7E5C}" Loaded="No" Name="delta" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="/wamp/www/delta/dataBase/[MODELO]/delta.cdm"/>
-		<Model Expanded="Yes" ID="{DF313702-4723-45E5-B2F9-4A9FFD860543}" Loaded="No" Name="delta" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/wamp/www/delta/dataBase/[MODELO]/delta.pdm"/>
-		<Model Expanded="Yes" ID="{DF313702-4723-45E5-B2F9-4A9FFD860543}" Loaded="No" Name="Bodyflex" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="Bodyflex.pdm"/>
+		<Model Expanded="Yes" ID="{5E4F7867-4120-4A01-9387-D24259AE7E5C}" Name="Bodyflex" Selected="Yes" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="Bodyflex.cdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>

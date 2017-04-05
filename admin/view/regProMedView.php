@@ -162,11 +162,11 @@ session_start();
                                             <input type="hidden" id="codMed">
                                             <div class="input-append">
                                                 <label class="control-label" for="selectError"><b>Tipo&nbsp;</b></label>
-                                                <select id="cmbTipo" style="width: 270px;" data-rel="chosen"></select>
+                                                <select id="cmbTipo" size="2" style="box-shadow: 0 0 2px black; font-weight: bold; height: 100px; width: 270px; text-align: center;"></select>
                                             </div>&nbsp;
-                                            <div class="input-append">
+                                            <div id="divCmbMdd" class="input-append">
                                                 <label class="control-label" for="selectError"><b>Medida&nbsp;</b></label>
-                                                <select id="cmbMed" style="width: 270px;" data-rel="chosen"></select>
+                                                <select id="cmbMed" size="1" style="box-shadow: 0 0 2px black; font-weight: bold; height: 100px; width: 270px; text-align: center;"></select>
                                             </div>
                                         </div>
                                         

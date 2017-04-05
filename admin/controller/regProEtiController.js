@@ -6,7 +6,23 @@ jQuery(document).ready(function() {
     
     cargaEtiquetas();
     muestraProductoEtiqueta(0,0,1);
-    
+              
+    $('#id').keyup(function(){
+
+        this.value = (this.value + '').replace(/[^0-9]/g, '');
+        var idPro = $.trim($('#id').val());
+        $("#tbody").html("");
+        $("#idPag").html("");
+        $("#etiqueta").hide();
+        
+        if( idPro.length>0 ){
+            muestraEtiquetaDelProducto(0,0,1,idPro);
+        }else{    
+            muestraProductoEtiqueta(0,0,1);
+        }   
+        
+    });
+       
     $('#btnBsq').click(function(){
 
         if($('#id').val()==''){
@@ -30,7 +46,7 @@ jQuery(document).ready(function() {
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/regProEtiCsuModel.php",
                 type:  'post',
                 datetype: 'xml',
-                async: false,
+                async: true,
             beforeSend: function(){
                 $("#espera3").show();
                 $("#botonera").hide();
@@ -79,9 +95,8 @@ jQuery(document).ready(function() {
                         msg+='</div>';
 
                         $('#etiqueta').hide();
-                        $('#warningBsq').hide();
-                        $('#warningBsq').hide();
-
+                        $('#warningBsq').html(msg);
+                        $('#warningBsq').show();
                         limpiarHead();    
 
                         break;     
@@ -124,7 +139,7 @@ jQuery(document).ready(function() {
                         $('#resNom').val(nombre);
                         $('#resMar').val(marca);
                         cargaEtiquetas(); 
-                        
+                        muestraEtiquetaDelProducto(0,0,1,$('#id').val());
                         break;
                 }
             }
@@ -212,6 +227,9 @@ jQuery(document).ready(function() {
             $('#warningDet').show();
             return false;
         } 
+    
+        //alert('id ' + $('#id').val());
+        //alert('cmbETI ' + $('#cmbETI').val());
     
         var parametros = { 
             "id" : $('#id').val()
@@ -582,6 +600,12 @@ jQuery(document).ready(function() {
                     default:
                        
                         var strVal;
+                        var cant = xmlDoc.getElementsByTagName('CANTIDAD')[0].childNodes[0].nodeValue;
+                        
+                        //1° Actualizamos Cantidad
+                        var strCmb='<select id="cmbETI" size="'+ cant +'" style="box-shadow: 0 0 2px black; font-weight: bold; height: 120px; width: 270px;" data-rel="chosen"></select>';
+                        $('#divCmbEti').html(strCmb);
+                        $('#divCmbEti').trigger('liszt:updated');
                         
                         $('#cmbETI').empty();
                         $('#cmbETI').append($('<option>', {value:'(SELECCIONE)', text:'(SELECCIONE)'}));
@@ -604,15 +628,12 @@ jQuery(document).ready(function() {
     
  }
  
-    $('#id').keyup(function (){
-        this.value = (this.value + '').replace(/[^0-9]/g, '');
-    });
+    
  
  function muestraProductoEtiqueta(sw, ultimo, paginacion){
      
     var URLdomain   = window.location.host;
     var URLprotocol = window.location.protocol;
-
     var parametros = { "sw" : sw, "ultimo" : ultimo, "pa" : paginacion };
 
     $.ajax({
@@ -620,11 +641,110 @@ jQuery(document).ready(function() {
             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/regProCsuRelEtiProModel.php",
             type:  'post',
             datetype: 'xml',
-            async: false,
+            async: true,
+            beforeSend: function(){
+                $("#espera3").show();
+                $("#botonera").hide();
+            },
             success:  function (xml){
             
             //alert('regProCsuRelEtiProModel ' + xml);
+            $("#espera3").hide();
+            $("#botonera").show();
+            var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
+            var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
+            var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;
             
+            switch(codErr){
+                    case '9':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $("#warningBsq").html(msg);
+                        break;   
+                    
+                    case '8':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $("#warningBsq").html(msg);
+                        break;     
+                    
+                    case '99':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $("#warningBsq").html(msg);
+                        break;     
+                        
+                    case '100':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $("#warningBsq").html(msg);
+                        break;         
+                       
+                    case '98':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                            msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $("#warningBsq").html(msg);
+                        $("#tbody").html('').trigger('liszt:updated');
+                        $("#idPag").html('').trigger('liszt:updated');
+                        break;     
+                    
+                    default:
+                       
+                        var dat = xmlDoc.getElementsByTagName('DATOS')[0].childNodes[0].nodeValue;
+                        var pag = xmlDoc.getElementsByTagName('PAGINACION')[0].childNodes[0].nodeValue;
+                        $("#tbody").html(dat).trigger('liszt:updated');
+                        $("#idPag").html(pag).trigger('liszt:updated');
+                        
+                        break;
+
+                }
+
+        }
+    });   
+    
+ }
+ 
+ function muestraEtiquetaDelProducto(sw, ultimo, paginacion, id){
+    //consulta etiquetas del producto 
+    var URLdomain   = window.location.host;
+    var URLprotocol = window.location.protocol;
+    var parametros = { "sw" : sw, "ultimo" : ultimo, "pa" : paginacion, "id" : id};
+
+    $.ajax({
+            data:  parametros,
+            url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/regProCsuEtiProModel.php",
+            type:  'post',
+            datetype: 'xml',
+            async: true,
+            beforeSend: function(){
+                $("#espera3").show();
+                $("#botonera").hide();
+            },
+            success:  function (xml){
+            
+            //alert('regProCsuRelEtiProModel ' + xml);
+            $("#espera3").hide();
+            $("#botonera").show();
             var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
             var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
             var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;

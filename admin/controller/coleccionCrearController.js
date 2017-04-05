@@ -197,7 +197,7 @@ jQuery(document).ready(function() {
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/coleccionCrearAgregaModel.php",
                 type:  'post',
                 datetype: 'xml',
-                async: false,
+                async: true,
                 beforeSend: function(){
                     $("#espera").show();
             },
@@ -336,15 +336,16 @@ $('#btnEliminar').click(function(){
     var id = $('#txtColId').val();
 
     if(id.length>0){
-        strModal+='<div class="modal-header">';
+        strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
             strModal+='<h3>Eliminar Colección</h3>';
         strModal+='</div>';
         strModal+='<div class="modal-body" id="modalBody">';
-            strModal+='<p>¿Desea eliminar colección con identificador ' + '<b>' + id + '</b>?' + '</p>';
+            strModal+='<p>¿Desea eliminar colección con identificador ' + '<b>' + id + '</b>?' + '<br>';
+            strModal+='<b>Atención:</b> Esta acción eliminará todos los productos asociados a esta colección.</p>';
         strModal+='</div>';
         strModal+='<div class="modal-footer">';
             strModal+='<a class="btn" data-dismiss="modal">Cancelar</a>';
-            strModal+='<a style="border-color: silver; background-color: #FFCC00; color: black;" id="btnEliCol" class="btn btn-primary">Eliminar</a>';
+            strModal+='<a style="font-weight: bold; border-color: silver; background-color: #FFCC00; color: black;" id="btnEliCol" class="btn btn-primary">Eliminar</a>';
         strModal+='</div>';
         $('#myModal').html(strModal);
     };
@@ -368,7 +369,7 @@ $(document).on("click", "#btnEliCol", function(event){
         url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/coleccionCrearEliminaModel.php",
         type:  'post',
         datetype: 'xml',
-        async: false,
+        async: true,
         beforeSend: function(){
             $("#modalBody").html(strLoad);
         },
@@ -560,7 +561,7 @@ var URLprotocol = window.location.protocol;
             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/coleccionCrearConsultaModel.php",
             type:  'post',
             datetype: 'xml',
-            async: false,
+            async: true,
         beforeSend: function(){
             $("#espera").show();
         },

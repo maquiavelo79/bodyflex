@@ -219,7 +219,7 @@ function limpiarForm(){
                         case '9':
                             
                             var strModal='';
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';                           

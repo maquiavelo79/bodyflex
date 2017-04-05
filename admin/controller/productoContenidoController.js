@@ -120,7 +120,7 @@ var URLprotocol = window.location.protocol;
 
         if(cmb.length>0 && id.length>0){
             
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                 strModal+='<h3><i class="icon-warning-sign"></i>&nbspProducto - Agregar contenido</h3>';
             strModal+='</div>';

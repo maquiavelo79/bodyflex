@@ -534,7 +534,7 @@ jQuery(document).ready(function() {
         }
 
         if(slId.length>0){
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                 strModal+='<h3>Eliminar ítem Slider</h3>';
             strModal+='</div>';

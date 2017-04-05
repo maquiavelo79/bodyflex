@@ -41,7 +41,7 @@ include("../model/conection.php");
                     case 0:
                         if($num==0){
                             $codErr=8;
-                            $desErr='PROCEDIMIENTO NO RETORNA REGISTROS';
+                            $desErr='PRODUCTO SIN COLECCIONES ASOCIADAS';
                         }
                         break;
                     case 99:

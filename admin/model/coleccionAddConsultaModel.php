@@ -23,7 +23,7 @@ include("../model/conection.php");
 
         if($conn){    
 
-            $sql="CALL SP_CP_ADM_CSU_PRO_COL(:cat1, :cat2, :cat3, :ultimo, @codErr);";
+            $sql="CALL SP_CP_ADM_CSU_PRO_COL2(:cat1, :cat2, :cat3, :ultimo, @codErr);";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':cat1', $cat1, PDO::PARAM_INT);
             $stmt->bindParam(':cat2', $cat2, PDO::PARAM_INT);
@@ -48,21 +48,26 @@ include("../model/conection.php");
                     $pNomCat1=$r[11];
                     $pNomCat2=$r[12];
                     $pNomCat3=$r[13];
+                    $pPosCat=$r[14]; //posee catalogo $pPosCat=[SI | NO]
                                                     
                     $sTr = '<tr style="cursor:pointer;">';
+                    
                        $sTr.='<td class="center">' . $pId  . '</td>';
                        $sTr.='<td class="center">' . $pNo  . '</td>';
                        $sTr.='<td class="center">' . $pMa  . '</td>';
                        $sTr.='<td class="center">' . $pEs  . '</td>';
                        $sTr.='<td class="center">' . $pGD  . '</td>';
                        
-                       $sTr.='<td class="center">' . $pNomCat1  . '</td>';
-                       $sTr.='<td class="center">' . $pNomCat2  . '</td>';
-                       $sTr.='<td class="center">' . $pNomCat3  . '</td>';
+                       $sTr.='<td style="display:none;" class="center">' . $pNomCat1  . '</td>';
+                       $sTr.='<td style="display:none;" class="center">' . $pNomCat2  . '</td>';
+                       $sTr.='<td style="display:none;" class="center">' . $pNomCat3  . '</td>';
                        
                        $sTr.='<td style="display:none;" class="center">' . $pCodCat1  . '</td>';
                        $sTr.='<td style="display:none;" class="center">' . $pCodCat2  . '</td>';
                        $sTr.='<td style="display:none;" class="center">' . $pCodCat3  . '</td>';
+                       
+                       $sTr.='<td class="center">' . $pPosCat . '</td>';
+                                              
                     $sTr.='</tr>';
 
                     $sTrR.=$sTr;

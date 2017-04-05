@@ -156,7 +156,7 @@
             var strModal='';
             var asu = $('#asu').val();
 
-                strModal+='<div class="modal-header">';
+                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                     strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                     strModal+='<h3>Eliminar publicación</h3>';
                 strModal+='</div>';

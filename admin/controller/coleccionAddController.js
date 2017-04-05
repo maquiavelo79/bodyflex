@@ -2,13 +2,24 @@
 jQuery(document).ready(function() {
     var URLdomain   = window.location.host;
     var URLprotocol = window.location.protocol;
-       
+        
+    //limpiar();
+    
+    //CARGA COLECCIONES
+    var cat1=0;
+    var cat2=0;
+    var cat3=0;
+    var ultimo=0;
+    var pa=1;
+
+    consultaProductos(cat1, cat2, cat3, ultimo, pa, ultimo, pa);
+    
     $('#btnEliminar').prop('disabled',true);   
     $('#btnGuardar').prop('disabled',true);   
     
     $('#cmbCol').empty();
     $('#cmbCol').append($('<option>', {value:0, text:'(SELECCIONE)'}));
-       
+     
     var parametros = { 
             "ultimo" : 0   
             , "pa"   : 1 
@@ -28,7 +39,7 @@ jQuery(document).ready(function() {
         },
         success:  function (xml){
 
-           //alert('categoria2CsuCat1CmbModel ' + xml);
+           //alert('coleccionAddCsuCat1CmbModel ' + xml);
 
             $("#espera").hide();
             var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
@@ -122,6 +133,9 @@ jQuery(document).ready(function() {
             }
         }
     });   
+    
+    //VERIFICA EXISTENCIA DE COLECCIONES INGRESADAS
+    verificaExistenciaColeciones(); 
        
     $('#cmbCol').change(function(){
 
@@ -340,6 +354,20 @@ jQuery(document).ready(function() {
         var pNomCat1, pNomCat2, pNomCat3;
         var pCodCat1, pCodCat2, pCodCat3;
         
+        if($("#ExistenColecciones").val()==0){
+            var msg="<p style='color: black; font-size: 16px; font-family: Helvetica, Georgia, Arial, Garamond;'>Antes de gestionar colecciones y productos debe existir al menos una colección ingresada en el sistema.</p>";
+            swal({
+                title: "Atención",
+                type: "warning",
+                confirmButtonColor: "#DD6B55",
+                html: msg,
+                animation: false
+            });
+           
+            desHabilitarForm();
+            return false;
+        }
+        
         //Pintamos Fila    
         $(this).addClass('highlight').siblings().removeClass('highlight');
         
@@ -404,7 +432,9 @@ jQuery(document).ready(function() {
         $('#txtProGD').val(pGD);               
         $('#sVerImg').html('<i style="color: green; cursor: pointer;" onclick="verImagen();" class="fa fa-picture-o fa-2x"></i>');
                      
-        cargaColeccion(pId); 
+        cargaColecciones(pId); 
+        
+        
         
 });
 
@@ -415,7 +445,7 @@ $('#btnEliminar').click(function(){
     var nomCol = $('#nomCol').val();
 
     if(id.length>0){
-        strModal+='<div class="modal-header">';
+        strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
             strModal+='<h3>Quitar Producto de Colección</h3>';
         strModal+='</div>';
         strModal+='<div class="modal-body" id="modalBody">';
@@ -561,7 +591,9 @@ $(document).on("click", "#btnEliProCol", function(event){
         $('#warningCol').html('');
         $('#tbody').html('');
         
-
+        var cat1=0; var cat2=0; var cat3=0; var ultimo=0; var pa=1;
+        consultaProductos(cat1, cat2, cat3, ultimo, pa, ultimo, pa);
+        
     });
     
     $('#txtProId').keyup(function (){
@@ -754,7 +786,7 @@ $(document).on("click", "#btnEliProCol", function(event){
                         }
                         
                         $('#sVerImg').html('<i style="color: green; cursor: pointer;" onclick="verImagen();" class="fa fa-picture-o fa-2x"></i>');
-                        cargaColeccion($('#txtProId').val()); 
+                        cargaColecciones($('#txtProId').val()); 
                         
                         break;
                 }
@@ -793,6 +825,8 @@ function pintaRegistro(){
  }
  
  function limpiar(){
+ 
+    //alert('limpiar');
  
         $('#txtProId').val('');        
         $('#txtProNom').val('');
@@ -835,6 +869,59 @@ function pintaRegistro(){
 
         $('#warningCol').html('');
         $('#tbody').html('');
+    
+ }
+ 
+ function desHabilitarForm(){
+ 
+    //alert('limpiar');
+ 
+        $('#txtProId').prop('disabled', true);
+        $('#txtProNom').prop('disabled', true);
+        $('#txtProGD').prop('disabled', true);
+        $('#sVerImg').html('<i class="fa fa-picture-o fa-2x"></i>').prop('disabled', true);
+        $('#btnBsq').hide();
+        $('#idPag').hide();
+        
+        var opc='0';
+        $("#cmbCat1 option").each(function(){
+            if($(this).val()==opc){
+                $("#cmbCat1 option[value="+opc+"]").attr("selected",true);
+                $('#cmbCat1').trigger('liszt:updated');
+                return false;
+            }
+        });
+        $('#cmbCat1').prop('disabled', true);
+        $('#cmbCat1').trigger('liszt:updated');
+        
+        $('#cmbCat2').empty();
+        $('#cmbCat2').append($('<option>', {value:0, text:'(SELECCIONE)'}));
+        $('#cmbCat2').prop('disabled', true);
+        $('#cmbCat2').trigger('liszt:updated');
+        
+        $('#cmbCat3').empty();
+        $('#cmbCat3').append($('<option>', {value:0, text:'(SELECCIONE)'}));
+        $('#cmbCat3').prop('disabled', true);
+        $('#cmbCat3').trigger('liszt:updated');
+     
+        $('#cmbCol').html('');
+        $('#cmbCol').prop('disabled', true);
+        $('#cmbCol').trigger('liszt:updated');
+
+        //reiniciaCategorias();
+
+        //deshabilitamos botones
+        $('#btnGuardar').prop('disabled',true);
+        $('#btnEliminar').prop('disabled',true);
+        $('#btnLimpiar').prop('disabled',true);
+
+        //grilla
+        $('#tblPro tr').each(function(){
+            $(this).removeClass('highlight'); 
+        });
+
+        //$('#warningCol').html('');
+        //$('#tbody').html('');
     
  }
  
@@ -903,7 +990,7 @@ function pintaRegistro(){
  
 function consultaProductos(cat1, cat2, cat3, ultimo, pa){
     
-    //alert('consultaProductos ' + cat1+' '+cat2+' '+cat3+' '+ultimo);
+    //alert('consultaProductos ' + cat1+' '+cat2+' '+cat3+' '+ultimo+' '+pa);
     
     var URLdomain   = window.location.host;
     var URLprotocol = window.location.protocol;
@@ -927,7 +1014,7 @@ function consultaProductos(cat1, cat2, cat3, ultimo, pa){
         },
         success:  function (xml){
 
-            //alert('coleccionAddConsultaModel ' + xml);
+            //alert('consultaProductos: coleccionAddConsultaModel ' + xml);
             
             $("#espera").hide();
             var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
@@ -1003,7 +1090,9 @@ function consultaProductos(cat1, cat2, cat3, ultimo, pa){
                     $('#warning').html('');
                     $('#warning').hide();
                     var datos = xmlDoc.getElementsByTagName('DATOS')[0].childNodes[0].nodeValue;
+                    var pagina = xmlDoc.getElementsByTagName('PAGINACION')[0].childNodes[0].nodeValue;
                     $('#tbody').html(datos);
+                    $('#idPag').html(pagina);
                     break;
                     
             }
@@ -1234,9 +1323,9 @@ function cargaComboCat2(cat1){
     });   
 }
 
-function cargaColeccion(idPro){
+function cargaColecciones(idPro){
     
-    //alert('cargaColeccion');
+    //alert('cargaColeccion')ones;
     
     var URLdomain   = window.location.host;
     var URLprotocol = window.location.protocol;
@@ -1245,6 +1334,7 @@ function cargaColeccion(idPro){
     //CSU CAT1 PARA EL COMBO CATEGORÍA
     $.ajax({
             data:  parametros,
+            //url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/coleccionAddCsuProModel2.php",
             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/coleccionLoadCmbModel.php",
             type:  'post',
             datetype: 'xml',
@@ -1254,7 +1344,8 @@ function cargaColeccion(idPro){
         },
         success:  function (xml){
 
-            //alert('categoria2CsuCat1CmbModel ' + xml);
+            //alert('coleccionAddCsuProModel2 ' + xml);
+            
             $("#espera").hide();
             var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
             var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
@@ -1347,6 +1438,109 @@ function cargaColeccion(idPro){
         }
     });   
 }
+
+
+function verificaExistenciaColeciones(){
+    
+    //alert('cargaColeccion')ones;
+    
+    var URLdomain   = window.location.host;
+    var URLprotocol = window.location.protocol;
+    
+    //CSU CAT1 PARA EL COMBO CATEGORÍA
+    $.ajax({
+            url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/coleccionVerificaModel.php",
+            type:  'post',
+            datetype: 'xml',
+            async: false,
+        beforeSend: function(){
+            $("#espera").show();
+        },
+        success:  function (xml){
+
+            //alert('coleccionVerificaModel ' + xml);
+            
+            $("#espera").hide();
+            var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
+            var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
+            var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;
+
+            switch(codErr){
+                case "9":
+
+                    $("#espera").hide();
+
+                    var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warning').html(msg);
+                    $('#warning').show();
+
+                    break;
+
+                case "8":
+
+                    $("#espera").hide();
+
+                    var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warning').html(msg);
+                    $('#warning').show();
+
+                    break;
+
+                case "99":
+
+                    $("#espera").hide();
+
+                    var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warning').html(msg);
+                    $('#warning').show();
+                    break;
+
+                case "100":
+
+                    $("#espera").hide();
+
+                    var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warning').html(msg);
+                    $('#warning').show();
+                    break;    
+
+                default:
+
+                    var existe = xmlDoc.getElementsByTagName('DATOS')[0].childNodes[0].nodeValue;
+                    if(existe==0){
+                        
+                        $("#espera").hide();
+                        var msg='<div style="text-align:center;" class="alert alert-error">';
+                        msg+='<b><span style="color: black;">SIN COLECCIONES INGRESADAS</span></b>';
+                        msg+='</div>';
+
+                        $('#warning').html(msg);
+                        $('#warning').show();
+                        $('#ExistenColecciones').val(0);
+                        desHabilitarForm();            
+                        
+                    }else{
+                        $('#ExistenColecciones').val(1);
+                    }
+                    break;
+                    
+            }
+        }
+    });   
+}
+
 
 function reiniciaCategorias(){
     
@@ -1478,7 +1672,7 @@ function reiniciaCategorias(){
 
 function agregarColeccion(id, col){
     
-    //alert('agregarColeccion ' + id+' '+col);
+   alert('agregarColeccion ' + id+' '+col);
     
     var URLdomain   = window.location.host;
     var URLprotocol = window.location.protocol;
@@ -1496,7 +1690,7 @@ function agregarColeccion(id, col){
         },
         success:  function (xml){
 
-            //alert('coleccionAddConsultaModel ' + xml);
+            //alert('coleccionAgregaModel ' + xml);
             
             $("#espera").hide();
             var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
@@ -1580,7 +1774,7 @@ function eliminarColeccion(id, col){
         },
         success:  function (xml){
 
-            //alert('coleccionAddConsultaModel ' + xml);
+            //alert('coleccionEliminaModel ' + xml);
             
             $("#espera").hide();
             var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
@@ -1642,4 +1836,151 @@ function eliminarColeccion(id, col){
         }
     });   
     
+}
+
+function consultaColecciones(){
+
+    //OBTENEMOS VALORES
+    $('#warning').html('');
+
+    if($('#txtProId').val()==''){
+        var msg='<div style="text-align:center;" class="alert alert-error">';
+        msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+        msg+='<b><span style="color: #000;">Favor ingrese ID de producto</span></b>';
+        msg+='</div>'; 
+        $('#warning').html(msg);
+        $('#warning').show();
+        return false;
+    }else{
+        $('#warning').html('');
+    } 
+
+    var parametros = { 
+        "id" : $('#txtProId').val()
+    };
+
+    $.ajax({
+            data:  parametros,
+            url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/coleccionAddCsuProModel.php",
+            type:  'post',
+            datetype: 'xml',
+            async: true,
+        beforeSend: function(){
+            $("#espera").show();
+        },
+        success:  function (xml){
+
+            //alert('coleccionAddCsuProModel ' + xml);                
+
+            $("#espera").hide();
+            var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
+            var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
+            var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;
+
+            switch(codErr){
+                case '9':
+
+                    var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warning').html(msg);
+                    $('#warning').show();
+                    break; 
+
+                case '8':
+
+                    var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warning').html(msg);
+                    $('#warning').show();
+                    break; 
+
+                case '98':
+
+                    var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warning').html(msg);
+                    $('#warning').show();
+                    break;  
+
+                case '99':
+
+                    var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warning').html(msg);
+                    $('#warning').show();
+                    break; 
+
+                case '100':
+
+                    var msg='<div style="text-align:center;" class="alert alert-block">';
+                    msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#warning').html(msg);
+                    $('#warning').show();
+                    break;     
+
+                default:
+
+                    var NOMBRE = xmlDoc.getElementsByTagName('NOMBRE')[0].childNodes[0].nodeValue;
+                    var URL = xmlDoc.getElementsByTagName('URL')[0].childNodes[0].nodeValue;
+
+                    $('#txtProNom').val(NOMBRE);
+                    $('#txtProGD').val(URL);
+
+                    if(xmlDoc.getElementsByTagName('CAT1_COD')[0].childNodes[0].nodeValue!=0){
+
+                        var CAT1_NOM = xmlDoc.getElementsByTagName('CAT1_NOM')[0].childNodes[0].nodeValue;
+                        var CAT1_COD = xmlDoc.getElementsByTagName('CAT1_COD')[0].childNodes[0].nodeValue;
+
+                        $('#cmbCat1').empty();
+                        $('#cmbCat1').append($('<option>', {value:CAT1_COD, text:CAT1_NOM}));
+                        $("#cmbCat1").prop('selectedIndex',0);
+                        $('#cmbCat1').trigger('liszt:updated');
+                    }
+                    if(xmlDoc.getElementsByTagName('CAT2_COD')[0].childNodes[0].nodeValue!=0){
+
+                        var CAT2_NOM = xmlDoc.getElementsByTagName('CAT2_NOM')[0].childNodes[0].nodeValue;
+                        var CAT2_COD = xmlDoc.getElementsByTagName('CAT2_COD')[0].childNodes[0].nodeValue;
+
+                        $('#cmbCat2').empty();
+                        $('#cmbCat2').append($('<option>', {value:CAT2_COD, text:CAT2_NOM}));
+                        $("#cmbCat2").prop('selectedIndex',0);
+                        $('#cmbCat2').trigger('liszt:updated');
+                    }
+
+                    //alert('CAT3_COD ' + CAT3_COD);
+
+                    if(xmlDoc.getElementsByTagName('CAT3_COD')[0].childNodes[0].nodeValue!=0){
+
+                        var CAT3_NOM = xmlDoc.getElementsByTagName('CAT3_NOM')[0].childNodes[0].nodeValue;
+                        var CAT3_COD = xmlDoc.getElementsByTagName('CAT3_COD')[0].childNodes[0].nodeValue;
+
+                        $('#cmbCat3').empty();
+                        $('#cmbCat3').append($('<option>', {value:CAT3_COD, text:CAT3_NOM}));
+                        $("#cmbCat3").prop('selectedIndex',0);
+                        $('#cmbCat3').trigger('liszt:updated');
+                    }
+                    
+                    $('#sVerImg').html('<i style="color: green; cursor: pointer;" onclick="verImagen();" class="fa fa-picture-o fa-2x"></i>');
+                    cargaColecciones($('#txtProId').val()); 
+                    
+                    break;
+            }
+        }
+    });
+
 }

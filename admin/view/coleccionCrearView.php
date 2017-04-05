@@ -389,9 +389,15 @@ session_start();
                                             
                                             <!-- BOTONES-->
                                                 <div class="form-actions" id="botonera">
-                                                    <button type="button" style="border-color: silver; background-color: #FFCC00; color: black; font-weight: bold; width: 100px;" class="btn" id="btnGuardar">Guardar</button>
-                                                    <button type="button" style="border-color: silver; background-color: silver; color: black; font-weight: bold; width: 100px;" class="btn btn-info btn-setting" id="btnEliminar">Eliminar</button>
-                                                    <button type="reset" style="border-color: silver; background-color: silver; color: black; font-weight: bold; width: 100px;" class="btn" id="btnLimpiar">Limpiar</button>
+                                                    <button type="button" style="border-color: silver; background-color: #FFCC00; color: black; font-weight: bold; width: 100px;" class="btn" id="btnGuardar">
+                                                        <i class="fa fa-plus-square"></i>&nbsp;Guardar
+                                                    </button>
+                                                    <button type="button" style="border-color: silver; background-color: silver; color: black; font-weight: bold; width: 100px;" class="btn btn-info btn-setting" id="btnEliminar">
+                                                        <i class="fa fa-minus-square"></i>&nbsp;Eliminar
+                                                    </button>
+                                                    <button type="reset" style="border-color: silver; background-color: silver; color: black; font-weight: bold; width: 100px;" class="btn" id="btnLimpiar">
+                                                        <i class="fa fa-refresh"></i>&nbsp;Limpiar
+                                                    </button>
                                                 </div>
                                         </fieldset>
                                     </form>

@@ -1314,7 +1314,7 @@ $('#btnEliminar').click(function(){
     var strModal='';
     var nom = $('#txtProNom').val();
             
-        strModal+='<div class="modal-header">';
+        strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
             strModal+='<h3><i class="icon-warning-sign"></i>&nbsp;Eliminar Producto</h3>';
         strModal+='</div>';
         strModal+='<div class="modal-body" id="modalBody">';

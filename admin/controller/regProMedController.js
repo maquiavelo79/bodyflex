@@ -206,7 +206,8 @@ jQuery(document).ready(function() {
         if($(this).val()!='(SELECCIONE)'){
             consultaMedida($(this).val());
         }else{
-
+            
+            $('#cmbMed').attr("size", 1);
             $('#cmbMed').empty();
             $('#cmbMed').append($('<option>', {value:0, text:'(SELECCIONE)'}));
             $('#cmbMed').trigger('liszt:updated');
@@ -215,6 +216,7 @@ jQuery(document).ready(function() {
             $('#medWarning1').hide();
             $('#medWarning2').html('');
             $('#medWarning2').hide();
+            
         }
     });
      
@@ -495,6 +497,8 @@ jQuery(document).ready(function() {
 
     $('#btnEliminar').click(function(){
     
+        //alert('cmbTipo ' + ("#cmbTipo").prop('selectedIndex'));
+    
         //OBTENEMOS VALORES
         $('#medWarning1').html('');    
         $('#medWarning2').html('');  
@@ -615,16 +619,13 @@ jQuery(document).ready(function() {
     
     
     $('#btnLimpiar').click(function(){
-    
+        
+        $('#cmbMed').attr("size", 1);
         $('#codMed').val('');
-    
         $('#cmbMed').empty();
         $('#cmbMed').append($('<option>', {value:0, text:'(SELECCIONE)'}));
         $('#cmbMed').trigger('liszt:updated');
-    
-//        $("select#cmbTipo").prop('selectedIndex', 0);
-//        $('#cmbTipo').trigger('liszt:updated');
-        
+        $("select#cmbTipo").prop('selectedIndex', 0);
         $("select#cmbMed").prop('selectedIndex', 0);
         $('#cmbMed').trigger('liszt:updated');
         
@@ -646,11 +647,12 @@ jQuery(document).ready(function() {
 
 function limpiar(){
 
+    $('#cmbMed').attr("size", 1);
     $('#codMed').val('');
-
-    //$('#cmbMed').empty();
-    //$('#cmbMed').append($('<option>', {value:0, text:'(SELECCIONE)'}));
-    //$('#cmbMed').trigger('liszt:updated');
+    $('#cmbMed').empty();
+    $('#cmbMed').append($('<option>', {value:0, text:'(SELECCIONE)'}));
+    $('#cmbMed').trigger('liszt:updated');
+    $("select#cmbTipo").prop('selectedIndex', 0);
     $("select#cmbMed").prop('selectedIndex', 0);
     $('#cmbMed').trigger('liszt:updated');
 
@@ -661,7 +663,7 @@ function limpiar(){
     $('#medWarning1').html('');
     $('#medWarning1').hide();
     $('#medWarning2').html('');
-    $('#medWarning2').hide();    
+    $('#medWarning2').hide();        
 
 }
   
@@ -683,13 +685,12 @@ function isEmail(email) {
         $('#medWarning2').hide();
 
         var parametros = { "medida" : med };
-
         $.ajax({
                 data:  parametros,
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/regProMedCsuMedModel.php",
                 type:  'post',
                 datetype: 'xml',
-                async: false,
+                async: true,
             beforeSend: function(){
                 $("#espera").show();
                 $("#espera2").show();
@@ -797,6 +798,9 @@ function isEmail(email) {
                     default:
 
                         var strVal;
+                        var cont = xmlDoc.getElementsByTagName('CONTADOR')[0].childNodes[0].nodeValue;
+                        
+                        $('#cmbMed').attr("size", cont);
                         $('#cmbMed').empty();
                         $('#cmbMed').append($('<option>', {value:0, text:'(SELECCIONE)'}));
 

@@ -77,7 +77,7 @@ session_start();
                             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/view/enlaces.php",
                             type:  'post',
                             datetype: 'xml',
-                            async: false,
+                            async: true,
                              beforeSend: function(){
                                 $("#espera").show();
                             },
@@ -302,7 +302,9 @@ session_start();
                     </div>-->
                     
                     <div class="form-actions" id="botonera" style="margin-bottom: 20px;">
-                        <button type="reset" style="border-color: silver; background-color: silver; color: black; font-weight: bold; width: 100px;" class="btn" id="btnLimpiar">Limpiar</button>
+                        <button type="reset" style="border-color: silver; background-color: silver; color: black; font-weight: bold; width: 100px;" class="btn" id="btnLimpiar">
+                            <i class="fa fa-refresh"></i>&nbsp;Limpiar
+                        </button>
                     </div>
                     
                     <div id="divConCat2" class="row-fluid sortable">		
@@ -324,12 +326,13 @@ session_start();
                                             <th class="center">Marca</th>
                                             <th class="center">Estado</th>
                                             <th class="center">Google Drive</th>
-                                            <th class="center">Categor&iacute;a 1</th>
-                                            <th class="center">Categor&iacute;a 2</th>
-                                            <th class="center">Categor&iacute;a 3</th>
+                                            <!-- <th class="center">Categor&iacute;a 1</th> -->
+                                            <!-- <th class="center">Categor&iacute;a 2</th> -->
+                                            <!-- <th class="center">Categor&iacute;a 3</th> -->
+                                            <th class="center">Cat&aacute;logo</th>
                                         </tr>
                                     </thead>   
-                                    <tbody id="tbody">
+                                    <tbody style="overflow-y: auto;" id="tbody">
                                         
                                     </tbody>
                                 </table>   
@@ -369,6 +372,7 @@ session_start();
     <?php } ?>
     <input type="hidden" id="sesion" value= "<?= $_SESSION['sesion'];?>">
     <input type="hidden" id="session_id" value= "<?= $_SESSION['sesion_id'];?>">
+    <input type="hidden" id="ExistenColecciones" value="">
     <!-- Datos sesion================================= -->    
     
     <!--

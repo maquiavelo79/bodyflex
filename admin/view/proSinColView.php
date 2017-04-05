@@ -168,7 +168,7 @@ session_start();
     
     <a id="showModal" style="display:none;" class="btn btn-info btn-setting"></a>
     <div class="modal hide fade" id="myModal" style="width: 700px;">
-        <div class="modal-header">
+        <div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">
             <button type="button" class="close" data-dismiss="modal">×</button>
             <h3>Productos sin Colecci&oacute;n</h3>
         </div>

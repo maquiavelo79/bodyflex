@@ -302,7 +302,7 @@ $('#btnEliminar').click(function(){
     var id = $('#txtColId').val();
 
     if(id.length>0){
-        strModal+='<div class="modal-header">';
+        strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
             strModal+='<h3>Eliminar Colección</h3>';
         strModal+='</div>';
         strModal+='<div class="modal-body" id="modalBody">';

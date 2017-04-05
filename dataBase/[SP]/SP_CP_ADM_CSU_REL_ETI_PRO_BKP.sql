@@ -23,11 +23,11 @@ BEGIN
   SET codErr=0;
 
   -- CANTIDAD DE PRODUCTOS
-    SET @CANT=(SELECT COUNT(*) FROM PRODUCTO WHERE proPE=1 AND PETID>0);
+    SET @CANT=(SELECT COUNT(*) FROM PRODUCTO WHERE proPE=1 AND PETID<>1);
 
     IF(@CANT)>0 THEN
       
-      SET CANT=(SELECT COUNT(*) FROM PRODUCTO WHERE proPE=1 AND PETID>0);
+      SET CANT=(SELECT COUNT(*) FROM PRODUCTO WHERE proPE=1 AND PETID<>1);
       SET PAG=CEILING(CANT/10);
           
       WHILE CONT<PAG DO
@@ -36,13 +36,13 @@ BEGIN
           CREATE TEMPORARY TABLE TMP_Pag1 
           SELECT proId 
           FROM PRODUCTO
-          WHERE proPE=1 AND PETID>0
+          WHERE proPE=1 AND PETID<>1
           ORDER BY proId DESC LIMIT 10;                     
         ELSE
           CREATE TEMPORARY TABLE TMP_Pag1 
           SELECT proId
           FROM PRODUCTO 
-          WHERE proId<id AND proPE=1 AND PETID>0 
+          WHERE proId<id AND proPE=1 AND PETID<>1  
           ORDER BY proId DESC LIMIT 10;
         END IF;
 
@@ -74,7 +74,7 @@ BEGIN
             , ULTIMOS AS 'ULT'
             , p.proEt
             FROM PRODUCTO P
-            WHERE P.proId<=ULTIMO AND P.proPE=1 AND PETID>0
+            WHERE P.proId<=ULTIMO AND P.proPE=1 AND PETID<>1
             ORDER BY P.proId DESC
             LIMIT 10;
           ELSE
@@ -87,7 +87,7 @@ BEGIN
             , ULTIMOS AS 'ULT'
             , p.proEt
             FROM PRODUCTO P
-            WHERE P.proPE=1 AND PETID>0
+            WHERE P.proPE=1 AND PETID<>1
             ORDER BY P.proId DESC
             LIMIT 10;
           END IF;

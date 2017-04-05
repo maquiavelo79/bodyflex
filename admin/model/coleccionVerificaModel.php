@@ -1,49 +1,37 @@
 <?php
-
+session_start(); 
 include("../model/conection.php");
 
-    $sTr = '';
-    $sTrR = '';
-    $paginacion='';
-    
-    $codErr=0;
-    $estado = '';
-    $rut = '';
-    $nombres = '';
-    $apellidos = '';
-    $strEst='';
     $cont=0;
-    $desErr='OPERACION EXITOSA!';
-    $strDat='';
-    $strPag='';
+    $sTr = '';
+    $sTrR='';
     $strXml='';
+    $codErr=0;
+    $desErr='OPERACION EXITOSA!';
+    $existe=0; 
     
-    $medida=$_REQUEST['medida']; //switch= [1 | 2]; 1=PREVIOS, 2=POSTERIORES
-
+    
     try{
 	
         $conn=PDO_conectar();     
 
-        if($conn){   
+        if($conn){    
 
-            $sql="CALL SP_CP_ADM_CSU_MED(:medida, @codErr);";
+            $sql="CALL SP_CP_ADM_CSU_COL_EXI(@codErr);";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':medida', $medida, PDO::PARAM_STR,10);
             $stmt->execute();
             $num= $stmt->rowCount();
             
             if($num>0){
-                while ($r = $stmt->fetch(PDO::FETCH_NUM)):
-                    $cont+=1;    
-                    $sTrR.='<REGISTRO>'.$r[0].'|'.$r[1].'</REGISTRO>';
-                endwhile; 
-                $stmt->closeCursor();
-                $output = $conn->query("SELECT @codErr")->fetch(PDO::FETCH_ASSOC);
-                $codErr = $output['@codErr'];                        
+                while ($r = $stmt->fetch(PDO::FETCH_NUM)): 
+                    $existe=$r[0];
+                endwhile;                                              
             }else{
+                
                 $stmt->closeCursor();
-                $output = $conn->query("SELECT @codErr")->fetch(PDO::FETCH_ASSOC);
+                $output = $conn->query("select @codErr")->fetch(PDO::FETCH_ASSOC);
                 $codErr = $output['@codErr'];
+
                 switch($codErr){
                     case 0:
                         if($num==0){
@@ -54,21 +42,18 @@ include("../model/conection.php");
                     case 99:
                         $desErr='ERROR EN PROCEDIMEINTO';
                         break;
-                    case 98:
-                        $desErr='SIN MEDIDAS DEL TIPO ' .$medida;
-                        break;
                 }
             }        
         }else{
             $codErr=9;
             $desErr='NO ES POSIBLE CONECTAR';
         }
-    
+ 
     }catch(PDOException $exception){ 
        $codErr=100;
        $desErr=$exception->getMessage(); 
-    } 	    
-          
+    } 	
+        
     $strXml.='<SALIDA>';
         $strXml.='<ERROR>';
             $strXml.='<CODERROR>';
@@ -79,12 +64,7 @@ include("../model/conection.php");
             $strXml.='</DESERROR>';
         $strXml.='</ERROR>';    
         $strXml.='<DATOS>';
-            $strXml.=$sTrR;
+                $strXml.=$existe;
         $strXml.='</DATOS>';
-        $strXml.='<CONTADOR>';
-            $strXml.=$cont;
-        $strXml.='</CONTADOR>';
     $strXml.='</SALIDA>';
     echo $strXml;
-
-    

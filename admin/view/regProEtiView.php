@@ -160,8 +160,8 @@ session_start();
                                         <div id="direccion">                        
                                             <div class="control-group">
                                                 <label class="control-label" for="selectError"><b>Etiqueta</b></label>
-                                                <div class="controls">
-                                                    <select id="cmbETI" style="width: 270px;" data-rel="chosen"></select>
+                                                <div id="divCmbEti" class="controls">
+                                                    <select id="cmbETI" size="0" style="width: 270px; height: 200px;" data-rel="chosen"></select>
                                                 </div>
                                             </div>
                                         </div>

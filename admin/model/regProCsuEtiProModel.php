@@ -1,58 +1,70 @@
 <?php
-session_start(); 
+
 include("../model/conection.php");
 
-    $cont=0;
-    $sTr = '';
+$cont=0;
+$paginacion='';
+$sTr = '';
+$cOndicion='';
+$tIpo='';
+
+
     $sTrR='';
     $strXml='';
     $codErr=0;
     $desErr='OPERACION EXITOSA!';
-    $paginacion=''; 
-            
+    
+    $sw=$_REQUEST['sw']; //switch= [1 | 2]; 1=PREVIOS, 2=POSTERIORES
     $ultimo=$_REQUEST['ultimo']; // ultimo numero de la paginación
     $pa=$_REQUEST['pa']; //Paginación, indica el numero de paginación que el usuario presionó 
+    $id=$_REQUEST['id']; //ID del producto a buscar
+      
     
     try{
-	
-        $conn=PDO_conectar();     
+      
+        $conn=PDO_conectar(); 
 
-        if($conn){    
+        if($conn){
 
-            $sql="CALL SP_CP_ADM_CSU_COL(:ultimo, @codErr);";
+            $sql = 'CALL SP_CP_ADM_CSU_ETI_PRO(:sw, :ultimo, :id, @codErr)';
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':sw', $sw, PDO::PARAM_INT);
             $stmt->bindParam(':ultimo', $ultimo, PDO::PARAM_STR, 10);
+            $stmt->bindParam(':id', $id, PDO::PARAM_STR, 10);
             $stmt->execute();
             $num= $stmt->rowCount();
-            
+
             if($num>0){
-                while ($r = $stmt->fetch(PDO::FETCH_NUM)): 
+
+                while ($r = $stmt->fetch(PDO::FETCH_NUM)):
+
                     $cont+=1;
-                    $coId=$r[0];
-                    $coNo=$r[1];
-                    $coDe=$r[2];
-                    $coGD1=$r[3];
-                    $coGD2=$r[4];
-                    $coGD3=$r[8];
-                                        
+                    
+                    $pId=$r[0];         //IDENTIFICADOR
+                    $pNom=$r[1];        //NOMBRE
+                    $pMar=$r[2];        //MARCA
+                    $pEti=$r[3];        //ETIQUETA
+                    $pEst=$r[4];        //ESTADO
+                    
                     $sTr = '<tr style="cursor:pointer;">';
-                       $sTr.='<td style="width: 10%;" class="center">' . $coId . '</td>';
-                       $sTr.='<td style="width: 10%;" class="center">' . $coNo . '</td>';
-                       $sTr.='<td style="width: 20%;" class="center">' . $coDe . '</td>';
-                       $sTr.='<td style="width: 20%;" class="center">' . $coGD1 . '</td>';
-                       $sTr.='<td style="width: 20%;" class="center">' . $coGD2 . '</td>';
-                       $sTr.='<td style="width: 20%;" class="center">' . $coGD3 . '</td>';
+                    
+                        $sTr.='<td class="center">' . $pId  . '</td>';
+                        $sTr.='<td class="center">' . $pNom . '</td>';
+                        $sTr.='<td class="center">' . $pMar . '</td>';
+                        $sTr.='<td class="center">' . $pEti  . '</td>';
+                        $sTr.='<td class="center" style="display: none;">' . $pEst  . '</td>';
+                        
                     $sTr.='</tr>';
 
                     $sTrR.=$sTr;
- 
-                    $cant=$r[5];
-                    $pag=$r[6];
-                    $paginaciones=$r[7]; //ultimo de cada paginacion
-                    
-                endwhile;  
                 
-                $ultimos=explode('|',$paginaciones);   //matriz de ultimos de cada paginacion 
+                    $cant=$r[4];
+                    $pag=$r[5];
+                    $paginaciones=$r[6];
+
+                endwhile;   
+
+                $ultimos=explode('|',$paginaciones);    
                 $dimension=sizeof($ultimos);
                 $ultimo=$ultimos[$pa-1];
 
@@ -63,14 +75,16 @@ include("../model/conection.php");
                         if($pa==$i){
                             $paginacion.='<li class="active"><a>' . $i . '</a></li>';
                         }else{
-                            $paginacion.='<li style="cursor:pointer;"><a onclick="consultaColeccion(' . $ultimos[$j] . ',' . $i . ')">' . $i . '</a></li>';
+                            $paginacion.='<li style="cursor:pointer;"><a onclick="muestraProductoEtiqueta(0,' . $ultimos[$j] . ',' . $i . ')">' . $i . '</a></li>';
                         }
                     }
                 $paginacion.='</ul>';
                 $paginacion.='<input type="hidden" id="txtPa" value="' . $pa . '">';
                 $paginacion.='<input type="hidden" id="txtUlt" value="' . $ultimo . '">'; 
-                                
+
+
             }else{
+                
                 $stmt->closeCursor();
                 $output = $conn->query("select @codErr")->fetch(PDO::FETCH_ASSOC);
                 $codErr = $output['@codErr'];
@@ -86,19 +100,20 @@ include("../model/conection.php");
                         $desErr='ERROR EN PROCEDIMEINTO';
                         break;
                     case 98:
-                        $desErr='SIN COLECCIONES INGRESADAS';
+                        $desErr='SIN PRODUCTOS ETIQUETADOS';
                         break;
                 }
+                
             }        
         }else{
             $codErr=9;
             $desErr='NO ES POSIBLE CONECTAR';
         }
- 
+    
     }catch(PDOException $exception){ 
        $codErr=100;
        $desErr=$exception->getMessage(); 
-    } 	
+    } 
         
     $strXml.='<SALIDA>';
         $strXml.='<ERROR>';
@@ -124,3 +139,16 @@ include("../model/conection.php");
         $strXml.='</REGISTROS>';
     $strXml.='</SALIDA>';
     echo $strXml;
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

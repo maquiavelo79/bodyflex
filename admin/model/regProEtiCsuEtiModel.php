@@ -4,7 +4,7 @@ include("../model/conection.php");
 
     $strCmb='';
     $catEti='';
-
+    $cant=0;
     $codErr=0;
     $desErr='OPERACION EXITOSA!';
     $strDat='';
@@ -24,11 +24,14 @@ include("../model/conection.php");
             $num= $stmt->rowCount();
             
             if($num>0){
+                
                 while ($r = $stmt->fetch(PDO::FETCH_NUM)):  
                     $strDat.='<REGISTRO>';
                         $strDat.= $r[0] .'|'. $r[1];
                     $strDat.='</REGISTRO>';
+                    $cant+=1;
                 endwhile; 
+                
             }else{
 
                 $stmt->closeCursor();
@@ -71,5 +74,8 @@ include("../model/conection.php");
         $strXml.='<DATOS>';
             $strXml.=$strDat;
         $strXml.='</DATOS>';
+        $strXml.='<CANTIDAD>';
+            $strXml.=$cant;
+        $strXml.='</CANTIDAD>';
     $strXml.='</SALIDA>';
     echo $strXml;
