@@ -309,7 +309,7 @@ var URLprotocol = window.location.protocol;
         if(checkURL(id, cmb)){            
             if(id.length>0 && cmb.length>0){
 
-                strModal+='<div class="modal-header">';
+                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                     strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                     strModal+='<h3><b><i class="fa fa-exclamation-triangle"></i>&nbsp;Agregar contenido</b></h3>';
                 strModal+='</div>';
@@ -326,7 +326,7 @@ var URLprotocol = window.location.protocol;
 
             }else{
 
-                strModal+='<div class="modal-header">';
+                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                     strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                     strModal+='<h3><b><i class="fa fa-exclamation-triangle"></i>&nbsp;Atención</b></h3>';
                 strModal+='</div>';
@@ -343,7 +343,7 @@ var URLprotocol = window.location.protocol;
             }
         }else{
             //URL no valida
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                 strModal+='<h3><b><i class="fa fa-exclamation-triangle"></i>&nbsp;URL no válida</b></h3>';
             strModal+='</div>';
@@ -368,7 +368,7 @@ var URLprotocol = window.location.protocol;
 
         if(nom.length>0){
 
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación - Eliminar contenido</h3>';
             strModal+='</div>';

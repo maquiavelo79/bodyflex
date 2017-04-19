@@ -5,7 +5,7 @@ SELECT @codErr;
 CALL SP_WAPP_LOGIN('adm@bo.cl','12345', @codErr);
 SELECT @codErr;
 
--- CALL SP_WAPP_LOGIN('pro@bo.cl','12345');
+-- SELECT * FROM CPANEL
 
 -- CALL SP_WAPP_LOGIN('fjcalderon@uc.cl','12345', @codErr);
 -- SELECT @codErr;
@@ -108,7 +108,7 @@ SET codErr=0;
           , UNOMBRE
           , UAPELLIDO
           , UALIAS
-          , 'USUARIO' AS ROL
+          , 'USR' AS ROL
           , (SELECT CPARU FROM CPANEL WHERE CPARO='USUARIO') AS URL
           FROM USUARIO 
           WHERE upper(UMAIL)=upper(mail);
@@ -121,7 +121,7 @@ SET codErr=0;
           , PNOM
           , PAPE
           , PALIAS
-          , 'PROFESIONAL' AS ROL
+          , 'PRO' AS ROL
           , PRUT AS RUT
           , PDV AS DV 
           , (SELECT CPARU FROM CPANEL WHERE CPARO='PROFESIONAL') AS URL
@@ -137,7 +137,7 @@ SET codErr=0;
           , compReNom
           , compReApe
           , compReAli
-          , 'COMPLEMENTADOR' AS ROL
+          , 'COM' AS ROL
           , compRut AS RUT
           , compDv AS DV 
           , (SELECT CPARU FROM CPANEL WHERE CPARO='COMPLEMENTADOR') AS URL

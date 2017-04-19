@@ -199,7 +199,7 @@ function consultarProductosCatalogo(ultimo, pa){
         , "categoria1" : idCat1 
         , "categoria2" : idCat2 
         , "categoria3" : idCat3 
-        , "proOrden" : proOrden 
+        , "proOrden" : (proOrden!=''?proOrden:0) 
     };
     
     $.ajax({

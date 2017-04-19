@@ -12,7 +12,7 @@ CREATE PROCEDURE bodyflex.`SP_CAT_CSU_RAN_PRE`(
                                               )
 BEGIN
   
-  -- DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+  DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
   SET codErr=0;
 
   SET @MAX=(SELECT PROPVP 

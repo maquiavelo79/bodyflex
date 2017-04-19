@@ -15,6 +15,7 @@ CREATE PROCEDURE bodyflex.`SP_CP_PRO_MENSAJE_INGRESA_RESPUESTA`(
                                                     , IN aliDes VARCHAR(50)
                                                     , IN maiOri VARCHAR(50)
                                                     , IN maiDes VARCHAR(50)
+                                                    , IN inc VARCHAR(10)
                                                     , OUT codErr INTEGER
                                                   )
 BEGIN
@@ -37,6 +38,7 @@ BEGIN
       , MADES
       , MMAIL
       , mMailDes
+      , INCID
   ) 
       VALUES
  (
@@ -53,6 +55,7 @@ BEGIN
       , aliDes
       , maiOri
       , maiDes
+      , inc
     );
     SELECT 1;
     

@@ -14,6 +14,7 @@ sleep(1);
     $ade=$_REQUEST['ade'];
     $email=$_REQUEST['email'];
     $mai=$_REQUEST['mai'];
+    $inc=$_REQUEST['inc'];
             
     $sTr = '';
     $sTrR = '';
@@ -41,6 +42,7 @@ sleep(1);
                                                     ":ade," .
                                                     ":email," .
                                                     ":mai, " . 
+                                                    ":inc, " . 
                                                     "@codErr);";    
 
             $stmt = $conn->prepare($sql);
@@ -54,6 +56,7 @@ sleep(1);
             $stmt->bindParam(':ade', $ade, PDO::PARAM_STR, 50);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR, 50);
             $stmt->bindParam(':mai', $mai, PDO::PARAM_STR, 50);
+            $stmt->bindParam(':inc', $inc, PDO::PARAM_STR, 10);
             $stmt->execute();
             $num= $stmt->rowCount();
 

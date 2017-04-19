@@ -16,6 +16,7 @@
             var ade = $("#ali").val(); //alias, alias del destinatario del mensaje
             var email = $("#email").val(); //mail del quien envia el mensaje, en este caso de quien responde
             var mai = $("#mai").val(); //mail del quien envia el mensaje, en este caso de quien responde    
+            var inc = $("#inc").val(); //ID de incidente asociado    
                 
             if($('#id').val()==''){
                 var msg='<div style="text-align:center; background-color: red;" class="alert alert-error">';
@@ -56,12 +57,14 @@
                 ,   "ade" : ade
                 ,   "email" : email
                 ,   "mai" : mai
+                ,   "inc" : inc
             };        
             
             $.ajax({
                 data:  parametros,
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/Mensajes/model/mensajesIngresaRespModel.php",
                 type:  'post',
+                async:  true,
                 datetype: 'xml',
                 beforeSend: function(){
                     $("#divLoad").show();
@@ -158,7 +161,7 @@
             var strModal='';
             var asu = $('#asu').val();
 
-                strModal+='<div class="modal-header">';
+                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                     strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                     strModal+='<h3>Eliminar publicación</h3>';
                 strModal+='</div>';
@@ -189,6 +192,7 @@
                 data:  parametros,
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/Mensajes/model/mensajesEliminaModel.php",
                 type:  'post',
+                async:  true,
                 datetype: 'xml',
                 beforeSend: function(){
                     $("#divLoad").show();

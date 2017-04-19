@@ -31,8 +31,6 @@ $poseePro = 0;
     $poseePub = profesionalPoseePublicaciones($rutPro);
     $poseePro = profesionalPoseeProductos($rutPro);
     $poseeVta = profesionalPoseeVenta($rutPro, $_SESSION['sesion_id']);
-
-
     
 ?>
 

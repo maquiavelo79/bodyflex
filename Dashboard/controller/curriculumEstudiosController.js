@@ -567,7 +567,7 @@ $('#btnEliminar').click(function(){
     var strModal='';
     var nom = $('#txtEstNom').val();
             
-        strModal+='<div class="modal-header">';
+        strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
             strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
             strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Eliminar estudio</h3>';
         strModal+='</div>';

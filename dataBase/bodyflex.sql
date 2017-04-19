@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     02-03-2017 13:10:29                          */
+/* Created on:     10-04-2017 15:10:58                          */
 /*==============================================================*/
 
 
@@ -42,9 +42,13 @@ drop table if exists CPANEL;
 
 drop table if exists DIRECCION;
 
+drop table if exists ESTADO_INCIDENTE;
+
 drop table if exists ESTUDIOS;
 
 drop table if exists EXPERIENCIA;
+
+drop table if exists INCIDENTE;
 
 drop table if exists INTERNO;
 
@@ -69,6 +73,8 @@ drop table if exists PARAMETROS;
 drop table if exists PORTAFOLIO;
 
 drop table if exists POSTULACION;
+
+drop table if exists POSTULACION_ESTADO;
 
 drop table if exists POSTULACION_RESPALDO;
 
@@ -481,6 +487,16 @@ create table DIRECCION
 );
 
 /*==============================================================*/
+/* Table: ESTADO_INCIDENTE                                      */
+/*==============================================================*/
+create table ESTADO_INCIDENTE
+(
+   EI_ID                bigint not null,
+   EI_NO                varchar(100),
+   primary key (EI_ID)
+);
+
+/*==============================================================*/
 /* Table: ESTUDIOS                                              */
 /*==============================================================*/
 create table ESTUDIOS
@@ -524,6 +540,18 @@ create table EXPERIENCIA
 );
 
 alter table EXPERIENCIA comment 'experiencia ingresada por el profesional';
+
+/*==============================================================*/
+/* Table: INCIDENTE                                             */
+/*==============================================================*/
+create table INCIDENTE
+(
+   INCID                bigint not null,
+   PRUT                 varchar(10),
+   EI_ID                bigint not null,
+   INCFEC               datetime,
+   primary key (INCID)
+);
 
 /*==============================================================*/
 /* Table: INTERNO                                               */
@@ -615,8 +643,12 @@ create table MARCAS
    MARID                bigint not null,
    MARNOM               varchar(50),
    MARGD                varchar(50),
+   MARNIV               int comment 'marNiv=[ 1 | 2 ]
+            este campo identifica la imagen principal (1) o complementaria (2) de una marca, esto con propósito de contar con multiples imágenes asociadas a una misma marca. ',
    primary key (MARID)
 );
+
+alter table MARCAS comment 'Es posible ingresar multiples veces una misma marca con prop';
 
 /*==============================================================*/
 /* Table: MEDIDA                                                */
@@ -624,8 +656,8 @@ create table MARCAS
 create table MEDIDA
 (
    MEDID                bigint not null,
-   MEDTI                varchar(10) comment 'representa el tipo de medida, si se trata de letras o numeros
-            medTi2 = [ LETRS | NUMERO ]',
+   MEDTI                varchar(10) comment 'representa el Tipo de medida, si se trata de letras o numeros
+            medTi2 = [ LETRA | NUMERO ]',
    MEDVA                varchar(10) comment 'medVa = [ XS | S | M | XL| L | 38 | 40 | ETC ].',
    primary key (MEDID)
 );
@@ -684,11 +716,25 @@ alter table PORTAFOLIO comment 'imagenes ingresadas por el porfesional al portaf
 create table POSTULACION
 (
    POSID                bigint not null,
+   POSESTID             bigint comment 'id de estado de postulacion',
    POSNOM               varchar(100),
    POSAPE               varchar(100),
    POSEMA               varchar(100) comment 'email del postulante',
    POSFEC               datetime,
-   POSEST               int comment '1=INGRESADA
+   primary key (POSID)
+);
+
+alter table POSTULACION comment 'postulacion del profesional';
+
+/*==============================================================*/
+/* Table: POSTULACION_ESTADO                                    */
+/*==============================================================*/
+create table POSTULACION_ESTADO
+(
+   POSESTID             bigint not null comment 'id de estado de postulacion',
+   POSESTNOM            varchar(100) comment 'nombre del estado de la postulacion.
+            
+            1=INGRESADA
             2=EVALUANDO
             3=DETENIDA
             4=APROBANDO
@@ -700,8 +746,11 @@ create table POSTULACION
             10=CUENTAS
             11=PERFILADO
             12=ALTA',
-   primary key (POSID)
+   POSESTDES            varchar(500) comment 'descripcion del estado de la postulacion',
+   primary key (POSESTID)
 );
+
+alter table POSTULACION_ESTADO comment 'Estado de la postulacion';
 
 /*==============================================================*/
 /* Table: POSTULACION_RESPALDO                                  */
@@ -713,6 +762,8 @@ create table POSTULACION_RESPALDO
    PRESIDDRI            varchar(100),
    primary key (PRESID)
 );
+
+alter table POSTULACION_RESPALDO comment 'Rrespaldo de la informacion asociada a la ostulacion como an';
 
 /*==============================================================*/
 /* Table: POSTULACION_TRANSICION                                */
@@ -1118,7 +1169,8 @@ create table PROFESIONAL_DIRECCION
 /*==============================================================*/
 create table PROFESIONAL_MENSAJE
 (
-   MID                  bigint not null,
+   MID                  bigint not null comment 'identificador de mensaje',
+   INCID                bigint,
    MRORI                varchar(10) comment 'rut origen, corresponde al rut de quien contacta a un profesional',
    MRDES                varchar(10) comment 'rut destino, corresponde al profesional que es contactado',
    MFEC                 datetime comment 'fecha en que se origina el mensaje',
@@ -1754,6 +1806,12 @@ alter table ESTUDIOS add constraint FK_PROFESIONAL_POSEE_ESTUDIOS foreign key (P
 alter table EXPERIENCIA add constraint FK_PROFESIONAL_POSEE_EXPERIENCIA foreign key (PRUT)
       references PROFESIONAL (PRUT) on delete restrict on update restrict;
 
+alter table INCIDENTE add constraint FK_EXISTE_EN foreign key (EI_ID)
+      references ESTADO_INCIDENTE (EI_ID) on delete restrict on update restrict;
+
+alter table INCIDENTE add constraint FK_PROFESIONAL_GENERA foreign key (PRUT)
+      references PROFESIONAL (PRUT) on delete restrict on update restrict;
+
 alter table INTERNO add constraint FK_ACCESAN_MUCHOS_INTERNOS foreign key (CPAID)
       references CPANEL (CPAID) on delete restrict on update restrict;
 
@@ -1780,6 +1838,9 @@ alter table OTROS add constraint FK_PROFESIONAL_POSEE_OTRO foreign key (PRUT)
 
 alter table PORTAFOLIO add constraint FK_PROFESIONAL_POSEE_PORTAFOLIO foreign key (PRUT)
       references PROFESIONAL (PRUT) on delete restrict on update restrict;
+
+alter table POSTULACION add constraint FK_POSEE_ESTADO foreign key (POSESTID)
+      references POSTULACION_ESTADO (POSESTID) on delete restrict on update restrict;
 
 alter table POSTULACION_RESPALDO add constraint FK_POSEE_URL_RESPALDO foreign key (POSID)
       references POSTULACION (POSID) on delete restrict on update restrict;
@@ -1876,6 +1937,9 @@ alter table PROFESIONAL_DIRECCION add constraint FK_RELATIONSHIP_60 foreign key 
 
 alter table PROFESIONAL_DIRECCION add constraint FK_RELATIONSHIP_67 foreign key (DCOD)
       references DIRECCION (DCOD) on delete restrict on update restrict;
+
+alter table PROFESIONAL_MENSAJE add constraint FK_POSEE foreign key (INCID)
+      references INCIDENTE (INCID) on delete restrict on update restrict;
 
 alter table PROFESIONAL_PERFIL add constraint FK_POSEE_MUCHOS_PERFILES foreign key (PRUT)
       references PROFESIONAL (PRUT) on delete restrict on update restrict;

@@ -235,7 +235,7 @@ function limpiarForm(){
                         case '8':
                             
                             var strModal='';
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';                           
@@ -251,7 +251,7 @@ function limpiarForm(){
                         case '99':
                             
                             var strModal='';
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';                           
@@ -267,7 +267,7 @@ function limpiarForm(){
                         case '100':
                             
                             var strModal='';
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';                           
@@ -286,7 +286,7 @@ function limpiarForm(){
                             
                             var strMsgModal='';
                             var strModal='';
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';
@@ -388,7 +388,7 @@ function limpiarForm(){
                         
                         var strMsgModal='';
                         var strModal='';
-                        strModal+='<div class="modal-header">';
+                        strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
                         strModal+='</div>';
                         strModal+='<div class="modal-body" id="modalBody">';
@@ -462,7 +462,7 @@ function limpiarForm(){
     function modalPublicacion(){
         
         var strModal='';
-        strModal+='<div class="modal-header">';
+        strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
             strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
         strModal+='</div>';
         strModal+='<div class="modal-body" id="modalBody">';
@@ -481,7 +481,7 @@ function limpiarForm(){
     function modalEdicion(){
 
         var strModal='';
-        strModal+='<div class="modal-header">';
+        strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
             strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Edición artículo</h3>';
         strModal+='</div>';
         strModal+='<div class="modal-body" id="modalBody">';
@@ -577,7 +577,7 @@ function limpiarForm(){
                         beforeSend: function(){
 
                             var strModal='';
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';
@@ -607,7 +607,7 @@ function limpiarForm(){
                                 msg+='</div>';  
                                 
                                 var strModal='';    
-                                strModal+='<div class="modal-header">';
+                                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                     strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                                 strModal+='</div>';
                                 strModal+='<div class="modal-body" id="modalBody">';
@@ -628,7 +628,7 @@ function limpiarForm(){
                                 msg+='</div>';  
                                 
                                 var strModal='';    
-                                strModal+='<div class="modal-header">';
+                                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                     strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                                 strModal+='</div>';
                                 strModal+='<div class="modal-body" id="modalBody">';
@@ -649,7 +649,7 @@ function limpiarForm(){
                                 msg+='</div>';  
                                 
                                 var strModal='';    
-                                strModal+='<div class="modal-header">';
+                                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                     strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                                     strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                                 strModal+='</div>';
@@ -671,7 +671,7 @@ function limpiarForm(){
                                 msg+='</div>';  
                                 
                                 var strModal='';    
-                                strModal+='<div class="modal-header">';
+                                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                     strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                                     strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                                 strModal+='</div>';
@@ -693,7 +693,7 @@ function limpiarForm(){
                                 $('#txtPuFPu').val(datos);
 
                                 var strModal='';
-                                strModal+='<div class="modal-header">';
+                                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                     strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                                 strModal+='</div>';
                                 strModal+='<div class="modal-body" id="modalBody">';
@@ -737,7 +737,7 @@ function limpiarForm(){
             var strMsgModal='';
             var strModal='';
             
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
             strModal+='</div>';
             strModal+='<div class="modal-body" id="modalBody">';
@@ -856,7 +856,7 @@ function limpiarForm(){
                 async:  false,
                 beforeSend: function(){
                     
-                    strModal+='<div class="modal-header">';
+                    strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                     strModal+='</div>';
                     strModal+='<div class="modal-body" id="modalBody">';
@@ -881,7 +881,7 @@ function limpiarForm(){
                     switch(codErr){
                         case '9':
 
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';
@@ -897,7 +897,7 @@ function limpiarForm(){
 
                         case '8':
 
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';
@@ -913,7 +913,7 @@ function limpiarForm(){
 
                         case '99':
 
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';
@@ -929,7 +929,7 @@ function limpiarForm(){
                         
                         case '100':
 
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';
@@ -947,7 +947,7 @@ function limpiarForm(){
 
                             var datos = xmlDoc.getElementsByTagName('DATOS')[0].childNodes[0].nodeValue;
                             $('#txtPuFPu').val(datos);
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';

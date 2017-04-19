@@ -29,14 +29,10 @@ include("../model/conection.php");
             if($num>0){     
                 $etiqueta='';
                 while ($r = $stmt->fetch(PDO::FETCH_NUM)):  
-                   
+                  
                         $cont+=1;
-
-                        $sDri=$r[1];
-                        //$sUrl=str_replace('FILEID', $sDri, $r[4]);
-                        $sUrl=$sDri;
-                        //$sUrlp=str_replace('FILEID', $r[2], $r[4]); //imagen principal de la galeria
-                        $sUrlp=$r[2];
+                        $sUrl=$r[1]; //URL contenido
+                        $sUrlp=$r[2]; //URL principal (primera ingresada)
                         
                         if($cont==$r[3]){
                             if($r[0]=='VIDEO'){

@@ -125,7 +125,91 @@
                         
                 }
             }
-        });       
+        });    
+        
+        var email=$('#email').val();
+        var parametros = { "email" : email };        
+        $.ajax({
+            data:  parametros,
+            url: URLprotocol+"//"+URLdomain+"/bodyflex/Mensajes/model/mensajesCsuNewModel.php",
+            type:  'post',
+            async:  true,
+            datetype: 'xml',
+            success:  function (xml){
+
+                //alert('mensajesCsuNewModel ' + xml);
+
+                var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
+                var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
+                var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;
+
+                switch(codErr){
+                    case '9':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $('#conWarningMsg').html(msg);    
+                        $('#conWarningMsg').show();
+                        break;   
+
+                    case '8':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $('#conWarningMsg').html(msg);
+                        $('#conWarningMsg').show();
+                        break;
+
+                    case '99':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $('#conWarningMsg').html(msg);
+                        $('#conWarningMsg').show();
+                        break;
+
+                    case '100':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $('#conWarningMsg').html(msg);
+                        $('#conWarningMsg').show();
+                        break;    
+
+                    case '98':
+                        
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                        msg+='<b><span style="color: #000;">Bandeja sin nuevos mensajes</span></b>';
+                        msg+='</div>';
+
+                        $('#conWarningMsg').html(msg);
+                        $('#conWarningMsg').show();
+                        break;
+                        
+                    default:
+
+                        var newMsg = xmlDoc.getElementsByTagName('CANTIDAD')[0].childNodes[0].nodeValue;   
+                        if(newMsg!=0){
+                            $('#msgNew').html(newMsg);
+                            $('#msgNew').show();
+                        }else{
+                            $('#msgNew').hide();    
+                        }    
+                        break;
+                        
+                }
+            }
+        });  
+        
     });   
      
 </script>
@@ -312,7 +396,7 @@
                 <a class="dropmenu" href="#">
                     <i class="fa fa-newspaper-o"></i>
                     <span style="color: #FFCC00;" class="hidden-tablet">Colecci&oacute;n</span>
-                    <span style="color: #FFCC00;" class="label label-important">3</span>
+                    <span style="color: #FFCC00;" class="label label-important">4</span>
                 </a>
                 <ul>
                     <li>
@@ -329,13 +413,13 @@
                     </li>
                     <li>
                         <a style="margin-left: 5px;" class="submenu" href="../../../bodyflex/admin/view/coleccionProView.php">
-                            <i class="fa fa-sun-o"></i>
+                            <i class="fa fa-cube"></i>
                             <span style="color: #FFCC00;" class="hidden-tablet">Colecci&oacute;n Producto</span>
                         </a>
                     </li>
                     <li>
                         <a style="margin-left: 5px;" class="submenu" href="../../../bodyflex/admin/view/proSinColView.php">
-                            <i class="fa fa-spinner"></i>
+                            <i class="fa fa-search"></i>
                             <span style="color: #FFCC00;" class="hidden-tablet">Productos sin Colecci&oacute;n</span>
                         </a>
                     </li>
@@ -380,7 +464,7 @@
                 <a href="../../../bodyflex/Mensajes/view/mensajesView.php">
                     <i class="icon-envelope"></i>
                     <span style="color: #FFCC00;" class="hidden-tablet">&nbsp;Mensajes</span>
-                    <span id="msgNew" class="label label-important">3</span>
+                    <span id="msgNew" class="label label-important"></span>
                 </a>
             </li>
             

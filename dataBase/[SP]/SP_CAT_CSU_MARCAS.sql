@@ -20,7 +20,7 @@ CREATE PROCEDURE bodyflex.`SP_CAT_CSU_MARCAS`(
                                               )
 BEGIN
   
-  -- DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+  DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
   SET codErr=0;
 
   SELECT DISTINCT case P.marId when 0 then 0 else (SELECT MARID FROM MARCAS WHERE MARID=P.marId) end as MARID

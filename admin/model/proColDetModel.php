@@ -28,7 +28,7 @@ include("../model/conection.php");
             if($num>0){
                 while ($r = $stmt->fetch(PDO::FETCH_NUM)): 
                     $cont+=1;
-                    $sTr.='<tr id="'.$r[0].'" style="font-size: 14px; font-weight: bold; cursor: pointer; color: blue;" class="registro"><td class="center">'.$r[0].'</td><td class="center">'.$r[1].'</td><td class="center">'.$r[2].'</td></tr>';
+                    $sTr.='<tr style="font-size: 14px; font-weight: bold; cursor: pointer; color: blue;" id="'.$r[0].'" class="registro"><td class="center">'.$r[0].'</td><td class="center">'.$r[1].'</td><td class="center">'.$r[2].'</td></tr>';
                     $sTrR.=$sTr; $sTr='';
                 endwhile;                    
             }else{

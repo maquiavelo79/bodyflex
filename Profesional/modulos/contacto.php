@@ -1,4 +1,3 @@
-
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> 
 <script type="text/javascript">
  
@@ -13,7 +12,7 @@
 
             var msg='<div style="text-align:center;" class="alert alert-block">';
             msg+='<i class="fa fa-times">&nbsp;&nbsp;';
-                    msg+='<b><span style="color: black; font-family: Arial; font-size: medium; font-weight: bold;">Solo usuarios REGISTRADOS pueden contactar al profesional.</span></b>';
+                msg+='<b><span style="color: black; font-family: Arial; font-size: medium; font-weight: bold;">Solo usuarios REGISTRADOS pueden contactar al profesional.</span></b>';
                 msg+='</i>';    
             msg+='</div>';
 
@@ -27,6 +26,7 @@
         var rutPro=$('#rutPro').val();  
         var parametros = {"rutPro" : rutPro};        
         
+        //Obtiene Coordenadas
         $.ajax({
             data:  parametros,
             url: URLprotocol+"//"+URLdomain+"/bodyflex/profesional/model/perfilProfesionalGetCoo.php",

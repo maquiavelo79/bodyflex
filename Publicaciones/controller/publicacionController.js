@@ -406,7 +406,7 @@ var URLprotocol = window.location.protocol;
         var strModal='';
         var tit = $('#txtPuTit').val();
 
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Eliminar publicación</h3>';
             strModal+='</div>';
             strModal+='<div class="modal-body" id="modalBody">';
@@ -826,7 +826,7 @@ var parametros2 = {"puId" : puId};
                 case '9':
 
                     var strModal='';
-                    strModal+='<div class="modal-header">';
+                    strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
                     strModal+='</div>';
                     strModal+='<div class="modal-body" id="modalBody">';                           
@@ -842,7 +842,7 @@ var parametros2 = {"puId" : puId};
                 case '8':
 
                     var strModal='';
-                    strModal+='<div class="modal-header">';
+                    strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
                     strModal+='</div>';
                     strModal+='<div class="modal-body" id="modalBody">';                           
@@ -858,7 +858,7 @@ var parametros2 = {"puId" : puId};
                 case '99':
 
                     var strModal='';
-                    strModal+='<div class="modal-header">';
+                    strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
                     strModal+='</div>';
                     strModal+='<div class="modal-body" id="modalBody">';                           
@@ -874,7 +874,7 @@ var parametros2 = {"puId" : puId};
                 case '100':
 
                     var strModal='';
-                    strModal+='<div class="modal-header">';
+                    strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
                     strModal+='</div>';
                     strModal+='<div class="modal-body" id="modalBody">';                           
@@ -893,7 +893,7 @@ var parametros2 = {"puId" : puId};
 
                     var strMsgModal='';
                     var strModal='';
-                    strModal+='<div class="modal-header">';
+                    strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
                     strModal+='</div>';
                     strModal+='<div class="modal-body" id="modalBody">';
@@ -1175,7 +1175,7 @@ var parametros2 = {"puId" : puId};
         
         //var puId = $('#txtPuId').val(); 
         var strModal='';
-        strModal+='<div class="modal-header">';
+        strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
             strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
         strModal+='</div>';
         strModal+='<div class="modal-body" id="modalBody">';
@@ -1200,7 +1200,7 @@ var parametros2 = {"puId" : puId};
         //alert('modalEdicion');
 
         var strModal='';
-        strModal+='<div class="modal-header">';
+        strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
             strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Edición de artículo</h3>';
         strModal+='</div>';
         strModal+='<div class="modal-body" id="modalBody">';
@@ -1301,7 +1301,7 @@ var parametros2 = {"puId" : puId};
             var strModal='';
             var codVal=$('#valPub').val();
             
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Alerta publicación</h3>';
             strModal+='</div>';
             strModal+='<div class="modal-body" id="modalBody">';
@@ -1459,7 +1459,7 @@ var parametros2 = {"puId" : puId};
                 async:  false,
                 beforeSend: function(){
                     
-                    strModal+='<div class="modal-header">';
+                    strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                     strModal+='</div>';
                     strModal+='<div class="modal-body" id="modalBody">';
@@ -1483,7 +1483,7 @@ var parametros2 = {"puId" : puId};
                     switch(codErr){
                         case '9':
 
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';
@@ -1498,7 +1498,7 @@ var parametros2 = {"puId" : puId};
 
                         case '8':
 
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';
@@ -1513,7 +1513,7 @@ var parametros2 = {"puId" : puId};
 
                         case '99':
 
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';
@@ -1528,7 +1528,7 @@ var parametros2 = {"puId" : puId};
                         
                         case '100':
 
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';
@@ -1547,7 +1547,7 @@ var parametros2 = {"puId" : puId};
 
                             $('#txtPuFPu').val(datos);
 
-                            strModal+='<div class="modal-header">';
+                            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                             strModal+='</div>';
                             strModal+='<div class="modal-body" id="modalBody">';
@@ -2324,7 +2324,7 @@ var URLprotocol = window.location.protocol;
             beforeSend: function(){
 
                 var strModal='';
-                strModal+='<div class="modal-header">';
+                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                     strModal+='<h3><i class="fa fa-check-circle"></i>&nbsp;Publicación de artículo</h3>';
                 strModal+='</div>';
                 strModal+='<div class="modal-body" id="modalBody">';
@@ -2353,7 +2353,7 @@ var URLprotocol = window.location.protocol;
                     msg+='</div>';  
 
                     var strModal='';    
-                    strModal+='<div class="modal-header">';
+                    strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                     strModal+='</div>';
                     strModal+='<div class="modal-body" id="modalBody">';
@@ -2374,7 +2374,7 @@ var URLprotocol = window.location.protocol;
                     msg+='</div>';  
 
                     var strModal='';    
-                    strModal+='<div class="modal-header">';
+                    strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                     strModal+='</div>';
                     strModal+='<div class="modal-body" id="modalBody">';
@@ -2395,7 +2395,7 @@ var URLprotocol = window.location.protocol;
                     msg+='</div>';  
 
                     var strModal='';    
-                    strModal+='<div class="modal-header">';
+                    strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                         strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                     strModal+='</div>';
@@ -2417,7 +2417,7 @@ var URLprotocol = window.location.protocol;
                     msg+='</div>';  
 
                     var strModal='';    
-                    strModal+='<div class="modal-header">';
+                    strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                         strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Publicación de artículo</h3>';
                     strModal+='</div>';
@@ -2439,7 +2439,7 @@ var URLprotocol = window.location.protocol;
                     $('#txtPuFPu').val(datos);
 
                     var strModal='';
-                    strModal+='<div class="modal-header">';
+                    strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                         strModal+='<h3><i class="fa fa-check-circle"></i>&nbsp;Publicación de artículo</h3>';
                     strModal+='</div>';
                     strModal+='<div class="modal-body" id="modalBody">';

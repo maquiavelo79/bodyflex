@@ -90,8 +90,8 @@ include("../model/conection.php");
 
                     $puRutImg=$r[9];
                     $puNomImg=$r[10];
-                    $puDrive=$puIm; //link generico a google drive
-                    //$puDrive = str_replace('FILEID', $puIm, $puDrive);
+                    $puDrive=$r[11];; //link generico a google drive
+                    $puDrive = str_replace('FILEID', $puIm, $puDrive);
 
                     $puFf=$puFp;
                     $puDi=date('d',strtotime($puFf)); //numero día

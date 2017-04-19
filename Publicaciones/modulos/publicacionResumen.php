@@ -5,7 +5,7 @@
         margin: 0px 0px 0px 0px; 
         font-weight: bold; 
         color: black; 
-        width: 250px; 
+        width: 240px; 
         text-align: center; 
         background-color: #f9f3f3; 
         font-weight: bold;
@@ -24,23 +24,23 @@
         <div class="box-content" style="height: 90px;"> <!-- border-style: solid; border-color: blue;  -->
             <table class="table">
                 <tr>
-                    <td style="width: 250px; text-align: center;">
+                    <td style="width: 220px; text-align: center;">
                         <label style="font-weight: bold; font-size: 12px; color: blue;">[Identificador]</label>
                         <input id="txtPuId" class="input-xlarge uneditable-input" type="text">
                     </td>
-                    <td style="width: 250px; text-align: center;">
+                    <td style="width: 220px; text-align: center;">
                         <label style="font-weight: bold; font-size: 12px; color: blue;">[Estado]</label>
                         <input id="txtPuEst" class="input-xlarge uneditable-input" type="text">
                     </td>
-                    <td style="width: 250px; text-align: center;">
+                    <td style="width: 220px; text-align: center;">
                         <label style="font-weight: bold; font-size: 12px; color: blue;">[F. Creación]</label>
                         <input id="txtPuFCre" class="input-xlarge uneditable-input" type="text">
                     </td>
-                    <td style="width: 250px; text-align: center;">
+                    <td style="width: 220px; text-align: center;">
                         <label style="font-weight: bold; font-size: 12px; color: blue;">[F. Modificación]</label>
                         <input id="txtPuFMod" class="input-xlarge uneditable-input" type="text">    
                     </td>
-                    <td style="width: 250px; text-align: center;">
+                    <td style="width: 220px; text-align: center;">
                         <label style="font-weight: bold; font-size: 12px; color: blue;">[F. Publicación]</label>
                         <input id="txtPuFPu" class="input-xlarge uneditable-input" type="text">
                     </td>

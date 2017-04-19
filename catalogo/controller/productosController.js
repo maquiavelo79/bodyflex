@@ -150,6 +150,8 @@ jQuery(document).ready(function() {
         var URLdomain   = window.location.host;
         var URLprotocol = window.location.protocol;
 
+        //alert('ultimo ' + ultimo);
+
         //AJAX
         var parametros = { "ultimo" : ultimo };    
         $.ajax({

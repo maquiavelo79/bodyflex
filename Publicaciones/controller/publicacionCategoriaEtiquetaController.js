@@ -421,7 +421,7 @@ var URLprotocol = window.location.protocol;
         var id = $('#txtPuId').val();
         var tit = $('#txtPuTit').val();
 
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Volver a Etiquetar</h3>';
             strModal+='</div>';
@@ -615,7 +615,7 @@ var URLprotocol = window.location.protocol;
         $('#myModal').html('');
         if(cat.length>0){
            
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Agregar categoría</h3>';
             strModal+='</div>';
@@ -632,7 +632,7 @@ var URLprotocol = window.location.protocol;
             
         }else{
             
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Agregar categoría</h3>';
             strModal+='</div>';
@@ -744,7 +744,7 @@ var URLprotocol = window.location.protocol;
         //alert('cat ' + cat);
         if(cat!='(SELECCIONE)'){
             
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Eliminar categoría</h3>';
             strModal+='</div>';
@@ -761,7 +761,7 @@ var URLprotocol = window.location.protocol;
             
         }else{
             
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Eliminar categoría</h3>';
             strModal+='</div>';
@@ -876,7 +876,7 @@ var URLprotocol = window.location.protocol;
 
         if(cat=='(SELECCIONE)'){
             
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Agregar etiqueta a categoría</h3>';
             strModal+='</div>';
@@ -895,7 +895,7 @@ var URLprotocol = window.location.protocol;
             //EVALUAMOS ETIQUETAS
             if(eti.length<=0){
                 
-                strModal+='<div class="modal-header">';
+                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Agregar etiqueta a categoría</h3>';
                 strModal+='</div>';
@@ -911,7 +911,7 @@ var URLprotocol = window.location.protocol;
                 
             }else{
                 
-                strModal+='<div class="modal-header">';
+                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                     strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                     strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Agregar etiqueta a categoría</h3>';
                 strModal+='</div>';
@@ -1021,7 +1021,7 @@ var URLprotocol = window.location.protocol;
         
         if(cat=='(SELECCIONE)'){
             
-            strModal+='<div class="modal-header">';
+            strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
             strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
             strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Eliminar etiqueta</h3>';
             strModal+='</div>';
@@ -1039,7 +1039,7 @@ var URLprotocol = window.location.protocol;
             //EVALUAMOS ETIQUETA
             if(eti=='(SELECCIONE)'){
                 
-                strModal+='<div class="modal-header">';
+                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                 strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                 strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Eliminar etiqueta</h3>';
                 strModal+='</div>';
@@ -1055,7 +1055,7 @@ var URLprotocol = window.location.protocol;
                 
             }else{
                 
-                strModal+='<div class="modal-header">';
+                strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
                     strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
                     strModal+='<h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Eliminar etiqueta</h3>';
                 strModal+='</div>';

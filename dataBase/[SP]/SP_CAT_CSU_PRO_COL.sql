@@ -51,7 +51,7 @@ BEGIN
     FROM PRODUCTO P, COLECCION_PRODUCTO CP 
     WHERE CP.PROID=P.PROID 
     AND P.PROPE=1 
-    AND (P.ran_id_pro=rangos OR rangos=0)
+    AND (P.ran_id=rangos OR rangos=0)
     AND (FIND_IN_SET(P.marId, marcas) OR marcas='')
     AND (FIND_IN_SET(P.PETID, etiquetas) OR etiquetas='')
     AND CP.COID=coleccion 
@@ -67,7 +67,7 @@ BEGIN
       FROM PRODUCTO P, COLECCION_PRODUCTO CP 
       WHERE CP.PROID=P.PROID 
       AND P.PROPE=1 
-      AND (P.ran_id_pro=rangos OR rangos=0)
+      AND (P.ran_id=rangos OR rangos=0)
       AND (FIND_IN_SET(P.marId, marcas) OR marcas='')
       AND (FIND_IN_SET(P.PETID, etiquetas) OR etiquetas='')
       AND CP.COID=coleccion 
@@ -87,7 +87,7 @@ BEGIN
         FROM PRODUCTO P, COLECCION_PRODUCTO CP 
         WHERE CP.PROID=P.PROID 
         AND P.PROPE=1 
-        AND (P.ran_id_pro=rangos OR rangos=0)
+        AND (P.ran_id=rangos OR rangos=0)
         AND (FIND_IN_SET(P.marId, marcas) OR marcas='')
         AND (FIND_IN_SET(P.PETID, etiquetas) OR etiquetas='')
         AND CP.COID=coleccion 
@@ -102,7 +102,7 @@ BEGIN
         WHERE CP.PROID=P.PROID 
         AND P.PROPE=1 
         AND P.proId<id 
-        AND (P.ran_id_pro=rangos OR rangos=0)
+        AND (P.ran_id=rangos OR rangos=0)
         AND (FIND_IN_SET(P.marId, marcas) OR marcas='')
         AND (FIND_IN_SET(P.PETID, etiquetas) OR etiquetas='')
         AND CP.COID=coleccion 
@@ -140,7 +140,7 @@ BEGIN
       , CONCAT('$',REPLACE(FORMAT(P.PROPVAPRO,0),',','.')) AS PROPVAPRO
       , (SELECT petCon FROM PRODUCTO_ETIQUETA WHERE PETID=P.PETID) AS ETIQUETA
       , case P.marId when 0 then 'SIN MARCA' else (SELECT MARNOM FROM MARCAS WHERE MARID=P.marId) end as PROMA
-      , P.ran_id_pro
+      , P.ran_id
       , P.MARID
       , P.PETID
       , CANT
@@ -150,7 +150,7 @@ BEGIN
       FROM PRODUCTO P, COLECCION_PRODUCTO CP 
       WHERE CP.PROID=P.PROID 
       AND P.PROPE=1 
-      AND (P.ran_id_pro=rangos OR rangos=0)
+      AND (P.ran_id=rangos OR rangos=0)
       AND (FIND_IN_SET(P.marId, marcas) OR marcas='')
       AND (FIND_IN_SET(P.PETID, etiquetas) OR etiquetas='')
       AND CP.COID=coleccion 
@@ -170,7 +170,7 @@ BEGIN
       , CONCAT('$',REPLACE(FORMAT(P.PROPVAPRO,0),',','.')) AS PROPVAPRO
       , (SELECT petCon FROM PRODUCTO_ETIQUETA WHERE PETID=P.PETID) AS ETIQUETA
       , case P.marId when 0 then 'SIN MARCA' else (SELECT MARNOM FROM MARCAS WHERE MARID=P.marId) end as PROMA
-      , P.ran_id_pro
+      , P.ran_id
       , P.MARID
       , P.PETID
       , CANT
@@ -181,7 +181,7 @@ BEGIN
       WHERE CP.PROID=P.PROID 
       AND P.PROPE=1 
       AND P.PROID<=ultimo
-      AND (P.ran_id_pro=rangos OR rangos=0)
+      AND (P.ran_id=rangos OR rangos=0)
       AND (FIND_IN_SET(P.marId, marcas) OR marcas='')
       AND (FIND_IN_SET(P.PETID, etiquetas) OR etiquetas='')
       AND CP.COID=coleccion 
@@ -203,7 +203,7 @@ BEGIN
     , PROPVAPRO
     , ETIQUETA
     , PROMA
-    , ran_id_pro
+    , ran_id
     , MARID
     , PETID
     , CANT
@@ -273,7 +273,7 @@ BEGIN
     , t2.SMEDIDAS
     , t1.PROPVAPRO
     , t1.PROMA
-    , t1.ran_id_pro
+    , t1.ran_id
     , t1.MARID
     , t1.PETID
     , t1.CANT
@@ -323,7 +323,7 @@ BEGIN
         , O.SMEDIDAS
         , O.PROPVAPRO
         , O.PROMA
-        , O.ran_id_pro
+        , O.ran_id
         , O.MARID
         , O.PETID
         , O.CANT

@@ -7,6 +7,8 @@ $(document).ready(function () {
     var puId = $('#puId').val();
     var puPru = $('#puPru').val();
 
+    //alert('puId, puPru '+puId+' '+puPru);
+
     var parametros = { "puId" : puId ,   
                        "puPru" : puPru };            
         
@@ -74,7 +76,8 @@ $(document).ready(function () {
                    var puEst = xmlDoc.getElementsByTagName('PUEST')[0].childNodes[0].nodeValue;
                    var puTiT = xmlDoc.getElementsByTagName('PUTIT')[0].childNodes[0].nodeValue;
                    var puPub = xmlDoc.getElementsByTagName('PUPUB')[0].childNodes[0].nodeValue;
-                   var puImg = xmlDoc.getElementsByTagName('PUIMG')[0].childNodes[0].nodeValue;
+                   //var puImg = xmlDoc.getElementsByTagName('PUIMG')[0].childNodes[0].nodeValue;
+                   var puImg = xmlDoc.getElementsByTagName('PUDRIVE')[0].childNodes[0].nodeValue;
                    var puMes = xmlDoc.getElementsByTagName('PUMES')[0].childNodes[0].nodeValue;
                    var puDia = xmlDoc.getElementsByTagName('PUDIA')[0].childNodes[0].nodeValue;
                    var puFec = xmlDoc.getElementsByTagName('PUFEC')[0].childNodes[0].nodeValue;

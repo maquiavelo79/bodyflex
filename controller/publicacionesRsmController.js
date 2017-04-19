@@ -50,7 +50,7 @@ jQuery(document).ready(function(){
             },
             success:  function (xml){
                     
-                    //alert('publicacionesRsmModel ' + xml);
+                    alert('publicacionesRsmModel ' + xml);
                     
                     var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
                     var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;

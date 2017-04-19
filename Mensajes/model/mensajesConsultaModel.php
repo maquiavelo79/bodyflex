@@ -107,16 +107,18 @@ include("../model/conection.php");
                     //ESTOS DATOS SE SOBRESCRIBEN EN CADA ITERACIÓN
                     $cant=$r[10];
                     $pag=$r[11];
-                    $paginaciones=$r[12]; 
+                    $paginaciones=$r[12];
+                    $incidente=$r[28]; //ID incidente
+                    $mMLInc=$r[29]; //ID incidente de ultimo leido
 
                     if($mLe==0){ //no leido
-                        $sTr.='<tr style="cursor: pointer;" class="item" id="'.$mId.'" alias="'.$mAl.'" msgRes="'.$mMr.'" fecha="'.$mFe.'" leido="'.$mLe.'">';
+                        $sTr.='<tr style="cursor: pointer;" class="item" id="'.$mId.'" alias="'.$mAl.'" msgRes="'.$mMr.'" fecha="'.$mFe.'" leido="'.$mLe.'" incidente="'.$incidente. '">';
                             $sTr.='<td><span class="from"><span class="glyphicons star"><i></i></span>'.$mAl.'</span></td>';
                             $sTr.='<td><span class="title"><span class="label label-info">Nuevo</span>&nbsp;&nbsp;'.$mMr.'</span></td>';
                             $sTr.='<td><span class="date"><b>'.$mFe.'</b></span></td>';
                         $sTr.='</tr>';
                     }else{ //leido
-                        $sTr.='<tr style="cursor: pointer;"  class="item" id="'.$mId.'" alias="'.$mAl.'" msgRes="'.$mMr.'" fecha="'.$mFe.'" leido="'.$mLe.'">';
+                        $sTr.='<tr style="cursor: pointer;" class="item" id="'.$mId.'" alias="'.$mAl.'" msgRes="'.$mMr.'" fecha="'.$mFe.'" leido="'.$mLe.'" incidente="'.$incidente. '">';
                             $sTr.='<td><span class="from"><span class="glyphicons dislikes"><i></i></span>'.$mAl.'</span></td>';
                             $sTr.='<td><span class="title">'.$mMr.'</span></td>';
                             $sTr.='<td><span class="date">'.$mFe.'</span></td>';
@@ -218,6 +220,7 @@ include("../model/conection.php");
             $strXml.='<MSG_RSM>'.$mMr.'</MSG_RSM>' ;
             $strXml.='<RUT_ORIGEN>'.$mMRO.'</RUT_ORIGEN>';
             $strXml.='<NUEVOS>'.$mMn.'</NUEVOS>' ;
+            $strXml.='<INCIDENTE>'.$incidente.'</INCIDENTE>' ;
 
             $strXml.='<LEIDO_ASUNTO>'.$mMLAsu.'</LEIDO_ASUNTO>';
             $strXml.='<LEIDO_ALIAS>'.$mMLAli.'</LEIDO_ALIAS>';
@@ -231,6 +234,7 @@ include("../model/conection.php");
             $strXml.='<LEIDO_CORRELATIVO>'.$mMLCo.'</LEIDO_CORRELATIVO>';
             $strXml.='<LEIDO_KEY>'.$mMLKe.'</LEIDO_KEY>';
             $strXml.='<LEIDO_RUTORI>'.$mMLRo.'</LEIDO_RUTORI>';
+            $strXml.='<LEIDO_INCIDENTE>'.$mMLInc.'</LEIDO_INCIDENTE>';
 
         $strXml.='</DATOS>';
 

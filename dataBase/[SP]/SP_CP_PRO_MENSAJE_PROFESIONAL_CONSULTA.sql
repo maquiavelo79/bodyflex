@@ -1,7 +1,10 @@
 -- [PRIMERA LLAMADA]
--- CALL SP_CP_PRO_MENSAJE_PROFESIONAL_CONSULTA('pro@bo.cl',0,'0');
--- CALL SP_CP_PRO_MENSAJE_PROFESIONAL_CONSULTA('usr@bo.cl',0,'0');
--- SELECT * FROM PROFESIONAL_MENSAJE
+CALL SP_CP_PRO_MENSAJE_PROFESIONAL_CONSULTA('adm@bo.cl',0,'0',@codErr);
+SELECT @codErr;
+
+CALL SP_CP_PRO_MENSAJE_PROFESIONAL_CONSULTA('pro@bo.cl',0,'0',@codErr);
+SELECT @codErr;
+
 
 DROP PROCEDURE IF EXISTS bodyflex.SP_CP_PRO_MENSAJE_PROFESIONAL_CONSULTA;
 CREATE PROCEDURE bodyflex.`SP_CP_PRO_MENSAJE_PROFESIONAL_CONSULTA`(
@@ -74,7 +77,8 @@ BEGIN
         SET @uCor = (SELECT PM.MCOR FROM PROFESIONAL_MENSAJE PM WHERE PM.MLEI=1 AND PM.MMAILDES=email ORDER BY PM.MFEC, PM.MID DESC LIMIT 1);
         SET @uKey = (SELECT PM.MKEY FROM PROFESIONAL_MENSAJE PM WHERE PM.MLEI=1 AND PM.MMAILDES=email ORDER BY PM.MFEC, PM.MID DESC LIMIT 1);
         SET @uRor = (SELECT PM.MRORI FROM PROFESIONAL_MENSAJE PM WHERE PM.MLEI=1 AND PM.MMAILDES=email ORDER BY PM.MFEC, PM.MID DESC LIMIT 1);
-        
+        SET @uIncidente = IFNULL((SELECT PM.incId FROM PROFESIONAL_MENSAJE PM WHERE PM.MLEI=1 AND PM.MMAILDES=email ORDER BY PM.MFEC, PM.MID DESC LIMIT 1),0);
+              
       ELSE
       
         SET @uId  = '';
@@ -89,6 +93,7 @@ BEGIN
         SET @uCor = ''; 
         SET @uKey = ''; 
         SET @uRor = ''; 
+        SET @uIncidente =0;
         
       END IF;
 
@@ -123,6 +128,8 @@ BEGIN
             , @uCor AS uCor
             , @uKey AS uKey  
             , IF(LENGTH(@uRor)=0,0,@uRor) AS uRor
+            , IFNULL(IF(LENGTH(PM.incId)=0 OR PM.incId=null,0,PM.incId),0) AS idIncidente
+            , @uIncidente as uIncidente -- ID de incidente del ultimo mensaje leido
             FROM PROFESIONAL_MENSAJE PM
             WHERE PM.MMAILDES=email AND 
                   PM.MID<=ULTIMO
@@ -157,6 +164,8 @@ BEGIN
             , @uCor AS uCor
             , @uKey AS uKey  
             , IF(LENGTH(@uRor)=0,0,@uRor) AS uRor
+            , IFNULL(IF(LENGTH(PM.incId)=0 OR PM.incId=null,0,PM.incId),0) AS idIncidente
+            , @uIncidente as uIncidente -- ID de incidente del ultimo mensaje leido
             FROM PROFESIONAL_MENSAJE PM
             WHERE PM.MMAILDES=email 
             ORDER BY PM.MFEC DESC

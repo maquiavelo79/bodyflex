@@ -39,7 +39,7 @@
 <div class="modal signUpContent fade" id="ModalLogin" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
                 <h3 class="modal-title-site text-center"> Login to TSHOP </h3>
             </div>
@@ -91,7 +91,7 @@
 <div class="modal signUpContent fade" id="ModalSignup" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
                 <h3 class="modal-title-site text-center"> REGISTER </h3>
             </div>

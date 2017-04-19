@@ -1672,7 +1672,7 @@ function reiniciaCategorias(){
 
 function agregarColeccion(id, col){
     
-   alert('agregarColeccion ' + id+' '+col);
+   //alert('agregarColeccion ' + id+' '+col);
     
     var URLdomain   = window.location.host;
     var URLprotocol = window.location.protocol;

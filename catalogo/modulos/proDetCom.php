@@ -190,7 +190,7 @@
 <div class="modal  fade" id="modal-review" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
                 <h3 class="modal-title-site text-center">Déjanos un comentario sobre el producto</h3>
             </div>

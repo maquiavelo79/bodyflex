@@ -31,7 +31,25 @@ session_start();
 	
     <!-- start: Meta -->
     <meta charset="utf-8">
-    <title>Bodyflex - [PRO] Mensajes</title>
+    
+    <?php
+    
+        switch($_SESSION['rol']){
+            case "USR": $titulo='<title>Bodyflex - [USR] Mensajes</title>'; 
+                break;
+            case "PRO": $titulo='<title>Bodyflex - [PRO] Mensajes</title>';
+                break;
+            case "ADM": $titulo='<title>Bodyflex - [ADM] Mensajes</title>';
+                break;
+            case "COM": $titulo='<title>Bodyflex - [COM] Mensajes</title>';
+                break;
+            case "EDI": $titulo='<title>Bodyflex - [EDI] Mensajes</title>';
+                break;
+        }
+        echo $titulo;
+   
+    ?>
+    
     <meta name="description" content="Bootstrap Metro Dashboard">
     <meta name="author" content="Dennis Ji">
     
@@ -69,7 +87,23 @@ session_start();
     <div class="container-fluid-full">
         <div class="row-fluid">
             <!-- start: Main Menu -->
-            <?php include("../../menu/menu.php"); ?>
+            <?php
+    
+                switch($_SESSION['rol']){
+                    case "USR": include("../../menu/menu.php");
+                        break;
+                    case "PRO": include("../../menu/menu.php");
+                        break;
+                    case "ADM": include("../../menu/menuAdm.php");
+                        break;
+                    case "COM": include("../../menu/menu.php");
+                        break;
+                    case "EDI": include("../../menu/menu.php");
+                        break;
+                }
+
+            ?>
+            
             <!-- end: Main Menu -->
 
             <!-- start: Content -->
@@ -115,7 +149,7 @@ session_start();
         <input type="hidden" id="rut" value= "<?= $_SESSION['rut'];?>">
         <input type="hidden" id="dv" value= "<?= $_SESSION['dv'];?>">
         <input type="hidden" id="url" value= "<?= $_SESSION['url'];?>">
-        <input type="text" id="idPos" value= "<?= $_SESSION['idPos'] ;?>"><br>
+        <!-- <input type="text" id="idPos" value= "<?= $_SESSION['idPos'] ;?>"><br> -->
     <?php } ?>
     <input type="hidden" id="sesion" value= "<?= $_SESSION['sesion'];?>">
     <input type="hidden" id="session_id" value= "<?= $_SESSION['sesion_id'];?>">

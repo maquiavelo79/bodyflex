@@ -19,7 +19,7 @@
             data:  parametros,
             url: URLprotocol+"//"+URLdomain+"/bodyflex/Mensajes/model/mensajesConsultaModel.php",
             type:  'post',
-            async:  false,
+            async:  true,
             datetype: 'xml',
             success:  function (xml){
 
@@ -103,6 +103,7 @@
                             var lCo = xmlDoc.getElementsByTagName('LEIDO_CORRELATIVO')[0].childNodes[0].nodeValue;
                             var lKe = xmlDoc.getElementsByTagName('LEIDO_KEY')[0].childNodes[0].nodeValue;
                             var lRo = xmlDoc.getElementsByTagName('LEIDO_RUTORI')[0].childNodes[0].nodeValue;
+                            var lin = xmlDoc.getElementsByTagName('LEIDO_INCIDENTE')[0].childNodes[0].nodeValue;
                             
                             $('#id').val(lid); 
                             $('#fec').val(lFec); 
@@ -115,6 +116,7 @@
                             $('#ali').val(lAli); 
                             $('#mai').val(lMai);                      
                             $('#ror').val(lRo);   
+                            $('#inc').val(lin);
                             
                             $('#asunto').html(lAsu);
                             $('#alias').html(lAli);
@@ -125,8 +127,7 @@
                         }else{
                             $('#detalleMensaje').hide();    
                         }    
-                            
-                        //$('#msgNew').html(nuevos); //mensajes nuevos
+                        
                         $('#listaMensajes').html(datos); // todos los mensajes                       
                         $('#idPag').html(paginacion); //paginación
                         break;
@@ -142,7 +143,8 @@
             var fecha = $(this).attr( "fecha" );
             var leido = $(this).attr( "leido" );
             var email = $("#email").val();  //email de quien recibe, destinatario
-           
+            var incidente = $(this).attr( "incidente" );
+                      
             //restablecemos formato
             $('#listaMensajes tr').css('background','white');
             $('#listaMensajes tr').css('color','black');
@@ -174,7 +176,7 @@
                 data:  parametros,
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/Mensajes/model/mensajesObtieneDetalleModel.php",
                 type:  'post',
-                async:  false,
+                async:  true,
                 datetype: 'xml',
                 success:  function (xml){
 
@@ -262,6 +264,7 @@
                             $('#ali').val(ali);
                             $('#mai').val(mai);
                             $('#ror').val(ror);
+                            $('#inc').val(incidente);
                                 
                             $('#asunto').html(asu);
                             $('#alias').html(ali);
@@ -281,7 +284,7 @@
                     data:  parametros,
                     url: URLprotocol+"//"+URLdomain+"/bodyflex/Mensajes/model/mensajesSetComoLeidoModel.php",
                     type:  'post',
-                    async:  false,
+                    async:  true,
                     datetype: 'xml',
                     success:  function (xml){
 
@@ -345,7 +348,11 @@
                             default:
 
                                 var noLei = xmlDoc.getElementsByTagName('NOLEIDOS')[0].childNodes[0].nodeValue;  
-                                $('#msgNew').html(noLei);
+                                if(noLei==0){
+                                    $('#msgNew').hide();    
+                                }else{   
+                                    $('#msgNew').html(noLei);
+                                }
                                 break;
                                 
                         }
@@ -373,7 +380,7 @@
             data:  parametros,
             url: URLprotocol+"//"+URLdomain+"/bodyflex/Mensajes/model/mensajesConsultaModel.php",
             type:  'post',
-            async:  false,
+            async:  true,
             datetype: 'xml',
             success:  function (xml){
 
@@ -454,6 +461,7 @@
                             var lCo = xmlDoc.getElementsByTagName('LEIDO_CORRELATIVO')[0].childNodes[0].nodeValue;
                             var lKe = xmlDoc.getElementsByTagName('LEIDO_KEY')[0].childNodes[0].nodeValue;
                             var lRo = xmlDoc.getElementsByTagName('LEIDO_RUTORI')[0].childNodes[0].nodeValue;
+                            var lin = xmlDoc.getElementsByTagName('LEIDO_INCIDENTE')[0].childNodes[0].nodeValue;
                             
                             $('#id').val(lid); 
                             $('#fec').val(lFec); 
@@ -465,7 +473,8 @@
                             $('#asu').val(lAsu);
                             $('#ali').val(lAli); 
                             $('#mai').val(lMai);                      
-                            $('#ror').val(lRo);   
+                            $('#ror').val(lRo);  
+                            $('#inc').val(lin);
                             
                             $('#asunto').html(lAsu);
                             $('#alias').html(lAli);
@@ -536,17 +545,19 @@
     
     
         <!-- DATOS DEL REGISTRO SELECCIONADO-->
-        <input type="hidden" id="id" value="">
-        <input type="hidden" id="fec" value="">
-        <input type="hidden" id="lei" value="">
-        <input type="hidden" id="tip" value="">
-        <input type="hidden" id="cor" value="">
-        <input type="hidden" id="key" value="">
-        <input type="hidden" id="msg" value="">
-        <input type="hidden" id="asu" value="">
-        <input type="hidden" id="ali" value="">
-        <input type="hidden" id="mai" value="">            
-        <input type="hidden" id="ror" value="">              
+        inc<input type="text" id="inc" value=""><br> <!-- INCIDENTE -->
+        id<input type="text" id="id" value=""><br>
+        fec<input type="text" id="fec" value=""><br>
+        lei<input type="text" id="lei" value=""><br>
+        tip<input type="text" id="tip" value=""><br>
+        cor<input type="text" id="cor" value=""><br>
+        key<input type="text" id="key" value=""><br>
+        msg<input type="text" id="msg" value=""><br>
+        asu<input type="text" id="asu" value=""><br>
+        ali<input type="text" id="ali" value=""><br>
+        mai<input type="text" id="mai" value=""><br>            
+        ror<input type="text" id="ror" value=""><br> 
+        
         <!-- DATOS DEL REGISTRO SELECCIONADO-->
      
                 

@@ -9,8 +9,8 @@
 -- SELECT * FROM PUBLICACION
 -- SELECT * FROM PUBLICACION_PROFESIONAL
 
-DROP PROCEDURE IF EXISTS delta.SP_CP_PRO_PUBLICACION_INGRESA_MODIFICA;
-CREATE PROCEDURE delta.`SP_CP_PRO_PUBLICACION_INGRESA_MODIFICA`( 
+DROP PROCEDURE IF EXISTS bodyflex.SP_CP_PRO_PUBLICACION_INGRESA_MODIFICA;
+CREATE PROCEDURE bodyflex.`SP_CP_PRO_PUBLICACION_INGRESA_MODIFICA`( 
                                                                 IN rut VARCHAR(20)
                                                               , IN id VARCHAR(20)
                                                               , IN tit VARCHAR(100)
@@ -22,7 +22,7 @@ CREATE PROCEDURE delta.`SP_CP_PRO_PUBLICACION_INGRESA_MODIFICA`(
                                                             )
 BEGIN
 
-DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
+-- DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
 SET codErr=0;
 
     -- 1 DETERMINAR EXISTENCIA DEL REGISTRO

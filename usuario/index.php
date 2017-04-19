@@ -93,7 +93,7 @@ session_start();
         </div><!--/fluid-row-->
 		
 	<div class="modal hide fade" id="myModal">
-            <div class="modal-header">
+            <div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
                 <h3>Settings</h3>
             </div>

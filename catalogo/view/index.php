@@ -27,6 +27,7 @@ session_start();
     
 ?>
 <!--<h3 style="margin-top: 5px; font-size: medium; height: 30px; color: black; font-weight: bold;"><a>'.$pMa.'</a></h3>-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -584,6 +585,11 @@ session_start();
 
 <script src='../controller/cerrarSesion.js'></script>
 
+    <!-- sweetalert-master-->
+        <script src="../sweetalert-master2/sweetalert2.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../sweetalert-master2/sweetalert2.css">
+    <!-- sweetalert-master-->
+
     <!-- Datos sesion, solo si esta definida variable sesion ================================= -->
     <?php if(isset($_SESSION['sesion'])){ ?>
         email<input type="text" id="email" value="<?= $_SESSION['email'];?>"><br>
@@ -597,7 +603,6 @@ session_start();
     <?php } ?>
     sesion<input type="text" id="sesion" value= "<?= $_SESSION['sesion'];?>"><br>
     session_id<input type="text" id="session_id" value= "<?= $_SESSION['sesion_id'];?>"><br>
-
     txtProID: <input type="text" id="txtProID" value= ""><br>
     
     <!-- MODAL PRODUCTO VITRINA-->
@@ -614,7 +619,6 @@ session_start();
         <input type="hidden" id="txtProImrMod" value= ""><!-- RESTO DE IMAGENES -->
     <!-- MODAL PRODUCTO -->
 
-    
     txtMsg: <input type="text" id="txtMsg" value= ""><br> <!-- MENSAJERIA -->
     item: <input type="text" id="item" value=""><br> <!-- item -->
     producto: <input type="text" id="producto" value=""><br> <!-- producto -->

@@ -337,7 +337,7 @@ $('#btnEliminar').click(function(){
     var id = $('#spId').val();
 
     if(id.length>0){
-        strModal+='<div class="modal-header">';
+        strModal+='<div style="color: black; background-color: #FFCC00; font-weight: bold;" class="modal-header">';
             strModal+='<button type="button" class="close" data-dismiss="modal">×</button>';
             strModal+='<h3>Eliminar Servicio Profesional</h3>';
         strModal+='</div>';
