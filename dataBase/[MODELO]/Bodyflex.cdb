@@ -26071,8 +26071,11 @@ este campo identifica la imagen principal (1) o complementaria (2) de una marca,
 <a:Code>EI_ID</a:Code>
 <a:CreationDate>1491583663</a:CreationDate>
 <a:Creator>fcalde90</a:Creator>
-<a:ModificationDate>1491583663</a:ModificationDate>
+<a:ModificationDate>1492480601</a:ModificationDate>
 <a:Modifier>fcalde90</a:Modifier>
+<a:Comment>ei_Id= [ 1 | 2 ]
+1 = ABIERTO
+2 = CERRADO</a:Comment>
 <a:DataType>LI</a:DataType>
 </o:DataItem>
 <o:DataItem Id="o1465">

@@ -73,10 +73,25 @@
                         var cant = xmlDoc.getElementsByTagName('CANTIDAD')[0].childNodes[0].nodeValue;
                         //alert('cant ' + cant);
                         if(cant>0){
+                            
+                            var strSoporte='<a style="cursor: pointer;" onclick="redireccionar();">' 
+                                strSoporte+='<i style="margin-left: 10px;" class="fa fa-life-ring fa-2x"></i>&nbsp;<br>';
+                                strSoporte+='<span style="font-weight: bold; font-size: 10px;" class="hidden-xs">SOPORTE';
+                                    strSoporte+='<span id="numRspSoporte" style="font-size: 12px; background: #EB3C00 !important; border-color: #EB3C00 !important; color: #fff; font-weight: bold;"></span>';
+                                strSoporte+='</span>';   
+                            strSoporte+='</a>';
+                            $('#tdSoporte').html(strSoporte);                            
                             $('#numRspSoporte').html(cant);
                             $('#numRspSoporte').show();
+                            
                         }else{
-                            $('#numRspSoporte').hide();
+                            
+                            var strSoporte='<a style="cursor: pointer;" onclick="solicitud_de_Soporte();">'; 
+                                strSoporte+='<i style="margin-left: 10px;" class="fa fa-life-ring fa-2x"></i>&nbsp;<br>';
+                                strSoporte+='<span style="font-weight: bold; font-size: 10px;" class="hidden-xs">SOPORTE</span>';   
+                            strSoporte+='</a>';
+                            $('#tdSoporte').html(strSoporte);
+                            
                         }    
                         break;
 
@@ -189,6 +204,13 @@
         return resultado;
 
     }
+    
+    function redireccionar(){
+        var URLdomain   = window.location.host;
+        var URLprotocol = window.location.protocol;
+        window.location.href=URLprotocol+"//"+URLdomain+"/bodyflex/Mensajes/view/mensajesView.php";
+    }  
+
 </script>
 <div class="row-fluid sortable">
     <div class="box span12">
@@ -219,13 +241,13 @@
                     <td class="center">
                         <span class="input-xlarge uneditable-input classStyle"><?= $_SESSION['email'];?></span>
                     </td>
-                    <td class="center">
-                        <a style="cursor: pointer;" onclick="solicitud_de_Soporte();"> 
+                    <td id="tdSoporte" class="center">
+<!--                        <a style="cursor: pointer;" onclick="solicitud_de_Soporte();"> 
                             <i style="margin-left: 10px;" class="fa fa-life-ring fa-2x"></i>&nbsp;<br>
                             <span style="font-weight: bold; font-size: 10px;" class="hidden-xs">SOPORTE
                                 <span id="numRspSoporte" style="font-size: 12px; background: #EB3C00 !important; border-color: #EB3C00 !important; color: #fff; font-weight: bold;"></span>
                             </span>   
-                        </a>
+                        </a>-->
                     </td>
                 </tr>                            
              </table>  

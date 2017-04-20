@@ -5,6 +5,7 @@
         var URLprotocol = window.location.protocol;
 
         var email=$('#email').val();
+        var rol=$('#rol').val();
         var sw=0;
         var ultimo=0;
         var pa=1;
@@ -13,7 +14,8 @@
                             "email" : email 
                             ,   "sw" : sw 
                             ,   "ultimo" : ultimo 
-                            ,   "pa" : pa 
+                            ,   "pa" : pa
+                            ,   "rol" : rol
                         };        
         $.ajax({
             data:  parametros,
@@ -23,7 +25,7 @@
             datetype: 'xml',
             success:  function (xml){
 
-                //alert('mensajesConsultaModel ' + xml);
+                //alert('onload: mensajesConsultaModel ' + xml);
 
                 var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
                 var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
@@ -171,7 +173,8 @@
             var parametros = {
                 "mId" : id
                 ,   "email" : email
-            };        
+            };   
+            
             $.ajax({
                 data:  parametros,
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/Mensajes/model/mensajesObtieneDetalleModel.php",
@@ -359,6 +362,11 @@
                     }
                 });  
             }
+            
+            if($('#rol').val()!='ADM'){
+                consultaMensajesSoporte();
+            }
+            
         });           
     });   
      
@@ -370,11 +378,13 @@
         var URLprotocol = window.location.protocol;
 
         var email=$('#email').val();
+        var rol=$('#rol').val();
         var parametros = { 
                             "email" : email 
                             ,   "sw" : sw 
                             ,   "ultimo" : ultimo 
                             ,   "pa" : pa 
+                            ,   "rol" : rol 
                         };        
         $.ajax({
             data:  parametros,
@@ -384,7 +394,7 @@
             datetype: 'xml',
             success:  function (xml){
 
-                //alert('mensajesConsultaModel ' + xml);
+                //alert('function: mensajesConsultaModel ' + xml);
 
                 var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
                 var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
@@ -512,7 +522,162 @@
         });
 
     }
-     
+    
+    function confirmarCierreIncidente(incidente){
+       
+        swal({
+            title: 'Cerrar incidente <b>'+ incidente+ '</b>?',
+            //html: "Esta acción cerrará la incidencia!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, cerrar ahora!'
+        }).then(function () {
+            var r=cerrarIncidente(incidente);
+            if(r==0){
+                swal(
+                  'Cerrada!',
+                  'Incidencia cerrada éxitosamente.',
+                  'success'
+                )
+            }
+        })
+        
+    }
+    
+    function cerrarIncidente(incidente){
+        
+        var retunCodErr=0;
+        var URLdomain   = window.location.host;
+        var URLprotocol = window.location.protocol;
+        var parametros = { "incidente" : incidente };
+        
+        $.ajax({
+            data:  parametros,
+            url: URLprotocol+"//"+URLdomain+"/bodyflex/Mensajes/model/mensajesCerrarIncidenteModel.php",
+            type:  'post',
+            async:  false, //debe ser falso por la llamada del alert
+            datetype: 'xml',
+            success:  function (xml){
+
+                //alert('mensajesCerrarIncidenteModel ' + xml);
+
+                var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
+                var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
+                var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;
+                retunCodErr=codErr;
+
+                switch(codErr){
+                    case '9':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $('#conWarningMsg').html(msg);    
+                        $('#conWarningMsg').show();
+                        break;   
+
+                    case '99':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $('#conWarningMsg').html(msg);
+                        $('#conWarningMsg').show();
+                        break;
+
+                    case '100':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $('#conWarningMsg').html(msg);
+                        $('#conWarningMsg').show();
+                        break;    
+
+                    default:
+
+                        var sw=0;
+                        var ultimo=0;
+                        var pa=1;
+                        consultaMensajes(sw,ultimo,pa);
+                        break;
+                        
+                }
+            }
+        });  
+        return retunCodErr;
+    }
+    
+    function abrirIncidente(){
+        
+        var URLdomain   = window.location.host;
+        var URLprotocol = window.location.protocol;
+        var incidente = $(this).attr( "incidente" );
+        var parametros = { "incidente" : incidente };
+        
+        $.ajax({
+            data:  parametros,
+            url: URLprotocol+"//"+URLdomain+"/bodyflex/Mensajes/model/mensajesAbrirIncidenteModel.php",
+            type:  'post',
+            async:  false, //debe ser falso por la llamada del alert
+            datetype: 'xml',
+            success:  function (xml){
+
+                //alert('mensajesConsultaModel ' + xml);
+
+                var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
+                var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
+                var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;
+
+                switch(codErr){
+                    case '9':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $('#conWarningMsg').html(msg);    
+                        $('#conWarningMsg').show();
+                        break;   
+
+                    case '99':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $('#conWarningMsg').html(msg);
+                        $('#conWarningMsg').show();
+                        break;
+
+                    case '100':
+
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: #000;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+
+                        $('#conWarningMsg').html(msg);
+                        $('#conWarningMsg').show();
+                        break;    
+
+                    default:
+
+                        var sw=0;
+                        var ultimo=0;
+                        var pa=1;
+                        consultaMensajes(sw,ultimo,pa);
+                        break;
+                        
+                }
+            }
+        });  
+    }
+    
 </script>
 <style>
     #infoMsg{
@@ -545,18 +710,18 @@
     
     
         <!-- DATOS DEL REGISTRO SELECCIONADO-->
-        inc<input type="text" id="inc" value=""><br> <!-- INCIDENTE -->
-        id<input type="text" id="id" value=""><br>
-        fec<input type="text" id="fec" value=""><br>
-        lei<input type="text" id="lei" value=""><br>
-        tip<input type="text" id="tip" value=""><br>
-        cor<input type="text" id="cor" value=""><br>
-        key<input type="text" id="key" value=""><br>
-        msg<input type="text" id="msg" value=""><br>
-        asu<input type="text" id="asu" value=""><br>
-        ali<input type="text" id="ali" value=""><br>
-        mai<input type="text" id="mai" value=""><br>            
-        ror<input type="text" id="ror" value=""><br> 
+        INCIDENTE<input type="text" id="inc" value=""><!-- INCIDENTE -->
+        <input type="hidden" id="id" value="">
+        <input type="hidden" id="fec" value="">
+        <input type="hidden" id="lei" value="">
+        <input type="hidden" id="tip" value="">
+        <input type="hidden" id="cor" value="">
+        <input type="hidden" id="key" value="">
+        <input type="hidden" id="msg" value="">
+        <input type="hidden" id="asu" value="">
+        <input type="hidden" id="ali" value="">
+        <input type="hidden" id="mai" value="">            
+        <input type="hidden" id="ror" value=""> 
         
         <!-- DATOS DEL REGISTRO SELECCIONADO-->
      

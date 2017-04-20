@@ -63,13 +63,26 @@
 
                         default:
 
-                            $("#espera").hide();
+                           $("#espera").hide();
                             var cant = xmlDoc.getElementsByTagName('CANTIDAD')[0].childNodes[0].nodeValue;
                             if(cant>0){
+
+                                var strSoporte='<a>' 
+                                    strSoporte+='<i style="margin-left: 10px;" class="fa fa-life-ring fa-2x"></i>&nbsp;<br>';
+                                    strSoporte+='<span style="font-weight: bold; font-size: 10px;" class="hidden-xs">SOPORTE';
+                                        strSoporte+='<span id="numRspSoporte" style="font-size: 12px; background: #EB3C00 !important; border-color: #EB3C00 !important; color: #fff; font-weight: bold;"></span>';
+                                    strSoporte+='</span>';   
+                                strSoporte+='</a>';   
+                                $('#soporte').html(strSoporte);
                                 $('#numRspSoporte').html(cant);
                                 $('#numRspSoporte').show();
+
                             }else{
-                                $('#numRspSoporte').hide();
+                                var strSoporte='<a style="cursor: pointer;" onclick="solicitud_de_Soporte();">'; 
+                                    strSoporte+='<i style="margin-left: 10px;" class="fa fa-life-ring fa-2x"></i>&nbsp;<br>';
+                                    strSoporte+='<span style="font-weight: bold; font-size: 10px;" class="hidden-xs">SOPORTE</span>';   
+                                strSoporte+='</a>';
+                                $('#soporte').html(strSoporte);
                             }    
                             break;
 
@@ -184,6 +197,95 @@
         return resultado;
 
     }
+    
+    function consultaMensajesSoporte(){
+        
+        var URLdomain   = window.location.host;
+        var URLprotocol = window.location.protocol;
+        var rut=$('#rut').val();            //RUT ORIGEN
+        $('#soporte').show();
+
+        var parametros = { "rut" : rut };        
+
+        //OBTIENE WHATSAPP DE CONTACTO
+        $.ajax({
+                data:  parametros,
+                url: URLprotocol+"//"+URLdomain+"/bodyflex/catalogo/model/proCsuRspSoporte.php",
+                type:  'post',
+                datetype: 'xml',
+                async: true,
+            beforeSend: function(){
+                $("#espera").show();
+            },
+            success:  function(xml){
+
+                //alert('proCsuRspSoporte '+xml);
+
+                var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
+                var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
+                var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;
+
+                switch(codErr){
+                    case "9":
+
+                        $("#espera").hide();
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+                        $('#contacto').html(msg);
+                        $('#contacto').show();
+                        break;
+
+                    case "99":
+
+                        $("#espera").hide();
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+                        $('#contacto').html(msg);
+                        $('#contacto').show();
+                        break;
+
+                    case "100":
+
+                        $("#espera").hide();
+                        var msg='<div style="text-align:center;" class="alert alert-block">';
+                        msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                        msg+='</div>';
+                        $('#contacto').html(msg);
+                        $('#contacto').show();
+                        break;    
+
+                    default:
+
+                        $("#espera").hide();
+                        var cant = xmlDoc.getElementsByTagName('CANTIDAD')[0].childNodes[0].nodeValue;
+                        if(cant>0){
+                            
+                            var strSoporte='<a>' 
+                                strSoporte+='<i style="margin-left: 10px;" class="fa fa-life-ring fa-2x"></i>&nbsp;<br>';
+                                strSoporte+='<span style="font-weight: bold; font-size: 10px;" class="hidden-xs">SOPORTE';
+                                    strSoporte+='<span id="numRspSoporte" style="font-size: 12px; background: #EB3C00 !important; border-color: #EB3C00 !important; color: #fff; font-weight: bold;"></span>';
+                                strSoporte+='</span>';   
+                            strSoporte+='</a>';   
+                            $('#soporte').html(strSoporte);
+                            $('#numRspSoporte').html(cant);
+                            $('#numRspSoporte').show();
+                            
+                        }else{
+                            var strSoporte='<a style="cursor: pointer;" onclick="solicitud_de_Soporte();">'; 
+                                strSoporte+='<i style="margin-left: 10px;" class="fa fa-life-ring fa-2x"></i>&nbsp;<br>';
+                                strSoporte+='<span style="font-weight: bold; font-size: 10px;" class="hidden-xs">SOPORTE</span>';   
+                            strSoporte+='</a>';
+                            $('#soporte').html(strSoporte);
+                        }    
+                        break;
+
+                }
+            }
+        });
+        
+    }
 </script>
 <div class="row-fluid sortable">
     <div class="box span12">
@@ -215,12 +317,12 @@
                         <span class="input-xlarge uneditable-input" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width:185px; text-align: center;"><?= $_SESSION['email'];?></span>
                     </td>
                     <td id="soporte" style="display: none;" class="center">
-                        <a style="cursor: pointer;" onclick="solicitud_de_Soporte();"> 
+<!--                        <a style="cursor: pointer;" onclick="solicitud_de_Soporte();"> 
                             <i style="margin-left: 10px;" class="fa fa-life-ring fa-2x"></i>&nbsp;<br>
                             <span style="font-weight: bold; font-size: 10px;" class="hidden-xs">SOPORTE
                                 <span id="numRspSoporte" style="font-size: 12px; background: #EB3C00 !important; border-color: #EB3C00 !important; color: #fff; font-weight: bold;"></span>
                             </span>   
-                        </a>
+                        </a>-->
                     </td>
                 </tr>                            
              </table>  

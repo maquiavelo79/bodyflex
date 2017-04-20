@@ -130,6 +130,7 @@ BEGIN
             , IF(LENGTH(@uRor)=0,0,@uRor) AS uRor
             , IFNULL(IF(LENGTH(PM.incId)=0 OR PM.incId=null,0,PM.incId),0) AS idIncidente
             , @uIncidente as uIncidente -- ID de incidente del ultimo mensaje leido
+            , IFNULL((SELECT ei_Id FROM INCIDENTE WHERE INCID=PM.incId),0) as estadoInciente
             FROM PROFESIONAL_MENSAJE PM
             WHERE PM.MMAILDES=email AND 
                   PM.MID<=ULTIMO
@@ -166,6 +167,7 @@ BEGIN
             , IF(LENGTH(@uRor)=0,0,@uRor) AS uRor
             , IFNULL(IF(LENGTH(PM.incId)=0 OR PM.incId=null,0,PM.incId),0) AS idIncidente
             , @uIncidente as uIncidente -- ID de incidente del ultimo mensaje leido
+            , IFNULL((SELECT ei_Id FROM INCIDENTE WHERE INCID=PM.incId),0) as estadoInciente
             FROM PROFESIONAL_MENSAJE PM
             WHERE PM.MMAILDES=email 
             ORDER BY PM.MFEC DESC

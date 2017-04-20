@@ -52,7 +52,7 @@ include("../model/conection.php");
     $sw=$_REQUEST['sw']; //switch= [1 | 2]; 1=PREVIOS, 2=POSTERIORES
     $ultimo=$_REQUEST['ultimo']; // ultimo numero de la paginación
     $pa=$_REQUEST['pa']; //Paginación, indica el numero de paginación que el usuario presionó 
-    
+    $rol=$_REQUEST['rol']; //Rol de quien visualiza incidente
 
     try{
 	
@@ -110,21 +110,54 @@ include("../model/conection.php");
                     $paginaciones=$r[12];
                     $incidente=$r[28]; //ID incidente
                     $mMLInc=$r[29]; //ID incidente de ultimo leido
-
-                    if($mLe==0){ //no leido
-                        $sTr.='<tr style="cursor: pointer;" class="item" id="'.$mId.'" alias="'.$mAl.'" msgRes="'.$mMr.'" fecha="'.$mFe.'" leido="'.$mLe.'" incidente="'.$incidente. '">';
-                            $sTr.='<td><span class="from"><span class="glyphicons star"><i></i></span>'.$mAl.'</span></td>';
-                            $sTr.='<td><span class="title"><span class="label label-info">Nuevo</span>&nbsp;&nbsp;'.$mMr.'</span></td>';
-                            $sTr.='<td><span class="date"><b>'.$mFe.'</b></span></td>';
-                        $sTr.='</tr>';
-                    }else{ //leido
-                        $sTr.='<tr style="cursor: pointer;" class="item" id="'.$mId.'" alias="'.$mAl.'" msgRes="'.$mMr.'" fecha="'.$mFe.'" leido="'.$mLe.'" incidente="'.$incidente. '">';
-                            $sTr.='<td><span class="from"><span class="glyphicons dislikes"><i></i></span>'.$mAl.'</span></td>';
-                            $sTr.='<td><span class="title">'.$mMr.'</span></td>';
-                            $sTr.='<td><span class="date">'.$mFe.'</span></td>';
-                        $sTr.='</tr>';
-                    }
-
+                    $estadoIncidente=$r[30]; //estado del incidente 1=ABIERTO, 2=CERRADO
+                    
+                    if($rol!='ADM'){
+                        if($mLe==0){ //no leido
+                            $sTr.='<tr style="cursor: pointer;" class="item" id="'.$mId.'" alias="'.$mAl.'" msgRes="'.$mMr.'" fecha="'.$mFe.'" leido="'.$mLe.'" incidente="'.$incidente. '">';
+                                $sTr.='<td><span class="from"><span class="glyphicons star"><i></i></span>'.$mAl.'</span></td>';
+                                $sTr.='<td><span class="title"><span class="label label-info">Nuevo</span>&nbsp;&nbsp;'.$mMr.'</span></td>';
+                                $sTr.='<td><span class="date"><b>'.$mFe.'</b></span></td>';
+                            $sTr.='</tr>';
+                        }else{ 
+                            $sTr.='<tr style="cursor: pointer;" class="item" id="'.$mId.'" alias="'.$mAl.'" msgRes="'.$mMr.'" fecha="'.$mFe.'" leido="'.$mLe.'" incidente="'.$incidente. '">';
+                                $sTr.='<td><span class="from"><span class="glyphicons dislikes"><i></i></span>'.$mAl.'</span></td>';
+                                $sTr.='<td><span class="title">'.$mMr.'</span></td>';
+                                $sTr.='<td><span class="date">'.$mFe.'</span></td>';
+                            $sTr.='</tr>';
+                        }
+                    }else{
+                        //para rol ADM agrega botón para cierre de incidentes
+                        if($mLe==0){ //no leido
+                            $sTr.='<tr style="cursor: pointer;" class="item" id="'.$mId.'" alias="'.$mAl.'" msgRes="'.$mMr.'" fecha="'.$mFe.'" leido="'.$mLe.'" incidente="'.$incidente. '">';
+                                $sTr.='<td><span class="from"><span class="glyphicons star"><i></i></span>'.$mAl.'</span></td>';
+                                $sTr.='<td><span class="title"><span class="label label-info">Nuevo</span>&nbsp;&nbsp;'.$mMr.'</span></td>';
+                                $sTr.='<td><span class="date"><b>'.$mFe.'</b></span>';
+                                if($estadoIncidente==1){
+                                    //INCIDENTE ABIERTO
+                                    $sTr.='<td><span onclick="confirmarCierreIncidente('.$incidente.');" class="label label-success">ABIERTO</span></td>';
+                                }else{
+                                    //INCIDENTE CERRADO
+                                    $sTr.='<td><span onclick="abrirIncidente();" class="label label-important">CERRADO</span></td>';
+                                }
+                                $sTr.='</td>';
+                            $sTr.='</tr>';
+                        }else{ //leido
+                            $sTr.='<tr style="cursor: pointer;" class="item" id="'.$mId.'" alias="'.$mAl.'" msgRes="'.$mMr.'" fecha="'.$mFe.'" leido="'.$mLe.'" incidente="'.$incidente. '">';
+                                $sTr.='<td><span class="from"><span class="glyphicons dislikes"><i></i></span>'.$mAl.'</span></td>';
+                                $sTr.='<td><span class="title">'.$mMr.'</span></td>';
+                                $sTr.='<td><span class="date">'.$mFe.'</span>';
+                                if($estadoIncidente==1){
+                                    //INCIDENTE ABIERTO
+                                    $sTr.='<td><span onclick="confirmarCierreIncidente('.$incidente.');" class="label label-success">ABIERTO</span></td>';
+                                }else{
+                                    //INCIDENTE CERRADO
+                                    $sTr.='<td><span onclick="abrirIncidente();" class="label label-important">CERRADO</span></td>';
+                                }
+                                $sTr.='</td>';
+                            $sTr.='</tr>';
+                        }
+                    }    
 
                     //$strDat.='<REGISTRO>';
                         $strDat.=$sTr;
