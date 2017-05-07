@@ -1,6 +1,6 @@
 <section id="product-story-1" 
          class="product-story product-story-hasbg  product-story-1 cover"
-         style="background-image: url(../images/product_details/bg9.jpg); "
+         style="background-image: url('<?= $imgGD2;?>'); "
          data-0="background-position: 50% 80%;"
          data-end="background-position: 50% 0;"
          data-anchor-target="#product-story-1"

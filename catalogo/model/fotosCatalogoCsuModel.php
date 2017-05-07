@@ -20,18 +20,18 @@ function obtenerImagenes(){
 
             if($conn){    
 
-                $sql="CALL SP_CAT_CSU_FOT(@codErr, @foto1, @foto2);";
+                $sql="CALL SP_CAT_CSU_FOT(@codErr, @principal, @detalle);";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
 
                     $stmt->closeCursor();
-                    $output = $conn->query("select @codErr, @foto1, @foto2")->fetch(PDO::FETCH_ASSOC);
+                    $output = $conn->query("select @codErr, @principal, @detalle")->fetch(PDO::FETCH_ASSOC);
                     $codErr = $output['@codErr'];
-
+                    
                     if($codErr==0){
 
-                        $foto1 = $output['@foto1'];
-                        $foto2 = $output['@foto2'];
+                        $principal = $output['@principal'];
+                        $detalle = $output['@detalle'];
 
                     }else{
 
@@ -47,12 +47,6 @@ function obtenerImagenes(){
                                 break;
                             case 98:
                                 $desErr='SIN IMAGEN PRINCIPAL INGRESADA';
-                                break;
-                            case 97:
-                                $desErr='SIN IMAGEN DETALLE PRODUCTO INGRESADA';
-                                break;
-                            case 96:
-                                $desErr='CATALOGO SIM IMÁGENES';
                                 break;
                         }
 
@@ -78,12 +72,12 @@ function obtenerImagenes(){
             $strXml.='</ERROR>';    
             $strXml.='<FOTO1>';
                 $strXml.= '<![CDATA[';
-                    $strXml.=$foto1;
+                    $strXml.=$principal;
                 $strXml.=']]>';
             $strXml.='</FOTO1>';
             $strXml.='<FOTO2>';
                 $strXml.= '<![CDATA[';
-                    $strXml.=$foto2;
+                    $strXml.=$detalle;
                 $strXml.=']]>';
             $strXml.='</FOTO2>';
         $strXml.='</SALIDA>';

@@ -292,6 +292,7 @@ jQuery(document).ready(function() {
         var gd8 = $('#txtCol8GD').val();
         var gd9 = $('#txtCol9GD').val();
         var gd10 = $('#txtCol10GD').val();
+        
         var gd11 = $('#txtCol11GD').val();
         var gd12 = $('#txtCol12GD').val();
         var gd13 = $('#txtCol13GD').val();
@@ -315,17 +316,17 @@ jQuery(document).ready(function() {
             
         }
         
-        if(gd11=='' && gd12=='' && gd13=='' && gd14=='' && gd15=='' && gd16=='' && gd17=='' && gd18=='' && gd19=='' && gd20=='') {
-            
-            var msg='<div style="text-align:center;" class="alert alert-block">';
-            msg+='<b><span style="color: #000;">Favor agregue al menos una imagen Google Drive de 1024x640.</span></b>';
-            msg+='</div>';
-            
-            $('#warning').html(msg);
-            $('#warning').show();
-            return false;
-            
-        }
+//        if(gd11=='' && gd12=='' && gd13=='' && gd14=='' && gd15=='' && gd16=='' && gd17=='' && gd18=='' && gd19=='' && gd20=='') {
+//            
+//            var msg='<div style="text-align:center;" class="alert alert-block">';
+//            msg+='<b><span style="color: #000;">Favor agregue al menos una imagen Google Drive de 1024x640.</span></b>';
+//            msg+='</div>';
+//            
+//            $('#warning').html(msg);
+//            $('#warning').show();
+//            return false;
+//            
+//        }
        
         $('#warning').hide();
      

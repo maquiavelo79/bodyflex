@@ -313,7 +313,7 @@ session_start();
                                                 <div class="control-group">
                                                     <label class="control-label" for="appendedInput"><b>Imagen2</b></label>
                                                     <div class="controls">
-                                                        <input id="txtCol2GD" placeholder="ID Imagen 1024 x 640" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
+                                                        <input id="txtCol2GD" placeholder="ID Imagen 1920 x 1080" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
                                                         <span id="sVerImg2" class="help-inline">
                                                             <i class="fa fa-picture-o fa-2x"></i>
                                                         </span>
@@ -323,7 +323,7 @@ session_start();
                                                 <div class="control-group">
                                                     <label class="control-label" for="appendedInput"><b>Imagen3</b></label>
                                                     <div class="controls">
-                                                        <input id="txtCol3GD" placeholder="ID Imagen 1024 x 640" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
+                                                        <input id="txtCol3GD" placeholder="ID Imagen 1920 x 1080" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
                                                         <span id="sVerImg3" class="help-inline">
                                                             <i class="fa fa-picture-o fa-2x"></i>
                                                         </span>
@@ -333,7 +333,7 @@ session_start();
                                                 <div class="control-group">
                                                     <label class="control-label" for="appendedInput"><b>Imagen4</b></label>
                                                     <div class="controls">
-                                                        <input id="txtCol4GD" placeholder="ID Imagen 1024 x 640" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
+                                                        <input id="txtCol4GD" placeholder="ID Imagen 1920 x 1080" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
                                                         <span id="sVerImg4" class="help-inline">
                                                             <i class="fa fa-picture-o fa-2x"></i>
                                                         </span>
@@ -343,7 +343,7 @@ session_start();
                                                 <div class="control-group">
                                                     <label class="control-label" for="appendedInput"><b>Imagen5</b></label>
                                                     <div class="controls">
-                                                        <input id="txtCol5GD" placeholder="ID Imagen 1024 x 640" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
+                                                        <input id="txtCol5GD" placeholder="ID Imagen 1920 x 1080" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
                                                         <span id="sVerImg5" class="help-inline">
                                                             <i class="fa fa-picture-o fa-2x"></i>
                                                         </span>
@@ -353,7 +353,7 @@ session_start();
                                                 <div class="control-group">
                                                     <label class="control-label" for="appendedInput"><b>Imagen6</b></label>
                                                     <div class="controls">
-                                                        <input id="txtCol6GD" placeholder="ID Imagen 1024 x 640" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
+                                                        <input id="txtCol6GD" placeholder="ID Imagen 1920 x 1080" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
                                                         <span id="sVerImg6" class="help-inline">
                                                             <i class="fa fa-picture-o fa-2x"></i>
                                                         </span>
@@ -363,7 +363,7 @@ session_start();
                                                 <div class="control-group">
                                                     <label class="control-label" for="appendedInput"><b>Imagen7</b></label>
                                                     <div class="controls">
-                                                        <input id="txtCol7GD" placeholder="ID Imagen 1024 x 640" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
+                                                        <input id="txtCol7GD" placeholder="ID Imagen 1920 x 1080" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
                                                         <span id="sVerImg7" class="help-inline">
                                                             <i class="fa fa-picture-o fa-2x"></i>
                                                         </span>
@@ -373,7 +373,7 @@ session_start();
                                                 <div class="control-group">
                                                     <label class="control-label" for="appendedInput"><b>Imagen8</b></label>
                                                     <div class="controls">
-                                                        <input id="txtCol8GD" placeholder="ID Imagen 1024 x 640" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
+                                                        <input id="txtCol8GD" placeholder="ID Imagen 1920 x 1080" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
                                                         <span id="sVerImg8" class="help-inline">
                                                             <i class="fa fa-picture-o fa-2x"></i>
                                                         </span>
@@ -383,7 +383,7 @@ session_start();
                                                 <div class="control-group">
                                                     <label class="control-label" for="appendedInput"><b>Imagen9</b></label>
                                                     <div class="controls">
-                                                        <input id="txtCol9GD" placeholder="ID Imagen 1024 x 640" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
+                                                        <input id="txtCol9GD" placeholder="ID Imagen 1920 x 1080" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
                                                         <span id="sVerImg9" class="help-inline">
                                                             <i class="fa fa-picture-o fa-2x"></i>
                                                         </span>
@@ -393,7 +393,7 @@ session_start();
                                                 <div class="control-group">
                                                     <label class="control-label" for="appendedInput"><b>Imagen10</b></label>
                                                     <div class="controls">
-                                                        <input id="txtCol10GD" placeholder="ID Imagen 1024 x 640" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
+                                                        <input id="txtCol10GD" placeholder="ID Imagen 1920 x 1080" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
                                                         <span id="sVerImg10" class="help-inline">
                                                             <i class="fa fa-picture-o fa-2x"></i>
                                                         </span>
@@ -414,7 +414,7 @@ session_start();
                                                 <div class="control-group">
                                                     <label class="control-label" for="appendedInput"><b>Imagen1</b></label>
                                                     <div class="controls">
-                                                        <input id="txtCol11GD" placeholder="ID Imagen 1920 x 1080" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
+                                                        <input id="txtCol11GD" placeholder="ID Imagen 1024 x 640" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
                                                         <span id="sVerImg11" class="help-inline">
                                                             <i class="fa fa-picture-o fa-2x"></i>
                                                         </span>

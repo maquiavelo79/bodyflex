@@ -1,6 +1,5 @@
 
 
--- select * from COLECCION
 
 DROP PROCEDURE IF EXISTS bodyflex.SP_CP_ADM_ING_FOT_COL;
 CREATE PROCEDURE bodyflex.`SP_CP_ADM_ING_FOT_COL`( 
@@ -31,232 +30,208 @@ BEGIN
 DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
 SET codErr=0;
 
-    IF NOT EXISTS(SELECT * FROM PARAMETROS WHERE PARNOM='FCAT1' OR PARNOM='FCAT2') THEN
-
-      DELETE FROM PARAMETROS WHERE PARNOM='FCAT1' OR PARNOM='FCAT2';
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATP1'        
-        , vGD1
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATP2'        
-        , vGD2
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATP3'        
-        , vGD3
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATP4'        
-        , vGD4
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATP5'        
-        , vGD5
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATP6'        
-        , vGD6
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATP7'        
-        , vGD7
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATP8'        
-        , vGD8
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATP9'        
-        , vGD9
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATP10'        
-        , vGD10
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATD1'        
-        , vGD11
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATD2'        
-        , vGD12
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATD3'        
-        , vGD13
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATD4'        
-        , vGD14
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATD5'        
-        , vGD15
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATD6'        
-        , vGD16
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATD7'        
-        , vGD17
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATD8'        
-        , vGD18
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATD9'        
-        , vGD19
-      );
-      INSERT INTO PARAMETROS(
-        PARNOM
-        , PARVAL
-      )VALUES(
-        'FCATD10'        
-        , vGD20
-      );
-          
-    ELSE -- EL REGISTRO EXISTE  
-
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD1
-      WHERE PARNOM='FCATP1';
+   
+      DELETE FROM PARAMETROS 
+      WHERE PARNOM='FCATP1' OR 
+      PARNOM='FCATP2' OR
+      PARNOM='FCATP3' OR
+      PARNOM='FCATP4' OR
+      PARNOM='FCATP5' OR
+      PARNOM='FCATP6' OR
+      PARNOM='FCATP7' OR
+      PARNOM='FCATP8' OR
+      PARNOM='FCATP9' OR
+      PARNOM='FCATP10' OR
+      PARNOM='FCATD1' OR
+      PARNOM='FCATD2' OR
+      PARNOM='FCATD3' OR
+      PARNOM='FCATD4' OR
+      PARNOM='FCATD5' OR
+      PARNOM='FCATD6' OR
+      PARNOM='FCATD7' OR
+      PARNOM='FCATD8' OR
+      PARNOM='FCATD9' OR
+      PARNOM='FCATD10' ;    
       
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD2
-      WHERE PARNOM='FCATP2';
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD3
-      WHERE PARNOM='FCATP3';        
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD4
-      WHERE PARNOM='FCATP4';    
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD5
-      WHERE PARNOM='FCATP5';        
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD6
-      WHERE PARNOM='FCATP6';        
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD7
-      WHERE PARNOM='FCATP7'; 
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD8
-      WHERE PARNOM='FCATP8';        
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD9
-      WHERE PARNOM='FCATP9';        
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD10
-      WHERE PARNOM='FCATP10';      
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD11
-      WHERE PARNOM='FCATD1';  
-      
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD12
-      WHERE PARNOM='FCATD2';
-      
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD13
-      WHERE PARNOM='FCATD3';
-      
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD14
-      WHERE PARNOM='FCATD4';
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD15
-      WHERE PARNOM='FCATD5';        
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD16
-      WHERE PARNOM='FCATD6';        
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD17
-      WHERE PARNOM='FCATD7';        
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD18
-      WHERE PARNOM='FCATD8';
-      
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD19
-      WHERE PARNOM='FCATD9';
-              
-      UPDATE PARAMETROS 
-      SET PARNOM = vGD20
-      WHERE PARNOM='FCATD10';        
-              
-    END IF;
-      
+      IF(LENGTH(TRIM(vGD1))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATP1'        
+          , vGD1
+        );
+      END IF;  
+      IF(LENGTH(TRIM(vGD2))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATP2'        
+          , vGD2
+        );
+      END IF;  
+      IF(LENGTH(TRIM(vGD3))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATP3'        
+          , vGD3
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD4))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATP4'        
+          , vGD4
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD5))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATP5'        
+          , vGD5
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD6))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATP6'        
+          , vGD6
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD7))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATP7'        
+          , vGD7
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD8))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATP8'        
+          , vGD8
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD9))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATP9'        
+          , vGD9
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD10))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATP10'        
+          , vGD10
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD11))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATD1'        
+          , vGD11
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD12))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATD2'        
+          , vGD12
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD13))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATD3'        
+          , vGD13
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD14))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATD4'        
+          , vGD14
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD15))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATD5'        
+          , vGD15
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD16))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATD6'        
+          , vGD16
+        );
+      END IF;  
+      IF(LENGTH(TRIM(vGD17))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATD7'        
+          , vGD17
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD18))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATD8'        
+          , vGD18
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD19))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATD9'        
+          , vGD19
+        );
+      END IF;
+      IF(LENGTH(TRIM(vGD20))>0)THEN
+        INSERT INTO PARAMETROS(
+          PARNOM
+          , PARVAL
+        )VALUES(
+          'FCATD10'        
+          , vGD20
+        );
+      END IF;    
+         
 END;

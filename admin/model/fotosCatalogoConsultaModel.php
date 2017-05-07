@@ -11,6 +11,24 @@ include("../model/conection.php");
     
     $foto1 = '';
     $foto2 = '';
+    $foto3 = '';
+    $foto4 = '';
+    $foto5 = '';
+    $foto6 = '';
+    $foto7 = '';
+    $foto8 = '';
+    $foto9 = '';
+    $foto10 = '';
+    $foto11 = '';
+    $foto12 = '';
+    $foto13 = '';
+    $foto14 = '';
+    $foto15 = '';
+    $foto16 = '';
+    $foto17 = '';
+    $foto18 = '';
+    $foto19 = '';
+    $foto20 = '';
 
     try{
 	
@@ -25,49 +43,29 @@ include("../model/conection.php");
             $stmt->closeCursor();
             $output = $conn->query("select @codErr, @foto1, @foto2, @foto3, @foto4, @foto5, @foto6, @foto7, @foto8, @foto9, @foto10, @foto11, @foto12, @foto13, @foto14, @foto15, @foto16, @foto17, @foto18, @foto19, @foto20")->fetch(PDO::FETCH_ASSOC);
             $codErr = $output['@codErr'];
-            $foto1 = $output['@foto1'];
-            $foto2 = $output['@foto2'];
-            $foto3 = $output['@foto3'];
-            $foto4 = $output['@foto4'];
-            $foto5 = $output['@foto5'];
-            $foto6 = $output['@foto6'];
-            $foto7 = $output['@foto7'];
-            $foto8 = $output['@foto8'];
-            $foto9 = $output['@foto9'];
-            $foto10 = $output['@foto10'];
-            $foto11 = $output['@foto11'];
-            $foto12 = $output['@foto12'];
-            $foto13 = $output['@foto13'];
-            $foto14 = $output['@foto14'];
-            $foto15 = $output['@foto15'];
-            $foto16 = $output['@foto16'];
-            $foto17 = $output['@foto17'];
-            $foto18 = $output['@foto18'];
-            $foto19 = $output['@foto19'];
-            $foto20 = $output['@foto20'];
-                
+                            
                 if($codErr==0){
                 
-                    $foto1 = $output['@foto1'];
-                    $foto2 = $output['@foto2'];
-                    $foto3 = $output['@foto3'];
-                    $foto4 = $output['@foto4'];
-                    $foto5 = $output['@foto5'];
-                    $foto6 = $output['@foto6'];
-                    $foto7 = $output['@foto7'];
-                    $foto8 = $output['@foto8'];
-                    $foto9 = $output['@foto9'];
-                    $foto10 = $output['@foto10'];
-                    $foto11 = $output['@foto11'];
-                    $foto12 = $output['@foto12'];
-                    $foto13 = $output['@foto13'];
-                    $foto14 = $output['@foto14'];
-                    $foto15 = $output['@foto15'];
-                    $foto16 = $output['@foto16'];
-                    $foto17 = $output['@foto17'];
-                    $foto18 = $output['@foto18'];
-                    $foto19 = $output['@foto19'];
-                    $foto20 = $output['@foto20'];
+                    $foto1 = (isset($output['@foto1'])?($output['@foto1']):(''));
+                    $foto2 = (isset($output['@foto2'])?($output['@foto2']):(''));
+                    $foto3 = (isset($output['@foto3'])?($output['@foto3']):(''));
+                    $foto4 = (isset($output['@foto4'])?($output['@foto4']):(''));
+                    $foto5 = (isset($output['@foto5'])?($output['@foto5']):(''));
+                    $foto6 = (isset($output['@foto6'])?($output['@foto6']):(''));
+                    $foto7 = (isset($output['@foto7'])?($output['@foto7']):(''));
+                    $foto8 = (isset($output['@foto8'])?($output['@foto8']):(''));
+                    $foto9 = (isset($output['@foto9'])?($output['@foto9']):(''));
+                    $foto10 = (isset($output['@foto10'])?($output['@foto10']):(''));
+                    $foto11 = (isset($output['@foto11'])?($output['@foto11']):(''));
+                    $foto12 = (isset($output['@foto12'])?($output['@foto12']):(''));
+                    $foto13 = (isset($output['@foto13'])?($output['@foto13']):(''));
+                    $foto14 = (isset($output['@foto14'])?($output['@foto14']):(''));
+                    $foto15 = (isset($output['@foto15'])?($output['@foto15']):(''));
+                    $foto16 = (isset($output['@foto16'])?($output['@foto16']):(''));
+                    $foto17 = (isset($output['@foto17'])?($output['@foto17']):(''));
+                    $foto18 = (isset($output['@foto18'])?($output['@foto18']):(''));
+                    $foto19 = (isset($output['@foto19'])?($output['@foto19']):(''));
+                    $foto20 = (isset($output['@foto20'])?($output['@foto20']):(''));
                     
                 }else{
                 

@@ -1,4 +1,5 @@
 <?php
+include("../model/fotosCatalogoCsuModel.php");
 session_start();     
 
 //Navegación - para determinar navegación 
@@ -26,6 +27,21 @@ session_start();
     }        
     
     $idPro=$_REQUEST['id'];
+    
+    $codErr='';
+    $imgGD1=''; //Imagen catalogo principal
+    $imgGD2=''; //Imagen detalle de producto
+    
+    $strXML=obtenerImagenes();
+    $img = new SimpleXMLElement($strXML);
+    $codErr=$img->ERROR->CODERROR;   
+    if($codErr==0){
+        $imgGD1=$img->FOTO1;
+        $imgGD2=$img->FOTO2;
+    }else{
+        $imgGD1='../../images/bg14.jpg';
+        $imgGD2='../images/product_details/bg9.jpg';
+    }
     
 ?>
 

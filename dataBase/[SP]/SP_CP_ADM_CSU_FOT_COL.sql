@@ -53,7 +53,7 @@ CREATE PROCEDURE bodyflex.`SP_CP_ADM_CSU_FOT_COL`(
                                                 )
 BEGIN
     
-  DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;  
+  -- DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;  
     
   SET codErr=0;
   
