@@ -19,7 +19,7 @@ jQuery(document).ready(function() {
         },
         success:  function(xml){
 
-            alert('proCsuRspSoporte '+xml);
+            //alert('proCsuRspSoporte '+xml);
 
             var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
             var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;

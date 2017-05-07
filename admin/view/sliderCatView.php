@@ -148,10 +148,9 @@ session_start();
                                         var msg1='<p style="color: #1b2426;">Problemas al cargar imagen, <b style="font-size: 16px; font-weight: bold;">verifique la existencia y/o permisos</b> en Google Drive.</p>';                  
                                         swal({   
                                             title: 'Error al visualizar',   
-                                            text: msg1,   
+                                            html: msg1,   
                                             type: "error", 
                                             confirmButtonColor: "#DD6B55",
-                                            html: true,
                                             allowOutsideClick: true,
                                             animation: false
                                         });
@@ -161,12 +160,10 @@ session_start();
 
                                         swal({   
                                             title: "Imagen en google drive",   
-                                            text: 'Imagen asociada a la <b>categoría</b> y alojada en <b>Google Drive</b>',   
+                                            html: 'Imagen asociada a la <b>categoría</b> y alojada en <b>Google Drive</b>',   
                                             confirmButtonColor: "#DD6B55;",
-                                            html: true,
                                             allowOutsideClick: true,
                                             imageUrl: url,
-                                            imageSize: "400x200",
                                             animation: false
                                         });
                                         break;
@@ -344,7 +341,7 @@ session_start();
                                         <div class="control-group">
                                             <label class="control-label"><b>URL</b></label>
                                             <div class="controls">
-                                                <input id="txtD1Ur1" placeholder="URL a la Categoría o Colección" size="16" type="text" maxlength="100" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black; width: 800px;">
+                                                <input id="txtD1Ur1" placeholder="URL a la Colección, Categoría o Producto" size="16" type="text" maxlength="100" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black; width: 800px;">
                                                 <span class="help-inline">&nbsp; URL + par&aacute;metros</span>
                                             </div>
                                         </div>
@@ -1024,9 +1021,9 @@ session_start();
                     
                     <!-- GIF LOAD-->
                     <div id="espera" class="form-actions" style="display:none;">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
                         <h4 class="alert-heading">&nbsp;</h4>
                     </div>
+                    
                     <div id="warning" style="display:none;" class="box-content alerts"></div>
                     <div id="botonera" class="form-actions" style="margin-bottom: 30px; display:none;">
                         <button type="button" style="border-color: silver; background-color: #FFCC00; color: black; font-weight: bold; width: 100px;" class="btn" id="btnGuardar">Guardar</button>

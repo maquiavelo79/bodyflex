@@ -11,6 +11,6 @@ BEGIN
 
 DECLARE EXIT HANDLER FOR SQLEXCEPTION SET codErr=99;
   SET codErr=0;  
-  UPDATE INCIDENTE SET ei_Id=1 WHERE incId=indidente;    
+  UPDATE INCIDENTE SET ei_Id=1, incFecCie='' WHERE incId=indidente;    
 
 END;

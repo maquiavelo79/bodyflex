@@ -74,6 +74,8 @@ BEGIN
             , PAG AS 'PAG'   -- Paginaciones
             , ULTIMOS AS 'ULT' -- ultimo de cada paginacion
             , COGD3
+            , COGD4
+            , coEnMenu
             FROM COLECCION 
             WHERE COID<=ULTIMO
             ORDER BY COID DESC
@@ -88,6 +90,8 @@ BEGIN
             , PAG AS 'PAG'   -- Paginaciones
             , ULTIMOS AS 'ULT' -- ultimo de cada paginacion
             , COGD3
+            , COGD4
+            , coEnMenu
             FROM COLECCION 
             ORDER BY COID DESC
             LIMIT 10;

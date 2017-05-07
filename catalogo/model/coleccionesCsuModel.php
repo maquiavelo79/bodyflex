@@ -12,7 +12,19 @@ include("../model/conection.php");
     $strDat='';
     $strPag='';
     $strXml='';
-    
+        
+    //INICIALIZACIÓN MENU DE LINKS
+    $itemMenu='';
+    $colMenu='';
+    $colMenu.='<ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">';
+        $colMenu.='<li class="no-border">';
+            $colMenu.='<p class="promo-1"><strong> COLECCIONES </strong></p>';
+        $colMenu.='</li>';
+        $colMenu.='#MENU_LINKS#';
+    $colMenu.='</ul>';
+        
+    $imgMenu='';
+        
     $ppvpAux='';
     $pvapAux='';
     $sw=0;
@@ -37,18 +49,44 @@ include("../model/conection.php");
                     
                     $coId='col_'.$r[0];
                     $coURL=$r[1];
+                    $coNOM=$r[2];
+                    $coURL4=$r[3];
+                    $coEnMenu=$r[4];
+                    $coLimitCol=$r[5];
                     
-                    $sTr.='<div class="col-md-3 col-sm-3 col-xs-6">';
-                        $sTr.='<a>';
-                            $sTr.='<img id="'.$coId.'" src="'.$coURL.'" class="img-responsive" alt="img">';
-                        $sTr.='</a>';
-                    $sTr.='</div>';
+                    //CREA MENU DE LINKS
+                    $itemMenu.='<li class="itemMenu" id="'.$coId.'"><a> '. $coNOM .' </a></li>';
                     
-                    $sTrR.=$sTr;
-                    $sTr='';
+                    //CREA IMAGENES EN MENÚ
+                    if($coEnMenu==1){
+                        $imgMenu.='<ul id="'.$coId.'" class="col-lg-3  col-sm-3 col-md-3  col-xs-4 itemMenu">';
+                            $imgMenu.='<li>';
+                                $imgMenu.='<a class="newProductMenuBlock" href="'.'#URLCAT#'.'">'; 
+                                    $imgMenu.='<img class="img-responsive" src="'.$coURL4.'" alt="product">'; 
+                                    $imgMenu.='<span class="ProductMenuCaption">'; 
+                                        $imgMenu.='<i class="fa fa-caret-right"></i> ' . $coNOM; 
+                                    $imgMenu.='</span>';
+                                $imgMenu.='</a>';
+                            $imgMenu.='</li>';
+                        $imgMenu.='</ul>';
+                    }
+                    
+                    //PARA N° DE COLECCIONES, CATALOGO PRINCIPAL INFERIOR
+                    if($coLimitCol<=$cont){
+                        $sTr.='<div class="col-md-3 col-sm-3 col-xs-6">';
+                            $sTr.='<a>';
+                                $sTr.='<img id="'.$coId.'" src="'.$coURL.'" class="img-responsive" alt="img">';
+                            $sTr.='</a>';
+                        $sTr.='</div>';
+                    
+                        $sTrR.=$sTr;
+                        $sTr='';
+                    }    
 
                 endwhile; 
                  
+                $colMenu = str_replace("#MENU_LINKS#", $itemMenu, $colMenu);
+                
             }else{
                 $stmt->closeCursor();
                 $output = $conn->query("select @codErr")->fetch(PDO::FETCH_ASSOC);
@@ -93,6 +131,16 @@ include("../model/conection.php");
                 $strXml.=$sTrR;
             $strXml.=']]>';
         $strXml.='</DATO>';
+        $strXml.='<MENU_LINKS>';
+            $strXml.= '<![CDATA[';
+                $strXml.=$colMenu;
+            $strXml.=']]>';
+        $strXml.='</MENU_LINKS>';
+        $strXml.='<IMG_EN_MENU>';
+            $strXml.= '<![CDATA[';
+                $strXml.=$imgMenu;
+            $strXml.=']]>';
+        $strXml.='</IMG_EN_MENU>';
     $strXml.='</SALIDA>';
     echo $strXml;
 

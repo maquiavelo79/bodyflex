@@ -2919,6 +2919,8 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
     height: auto;
 }
 
+
+/* Imagen sección superior catálogo en principal */
 .parallax-image-1 {
     background: url(../../images/bg14.jpg);
     background-size: cover;
@@ -3030,8 +3032,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
     padding-top: 3px;
 }
 
-/***  -------  Parallax section 2  ------- ***/
-
+/* Imagen sección inferior catálogo en principal */
 .parallax-image-2 {
     background: url(../../images/bg14.jpg) fixed;
     background-attachment: fixed; /* IE FIX */

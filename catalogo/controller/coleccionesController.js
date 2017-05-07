@@ -79,7 +79,13 @@ jQuery(document).ready(function() {
                 default:
 
                     var datos = xmlDoc.getElementsByTagName('DATO')[0].childNodes[0].nodeValue;
+                    var menu_links = xmlDoc.getElementsByTagName('MENU_LINKS')[0].childNodes[0].nodeValue;
+                    var img_en_menu = xmlDoc.getElementsByTagName('IMG_EN_MENU')[0].childNodes[0].nodeValue;
+                    
+                    //var res = str.replace("Microsoft", "W3Schools"); 
+                    
                     $('#colecciones').html(datos).trigger('liszt:updated');
+                    $('#coleccionesMenu').html(menu_links+img_en_menu).trigger('liszt:updated');
                     break;
                     
             }
@@ -96,8 +102,10 @@ jQuery(document).ready(function() {
         
         var URLdomain   = window.location.host;
         var URLprotocol = window.location.protocol;
-        var urlPerfil = URLprotocol+"//"+URLdomain+"/bodyflex/catalogo/view/proDetView.php";
+        var urlPerfil = URLprotocol+"//"+URLdomain+"/bodyflex/catalogo/view/proDetView.php";       
         var id=$(this).attr('id_des1');
+		
+		alert('coleccionesController.js ' + urlPerfil +' '+id);
         
           var form = $('<form action="' + urlPerfil + '" method="post" target="_self">' +
             '<input type="hidden" id="id" name="id" value="' + id + '" />' +
@@ -116,11 +124,13 @@ jQuery(document).ready(function() {
         var urlPerfil = URLprotocol+"//"+URLdomain+"/bodyflex/catalogo/view/proDetView.php";
         var id=$(this).attr('id_des2');
         
-       var form = $('<form action="' + urlPerfil + '" method="post" target="_self">' +
+        alert('description2 ' + urlPerfil);
+        
+        var form = $('<form action="' + urlPerfil + '" method="post" target="_self">' +
             '<input type="hidden" id="id" name="id" value="' + id + '" />' +
             '</form>');
-          $('body').append(form);
-          form.submit();
+        $('body').append(form);
+        form.submit();
         
     });
     
@@ -131,6 +141,8 @@ jQuery(document).ready(function() {
         var urlPerfil = URLprotocol+"//"+URLdomain+"/bodyflex/catalogo/view/proDetView.php";
         var id=$('#txtProID').val();
         
+        alert('product-largeimg-link ' + urlPerfil);
+        
         var form = $('<form action="' + urlPerfil + '" method="post" target="_self">' +
             '<input type="hidden" id="id" name="id" value="' + id + '" />' +
             '</form>');
@@ -140,6 +152,27 @@ jQuery(document).ready(function() {
     });
  
     $( "#colecciones" ).on( "click", ".img-responsive", function() {
+      
+        var URLdomain   = window.location.host;
+        var URLprotocol = window.location.protocol;
+        var urlPerfil = URLprotocol+"//"+URLdomain+"/bodyflex/catalogo/view/proColView.php";
+        var id=$(this).attr('id').replace('col_','');
+        
+        alert('#colecciones, id ' + urlPerfil + ' ' + id);
+        
+        var form = $('<form action="' + urlPerfil + '" method="post" target="_self">' +
+            '<input type="hidden" id="id" name="id" value="' + id + '" />' +
+            '<input type="hidden" id="id" name="idCat1" value="0" />' +
+            '<input type="hidden" id="id" name="idCat2" value="0" />' +
+            '<input type="hidden" id="id" name="idCat3" value="0" />' +
+            '</form>');
+        $('body').append(form);
+        form.submit();
+        
+    });
+    
+    $( "#coleccionesMenu" ).on( "click", ".itemMenu", function() {
+      
         var URLdomain   = window.location.host;
         var URLprotocol = window.location.protocol;
         var urlPerfil = URLprotocol+"//"+URLdomain+"/bodyflex/catalogo/view/proColView.php";

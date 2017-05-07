@@ -1,10 +1,11 @@
 -- BUSCA UN PRODUCTO PARA AGREGAR A LA VITRINA, ESTE PRODUCTO DEBE ESTAR ASOCIADO A UNA COLECCIÓN
 /*
-CALL SP_CP_ADM_CSU_PRO_A_VIT(3,@codErr,@estado,@nombre,@marca);
+CALL SP_CP_ADM_CSU_PRO_A_VIT(21,@codErr,@estado,@nombre,@marca);
 SELECT @codErr,@estado,@nombre,@marca;
 
-CALL SP_CP_ADM_CSU_PRO_A_VIT(40,@codErr,@estado,@nombre,@marca);
+CALL SP_CP_ADM_CSU_PRO_A_VIT(20,@codErr,@estado,@nombre,@marca);
 SELECT @codErr,@estado,@nombre,@marca;
+
 */
 
 DROP PROCEDURE IF EXISTS bodyflex.SP_CP_ADM_CSU_PRO_A_VIT;
@@ -27,8 +28,11 @@ BEGIN
     IF EXISTS(SELECT * FROM PRODUCTO WHERE PROID = vId) THEN
       SET @ESTADO=(SELECT PROET FROM PRODUCTO WHERE PROID=vId);
       SET @NOMBRE=(SELECT PRONO FROM PRODUCTO WHERE PROID=vId);
-      SET @MARCA=(SELECT PROMA FROM PRODUCTO WHERE PROID=vId);
-                  
+      SET @MARCA=(
+        SELECT (SELECT marNom FROM MARCAS WHERE marId=P.MARID) 
+        FROM PRODUCTO P 
+        WHERE P.PROID=vId
+      );         
       SET estado = @ESTADO;
       SET nombre = @NOMBRE;
       SET marca = @MARCA;

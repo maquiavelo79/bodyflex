@@ -1,6 +1,6 @@
 
--- CALL SP_CP_ADM_ING_MOD_SLI_CAT(3,'S','S','S','S', @codErr);
--- SELECT @codErr;
+CALL SP_CP_ADM_ING_MOD_SLI_CAT(4,'S','S','S','S', @codErr);
+SELECT @codErr;
 
 -- select * from catalogo_slider1
 -- select * from producto

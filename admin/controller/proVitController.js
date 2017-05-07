@@ -35,7 +35,7 @@ jQuery(document).ready(function() {
             },
             success:  function (xml){
 
-                //alert('proVitCsuModel ' + xml);                
+                alert('proVitCsuModel ' + xml);                
 
                 $("#espera").hide();
                 var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);

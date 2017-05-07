@@ -192,7 +192,9 @@ session_start();
         <input type="hidden" id="dv" value= "<?= $_SESSION['dv'];?>">
         <input type="hidden" id="url" value= "<?= $_SESSION['url'];?>">
         <input type="hidden" id="puId" value= "<?= $_SESSION['idPub'];?>">
-        <input type="text" id="idPos" value= "<?= $_SESSION['idPos'] ;?>"><br>
+        <!-- 
+        <input type="text" id="idPos" value= "<?= $_SESSION['idPos'] ;?>">
+        -->
     <?php } ?>
         
     <input type="hidden" id="sesion" value= "<?= $_SESSION['sesion'];?>">

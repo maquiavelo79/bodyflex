@@ -12,8 +12,8 @@ SELECT @codErr;
 -- SELECT * FROM catalogo_slider1
 -- SELECT * FROM PARAMETROS
 
--- CALL SP_CP_ADM_CSU_SLI(9386703,0,0,@codErr);
--- SELECT @codErr AS corErr;
+CALL SP_CP_ADM_CSU_SLI(1,@codErr);
+SELECT @codErr AS corErr;
 
 DROP PROCEDURE IF EXISTS bodyflex.SP_CP_ADM_CSU_SLI;
 CREATE PROCEDURE bodyflex.`SP_CP_ADM_CSU_SLI`(

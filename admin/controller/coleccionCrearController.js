@@ -119,6 +119,8 @@ jQuery(document).ready(function() {
         var gd1 = $('#txtCol1GD').val();
         var gd2 = $('#txtCol2GD').val();
         var gd3 = $('#txtCol3GD').val();
+        var gd4 = $('#txtCol4GD').val();
+        //var enMenu = $('#enMenu').val();
 
         if(nom == '') {
             
@@ -179,6 +181,25 @@ jQuery(document).ready(function() {
             return false;
             
         }
+        
+        if(gd4 == '') {
+            
+            var msg='<div style="text-align:center;" class="alert alert-block">';
+            msg+='<b><span style="color: #000;">Favor agregue ID Google Drive (300x250).</span></b>';
+            msg+='</div>';
+            
+            $('#warning').html(msg);
+            $('#warning').show();
+            return false;
+            
+        }
+        
+        var enMenu='';
+        if($("#enMenu").is(':checked')){
+            enMenu=1;
+        }else{
+            enMenu=0;
+        }  
                 
         $('#warning').hide();
      
@@ -190,6 +211,8 @@ jQuery(document).ready(function() {
                 , "gd1" : gd1 
                 , "gd2" : gd2 
                 , "gd3" : gd3 
+                , "gd4" : gd4 
+                , "enMenu" : enMenu 
             };            
        
             $.ajax({
@@ -197,7 +220,7 @@ jQuery(document).ready(function() {
                 url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/coleccionCrearAgregaModel.php",
                 type:  'post',
                 datetype: 'xml',
-                async: true,
+                async: false,
                 beforeSend: function(){
                     $("#espera").show();
             },
@@ -275,7 +298,25 @@ jQuery(document).ready(function() {
                         $('#warning').show();
                         
                         consultaColeccion(0,1);
-                        pintaRegistro();
+                        
+                        //recorremos tabla para pintar registro actual
+                        var puID=0;
+                        $('#tblCol tr').each(function(){
+                            var sw=0;
+                            $(this).children("td").each(function(index){
+                                switch (index){
+                                    case 0:	
+                                        puID = $(this).text();                    
+                                        if(puID==$('#txtColId').val()){
+                                            sw=1;
+                                        }
+                                        break;  
+                                }
+                            });
+                            if(sw==1){
+                                $(this).addClass('highlight').siblings().removeClass('highlight'); 
+                            }    
+                        });
                                                 
                         break;
                 }              
@@ -314,20 +355,35 @@ jQuery(document).ready(function() {
                 case 5:
                         gd3Td = $(this).text();
                         break; 
+                case 6:
+                        gd4Td = $(this).text();
+                        break;     
+                case 7:
+                        enMenu = $(this).text();
+                        break;          
             }
         });
          
     //asignamos ID a elemento hidden
+        if(enMenu=="SI"){
+            $('#divChkMnu').html('<input id="enMenu" type="checkbox" name="enMenu" value="1" checked> Imagen en menú?');
+        }else{
+            $('#divChkMnu').html('<input id="enMenu" type="checkbox" name="enMenu" value="1"> Imagen en menú?');
+        }
+        $('#enMenu').trigger('liszt:updated');
+        
         $('#txtColId').val(idTd);
         $('#txtColNom').val(nomTd);
         $('#txtColDes').val(desTd);
         $('#txtCol1GD').val(gd1Td);
         $('#txtCol2GD').val(gd2Td);
         $('#txtCol3GD').val(gd3Td);
+        $('#txtCol4GD').val(gd4Td);
         $('#sVerImg').html('<i style="color: green; cursor: pointer;" onclick="verImagen();" class="fa fa-picture-o fa-2x"></i>');
         $('#sVerImg2').html('<i style="color: green; cursor: pointer;" onclick="verImagen2();" class="fa fa-picture-o fa-2x"></i>');
         $('#sVerImg3').html('<i style="color: green; cursor: pointer;" onclick="verImagen3();" class="fa fa-picture-o fa-2x"></i>');
-
+        $('#sVerImg4').html('<i style="color: green; cursor: pointer;" onclick="verImagen4();" class="fa fa-picture-o fa-2x"></i>');
+                
 });
 
 $('#btnEliminar').click(function(){
@@ -428,6 +484,7 @@ $(document).on("click", "#btnEliCol", function(event){
         $('#sVerImg').html('<i class="fa fa-picture-o fa-2x"></i>');
         $('#sVerImg2').html('<i class="fa fa-picture-o fa-2x"></i>');
         $('#sVerImg3').html('<i class="fa fa-picture-o fa-2x"></i>');
+        $('#sVerImg4').html('<i class="fa fa-picture-o fa-2x"></i>');
 
         //Borramos sección mensajería
         $('#warning').html('');
@@ -466,6 +523,14 @@ $(document).on("click", "#btnEliCol", function(event){
             $('#sVerImg3').html('<i class="fa fa-picture-o fa-2x"></i>');
         }
     });
+    
+    $('#txtCol4GD').keyup(function(){
+        if($(this).length>0){
+            $('#sVerImg4').html('<i style="color: green; cursor: pointer;" onclick="verImagen4();" class="fa fa-picture-o fa-2x"></i>');
+        }else{
+            $('#sVerImg4').html('<i class="fa fa-picture-o fa-2x"></i>');
+        }
+    });
 
 });
 
@@ -489,6 +554,7 @@ function pintaRegistro(){
             $(this).addClass('highlight').siblings().removeClass('highlight'); 
         }    
     });
+    
  }
  
  function limpiar(){
@@ -499,10 +565,12 @@ function pintaRegistro(){
     $('#txtCol1GD').val('');
     $('#txtCol2GD').val('');
     $('#txtCol3GD').val('');
+    $('#myCheckbox').attr('checked', false);
     
     $('#sVerImg').html('<i class="fa fa-picture-o fa-2x"></i>');
     $('#sVerImg2').html('<i class="fa fa-picture-o fa-2x"></i>');
     $('#sVerImg3').html('<i class="fa fa-picture-o fa-2x"></i>');
+    $('#sVerImg4').html('<i class="fa fa-picture-o fa-2x"></i>');
 
     //Borramos sección mensajería
     $('#warning').html('');
@@ -561,7 +629,7 @@ var URLprotocol = window.location.protocol;
             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/model/coleccionCrearConsultaModel.php",
             type:  'post',
             datetype: 'xml',
-            async: true,
+            async: false,
         beforeSend: function(){
             $("#espera").show();
         },

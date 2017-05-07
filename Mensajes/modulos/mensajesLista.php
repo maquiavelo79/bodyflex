@@ -160,13 +160,16 @@
             $('#respuesta').val('');
                         
             if(leido==0){
-                
-                //var msgLeido='<span class="from"><span class="glyphicons dislikes"><i></i></span>'+alias+'</span><span class="title">'+msgRes+'</span><span class="date">'+fecha+'</span>';
-                               
-                var msgLeido ='<td><span class="from"><span class="glyphicons dislikes"><i></i></span>'+alias+'</span></td>';
-                msgLeido+='<td><span class="title">'+msgRes+'</span></td>';
-                msgLeido+='<td><span class="date">'+fecha+'</span></td>';
-                                
+                if($('#rol').val()!='ADM'){
+                    var msgLeido ='<td><span class="from"><span class="glyphicons dislikes"><i></i></span>'+alias+'</span></td>';
+                    msgLeido+='<td><span class="title">'+msgRes+'</span></td>';
+                    msgLeido+='<td><span class="date">'+fecha+'</span></td>';
+                }else{
+                    var msgLeido ='<td><span class="from"><span class="glyphicons dislikes"><i></i></span>'+alias+'</span></td>';
+                    msgLeido+='<td><span class="title">'+msgRes+'</span></td>';
+                    msgLeido+='<td><span class="date">'+fecha+'</span></td>';
+                    msgLeido+='<td><span onclick="confirmarCierreIncidente('+ incidente +');" class="label label-success">ABIERTO</span></td>';
+                }    
                 $(this).html(msgLeido);
             }
 
@@ -546,6 +549,29 @@
         
     }
     
+    function confirmarAperturaIncidente(incidente){
+       
+        swal({
+            title: 'Abrir incidente <b>'+ incidente+ '</b>?',
+            //html: "Esta acción cerrará la incidencia!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, abrir ahora!'
+        }).then(function () {
+            var r=abrirIncidente(incidente);
+            if(r==0){
+                swal(
+                  'Apertura!',
+                  'Incidencia abierta éxitosamente.',
+                  'success'
+                )
+            }
+        })
+        
+    }
+    
     function cerrarIncidente(incidente){
         
         var retunCodErr=0;
@@ -613,11 +639,11 @@
         return retunCodErr;
     }
     
-    function abrirIncidente(){
+    function abrirIncidente(incidente){
         
+        var retunCodErr=0;
         var URLdomain   = window.location.host;
         var URLprotocol = window.location.protocol;
-        var incidente = $(this).attr( "incidente" );
         var parametros = { "incidente" : incidente };
         
         $.ajax({
@@ -633,6 +659,7 @@
                 var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
                 var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
                 var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;
+                retunCodErr=codErr;
 
                 switch(codErr){
                     case '9':
@@ -675,7 +702,8 @@
                         
                 }
             }
-        });  
+        });
+        return retunCodErr;
     }
     
 </script>

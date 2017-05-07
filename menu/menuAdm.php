@@ -434,12 +434,6 @@
                 </a>
                 <ul>
                     <li>
-                        <a style="margin-left: 5px;" class="submenu" href="../../../bodyflex/admin/view/sliderCatView2.php">
-                            <i class="fa fa-whatsapp fa-lg"></i>
-                            <span style="color: #FFCC00;" class="hidden-tablet">&nbsp;Contacto</span>
-                        </a>
-                    </li>
-                    <li>
                         <a style="margin-left: 5px;" class="submenu" href="../../../bodyflex/admin/view/sliderCatView.php">
                             <i class="fa fa-plus"></i>
                             <span style="color: #FFCC00;" class="hidden-tablet">&nbsp;Slider</span>
@@ -449,6 +443,12 @@
                         <a style="margin-left: 5px;" class="submenu" href="../../../bodyflex/admin/view/proVitView.php">
                             <i class="fa fa-television"></i>
                             <span style="color: #FFCC00;" class="hidden-tablet">&nbsp;Vitrina</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a style="margin-left: 5px;" class="submenu" href="../../../bodyflex/admin/view/fotosCatalogoView.php">
+                            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                            <span style="color: #FFCC00;" class="hidden-tablet">&nbsp;Fotos Cat&aacute;logo</span>
                         </a>
                     </li>
                 </ul>	

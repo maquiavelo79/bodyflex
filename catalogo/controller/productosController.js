@@ -115,6 +115,8 @@ jQuery(document).ready(function() {
         var urlPerfil = URLprotocol+"//"+URLdomain+"/bodyflex/catalogo/view/proDetView.php";
         var id=$(this).attr('id_des1');
         
+		alert('productosController.js ' + urlPerfil +' '+id);
+		
           var form = $('<form action="' + urlPerfil + '" method="post" target="_self">' +
             '<input type="hidden" id="id" name="id" value="' + id + '" />' +
             '</form>');

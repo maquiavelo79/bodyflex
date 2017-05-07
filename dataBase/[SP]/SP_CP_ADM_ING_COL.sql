@@ -10,6 +10,8 @@ CREATE PROCEDURE bodyflex.`SP_CP_ADM_ING_COL`(
                                                 , IN vGD1 VARCHAR(50)
                                                 , IN vGD2 VARCHAR(50)
                                                 , IN vGD3 VARCHAR(50)
+                                                , IN vGD4 VARCHAR(50)
+                                                , IN enMenu INTEGER
                                                 , OUT codErr INTEGER
                                               )
 BEGIN
@@ -27,12 +29,16 @@ SET codErr=0;
         , COGD
         , COGD2
         , COGD3
+        , COGD4
+        , COENMENU
       )VALUES(
         vNom        
         , vDes
         , vGD1
         , vGD2
         , vGD3
+        , vGD4
+        , enMenu
       );
       
       -- 3 OBTENEMOS ULTIMO DPOID INGRESADO
@@ -49,6 +55,8 @@ SET codErr=0;
         , COGD = vGD1
         , COGD2 = vGD2
         , COGD3 = vGD3
+        , COGD4 = vGD4
+        , COENMENU = enMenu
         WHERE COID=vId;
         
       SELECT vId;

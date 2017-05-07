@@ -1,4 +1,211 @@
 <script>
+    
+jQuery(document).ready(function() {
+
+    var URLdomain   = window.location.host;
+    var URLprotocol = window.location.protocol;
+  
+   //AJAX
+    $.ajax({
+            url: URLprotocol+"//"+URLdomain+"/bodyflex/catalogo/model/coleccionesCsuModel.php",
+            type:  'post',
+            datetype: 'xml',
+            async: true,
+        success:  function(xml){
+
+            //alert('coleccionesCsuModel '+xml);
+            
+            $('#esperaColeccion').hide();
+            var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
+            var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
+            var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;
+
+            switch(codErr){
+                case "9":
+
+                    var msg='<div style="text-align:center;" class="alert alert-danger">';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#coleccionesMenu').html(msg);
+                    $('#coleccionesMenu').show();
+                    break;
+
+                case "8":
+
+                    var msg='<div style="text-align:center;" class="alert alert-danger">';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#coleccionesMenu').html(msg);
+                    $('#coleccionesMenu').show();
+                    break;
+
+                case "99":
+
+                    var msg='<div style="text-align:center;" class="alert alert-danger">';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#coleccionesMenu').html(msg);
+                    $('#coleccionesMenu').show();
+                    break;
+
+                case "100":
+
+                    var msg='<div style="text-align:center;" class="alert alert-danger">';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#coleccionesMenu').html(msg);
+                    $('#coleccionesMenu').show();
+                    break;    
+
+                case "98":
+
+                    var msg='<div style="text-align:center;" class="alert alert-danger">';
+                    msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#coleccionesMenu').html(msg);
+                    $('#coleccionesMenu').show();
+                    break;
+
+                default:
+
+                    //var datos = xmlDoc.getElementsByTagName('DATO')[0].childNodes[0].nodeValue;
+                    var menu_links = xmlDoc.getElementsByTagName('MENU_LINKS')[0].childNodes[0].nodeValue;
+                    var img_en_menu = xmlDoc.getElementsByTagName('IMG_EN_MENU')[0].childNodes[0].nodeValue;
+                    $('#coleccionesMenu').html(menu_links+img_en_menu).trigger('liszt:updated');
+                    break;
+                    
+            }
+        }
+    });
+    
+    //OBTENER RELACIÓN COLECCIÓN CATEGORÍA
+    $.ajax({
+            url: URLprotocol+"//"+URLdomain+"/bodyflex/catalogo/model/csuRelColCatModel.php",
+            type:  'post',
+            datetype: 'xml',
+            async: true,
+        success:  function(xml){
+
+            //alert('csuRelColCatModel '+xml);
+            
+            $('#esperaColeccion').hide();
+            var xmlDoc = $.parseXML(xml), $xml = $(xmlDoc);
+            var codErr = xmlDoc.getElementsByTagName('CODERROR')[0].childNodes[0].nodeValue;
+            var desErr = xmlDoc.getElementsByTagName('DESERROR')[0].childNodes[0].nodeValue;
+
+            switch(codErr){
+                case "9":
+
+                    var msg='<div style="text-align:center;" class="alert alert-danger">';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#coleccionesMenu').html(msg);
+                    $('#coleccionesMenu').show();
+                    break;
+
+                case "8":
+
+                    var msg='<div style="text-align:center;" class="alert alert-danger">';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#coleccionesMenu').html(msg);
+                    $('#coleccionesMenu').show();
+                    break;
+
+                case "99":
+
+                    var msg='<div style="text-align:center;" class="alert alert-danger">';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#coleccionesMenu').html(msg);
+                    $('#coleccionesMenu').show();
+                    break;
+
+                case "100":
+
+                    var msg='<div style="text-align:center;" class="alert alert-danger">';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#coleccionesMenu').html(msg);
+                    $('#coleccionesMenu').show();
+                    break;    
+
+                case "98":
+
+                    var msg='<div style="text-align:center;" class="alert alert-danger">';
+                    msg+='<button type="button" class="close" data-dismiss="alert">×</button>';
+                    msg+='<b><span style="color: black;">' + '[' + codErr + '] ' + desErr + '</span></b>';
+                    msg+='</div>';
+
+                    $('#coleccionesMenu').html(msg);
+                    $('#coleccionesMenu').show();
+                    break;
+
+                default:
+                    
+                    var HEADER1 = xmlDoc.getElementsByTagName('HEADER1')[0].childNodes[0].nodeValue;
+                    var HEADER2 = xmlDoc.getElementsByTagName('HEADER2')[0].childNodes[0].nodeValue;
+                    var coleccionMnuColCat = xmlDoc.getElementsByTagName('luList')[0].childNodes[0].nodeValue;
+                    $("#coleccionMnuColCat").html(HEADER1+HEADER2+coleccionMnuColCat).trigger('liszt:updated');
+                    break;
+                    
+            }
+        }
+    });    
+        
+        
+//    $('.tooltipHere').click(function(){
+//        alert('WishlistX');
+//    });
+    
+    $( "#coleccionesMenu" ).on( "click", ".itemMenu", function() {
+      
+        var URLdomain   = window.location.host;
+        var URLprotocol = window.location.protocol;
+        var urlPerfil = URLprotocol+"//"+URLdomain+"/bodyflex/catalogo/view/proColView.php";
+        var id=$(this).attr('id').replace('col_','');
+        
+        var form = $('<form action="' + urlPerfil + '" method="post" target="_self">' +
+            '<input type="hidden" id="id" name="id" value="' + id + '" />' +
+            '<input type="hidden" id="id" name="idCat1" value="0" />' +
+            '<input type="hidden" id="id" name="idCat2" value="0" />' +
+            '<input type="hidden" id="id" name="idCat3" value="0" />' +
+            '</form>');
+        $('body').append(form);
+        form.submit();
+        
+    });
+    
+    $( "#coleccionMnuColCat" ).on( "click", ".itemMenu", function() {
+      
+        var URLdomain   = window.location.host;
+        var URLprotocol = window.location.protocol;
+        var urlPerfil = URLprotocol+"//"+URLdomain+"/bodyflex/catalogo/view/proColView.php";
+        var id=$(this).attr('id').replace('col_','');
+        
+        var form = $('<form action="' + urlPerfil + '" method="post" target="_self">' +
+            '<input type="hidden" id="id" name="id" value="' + id + '" />' +
+            '<input type="hidden" id="id" name="idCat1" value="0" />' +
+            '<input type="hidden" id="id" name="idCat2" value="0" />' +
+            '<input type="hidden" id="id" name="idCat3" value="0" />' +
+            '</form>');
+        $('body').append(form);
+        form.submit();
+        
+    });
+           
+});
+
     function backToHome(){
         var URLdomain   = window.location.host;
         var URLprotocol = window.location.protocol;
@@ -7,6 +214,7 @@
         $('body').append(form);
         form.submit();
     }
+        
 </script>
 <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -18,7 +226,8 @@
                         COLECCIONES <b class="caret"></b> 
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="megamenu-content ">
+                        <li id="coleccionesMenu" class="megamenu-content ">
+                            
                             <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
                                 <li class="no-border">
                                     <p class="promo-1"><strong> NEW COLLECTION </strong></p>
@@ -29,6 +238,7 @@
                                 <li><a href="category.html"> NEW TSHIRT </a></li>
                                 <li><a href="category.html"> NEW TSHOP </a></li>
                             </ul>
+                            
                             <ul class="col-lg-3  col-sm-3 col-md-3  col-xs-4">
                                 <li>
                                     <a class="newProductMenuBlock" href="../product-details.html"> 
@@ -39,83 +249,85 @@
                                     </a>
                                 </li>
                             </ul>
+                            
                             <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
-                                <li><a class="newProductMenuBlock" href="../product-details.html"> <img
-                                        class="img-responsive" src="../images/site/promo2.jpg" alt="product"> <span
-                                        class="ProductMenuCaption"> <i
-                                        class="fa fa-caret-right"> </i> PARTY DRESS </span> </a></li>
+                                <li>
+                                    <a class="newProductMenuBlock" href="../product-details.html"> 
+                                        <img class="img-responsive" src="../images/site/promo2.jpg" alt="product"> 
+                                        <span class="ProductMenuCaption"> 
+                                            <i class="fa fa-caret-right"></i> PARTY DRESS 
+                                        </span> 
+                                    </a>
+                                </li>
                             </ul>
+                            
                             <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
-                                <li><a class="newProductMenuBlock" href="../product-details.html"> <img
-                                        class="img-responsive" src="../images/site/promo3.jpg" alt="product"> <span
-                                        class="ProductMenuCaption"> <i class="fa fa-caret-right"> </i> SHOES </span>
-                                </a></li>
+                                <li>
+                                    <a class="newProductMenuBlock" href="../product-details.html"> 
+                                        <img class="img-responsive" src="../images/site/promo3.jpg" alt="product"> 
+                                        <span class="ProductMenuCaption"> 
+                                            <i class="fa fa-caret-right"></i> SHOES 
+                                        </span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
 
                 <!-- change width of megamenu = use class > megamenu-fullwidth, megamenu-60width, megamenu-40width -->
-                <li class="dropdown megamenu-80width ">
+                <li class="dropdown megamenu-fullwidth">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"> 
                         PRODUCTOS <b class="caret"> </b> 
                     </a>
-                    <ul class="dropdown-menu">
-                        <li class="megamenu-content">
-
-                            <!-- megamenu-content -->
-
-                            <ul class="col-lg-2  col-sm-2 col-md-2  unstyled noMarginLeft">
-                                <li>
-                                    <p><strong> Women Collection </strong></p>
-                                </li>
-                                <li><a href="#"> Kameez </a></li>
-                                <li><a href="#"> Tops </a></li>
-                                <li><a href="#"> Shoes </a></li>
-                                <li><a href="#"> T shirt </a></li>
-                                <li><a href="#"> TSHOP </a></li>
-                                <li><a href="#"> Party Dress </a></li>
-                                <li><a href="#"> Women Fragrances </a></li>
-                            </ul>
+                    <ul id="coleccionMnuColCat" class="dropdown-menu">
+<!--                        <li id="coleccionMnuColCat" class="megamenu-content">-->
+<!--                        <li class="megamenu-content ProductDetailsList">
+                             megamenu-content 
+                            <h3 class="promo-1 no-margin hidden-xs">Titulo Header 1</h3>
+                            <h3 class="promo-1sub hidden-xs">Titulo Header 2</h3>
                             <ul class="col-lg-2  col-sm-2 col-md-2  unstyled">
-                                <li>
-                                    <p><strong> Men Collection </strong></p>
-                                </li>
-                                <li><a href="#"> Panjabi </a></li>
-                                <li><a href="#"> Male Fragrances </a></li>
-                                <li><a href="#"> Scarf </a></li>
-                                <li><a href="#"> Sandal </a></li>
-                                <li><a href="#"> Underwear </a></li>
-                                <li><a href="#"> Winter Collection </a></li>
-                                <li><a href="#"> Men Accessories </a></li>
+                                <li class="no-border"><p><strong> BODY PUMP </strong></p></li>
+                                <li class="itemMenu" id="col_2" idcat1="2" idcat2="3" idcat3="0"><a> CALZA </a></li>
+                                <li class="itemMenu" id="col_2" idcat1="3" idcat2="2" idcat3="0"><a> BOLSO </a></li>
                             </ul>
-                            <ul class="col-lg-2  col-sm-2 col-md-2  unstyled">
-                                <li>
-                                    <p><strong> Top Brands </strong></p>
-                                </li>
-                                <li><a href="#"> Diesel </a></li>
-                                <li><a href="#"> Farah </a></li>
-                                <li><a href="#"> G-Star RAW </a></li>
-                                <li><a href="#"> Lyle & Scott </a></li>
-                                <li><a href="#"> Pretty Green </a></li>
-                                <li><a href="#"> TSHOP </a></li>
-                                <li><a href="#"> TANJIM </a></li>
+                            <ul class="col-lg-2  col-sm-2 col-md-2 unstyled">
+                                <li class="no-border"><p><strong> CROSS TRAINING </strong></p></li>
+                                <li class="itemMenu" id="col_3" idcat1="2" idcat2="3" idcat3="0"><a> CALZA </a></li>
+                                <li class="itemMenu" id="col_3" idcat1="3" idcat2="2" idcat3="0"><a> BOLSO </a></li>
                             </ul>
-                            <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
-                                <li class="no-margin productPopItem "><a href="../product-details.html"> <img
-                                        class="img-responsive" src="../images/site/g4.jpg" alt="img"> </a> <a
-                                        class="text-center productInfo alpha90" href="../product-details.html"> Eodem modo
-                                    typi <br>
-                                    <span> $60 </span> </a></li>
+                            <ul class="col-lg-2  col-sm-2 col-md-2 unstyled">
+                                <li class="no-border"><p><strong> POWERLIFTING </strong></p></li>
+                                <li class="itemMenu" id="col_4" idcat1="2" idcat2="3" idcat3="0"><a> CALZA </a></li>
+                                <li class="itemMenu" id="col_4" idcat1="3" idcat2="2" idcat3="0"><a> BOLSO </a></li>
                             </ul>
-                            <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
-                                <li class="no-margin productPopItem relative"><a href="../product-details.html"> <img
-                                        class="img-responsive" src="../images/site/g5.jpg" alt="img"> </a> <a
-                                        class="text-center productInfo alpha90" href="../product-details.html"> Eodem modo
-                                    typi <br>
-                                    <span> $60 </span> </a></li>
+                            <ul class="col-lg-2  col-sm-2 col-md-2 unstyled">
+                                <li class="no-border"><p><strong> RUNNING </strong></p></li>
+                                <li class="itemMenu" id="col_5" idcat1="2" idcat2="3" idcat3="0"><a> CALZA </a></li>
+                                <li class="itemMenu" id="col_5" idcat1="3" idcat2="2" idcat3="0"><a> BOLSO </a></li>
                             </ul>
-                        </li>
+                            <ul class="col-lg-2  col-sm-2 col-md-2 unstyled">
+                                <li class="no-border"><p><strong> OFERTAS </strong></p></li>
+                                <li class="itemMenu" id="col_6" idcat1="2" idcat2="3" idcat3="0"><a> CALZA </a></li>
+                                <li class="itemMenu" id="col_6" idcat1="3" idcat2="2" idcat3="0"><a> BOLSO </a></li>
+                            </ul>
+                            <ul class="col-lg-2  col-sm-2 col-md-2 unstyled">
+                                <li class="no-border"><p><strong> MODA HOMBRE </strong></p></li>
+                                <li class="itemMenu" id="col_7" idcat1="3" idcat2="2" idcat3="0"><a> BOLSO </a></li>
+                            </ul>
+                            <ul class="col-lg-2  col-sm-2 col-md-2 unstyled">
+                                <li class="no-border"><p><strong> MODA MUJER </strong></p></li>
+                                <li class="itemMenu" id="col_8" idcat1="2" idcat2="3" idcat3="0"><a> CALZA </a></li>
+                                <li class="itemMenu" id="col_8" idcat1="3" idcat2="2" idcat3="0"><a> BOLSO </a></li>
+                            </ul>
+                        </li>-->
+<!--                        <li class="megamenu-content ProductDetailsList">
+                            <ul class="col-lg-2  col-sm-2 col-md-2 unstyled">
+                                <li class="no-border"><p><strong> MODA MUJER </strong></p></li>
+                                <li class="itemMenu" id="col_8" idcat1="2" idcat2="3" idcat3="0"><a> CALZA </a></li>
+                                <li class="itemMenu" id="col_8" idcat1="3" idcat2="2" idcat3="0"><a> BOLSO </a></li>
+                            </ul>
+                        </li>-->
                     </ul>
                 </li>
                 <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="#">

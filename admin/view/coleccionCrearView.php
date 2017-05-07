@@ -75,7 +75,7 @@ session_start();
                             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/view/enlaces.php",
                             type:  'post',
                             datetype: 'xml',
-                            async: false,
+                            async: true,
                              beforeSend: function(){
                                 $("#espera").show();
                             },
@@ -134,7 +134,7 @@ session_start();
                             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/view/enlaces.php",
                             type:  'post',
                             datetype: 'xml',
-                            async: false,
+                            async: true,
                              beforeSend: function(){
                                 $("#espera").show();
                             },
@@ -193,7 +193,7 @@ session_start();
                             url: URLprotocol+"//"+URLdomain+"/bodyflex/admin/view/enlaces.php",
                             type:  'post',
                             datetype: 'xml',
-                            async: false,
+                            async: true,
                              beforeSend: function(){
                                 $("#espera").show();
                             },
@@ -249,6 +249,9 @@ session_start();
                 }
                 function verImagen3(){
                     $("#modalVerImagen3").click();    
+                }
+                function verImagen4(){
+                    $("#modalVerImagen4").click();    
                 }
                 
             </script>
@@ -324,9 +327,10 @@ session_start();
                                             <div class="control-group">
                                                 <label class="control-label" for="appendedInput"><b>Identificador</b></label>
                                                 <div class="controls">
-                                                    <div>
-                                                        <input id="txtColId" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 200px; text-align: center; color: black;" size="30" type="text" maxlength="10" disabled  value="">
-                                                    </div>
+                                                    <input id="txtColId" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 200px; text-align: center; color: black;" size="30" type="text" maxlength="10" disabled  value="">
+                                                    <span id="divChkMnu" class="help-inline">
+                                                        <input id="enMenu" type="checkbox" name="enMenu" value="1"> Imagen en menú?
+                                                    </span>
                                                 </div>
                                             </div> 
                                             
@@ -378,6 +382,16 @@ session_start();
                                                 </div>
                                             </div>
                                              
+                                            <div class="control-group">
+                                                <label class="control-label" for="appendedInput"><b>Id Google Drive</b></label>
+                                                <div class="controls">
+                                                    <input id="txtCol4GD" placeholder="ID Imagen 300 x 250" size="16" type="text" maxlength="200" style="background-color: whitesmoke; box-shadow: 0 0 2px black; margin: 0px 0px 0px 0px; font-weight: bold; color: black; width: 300px; text-align: center; color: black;">
+                                                    <span id="sVerImg4" class="help-inline">
+                                                        <i class="fa fa-picture-o fa-2x"></i>
+                                                    </span>                   
+                                                </div>
+                                            </div>
+                                           
                                             <!-- GIF LOAD-->
                                             <div id="espera" class="form-actions" style="display:none;">
                                                 <button type="button" class="close" data-dismiss="alert">×</button>
@@ -425,6 +439,8 @@ session_start();
                                             <th class="center">ID Google Drive (850x300)</th>
                                             <th class="center">ID Google Drive (217x217)</th>
                                             <th class="center">ID Google Drive (400x180)</th>
+                                            <th class="center">ID Google Drive (300x250)</th>
+                                            <th class="center">En menú</th>
                                         </tr>
                                     </thead>   
                                     <tbody id="tbody">
@@ -444,6 +460,7 @@ session_start();
     <button id="modalVerImagen" style="display: none;">modalVerImagen</button>
     <button id="modalVerImagen2" style="display: none;">modalVerImagen2</button>
     <button id="modalVerImagen3" style="display: none;">modalVerImagen3</button>
+    <button id="modalVerImagen4" style="display: none;">modalVerImagen4</button>
     
     
     <div class="clearfix"></div>

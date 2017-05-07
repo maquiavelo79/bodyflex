@@ -877,10 +877,23 @@ drop PROMA;
 alter table producto
 add proMa VARCHAR(100);
 
+alter table COLECCION
+add coGD4 VARCHAR(50);
 
+alter table COLECCION
+add coEnMenu INTEGER;
 
+alter table catalogo_slider1
+add cs1co VARCHAR(10);
 
+alter table CATALOGO_SLIDER5
+add cs5Co VARCHAR(10);
 
+alter table catalogo_slider5
+drop D5Co;
+
+alter table CATALOGO_SLIDER7
+add cs7Po VARCHAR(10);
 
 
 

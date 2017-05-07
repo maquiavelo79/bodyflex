@@ -1,4 +1,5 @@
 <?php
+include("../model/fotosCatalogoCsuModel.php");
 session_start();     
 
 //Navegación - para determinar navegación 
@@ -25,6 +26,21 @@ session_start();
         
     }        
     
+    $codErr='';
+    $imgGD1=''; //Imagen catalogo principal
+    $imgGD2=''; //Imagen detalle de producto
+    
+    $strXML=obtenerImagenes();
+    $img = new SimpleXMLElement($strXML);
+    $codErr=$img->ERROR->CODERROR;   
+    if($codErr==0){
+        $imgGD1=$img->FOTO1;
+        $imgGD2=$img->FOTO2;
+    }else{
+        $imgGD1='../../images/bg14.jpg';
+        $imgGD2='../images/product_details/bg9.jpg';
+    }
+        
 ?>
 <!--<h3 style="margin-top: 5px; font-size: medium; height: 30px; color: black; font-weight: bold;"><a>'.$pMa.'</a></h3>-->
 
@@ -54,6 +70,21 @@ session_start();
     <link href="../assets/css/style.css" rel="stylesheet">
 
     <style>
+        
+        .sPromoSup {
+            background: url("<?= $imgGD1;?>");
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-attachment: fixed; /* IE FIX */
+        }    
+        .sPromoInf{
+            background: url("<?= $imgGD1;?>") fixed;
+            background-attachment: fixed; /* IE FIX */
+        }
+        
         #esperaAddCatMod{
             background: url("../images/circular_gris_50x50.gif") no-repeat top center;
         }
@@ -144,7 +175,7 @@ session_start();
     
     <!-- include pace script for automatic web page progress bar  -->
     <script>
-        
+           
         paceOptions = {
             elements: true
         };
@@ -401,7 +432,7 @@ session_start();
 
 <?php include("../modulos/vitrina.php"); ?>
 
-<div class="parallax-section parallax-image-1">
+<div id="promoSup" class="parallax-section sPromoSup">
     <div class="container">
         <div class="row ">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -474,7 +505,7 @@ session_start();
 </div>
 <!--main-container-->
 
-<div class="parallax-section parallax-image-2">
+<div class="parallax-section sPromoInf">
     <div class="w100 parallax-section-overley">
         <div class="container">
             <div class="row">
@@ -624,6 +655,9 @@ session_start();
     producto: <input type="text" id="producto" value=""><br> <!-- producto -->
     load: <input type="text" id="load" value=""><br> <!-- load -->
     mensaje: <input type="text" id="mensaje" value=""><br> <!-- mensaje -->
+    strXmlImg: <input type="text" id="strXML" value="<?=$strXML;?>"><br> <!-- strXmlImg -->
+    imgGD1: <input type="text" id="imgGD1" value="<?=$imgGD1;?>"><br> <!-- $imgGD1 -->
+    imgGD2: <input type="text" id="imgGD2" value="<?=$imgGD2;?>"><br> <!-- $imgGD2 -->
     
 </body>
 </html>

@@ -8,6 +8,8 @@ include("../model/conection.php");
     $gd1=$_REQUEST['gd1'];
     $gd2=$_REQUEST['gd2'];
     $gd3=$_REQUEST['gd3'];
+    $gd4=$_REQUEST['gd4'];
+    $enMenu=$_REQUEST['enMenu'];
 
     $sTrR='';
     $strXml='';
@@ -20,7 +22,7 @@ include("../model/conection.php");
 
         if($conn){  
 
-            $sql="CALL SP_CP_ADM_ING_COL(:id, :nom, :des, :gd1, :gd2, :gd3, @codErr);";
+            $sql="CALL SP_CP_ADM_ING_COL(:id, :nom, :des, :gd1, :gd2, :gd3, :gd4, :enMenu, @codErr);";
 
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_STR,10);
@@ -29,6 +31,8 @@ include("../model/conection.php");
             $stmt->bindParam(':gd1', $gd1, PDO::PARAM_STR,50);
             $stmt->bindParam(':gd2', $gd2, PDO::PARAM_STR,50);
             $stmt->bindParam(':gd3', $gd3, PDO::PARAM_STR,50);
+            $stmt->bindParam(':gd4', $gd4, PDO::PARAM_STR,50);
+            $stmt->bindParam(':enMenu', $enMenu, PDO::PARAM_INT);
             $stmt->execute();
             $num= $stmt->rowCount();
             

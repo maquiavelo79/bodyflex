@@ -83,6 +83,7 @@ jQuery(document).ready(function() {
                 $('#txtD1Tex').val('');
                 $('#txtD1GD').val('');
                 $('#txtD1Ur1').val('');
+                $('#txtD1Co').val('');
                 break;
             case 'divTip2':
                 $('#txtD2Id').val('');
@@ -93,6 +94,8 @@ jQuery(document).ready(function() {
                 $('#txtD22GD').val('');
                 $('#txtD2Ur1').val('');
                 $('#txtD2Ur2').val('');
+                $('#txtD2Co').val('');
+                $('#txtD2Po').val('');
                 break;
             case 'divTip3':
                 $('#txtD3Id').val('');
@@ -1117,6 +1120,7 @@ function pintaRegistro(id){
             $('#txtD1GD').val('');
             $('#txtD1Ur1').val('');
             $('#sVerImgS1I1').html('<i class="fa fa-picture-o fa-2x"></i>');
+            $('#txtD1Co').val('');
             break;
         case 'divTip2':
             $('#txtD2Id').val('');
@@ -1191,7 +1195,6 @@ function pintaRegistro(id){
             $('#sVerImgS7I1').html('<i class="fa fa-picture-o fa-2x"></i>');
             break;
     }
-
  }
  
  function habilitar(){

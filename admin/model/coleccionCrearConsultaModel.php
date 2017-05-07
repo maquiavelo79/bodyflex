@@ -34,14 +34,22 @@ include("../model/conection.php");
                     $coGD1=$r[3];
                     $coGD2=$r[4];
                     $coGD3=$r[8];
+                    $coGD4=$r[9];
+                    if($r[10]==1){
+                        $coEnMenu="SI";
+                    }else{
+                        $coEnMenu="NO";
+                    }
                                         
                     $sTr = '<tr style="cursor:pointer;">';
-                       $sTr.='<td style="width: 10%;" class="center">' . $coId . '</td>';
-                       $sTr.='<td style="width: 10%;" class="center">' . $coNo . '</td>';
-                       $sTr.='<td style="width: 20%;" class="center">' . $coDe . '</td>';
-                       $sTr.='<td style="width: 20%;" class="center">' . $coGD1 . '</td>';
-                       $sTr.='<td style="width: 20%;" class="center">' . $coGD2 . '</td>';
-                       $sTr.='<td style="width: 20%;" class="center">' . $coGD3 . '</td>';
+                       $sTr.='<td style="font-weight: bold; font-size: 12px;" class="center">' . $coId . '</td>';
+                       $sTr.='<td style="font-size: 12px;" class="center">' . $coNo . '</td>';
+                       $sTr.='<td style="font-size: 12px;" class="center">' . $coDe . '</td>';
+                       $sTr.='<td style="font-size: 12px;" class="center">' . $coGD1 . '</td>';
+                       $sTr.='<td style="font-size: 12px;" class="center">' . $coGD2 . '</td>';
+                       $sTr.='<td style="font-size: 12px;" class="center">' . $coGD3 . '</td>';
+                       $sTr.='<td style="font-size: 12px;" class="center">' . $coGD4 . '</td>';
+                       $sTr.='<td style="text-align: center; font-weight: bold; font-size: 12px;" class="center">' . $coEnMenu . '</td>';
                     $sTr.='</tr>';
 
                     $sTrR.=$sTr;

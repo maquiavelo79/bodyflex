@@ -138,7 +138,7 @@ include("../model/conection.php");
                                     $sTr.='<td><span onclick="confirmarCierreIncidente('.$incidente.');" class="label label-success">ABIERTO</span></td>';
                                 }else{
                                     //INCIDENTE CERRADO
-                                    $sTr.='<td><span onclick="abrirIncidente();" class="label label-important">CERRADO</span></td>';
+                                    $sTr.='<td><span onclick="confirmarAperturaIncidente('.$incidente.');" class="label label-important">CERRADO</span></td>';
                                 }
                                 $sTr.='</td>';
                             $sTr.='</tr>';
@@ -152,7 +152,7 @@ include("../model/conection.php");
                                     $sTr.='<td><span onclick="confirmarCierreIncidente('.$incidente.');" class="label label-success">ABIERTO</span></td>';
                                 }else{
                                     //INCIDENTE CERRADO
-                                    $sTr.='<td><span onclick="abrirIncidente();" class="label label-important">CERRADO</span></td>';
+                                    $sTr.='<td><span onclick="confirmarAperturaIncidente('.$incidente.');" class="label label-important">CERRADO</span></td>';
                                 }
                                 $sTr.='</td>';
                             $sTr.='</tr>';
