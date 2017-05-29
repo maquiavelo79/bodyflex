@@ -1,9 +1,3 @@
-
--- SELECT * FROM COLECCION
-
-CALL SP_CP_ADM_CSU_COL(0, @codErr);
-SELECT @codErr;
-
 DROP PROCEDURE IF EXISTS bodyflex.SP_CP_ADM_CSU_COL;
 CREATE PROCEDURE bodyflex.`SP_CP_ADM_CSU_COL`(
                                                 IN ULTIMO VARCHAR(10)
@@ -44,8 +38,8 @@ BEGIN
           ORDER BY COID DESC LIMIT 10;
         END IF;
 
-        SET id = (SELECT COID FROM TMP_Pag1 ORDER BY COID DESC LIMIT 1); -- último paginación
-        SET pr = (SELECT COID FROM TMP_Pag1 ORDER BY COID ASC LIMIT 1); -- primero paginación
+        SET id = (SELECT COID FROM TMP_Pag1 ORDER BY COID DESC LIMIT 1); -- ?ltimo paginaci?n
+        SET pr = (SELECT COID FROM TMP_Pag1 ORDER BY COID ASC LIMIT 1); -- primero paginaci?n
        
         SET @DIF=PAG-CONT;
         IF(@DIF<>1)THEN

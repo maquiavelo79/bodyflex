@@ -40,7 +40,7 @@ include("../model/conection.php");
                     
                     if($cont_coleccion==1){
  
-                        $luLis.='<li class="megamenu-content ProductDetailsList">';
+                        //$luLis.='<li class="megamenu-content ProductDetailsList">';
                             $luLis.='<ul class="col-lg-2  col-sm-2 col-md-2  unstyled">';
                                 $luLis.='<li cont_coleccion="'.$cont_coleccion.'" class="no-border">';
                                     $luLis.='<p><strong> '.$coNom.' </strong></p>';
@@ -51,7 +51,8 @@ include("../model/conection.php");
                     }elseif(($cont_coleccion%7)==0){  
                         
                         $cont_coleccion=1;
-                        $luLis.='</ul></li>'; //cerramos anterior
+                        //$luLis.='</ul></li>'; //cerramos anterior
+                        $luLis.='</ul>'; //cerramos anterior
                         
                     }else{
                         
@@ -78,7 +79,8 @@ include("../model/conection.php");
                     
                 endwhile; 
                 
-                $luLis.='</ul></li>'; //cerramos ultimo
+                //$luLis.='</ul></li>'; //cerramos ultimo
+                $luLis.='</ul>'; //cerramos ultimo
                                                 
                 //Obtenemos Header 1 y 2 para menu de productos
                 

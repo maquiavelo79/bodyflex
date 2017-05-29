@@ -1,4 +1,4 @@
-<div class="nav navbar-nav navbar-right hidden-xs">
+            <div class="nav navbar-nav navbar-right hidden-xs">
                 <div class="dropdown  cartMenu "><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i
                         class="fa fa-shopping-cart"> </i> <span class="cartRespons"> Cart ($210.00) </span> <b
                         class="caret"> </b> </a>

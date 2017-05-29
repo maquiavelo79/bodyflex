@@ -41,7 +41,20 @@ BEGIN
   
         SET @URL_DRIVE=(SELECT PARVAL FROM PARAMETROS WHERE PARNOM='DRIVE');
         
-        SET principal=(SELECT PARVAL FROM PARAMETROS WHERE PARNOM LIKE CONCAT('%', 'FCAT' ,'%') ORDER BY RAND() ASC LIMIT 1); 
+        SET principal=(
+          SELECT PARVAL 
+          FROM PARAMETROS 
+          WHERE PARNOM='FCATP1' OR
+          PARNOM='FCATP2' OR
+          PARNOM='FCATP3' OR
+          PARNOM='FCATP4' OR
+          PARNOM='FCATP5' OR
+          PARNOM='FCATP6' OR
+          PARNOM='FCATP7' OR
+          PARNOM='FCATP8' OR
+          PARNOM='FCATP9' OR
+          PARNOM='FCATP10' 
+          ORDER BY RAND() ASC LIMIT 1); 
         SET detalle=(
           SELECT PARVAL 
           FROM PARAMETROS 

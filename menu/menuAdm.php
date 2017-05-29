@@ -225,6 +225,27 @@
             </li>
             <li>
                <a class="dropmenu" href="#">
+                    <i class="fa fa-handshake-o"></i>
+                    <span style="color: #FFCC00;" class="hidden-tablet">Oferta de Valor</span>
+                    <span style="color: #FFCC00;" class="label label-important">2</span>
+                </a>
+                <ul>
+                    <li>
+                        <a style="margin-left: 5px;" href="../../../bodyflex/admin/view/propVaProView.php">
+                            <i class="fa fa-user-circle"></i>
+                            <span style="color: #FFCC00;" class="hidden-tablet">Profesional</span>
+                        </a>
+                    </li>
+<!--                    <li>
+                        <a style="margin-left: 5px;" href="../../../bodyflex/admin/view/posBsqView.php">
+                            <i class="fa fa-user-circle-o"></i>
+                            <span style="color: #FFCC00;" class="hidden-tablet">Susciptor</span>
+                        </a>
+                    </li>-->
+                </ul>	
+            </li>
+            <li>
+               <a class="dropmenu" href="#">
                     <i class="icon-group"></i>
                     <span style="color: #FFCC00;" class="hidden-tablet">Postulaciones</span>
                     <span style="color: #FFCC00;" class="label label-important">6</span>
